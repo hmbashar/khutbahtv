@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ভিডিও আর্কাইভ — Khutbah TV</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: '#043755',
+            skybrand: '#1493C5',
+            ink: '#09283A',
+            cream: '#F7F3EA',
+            gold: '#D7A83F',
+            mint: '#A9E9D5'
+          },
+          fontFamily: {
+            bangla: ['Hind Siliguri', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            premium: '0 28px 80px rgba(4,55,85,.18)',
+            soft: '0 18px 50px rgba(9,40,58,.12)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root{--ocean:#043755;--sky:#1493C5;--gold:#D7A83F;--cream:#F7F3EA;--ink:#09283A;}
+    *{scroll-behavior:smooth}
+    body{font-family:'Hind Siliguri',sans-serif;background:#fbfaf6;color:var(--ink)}
+    .font-inter{font-family:'Inter',sans-serif}
+    .pattern-bg{background-image:radial-gradient(circle at 1px 1px,rgba(4,55,85,.08) 1px,transparent 0);background-size:24px 24px}
+    .islamic-grid{position:absolute;inset:0;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D7A83F' stroke-width='1.2'%3E%3Cpath d='M60 4 80 40l36 20-36 20-20 36-20-36L4 60l36-20Z'/%3E%3Cpath d='M60 22 72 48l26 12-26 12-12 26-12-26-26-12 26-12Z'/%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3C/g%3E%3C/svg%3E");background-size:150px 150px}
+    .hero-glow:before{content:"";position:absolute;width:560px;height:560px;border-radius:999px;background:radial-gradient(circle,rgba(20,147,197,.36),transparent 65%);right:-220px;top:-190px;filter:blur(6px)}
+    .hero-glow:after{content:"";position:absolute;width:420px;height:420px;border-radius:999px;background:radial-gradient(circle,rgba(215,168,63,.22),transparent 70%);left:-190px;bottom:-180px;filter:blur(10px)}
+    .glass{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.18);box-shadow:0 24px 70px rgba(0,0,0,.22);backdrop-filter:blur(18px)}
+    .light-glass{background:rgba(255,255,255,.74);border:1px solid rgba(255,255,255,.7);backdrop-filter:blur(16px)}
+    .btn-primary{background:linear-gradient(135deg,var(--sky),#0878A8);box-shadow:0 16px 34px rgba(20,147,197,.32)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(20,147,197,.38)}
+    .btn-gold{background:linear-gradient(135deg,#E8C76A,var(--gold));box-shadow:0 16px 34px rgba(215,168,63,.28)}
+    .section-eyebrow{letter-spacing:.18em;text-transform:uppercase;font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:var(--sky)}
+    .nav-link{position:relative}.nav-link:after{content:"";position:absolute;left:0;right:100%;height:2px;bottom:-7px;background:var(--gold);transition:.25s}.nav-link:hover:after{right:0}
+    .ornament{background-image:url("data:image/svg+xml,%3Csvg width='72' height='20' viewBox='0 0 72 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 1C43 1 45 10 52 10C59 10 61 1 71 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Cpath d='M36 1C29 1 27 10 20 10C13 10 11 1 1 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Ccircle cx='36' cy='10' r='5' stroke='%23D7A83F' stroke-width='1.5'/%3E%3C/svg%3E");width:72px;height:20px;background-repeat:no-repeat;background-position:center}
+    .video-card{transition:.28s ease}.video-card:hover{transform:translateY(-6px)}
+    .video-thumb{position:relative;overflow:hidden;background:linear-gradient(135deg,#06324E,#0A5D83 48%,#021927)}
+    .video-thumb:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 10%,rgba(255,255,255,.16),transparent 28%),linear-gradient(0deg,rgba(0,0,0,.62),transparent 58%)}
+    .play{position:absolute;z-index:3;left:50%;top:50%;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:999px;background:rgba(255,255,255,.96);display:flex;align-items:center;justify-content:center;color:var(--sky);box-shadow:0 16px 36px rgba(0,0,0,.25)}
+    .tab-active{background:var(--ocean)!important;color:white!important;border-color:var(--ocean)!important}
+    .filter-active{background:rgba(20,147,197,.12)!important;color:var(--sky)!important;border-color:rgba(20,147,197,.4)!important}
+    .ticker{animation:ticker 24s linear infinite}@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .mobile-nav{max-height:0;overflow:hidden;transition:max-height .3s ease}.mobile-nav.open{max-height:420px}
+    .thumb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:.9}
+    .fallback-mark{position:absolute;inset:0;display:none;align-items:center;justify-content:center;z-index:1;background:linear-gradient(135deg,#06324E,#0A5D83 48%,#021927)}
+    .fallback-mark img{width:74px;height:74px;border-radius:999px;opacity:.9}
+    @media(max-width:768px){.hero-title{font-size:42px;line-height:1.12}.glass{backdrop-filter:blur(10px)}}
+  </style>
+</head>
+<body class="overflow-x-hidden">
+  <div class="bg-ocean text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4 overflow-hidden">
+      <div class="flex items-center gap-2 shrink-0"><span class="w-2 h-2 rounded-full bg-gold"></span><span id="todayText">আসসালামু আলাইকুম — খুতবাহ টিভিতে আপনাকে স্বাগতম</span></div>
+      <div class="hidden md:flex items-center gap-5 text-white/80"><span>ভিডিও আর্কাইভ</span><span>প্রশ্নোত্তর</span><span>বাংলা ইসলামিক কনটেন্ট</span></div>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-50 bg-white/82 backdrop-blur-xl border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-5">
+        <a href="#" class="flex items-center gap-3">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png" alt="Khutbah TV" class="h-12 w-auto" onerror="this.onerror=null;this.src='https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png'" />
+        </a>
+        <nav class="hidden lg:flex items-center gap-7 font-semibold text-[15px] text-ocean">
+          <a class="nav-link" href="#">হোম</a>
+          <a class="nav-link" href="#archive">ভিডিও</a>
+          <a class="nav-link" href="#archive">কিতাব</a>
+          <a class="nav-link" href="#archive">প্রশ্নোত্তর</a>
+          <a class="nav-link" href="#archive">প্রবন্ধ</a>
+          <a class="nav-link" href="#archive">লাইভ</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-3">
+          <div class="relative">
+            <input id="topSearch" class="w-56 rounded-full border border-ocean/15 bg-white px-5 py-3 text-sm outline-none focus:border-skybrand" placeholder="ভিডিও খুঁজুন..." />
+            <span class="absolute right-4 top-3.5 text-ocean/50">⌕</span>
+          </div>
+          <a href="#" class="btn-primary duration-300 text-white px-5 py-3 rounded-full font-bold text-sm">দান করুন</a>
+        </div>
+        <button id="menuBtn" class="lg:hidden w-11 h-11 rounded-full border border-ocean/15 flex items-center justify-center text-ocean">☰</button>
+      </div>
+      <div id="mobileNav" class="mobile-nav lg:hidden border-t border-ocean/10">
+        <div class="py-4 grid gap-3 font-semibold text-ocean">
+          <a href="#">হোম</a><a href="#archive">ভিডিও</a><a href="#archive">কিতাব</a><a href="#archive">প্রশ্নোত্তর</a><a href="#archive">প্রবন্ধ</a><a href="#archive">লাইভ</a>
+          <input id="mobileSearch" class="rounded-full border border-ocean/15 bg-white px-5 py-3 text-sm outline-none" placeholder="ভিডিও খুঁজুন..." />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative hero-glow overflow-hidden bg-ocean text-white">
+    <div class="islamic-grid"></div>
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-20 pb-16 lg:pb-20">
+      <div class="grid lg:grid-cols-[1fr_420px] gap-10 items-center">
+        <div>
+          <div class="inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 mb-7 text-sm text-white/85">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-7 h-7 rounded-full" alt="icon" />
+            সব ভিডিও এক জায়গায় — আর্কাইভ থেকে সহজে খুঁজুন
+          </div>
+          <h1 class="hero-title text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight">ভিডিও <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint via-white to-gold">আর্কাইভ</span></h1>
+          <p class="mt-7 max-w-2xl text-lg sm:text-xl leading-9 text-white/76">খুতবাহ, বয়ান, দরস, প্রশ্নোত্তর ও সিরিজ ভিডিওগুলো বছর, মাস, বিষয় ও বক্তা অনুযায়ী সাজানো।</p>
+          <div class="mt-8 grid grid-cols-3 gap-3 max-w-xl">
+            <div class="light-glass rounded-3xl p-4 text-ocean"><div id="totalVideos" class="font-inter text-2xl font-black">0</div><div class="text-sm text-ocean/65">ভিডিও</div></div>
+            <div class="light-glass rounded-3xl p-4 text-ocean"><div id="totalCategories" class="font-inter text-2xl font-black">0</div><div class="text-sm text-ocean/65">বিভাগ</div></div>
+            <div class="light-glass rounded-3xl p-4 text-ocean"><div id="totalSpeakers" class="font-inter text-2xl font-black">0</div><div class="text-sm text-ocean/65">বক্তা</div></div>
+          </div>
+        </div>
+        <div class="glass rounded-[38px] p-5">
+          <div class="video-thumb h-[300px] rounded-[30px] flex items-end p-6">
+            <img class="thumb-img" src="https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=900&q=80" alt="Islamic archive" onerror="imageFallback(this)">
+            <div class="fallback-mark"><img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" alt="icon"></div>
+            <div class="play">▶</div>
+            <div class="relative z-10 w-full">
+              <span class="inline-flex bg-gold text-ocean px-3 py-1 rounded-full font-bold text-sm mb-3">আর্কাইভ ফিচার</span>
+              <h3 class="text-2xl sm:text-3xl font-bold leading-snug">সর্বশেষ প্রকাশিত ভিডিওগুলো দেখুন</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="bg-skybrand text-white overflow-hidden py-3 font-semibold">
+    <div class="ticker flex gap-10 whitespace-nowrap w-max">
+      <span>ভিডিও আর্কাইভ আপডেট হয়েছে</span><span>•</span><span>বিষয় অনুযায়ী ভিডিও ফিল্টার করুন</span><span>•</span><span>বক্তা অনুযায়ী খুঁজুন</span><span>•</span><span>নতুন ভিডিও দেখুন</span><span>•</span>
+      <span>ভিডিও আর্কাইভ আপডেট হয়েছে</span><span>•</span><span>বিষয় অনুযায়ী ভিডিও ফিল্টার করুন</span><span>•</span><span>বক্তা অনুযায়ী খুঁজুন</span><span>•</span><span>নতুন ভিডিও দেখুন</span><span>•</span>
+    </div>
+  </div>
+
+  <section id="archive" class="pattern-bg py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <p class="section-eyebrow">Browse Archive</p>
+        <h2 class="mt-3 text-4xl lg:text-5xl font-black text-ocean leading-tight">সব ভিডিও তালিকা</h2>
+        <div class="ornament mx-auto mt-5"></div>
+      </div>
+
+      <div class="bg-white rounded-[34px] shadow-soft border border-ocean/5 p-4 sm:p-5 mb-8">
+        <div class="grid lg:grid-cols-[1fr_170px_170px_170px] gap-3">
+          <div class="relative">
+            <input id="searchInput" class="w-full rounded-2xl border border-ocean/12 bg-cream/60 px-5 py-4 outline-none focus:border-skybrand" placeholder="শিরোনাম, বিভাগ বা বক্তা দিয়ে খুঁজুন...">
+            <span class="absolute right-5 top-4 text-ocean/45">⌕</span>
+          </div>
+          <select id="yearFilter" class="rounded-2xl border border-ocean/12 bg-cream/60 px-4 py-4 outline-none focus:border-skybrand"></select>
+          <select id="monthFilter" class="rounded-2xl border border-ocean/12 bg-cream/60 px-4 py-4 outline-none focus:border-skybrand"></select>
+          <select id="sortFilter" class="rounded-2xl border border-ocean/12 bg-cream/60 px-4 py-4 outline-none focus:border-skybrand">
+            <option value="newest">নতুন আগে</option>
+            <option value="oldest">পুরনো আগে</option>
+            <option value="popular">জনপ্রিয় আগে</option>
+            <option value="title">শিরোনাম A-Z</option>
+          </select>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-2" id="quickCategories"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-[1fr_320px] gap-8 items-start">
+        <div>
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
+            <p class="text-ocean/65"><span id="resultCount" class="font-bold text-ocean">0</span> টি ভিডিও পাওয়া গেছে</p>
+            <button id="resetBtn" class="w-fit px-5 py-3 rounded-full bg-white border border-ocean/10 text-ocean font-bold hover:bg-cream duration-300">সব ফিল্টার মুছুন</button>
+          </div>
+          <div id="videoGrid" class="grid md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+          <div id="emptyState" class="hidden text-center bg-white rounded-[34px] shadow-soft p-12 mt-6">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-20 h-20 mx-auto rounded-full" alt="icon">
+            <h3 class="mt-5 text-2xl font-black text-ocean">কোনো ভিডিও পাওয়া যায়নি</h3>
+            <p class="mt-2 text-ocean/60">অনুগ্রহ করে সার্চ বা ফিল্টার পরিবর্তন করুন।</p>
+          </div>
+          <div id="pagination" class="mt-10 flex flex-wrap justify-center gap-2"></div>
+        </div>
+
+        <aside class="space-y-6 lg:sticky lg:top-28">
+          <div class="bg-white rounded-[34px] shadow-soft border border-ocean/5 p-6">
+            <h3 class="text-2xl font-black text-ocean">বিভাগ</h3>
+            <div class="ornament mt-3 mb-5"></div>
+            <div id="categoryList" class="space-y-2"></div>
+          </div>
+          <div class="bg-white rounded-[34px] shadow-soft border border-ocean/5 p-6">
+            <h3 class="text-2xl font-black text-ocean">বক্তা</h3>
+            <div class="ornament mt-3 mb-5"></div>
+            <div id="speakerList" class="space-y-2"></div>
+          </div>
+          <div class="relative overflow-hidden rounded-[34px] bg-ocean text-white p-7 shadow-premium">
+            <div class="islamic-grid"></div>
+            <div class="relative">
+              <p class="section-eyebrow text-gold">Support</p>
+              <h3 class="mt-3 text-2xl font-black leading-tight">দাওয়াহ কাজে সহযোগিতা করুন</h3>
+              <p class="mt-3 text-white/65 leading-7">ভিডিও, কিতাব ও ওয়েবসাইট উন্নয়নে আপনার সহায়তা গুরুত্বপূর্ণ।</p>
+              <a href="#" class="btn-gold mt-5 inline-flex text-ocean px-6 py-3 rounded-full font-black">দান করুন</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#021A28] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-white/10 pb-12">
+        <div class="lg:col-span-2">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png" class="h-14 w-auto" alt="Khutbah TV white" onerror="this.onerror=null;this.src='https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png'" />
+          <p class="mt-5 max-w-md text-white/62 leading-8">বাংলা ভাষায় ইসলামিক ভিডিও, বয়ান, প্রশ্নোত্তর, কিতাব ও দাওয়াহ কনটেন্টের ডিজিটাল প্ল্যাটফর্ম।</p>
+        </div>
+        <div><h4 class="font-bold text-xl mb-5">দ্রুত লিংক</h4><ul class="space-y-3 text-white/62"><li>ভিডিও</li><li>কিতাব</li><li>প্রশ্নোত্তর</li><li>প্রবন্ধ</li></ul></div>
+        <div><h4 class="font-bold text-xl mb-5">যোগাযোগ</h4><ul class="space-y-3 text-white/62"><li>contact@khutbahtv.com</li><li>YouTube</li><li>Facebook</li></ul></div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row justify-between gap-4 text-white/50 text-sm"><p>© Khutbah TV. All Rights Reserved.</p><p>Video archive concept</p></div>
+    </div>
+  </footer>
+
+  <script>
+    const iconUrl = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png';
+    window.imageFallback = function(img){
+      img.style.display='none';
+      const box = img.parentElement.querySelector('.fallback-mark');
+      if(box) box.style.display='flex';
+    }
+
+    const monthsBn = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+    const videos = [
+      {title:'সত্য প্রতিষ্ঠিত হওয়ার শিক্ষা', category:'আকিদা', speaker:'Professor Mokhter Ahmad', year:2026, month:5, views:1280, date:'2026-05-16', img:'https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=700&q=80'},
+      {title:'নাস্তিকদের ইসলাম বিদ্বেষের কারণ কী?', category:'দাওয়াহ', speaker:'শাইখ আব্দুল্লাহ', year:2026, month:5, views:980, date:'2026-05-12', img:'https://images.unsplash.com/photo-1557763683-1dd0583e83e7?auto=format&fit=crop&w=700&q=80'},
+      {title:'যুব সমাজ ও সময়ের ফিতনা', category:'সমাজ', speaker:'মাওলানা আবু সালেহ', year:2026, month:4, views:870, date:'2026-04-27', img:'https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=700&q=80'},
+      {title:'ইসলাম বলে বিশ্ব মানবতার কথা', category:'ইসলাম', speaker:'Professor Mokhter Ahmad', year:2026, month:4, views:720, date:'2026-04-19', img:'https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&w=700&q=80'},
+      {title:'কুরআনিক ভাষা শিক্ষা — পর্ব ১', category:'আরবি শিক্ষা', speaker:'Professor Mokhter Ahmad', year:2026, month:3, views:620, date:'2026-03-28', img:'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=700&q=80'},
+      {title:'কুরআনিক ভাষা শিক্ষা — পর্ব ২', category:'আরবি শিক্ষা', speaker:'Professor Mokhter Ahmad', year:2026, month:3, views:590, date:'2026-03-21', img:'https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&w=700&q=80'},
+      {title:'নামাজের মাসআলা সহজ ভাষায়', category:'ফিকহ', speaker:'মুফতি মুহাম্মদ হাসান', year:2026, month:2, views:1330, date:'2026-02-14', img:'https://images.unsplash.com/photo-1552423314-cf29ab68ad73?auto=format&fit=crop&w=700&q=80'},
+      {title:'পরিবার গঠনে সুন্নাহর নির্দেশনা', category:'পরিবার', speaker:'মাওলানা আবু সালেহ', year:2026, month:2, views:760, date:'2026-02-03', img:'https://images.unsplash.com/photo-1512632578888-169bbbc64f33?auto=format&fit=crop&w=700&q=80'},
+      {title:'দোয়া কবুলের শর্ত', category:'আমল', speaker:'শাইখ আব্দুল্লাহ', year:2026, month:1, views:1110, date:'2026-01-20', img:'https://images.unsplash.com/photo-1564121211835-e88c852648ab?auto=format&fit=crop&w=700&q=80'},
+      {title:'সীরাতে রাসূল ﷺ — মক্কী জীবন', category:'সীরাত', speaker:'মাওলানা আবু সালেহ', year:2025, month:12, views:1840, date:'2025-12-17', img:'https://images.unsplash.com/photo-1584286595398-a59511e446e4?auto=format&fit=crop&w=700&q=80'},
+      {title:'সীরাতে রাসূল ﷺ — মাদানী জীবন', category:'সীরাত', speaker:'মাওলানা আবু সালেহ', year:2025, month:12, views:1710, date:'2025-12-09', img:'https://images.unsplash.com/photo-1532635241-17e820acc59f?auto=format&fit=crop&w=700&q=80'},
+      {title:'তাওহীদের পরিচয়', category:'আকিদা', speaker:'Professor Mokhter Ahmad', year:2025, month:11, views:990, date:'2025-11-21', img:'https://images.unsplash.com/photo-1559563458-527698bf5295?auto=format&fit=crop&w=700&q=80'},
+      {title:'ইসলামে আদব ও আখলাক', category:'আখলাক', speaker:'শাইখ আব্দুল্লাহ', year:2025, month:10, views:850, date:'2025-10-08', img:'https://images.unsplash.com/photo-1519452575417-564c1401ecc0?auto=format&fit=crop&w=700&q=80'},
+      {title:'রমাদানের প্রস্তুতি', category:'রমাদান', speaker:'মুফতি মুহাম্মদ হাসান', year:2025, month:9, views:1240, date:'2025-09-30', img:'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=700&q=80'},
+      {title:'জুমার খুতবার গুরুত্ব', category:'খুতবাহ', speaker:'Professor Mokhter Ahmad', year:2025, month:8, views:1440, date:'2025-08-15', img:'https://images.unsplash.com/photo-1564769662533-4f00a87b4056?auto=format&fit=crop&w=700&q=80'},
+      {title:'ইসলামে নারীর মর্যাদা', category:'সমাজ', speaker:'শাইখ আব্দুল্লাহ', year:2025, month:8, views:930, date:'2025-08-01', img:'https://images.unsplash.com/photo-1492321936769-b49830bc1d1e?auto=format&fit=crop&w=700&q=80'},
+      {title:'মৃত্যুর পরের জীবন', category:'আখিরাত', speaker:'মুফতি মুহাম্মদ হাসান', year:2025, month:7, views:1500, date:'2025-07-12', img:'https://images.unsplash.com/photo-1528357136257-0c25517acfea?auto=format&fit=crop&w=700&q=80'},
+      {title:'ইলম অর্জনের ফজিলত', category:'শিক্ষা', speaker:'Professor Mokhter Ahmad', year:2025, month:6, views:700, date:'2025-06-18', img:'https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=700&q=80'},
+      {title:'হালাল রিযিকের সন্ধান', category:'জীবন', speaker:'মাওলানা আবু সালেহ', year:2025, month:5, views:680, date:'2025-05-24', img:'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=700&q=80'},
+      {title:'শিরক থেকে বাঁচার উপায়', category:'আকিদা', speaker:'মুফতি মুহাম্মদ হাসান', year:2025, month:4, views:1210, date:'2025-04-09', img:'https://images.unsplash.com/photo-1519818187420-8e49de7adeef?auto=format&fit=crop&w=700&q=80'},
+      {title:'কুরআন তিলাওয়াতের আদব', category:'কুরআন', speaker:'শাইখ আব্দুল্লাহ', year:2025, month:3, views:920, date:'2025-03-11', img:'https://images.unsplash.com/photo-1585036156171-384164a8c675?auto=format&fit=crop&w=700&q=80'},
+      {title:'সাহাবীদের জীবনী থেকে শিক্ষা', category:'ইতিহাস', speaker:'মাওলানা আবু সালেহ', year:2025, month:2, views:1010, date:'2025-02-19', img:'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=700&q=80'},
+      {title:'ইসলামি সংস্কৃতি ও আমাদের দায়িত্ব', category:'দাওয়াহ', speaker:'Professor Mokhter Ahmad', year:2025, month:1, views:610, date:'2025-01-07', img:'https://images.unsplash.com/photo-1551884831-bbf3cdc6469e?auto=format&fit=crop&w=700&q=80'},
+      {title:'প্রশ্নোত্তর লাইভ — পর্ব ৩', category:'প্রশ্নোত্তর', speaker:'মুফতি মুহাম্মদ হাসান', year:2024, month:12, views:560, date:'2024-12-22', img:'https://images.unsplash.com/photo-1518002054494-3a6f94352e9d?auto=format&fit=crop&w=700&q=80'}
+    ];
+
+    const state = {query:'', year:'all', month:'all', category:'all', speaker:'all', sort:'newest', page:1, perPage:9};
+    const $ = (id) => document.getElementById(id);
+    const uniq = (arr) => [...new Set(arr)];
+    const formatBn = (n) => new Intl.NumberFormat('bn-BD').format(n);
+
+    function init(){
+      $('todayText').textContent = new Intl.DateTimeFormat('bn-BD',{weekday:'long',year:'numeric',month:'long',day:'numeric'}).format(new Date()) + ' — খুতবাহ টিভিতে স্বাগতম';
+      $('totalVideos').textContent = formatBn(videos.length) + '+';
+      $('totalCategories').textContent = formatBn(uniq(videos.map(v=>v.category)).length);
+      $('totalSpeakers').textContent = formatBn(uniq(videos.map(v=>v.speaker)).length);
+      populateSelects();
+      renderSidebar();
+      bindEvents();
+      render();
+    }
+
+    function populateSelects(){
+      const years = uniq(videos.map(v=>v.year)).sort((a,b)=>b-a);
+      $('yearFilter').innerHTML = '<option value="all">সব বছর</option>' + years.map(y=>`<option value="${y}">${formatBn(y)}</option>`).join('');
+      $('monthFilter').innerHTML = '<option value="all">সব মাস</option>' + monthsBn.map((m,i)=>`<option value="${i+1}">${m}</option>`).join('');
+      const cats = ['all', ...uniq(videos.map(v=>v.category)).sort()];
+      $('quickCategories').innerHTML = cats.map(c=>`<button data-cat="${c}" class="quickCat px-5 py-3 rounded-full border border-ocean/10 bg-white text-ocean font-bold hover:bg-cream duration-300 ${c==='all'?'tab-active':''}">${c==='all'?'সব ভিডিও':c}</button>`).join('');
+    }
+
+    function countsBy(field){
+      return videos.reduce((acc,v)=>{acc[v[field]]=(acc[v[field]]||0)+1;return acc},{});
+    }
+
+    function renderSidebar(){
+      const catCounts = countsBy('category');
+      const spCounts = countsBy('speaker');
+      $('categoryList').innerHTML = Object.keys(catCounts).sort().map(c=>`<button data-category="${c}" class="sideCat w-full flex items-center justify-between gap-3 px-4 py-3 rounded-2xl border border-ocean/8 bg-cream/45 hover:bg-skybrand/10 duration-300 text-left"><span class="font-bold text-ocean">${c}</span><span class="text-sm text-ocean/55">${formatBn(catCounts[c])}</span></button>`).join('');
+      $('speakerList').innerHTML = Object.keys(spCounts).sort().map(s=>`<button data-speaker="${s}" class="sideSpeaker w-full flex items-center justify-between gap-3 px-4 py-3 rounded-2xl border border-ocean/8 bg-cream/45 hover:bg-skybrand/10 duration-300 text-left"><span class="font-bold text-ocean">${s}</span><span class="text-sm text-ocean/55">${formatBn(spCounts[s])}</span></button>`).join('');
+    }
+
+    function filteredVideos(){
+      let list = videos.filter(v => {
+        const q = state.query.trim().toLowerCase();
+        const matchQuery = !q || [v.title,v.category,v.speaker,String(v.year),monthsBn[v.month-1]].join(' ').toLowerCase().includes(q);
+        const matchYear = state.year === 'all' || String(v.year) === String(state.year);
+        const matchMonth = state.month === 'all' || String(v.month) === String(state.month);
+        const matchCategory = state.category === 'all' || v.category === state.category;
+        const matchSpeaker = state.speaker === 'all' || v.speaker === state.speaker;
+        return matchQuery && matchYear && matchMonth && matchCategory && matchSpeaker;
+      });
+      if(state.sort === 'newest') list.sort((a,b)=>new Date(b.date)-new Date(a.date));
+      if(state.sort === 'oldest') list.sort((a,b)=>new Date(a.date)-new Date(b.date));
+      if(state.sort === 'popular') list.sort((a,b)=>b.views-a.views);
+      if(state.sort === 'title') list.sort((a,b)=>a.title.localeCompare(b.title,'bn'));
+      return list;
+    }
+
+    function videoCard(v){
+      return `<article class="video-card bg-white rounded-[30px] overflow-hidden shadow-soft border border-ocean/5">
+        <a href="#" class="block video-thumb h-56">
+          <img class="thumb-img" src="${v.img}" alt="${v.title}" onerror="imageFallback(this)">
+          <div class="fallback-mark"><img src="${iconUrl}" alt="Khutbah TV"></div>
+          <div class="play">▶</div>
+          <div class="absolute z-10 left-4 top-4 flex gap-2"><span class="bg-gold text-ocean px-3 py-1 rounded-full text-xs font-black">${v.category}</span></div>
+          <div class="absolute z-10 right-4 bottom-4 bg-black/45 text-white px-3 py-1 rounded-full text-xs font-bold">${formatBn(v.views)} views</div>
+        </a>
+        <div class="p-5">
+          <div class="flex items-center gap-2 text-sm text-ocean/55 mb-3"><span>▣ ${v.speaker}</span><span>•</span><span>${monthsBn[v.month-1]} ${formatBn(v.year)}</span></div>
+          <h3 class="text-xl font-black text-ocean leading-snug line-clamp-2"><a href="#">${v.title}</a></h3>
+          <div class="mt-5 flex items-center justify-between"><a href="#" class="text-skybrand font-black">ভিডিও দেখুন →</a><button class="w-10 h-10 rounded-full border border-ocean/10 text-ocean hover:bg-cream">↗</button></div>
+        </div>
+      </article>`;
+    }
+
+    function render(){
+      const list = filteredVideos();
+      const pages = Math.max(1, Math.ceil(list.length/state.perPage));
+      if(state.page > pages) state.page = pages;
+      const start = (state.page-1)*state.perPage;
+      const slice = list.slice(start,start+state.perPage);
+      $('resultCount').textContent = formatBn(list.length);
+      $('videoGrid').innerHTML = slice.map(videoCard).join('');
+      $('emptyState').classList.toggle('hidden', list.length !== 0);
+      $('videoGrid').classList.toggle('hidden', list.length === 0);
+      renderPagination(pages);
+      syncControls();
+    }
+
+    function renderPagination(pages){
+      if(pages <= 1){ $('pagination').innerHTML = ''; return; }
+      let html = `<button class="pageBtn px-4 py-3 rounded-full bg-white border border-ocean/10 text-ocean font-bold" data-page="${Math.max(1,state.page-1)}">Prev</button>`;
+      for(let i=1;i<=pages;i++) html += `<button class="pageBtn px-4 py-3 rounded-full border font-bold ${i===state.page?'bg-ocean text-white border-ocean':'bg-white border-ocean/10 text-ocean'}" data-page="${i}">${formatBn(i)}</button>`;
+      html += `<button class="pageBtn px-4 py-3 rounded-full bg-white border border-ocean/10 text-ocean font-bold" data-page="${Math.min(pages,state.page+1)}">Next</button>`;
+      $('pagination').innerHTML = html;
+    }
+
+    function syncControls(){
+      $('yearFilter').value = state.year;
+      $('monthFilter').value = state.month;
+      $('sortFilter').value = state.sort;
+      $('searchInput').value = state.query;
+      document.querySelectorAll('.quickCat').forEach(b=>b.classList.toggle('tab-active', b.dataset.cat === state.category));
+      document.querySelectorAll('.sideCat').forEach(b=>b.classList.toggle('filter-active', b.dataset.category === state.category));
+      document.querySelectorAll('.sideSpeaker').forEach(b=>b.classList.toggle('filter-active', b.dataset.speaker === state.speaker));
+    }
+
+    function setSearch(value){ state.query = value; state.page = 1; render(); }
+    function bindEvents(){
+      $('menuBtn').addEventListener('click',()=> $('mobileNav').classList.toggle('open'));
+      $('searchInput').addEventListener('input', e => setSearch(e.target.value));
+      $('topSearch').addEventListener('input', e => setSearch(e.target.value));
+      $('mobileSearch').addEventListener('input', e => setSearch(e.target.value));
+      $('yearFilter').addEventListener('change', e => {state.year=e.target.value;state.page=1;render();});
+      $('monthFilter').addEventListener('change', e => {state.month=e.target.value;state.page=1;render();});
+      $('sortFilter').addEventListener('change', e => {state.sort=e.target.value;state.page=1;render();});
+      $('resetBtn').addEventListener('click', () => {Object.assign(state,{query:'',year:'all',month:'all',category:'all',speaker:'all',sort:'newest',page:1});$('topSearch').value='';$('mobileSearch').value='';render();});
+      document.addEventListener('click', e => {
+        const pageBtn = e.target.closest('.pageBtn');
+        if(pageBtn){state.page=Number(pageBtn.dataset.page);render();document.getElementById('archive').scrollIntoView({behavior:'smooth'});}
+        const qc = e.target.closest('.quickCat');
+        if(qc){state.category=qc.dataset.cat;state.page=1;render();}
+        const sc = e.target.closest('.sideCat');
+        if(sc){state.category=sc.dataset.category;state.page=1;render();}
+        const sp = e.target.closest('.sideSpeaker');
+        if(sp){state.speaker=sp.dataset.speaker;state.page=1;render();}
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>

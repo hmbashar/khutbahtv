@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ব্লগ — Khutbah TV</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- =========================================================
+       TAILWIND THEME CONFIG
+  ========================================================== -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: '#043755',
+            skybrand: '#1493C5',
+            ink: '#09283A',
+            cream: '#F7F3EA',
+            gold: '#D7A83F',
+            mint: '#A9E9D5',
+            night: '#021A28'
+          },
+          fontFamily: {
+            bangla: ['Hind Siliguri', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            premium: '0 28px 80px rgba(4,55,85,.18)',
+            soft: '0 18px 50px rgba(9,40,58,.12)',
+            card: '0 14px 38px rgba(4,55,85,.10)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- =========================================================
+       GLOBAL DESIGN SYSTEM + PAGE STYLES
+  ========================================================== -->
+  <style>
+    :root{--ocean:#043755;--sky:#1493C5;--gold:#D7A83F;--cream:#F7F3EA;--ink:#09283A;--night:#021A28;}
+    *{scroll-behavior:smooth}
+    body{font-family:'Hind Siliguri',sans-serif;background:#fbfaf6;color:var(--ink);}
+    .font-inter{font-family:'Inter',sans-serif}
+    .pattern-bg{background-image:radial-gradient(circle at 1px 1px, rgba(4,55,85,.075) 1px, transparent 0);background-size:24px 24px;}
+    .islamic-grid{position:absolute;inset:0;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D7A83F' stroke-width='1.2'%3E%3Cpath d='M60 4 80 40l36 20-36 20-20 36-20-36L4 60l36-20Z'/%3E%3Cpath d='M60 22 72 48l26 12-26 12-12 26-12-26-26-12 26-12Z'/%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3C/g%3E%3C/svg%3E");background-size:150px 150px;}
+    .hero-glow:before{content:"";position:absolute;width:560px;height:560px;border-radius:999px;background:radial-gradient(circle,rgba(20,147,197,.36),transparent 65%);right:-220px;top:-190px;filter:blur(6px)}
+    .hero-glow:after{content:"";position:absolute;width:420px;height:420px;border-radius:999px;background:radial-gradient(circle,rgba(215,168,63,.22),transparent 70%);left:-190px;bottom:-180px;filter:blur(10px)}
+    .glass{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.18);box-shadow:0 24px 70px rgba(0,0,0,.22);backdrop-filter:blur(18px)}
+    .light-glass{background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.75);backdrop-filter:blur(16px)}
+    .btn-primary{background:linear-gradient(135deg,var(--sky),#0878A8);box-shadow:0 16px 34px rgba(20,147,197,.32);transition:.28s ease}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(20,147,197,.38)}
+    .btn-gold{background:linear-gradient(135deg,#E8C76A,var(--gold));box-shadow:0 16px 34px rgba(215,168,63,.28);transition:.28s ease}
+    .btn-gold:hover{transform:translateY(-2px)}
+    .section-eyebrow{letter-spacing:.18em;text-transform:uppercase;font-family:'Inter',sans-serif;font-size:12px;font-weight:900;color:var(--sky)}
+    .nav-link{position:relative}.nav-link:after{content:"";position:absolute;left:0;right:100%;height:2px;bottom:-7px;background:var(--gold);transition:.25s}.nav-link:hover:after{right:0}
+    .ornament{background-image:url("data:image/svg+xml,%3Csvg width='72' height='20' viewBox='0 0 72 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 1C43 1 45 10 52 10C59 10 61 1 71 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Cpath d='M36 1C29 1 27 10 20 10C13 10 11 1 1 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Ccircle cx='36' cy='10' r='5' stroke='%23D7A83F' stroke-width='1.5'/%3E%3C/svg%3E");width:72px;height:20px;background-repeat:no-repeat;background-position:center;}
+    .premium-input{background:white;border:1px solid rgba(4,55,85,.14);outline:none}.premium-input:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(20,147,197,.1)}
+    .ticker{animation:ticker 25s linear infinite}@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}.reveal.show{opacity:1;transform:translateY(0)}
+    .blog-card{position:relative;overflow:hidden;border:1px solid rgba(4,55,85,.10);background:linear-gradient(180deg,#fff,rgba(247,243,234,.72));transition:.28s ease}
+    .blog-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 94% 0%,rgba(20,147,197,.13),transparent 24%),radial-gradient(circle at 4% 100%,rgba(215,168,63,.12),transparent 28%);pointer-events:none;}
+    .blog-card:hover{transform:translateY(-7px);box-shadow:0 28px 80px rgba(4,55,85,.15)}
+    .thumb{position:relative;overflow:hidden;background:linear-gradient(135deg,#06324E,#0A5D83 48%,#021927)}
+    .thumb:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 10%,rgba(255,255,255,.16),transparent 28%),linear-gradient(0deg,rgba(0,0,0,.58),transparent 62%)}
+    .thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}.blog-card:hover .thumb img{transform:scale(1.06)}
+    .category-pill.active{background:var(--ocean);color:white;box-shadow:0 12px 26px rgba(4,55,85,.22)}
+    .category-item.active{background:#043755;color:white;border-color:#043755}.category-item.active span{color:white}
+    .empty-state{display:none}.empty-state.show{display:block}
+    .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .line-clamp-3{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    @media(max-width:768px){.hero-title{font-size:40px;line-height:1.13}.glass{backdrop-filter:blur(10px)}}
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+  <!-- =========================================================
+       SHARED JAVASCRIPT CONSTANTS + LOGO FALLBACK
+  ========================================================== -->
+  <script>
+    const ICON_URL = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png';
+    const WHITE_LOGO = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png';
+    const COLOR_LOGO = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png';
+    function fallbackLogo(img){img.onerror=null;img.src=ICON_URL;img.classList.add('rounded-full')}
+    function thumbFallback(img){img.onerror=null;img.src=ICON_URL;img.className='w-20 h-20 object-contain mx-auto mt-20 rounded-full opacity-90'}
+  </script>
+
+  <!-- =========================================================
+       FLOATING SOCIAL LINKS
+  ========================================================== -->
+  <div class="fixed left-3 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-2">
+    <a class="w-9 h-9 rounded-full bg-ocean text-white flex items-center justify-center shadow-card" href="#">f</a>
+    <a class="w-9 h-9 rounded-full bg-skybrand text-white flex items-center justify-center shadow-card" href="#">▶</a>
+    <a class="w-9 h-9 rounded-full bg-gold text-ocean flex items-center justify-center shadow-card" href="#">✉</a>
+  </div>
+
+  <!-- =========================================================
+       TOP NOTICE BAR
+  ========================================================== -->
+  <div class="bg-ocean text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4 overflow-hidden">
+      <div class="flex items-center gap-2 shrink-0"><span class="w-2 h-2 rounded-full bg-gold"></span><span>আসসালামু আলাইকুম — খুতবাহ টিভিতে আপনাকে স্বাগতম</span></div>
+      <div class="hidden md:flex items-center gap-5 text-white/80"><span>লাইভ অনুষ্ঠান</span><span>প্রশ্নোত্তর</span><span>বাংলা ইসলামিক কনটেন্ট</span><span class="text-gold">●</span><span id="todayDate">আজ</span></div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       HEADER / NAVIGATION
+  ========================================================== -->
+  <header class="sticky top-0 z-50 bg-white/84 backdrop-blur-xl border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-5">
+        <a href="#" class="flex items-center gap-3">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png" alt="Khutbah TV" class="h-12 w-auto" onerror="fallbackLogo(this)" />
+        </a>
+        <nav class="hidden lg:flex items-center gap-7 font-semibold text-[15px] text-ocean">
+          <a class="nav-link" href="#">হোম</a>
+          <a class="nav-link" href="#">ভিডিও</a>
+          <a class="nav-link" href="#">কিতাব</a>
+          <a class="nav-link" href="#">ইসলাম</a>
+          <a class="nav-link" href="#">আসুন শিখি</a>
+          <a class="nav-link" href="#">সীরাত</a>
+          <a class="nav-link text-skybrand" href="#blog-list">ব্লগ</a>
+          <a class="nav-link" href="#">প্রশ্ন/উত্তর</a>
+          <a class="nav-link" href="#">যোগাযোগ</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-3">
+          <div class="relative">
+            <input id="globalSearch" class="w-56 rounded-full border border-ocean/15 bg-white px-5 py-3 text-sm outline-none focus:border-skybrand" placeholder="খুঁজুন..." />
+            <span class="absolute right-4 top-3.5 text-ocean/50">⌕</span>
+          </div>
+          <a href="#newsletter" class="btn-primary text-white px-5 py-3 rounded-full font-bold text-sm">সাবস্ক্রাইব</a>
+        </div>
+        <button id="menuBtn" class="lg:hidden w-11 h-11 rounded-full border border-ocean/15 flex items-center justify-center text-ocean">☰</button>
+      </div>
+      <div id="mobileMenu" class="hidden lg:hidden pb-5">
+        <div class="grid gap-2 font-semibold text-ocean bg-cream rounded-3xl p-4">
+          <a href="#">হোম</a><a href="#">ভিডিও</a><a href="#">কিতাব</a><a href="#">ইসলাম</a><a href="#">আসুন শিখি</a><a href="#">সীরাত</a><a href="#blog-list">ব্লগ</a><a href="#">প্রশ্ন/উত্তর</a><a href="#">যোগাযোগ</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       LATEST NEWS TICKER
+  ========================================================== -->
+  <div class="bg-skybrand text-white overflow-hidden py-3 font-semibold">
+    <div class="ticker flex gap-10 whitespace-nowrap w-max">
+      <span>সর্বশেষ ব্লগ প্রকাশিত হয়েছে</span><span>•</span><span>আকিদা, ফিকহ, পরিবার ও সমাজ বিষয়ক প্রবন্ধ</span><span>•</span><span>নতুন লেখা পড়ুন ও শেয়ার করুন</span><span>•</span><span>সর্বশেষ ব্লগ প্রকাশিত হয়েছে</span><span>•</span><span>আকিদা, ফিকহ, পরিবার ও সমাজ বিষয়ক প্রবন্ধ</span><span>•</span><span>নতুন লেখা পড়ুন ও শেয়ার করুন</span><span>•</span>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       PAGE HERO
+  ========================================================== -->
+  <main class="relative hero-glow overflow-hidden bg-ocean text-white">
+    <div class="islamic-grid"></div>
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-10 items-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 mb-7 text-sm text-white/85">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-7 h-7 rounded-full" alt="icon" onerror="this.style.display='none'" />
+            বাংলা ইসলামিক ব্লগ ও প্রবন্ধ
+          </div>
+          <h1 class="hero-title text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight">
+            জ্ঞান, চিন্তা ও আমলের জন্য <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint via-white to-gold">নির্বাচিত লেখা</span>
+          </h1>
+          <p class="mt-7 max-w-2xl text-lg sm:text-xl leading-9 text-white/76">
+            আকিদা, ফিকহ, পরিবার, সমাজ, ইতিহাস, সীরাত ও দাওয়াহ বিষয়ক প্রবন্ধগুলো একটি সুন্দর, পাঠযোগ্য ও প্রিমিয়াম ব্লগ অভিজ্ঞতায় সাজানো।
+          </p>
+          <div class="mt-9 flex flex-col sm:flex-row gap-4">
+            <a href="#blog-list" class="btn-primary text-white px-7 py-4 rounded-full font-bold text-center">সর্বশেষ লেখা পড়ুন</a>
+            <a href="#featured" class="bg-white text-ocean px-7 py-4 rounded-full font-bold text-center hover:bg-cream duration-300">নির্বাচিত প্রবন্ধ</a>
+          </div>
+        </div>
+        <div class="reveal glass rounded-[38px] p-5 lg:p-6">
+          <div class="thumb h-[360px] rounded-[30px]">
+            <img src="https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=1200&q=80" alt="Islamic architecture" onerror="thumbFallback(this)" />
+            <div class="absolute z-10 left-6 right-6 bottom-6">
+              <span class="inline-flex bg-gold text-ocean px-3 py-1 rounded-full font-bold text-sm mb-3">আজকের পোস্ট</span>
+              <h2 class="text-3xl font-black leading-tight">নাস্তিকতাবাদের বাস্তবতা ও মুসলিমের অবস্থান</h2>
+              <p class="mt-3 text-white/72 leading-7">চিন্তা, যুক্তি ও ঈমানের আলোকে একটি গুরুত্বপূর্ণ আলোচনা।</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       BLOG CATEGORY FILTER STRIP
+  ========================================================== -->
+  <section class="pattern-bg border-b border-ocean/10 py-7">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex gap-3 overflow-x-auto pb-2">
+        <button class="category-pill active shrink-0 rounded-full bg-white px-5 py-3 font-bold text-ocean shadow-card" data-filter="all">সব লেখা</button>
+        <button class="category-pill shrink-0 rounded-full bg-white px-5 py-3 font-bold text-ocean shadow-card" data-filter="আকিদা">আকিদা</button>
+        <button class="category-pill shrink-0 rounded-full bg-white px-5 py-3 font-bold text-ocean shadow-card" data-filter="ফিকহ">ফিকহ</button>
+        <button class="category-pill shrink-0 rounded-full bg-white px-5 py-3 font-bold text-ocean shadow-card" data-filter="পরিবার">পরিবার</button>
+        <button class="category-pill shrink-0 rounded-full bg-white px-5 py-3 font-bold text-ocean shadow-card" data-filter="ইতিহাস">ইতিহাস</button>
+        <button class="category-pill shrink-0 rounded-full bg-white px-5 py-3 font-bold text-ocean shadow-card" data-filter="সীরাত">সীরাত</button>
+        <button class="category-pill shrink-0 rounded-full bg-white px-5 py-3 font-bold text-ocean shadow-card" data-filter="দাওয়াহ">দাওয়াহ</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FEATURED ARTICLES
+  ========================================================== -->
+  <section id="featured" class="bg-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal text-center max-w-3xl mx-auto mb-12">
+        <p class="section-eyebrow">Featured Articles</p>
+        <h2 class="mt-3 text-4xl lg:text-5xl font-black text-ocean">নির্বাচিত প্রবন্ধ</h2>
+        <div class="ornament mx-auto mt-5"></div>
+      </div>
+      <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-7">
+        <article class="reveal blog-card rounded-[36px] shadow-soft">
+          <div class="thumb h-80 rounded-t-[36px]">
+            <img src="https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=1200&q=80" alt="Mosque interior" onerror="thumbFallback(this)">
+          </div>
+          <div class="relative p-7 lg:p-8">
+            <div class="flex flex-wrap gap-3 mb-4"><span class="px-3 py-1 rounded-full bg-skybrand/10 text-skybrand font-bold text-sm">আকিদা</span><span class="px-3 py-1 rounded-full bg-gold/15 text-ocean font-bold text-sm">৮ মিনিট পড়া</span></div>
+            <h3 class="text-3xl lg:text-4xl font-black text-ocean leading-tight">ঈমানকে দৃঢ় করার জন্য প্রতিদিনের কিছু গুরুত্বপূর্ণ আমল</h3>
+            <p class="mt-4 text-ocean/65 leading-8 text-lg">বিশ্বাস, ইবাদত, চরিত্র ও দৈনন্দিন জীবনের মাঝে ঈমানের প্রভাব—এই লেখায় সহজভাবে আলোচনা করা হয়েছে।</p>
+            <a href="#" class="mt-6 inline-flex btn-primary text-white px-6 py-3 rounded-full font-bold">পূর্ণ লেখা পড়ুন</a>
+          </div>
+        </article>
+        <div class="grid gap-7">
+          <article class="reveal blog-card rounded-[30px] p-5 shadow-soft flex gap-5">
+            <div class="thumb w-32 sm:w-40 h-36 rounded-2xl shrink-0"><img src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&w=600&q=80" alt="Quran" onerror="thumbFallback(this)"></div>
+            <div class="relative"><span class="text-skybrand font-bold">ফিকহ</span><h3 class="mt-2 text-2xl font-bold text-ocean leading-snug">নামাজে মনোযোগ ধরে রাখার উপায়</h3><p class="mt-2 text-ocean/60 line-clamp-2">ইবাদতে খুশু-খুজু বাড়াতে কিছু বাস্তব পরামর্শ।</p></div>
+          </article>
+          <article class="reveal blog-card rounded-[30px] p-5 shadow-soft flex gap-5">
+            <div class="thumb w-32 sm:w-40 h-36 rounded-2xl shrink-0"><img src="https://images.unsplash.com/photo-1584286595398-a59511e6be1f?auto=format&fit=crop&w=600&q=80" alt="Islamic pattern" onerror="thumbFallback(this)"></div>
+            <div class="relative"><span class="text-skybrand font-bold">পরিবার</span><h3 class="mt-2 text-2xl font-bold text-ocean leading-snug">সন্তান প্রতিপালনে ইসলামের নির্দেশনা</h3><p class="mt-2 text-ocean/60 line-clamp-2">পরিবার, চরিত্র, শিক্ষা ও আদর্শ গঠনের বিষয়গুলো।</p></div>
+          </article>
+          <article class="reveal blog-card rounded-[30px] p-5 shadow-soft flex gap-5">
+            <div class="thumb w-32 sm:w-40 h-36 rounded-2xl shrink-0"><img src="https://images.unsplash.com/photo-1512632578888-169bbbc64f33?auto=format&fit=crop&w=600&q=80" alt="Madina" onerror="thumbFallback(this)"></div>
+            <div class="relative"><span class="text-skybrand font-bold">সীরাত</span><h3 class="mt-2 text-2xl font-bold text-ocean leading-snug">রাসূল ﷺ-এর চরিত্র থেকে শিক্ষা</h3><p class="mt-2 text-ocean/60 line-clamp-2">নববী আদর্শে ব্যক্তি ও সমাজ গঠনের অনুপ্রেরণা।</p></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       BLOG LIST + SIDEBAR
+  ========================================================== -->
+  <section id="blog-list" class="pattern-bg py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-[1fr_340px] gap-8 items-start">
+        <div>
+          <!-- Search / Sort Toolbar -->
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-5 sm:p-6 mb-8">
+            <div class="grid md:grid-cols-[1fr_auto_auto] gap-3">
+              <input id="blogSearch" class="premium-input rounded-full px-5 py-4" placeholder="লেখা, বিভাগ বা কীওয়ার্ড লিখুন..." />
+              <select id="sortSelect" class="premium-input rounded-full px-5 py-4 min-w-44">
+                <option value="newest">সর্বশেষ আগে</option>
+                <option value="oldest">পুরনো আগে</option>
+                <option value="popular">জনপ্রিয় আগে</option>
+                <option value="title">শিরোনাম অনুযায়ী</option>
+              </select>
+              <button id="resetBtn" class="rounded-full bg-cream text-ocean px-6 py-4 font-bold hover:bg-ocean hover:text-white duration-300">রিসেট</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Blog Grid -->
+          <div id="blogGrid" class="grid md:grid-cols-2 gap-7"></div>
+
+          <!-- Empty State -->
+          <div id="emptyState" class="empty-state bg-white rounded-[34px] shadow-soft p-10 text-center mt-8">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-16 h-16 rounded-full mx-auto" alt="icon">
+            <h3 class="mt-5 text-2xl font-black text-ocean">কোনো লেখা পাওয়া যায়নি</h3>
+            <p class="mt-2 text-ocean/60">অন্য কীওয়ার্ড বা বিভাগ দিয়ে আবার চেষ্টা করুন।</p>
+          </div>
+
+          <!-- Pagination -->
+          <div id="pagination" class="flex justify-center gap-2 mt-12"></div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="lg:sticky lg:top-28 space-y-6">
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-6">
+            <p class="section-eyebrow">Categories</p>
+            <h3 class="mt-2 text-2xl font-black text-ocean">বিভাগসমূহ</h3>
+            <div id="sidebarCats" class="mt-5 space-y-2"></div>
+          </div>
+
+          <div class="reveal bg-ocean text-white rounded-[34px] shadow-premium p-6 overflow-hidden relative">
+            <div class="islamic-grid"></div>
+            <div class="relative">
+              <p class="section-eyebrow text-gold">Popular</p>
+              <h3 class="mt-2 text-2xl font-black">জনপ্রিয় লেখা</h3>
+              <div id="popularPosts" class="mt-5 space-y-4"></div>
+            </div>
+          </div>
+
+          <div id="newsletter" class="reveal bg-white rounded-[34px] shadow-soft p-6">
+            <p class="section-eyebrow">Newsletter</p>
+            <h3 class="mt-2 text-2xl font-black text-ocean">নতুন লেখা পেতে চান?</h3>
+            <p class="mt-3 text-ocean/60 leading-7">ইমেইল দিন, নতুন ব্লগ প্রকাশ হলে নোটিফিকেশন পাবেন।</p>
+            <div class="mt-5 space-y-3">
+              <input id="emailInput" class="premium-input w-full rounded-full px-5 py-4" placeholder="আপনার ইমেইল" />
+              <button id="subscribeBtn" class="btn-primary text-white w-full rounded-full px-5 py-4 font-bold">সাবস্ক্রাইব করুন</button>
+              <p id="subscribeMsg" class="hidden text-sm font-bold text-skybrand">ধন্যবাদ! এটি ডেমো সাবস্ক্রাইব স্টেট।</p>
+            </div>
+          </div>
+
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-6">
+            <p class="section-eyebrow">Tags</p>
+            <h3 class="mt-2 text-2xl font-black text-ocean">জনপ্রিয় ট্যাগ</h3>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <button class="tagBtn px-4 py-2 rounded-full bg-cream text-ocean font-bold" data-tag="ঈমান">ঈমান</button>
+              <button class="tagBtn px-4 py-2 rounded-full bg-cream text-ocean font-bold" data-tag="নামাজ">নামাজ</button>
+              <button class="tagBtn px-4 py-2 rounded-full bg-cream text-ocean font-bold" data-tag="সন্তান">সন্তান</button>
+              <button class="tagBtn px-4 py-2 rounded-full bg-cream text-ocean font-bold" data-tag="সীরাত">সীরাত</button>
+              <button class="tagBtn px-4 py-2 rounded-full bg-cream text-ocean font-bold" data-tag="দাওয়াহ">দাওয়াহ</button>
+              <button class="tagBtn px-4 py-2 rounded-full bg-cream text-ocean font-bold" data-tag="ইতিহাস">ইতিহাস</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SUPPORT / CTA SECTION
+  ========================================================== -->
+  <section class="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28 pattern-bg">
+    <div class="relative overflow-hidden max-w-7xl mx-auto rounded-[42px] bg-ocean p-8 sm:p-12 lg:p-16 text-white shadow-premium">
+      <div class="islamic-grid"></div>
+      <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-center">
+        <div>
+          <p class="section-eyebrow text-gold">Read. Learn. Share.</p>
+          <h2 class="mt-3 text-4xl lg:text-5xl font-black leading-tight">উপকারী লেখা অন্যদের সাথে শেয়ার করুন</h2>
+          <p class="mt-5 max-w-2xl text-white/70 text-lg leading-8">দাওয়াহ কনটেন্ট মানুষের কাছে পৌঁছাতে আপনার একটি শেয়ারও গুরুত্বপূর্ণ ভূমিকা রাখতে পারে।</p>
+        </div>
+        <a href="#blog-list" class="btn-gold text-ocean px-9 py-5 rounded-full font-black text-center">আরও লেখা দেখুন</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer class="bg-[#021A28] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-white/10 pb-12">
+        <div class="lg:col-span-2">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png" class="h-14 w-auto" alt="Khutbah TV white" onerror="fallbackLogo(this)" />
+          <p class="mt-5 max-w-md text-white/62 leading-8">বাংলা ভাষায় ইসলামিক ভিডিও, বয়ান, প্রশ্নোত্তর, কিতাব, ব্লগ ও দাওয়াহ কনটেন্টের ডিজিটাল প্ল্যাটফর্ম।</p>
+        </div>
+        <div><h4 class="font-bold text-xl mb-5">দ্রুত লিংক</h4><ul class="space-y-3 text-white/62"><li>ভিডিও</li><li>কিতাব</li><li>প্রশ্নোত্তর</li><li>ব্লগ</li></ul></div>
+        <div><h4 class="font-bold text-xl mb-5">যোগাযোগ</h4><ul class="space-y-3 text-white/62"><li>contact@khutbahtv.com</li><li>YouTube</li><li>Facebook</li></ul></div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row justify-between gap-4 text-white/50 text-sm"><p>© Khutbah TV. All Rights Reserved.</p><p>Premium blog page concept</p></div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       PAGE DATA + INTERACTIONS
+  ========================================================== -->
+  <script>
+    const blogPosts = [
+      {title:'নাস্তিকতাবাদের বাস্তবতা ও মুসলিমের অবস্থান', cat:'আকিদা', author:'Khutbah TV', date:'২০২৬-০৫-১৮', read:'৮ মিনিট', views:982, img:'https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=900&q=80', excerpt:'আধুনিক নাস্তিকতার দাবি, যুক্তির সীমা এবং একজন মুসলিমের চিন্তার ভিত্তি নিয়ে সংক্ষিপ্ত আলোচনা।', tags:['ঈমান','দাওয়াহ']},
+      {title:'নামাজে মনোযোগ ধরে রাখার বাস্তব উপায়', cat:'ফিকহ', author:'Khutbah TV', date:'২০২৬-০৫-১৬', read:'৬ মিনিট', views:742, img:'https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&w=900&q=80', excerpt:'খুশু-খুজু, প্রস্তুতি, অর্থ বুঝে পড়া এবং দৈনন্দিন আমলের মাধ্যমে নামাজকে সুন্দর করার নির্দেশনা।', tags:['নামাজ','আমল']},
+      {title:'সন্তান প্রতিপালনে ইসলামের নির্দেশনা', cat:'পরিবার', author:'Khutbah TV', date:'২০২৬-০৫-১৪', read:'৭ মিনিট', views:863, img:'https://images.unsplash.com/photo-1584286595398-a59511e6be1f?auto=format&fit=crop&w=900&q=80', excerpt:'পরিবারে আদব, শিক্ষা, স্নেহ, শাসন ও ইসলামী পরিবেশ গঠনের গুরুত্বপূর্ণ দিকগুলো।', tags:['সন্তান','পরিবার']},
+      {title:'রাসূল ﷺ-এর চরিত্র থেকে আমাদের শিক্ষা', cat:'সীরাত', author:'Khutbah TV', date:'২০২৬-০৫-১২', read:'৯ মিনিট', views:1024, img:'https://images.unsplash.com/photo-1512632578888-169bbbc64f33?auto=format&fit=crop&w=900&q=80', excerpt:'নববী চরিত্রের কোমলতা, ন্যায়বিচার, ধৈর্য ও দাওয়াহ পদ্ধতি থেকে আজকের জীবনের শিক্ষা।', tags:['সীরাত','চরিত্র']},
+      {title:'ইসলামের ইতিহাস থেকে কয়েকটি শিক্ষণীয় ঘটনা', cat:'ইতিহাস', author:'Khutbah TV', date:'২০২৬-০৫-১০', read:'৫ মিনিট', views:536, img:'https://images.unsplash.com/photo-1519817650390-64a93db51149?auto=format&fit=crop&w=900&q=80', excerpt:'ইতিহাস শুধু ঘটনা নয়; বরং ঈমান, ত্যাগ, নেতৃত্ব ও সমাজগঠনের বাস্তব পাঠ।', tags:['ইতিহাস','শিক্ষা']},
+      {title:'দাওয়াহ দেওয়ার আদব ও পদ্ধতি', cat:'দাওয়াহ', author:'Khutbah TV', date:'২০২৬-০৫-০৮', read:'৬ মিনিট', views:684, img:'https://images.unsplash.com/photo-1568792923760-d70635a89fdc?auto=format&fit=crop&w=900&q=80', excerpt:'সুন্দর ভাষা, ধৈর্য, হিকমাহ এবং মানুষের অবস্থান বুঝে কথা বলার গুরুত্ব।', tags:['দাওয়াহ','আদব']},
+      {title:'ঈমান দুর্বল হলে কী করণীয়?', cat:'আকিদা', author:'Khutbah TV', date:'২০২৬-০৫-০৬', read:'৫ মিনিট', views:791, img:'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80', excerpt:'আত্মসমালোচনা, কুরআন তিলাওয়াত, সৎ সঙ্গ ও নিয়মিত আমলের মাধ্যমে ঈমান নবায়ন।', tags:['ঈমান','আমল']},
+      {title:'হালাল-হারাম বিষয়ে সতর্ক থাকার প্রয়োজনীয়তা', cat:'ফিকহ', author:'Khutbah TV', date:'২০২৬-০৫-০৩', read:'৭ মিনিট', views:618, img:'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=900&q=80', excerpt:'আয়, ব্যয়, খাদ্য, সম্পর্ক ও ব্যবসার ক্ষেত্রে হালাল-হারামের সচেতনতা একজন মুমিনের পরিচয়।', tags:['ফিকহ','হালাল']},
+      {title:'দাম্পত্য জীবনে রহমত ও দায়িত্ব', cat:'পরিবার', author:'Khutbah TV', date:'২০২৬-০৫-০১', read:'৮ মিনিট', views:899, img:'https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?auto=format&fit=crop&w=900&q=80', excerpt:'স্বামী-স্ত্রীর অধিকার, ভালোবাসা, সহনশীলতা ও পারস্পরিক দায়িত্ব নিয়ে ইসলামী নির্দেশনা।', tags:['পরিবার','দাম্পত্য']},
+      {title:'মক্কার প্রাথমিক যুগের দাওয়াহ থেকে শিক্ষা', cat:'সীরাত', author:'Khutbah TV', date:'২০২৬-০৪-২৮', read:'১০ মিনিট', views:724, img:'https://images.unsplash.com/photo-1578662996442-48f60103fc96?auto=format&fit=crop&w=900&q=80', excerpt:'প্রতিকূল পরিবেশে ধৈর্য, তাওহিদ, চরিত্র ও দৃঢ়তার অনন্য উদাহরণ।', tags:['সীরাত','দাওয়াহ']},
+      {title:'উম্মাহর ঐক্য ও ভ্রাতৃত্বের গুরুত্ব', cat:'ইতিহাস', author:'Khutbah TV', date:'২০২৬-০৪-২৫', read:'৬ মিনিট', views:462, img:'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=900&q=80', excerpt:'মুসলিম সমাজে পারস্পরিক সহমর্মিতা, ঐক্য ও দায়িত্ববোধ গঠনের প্রয়োজনীয়তা।', tags:['ঐক্য','সমাজ']},
+      {title:'অনলাইনে দাওয়াহ কনটেন্ট তৈরির আদব', cat:'দাওয়াহ', author:'Khutbah TV', date:'২০২৬-০৪-২২', read:'৭ মিনিট', views:655, img:'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80', excerpt:'ডিজিটাল প্ল্যাটফর্মে সত্যতা, উৎস যাচাই, ভাষার সৌন্দর্য ও দায়িত্বশীলতার আলোচনা।', tags:['দাওয়াহ','অনলাইন']}
+    ];
+
+    const state = {filter:'all', search:'', sort:'newest', page:1, perPage:6};
+    const cats = ['আকিদা','ফিকহ','পরিবার','ইতিহাস','সীরাত','দাওয়াহ'];
+
+    function parseBanglaDate(str){return new Date(str.replace(/[০-৯]/g, d => '০১২৩৪৫৬৭৮৯'.indexOf(d))).getTime() || 0}
+    function filteredPosts(){
+      let posts = [...blogPosts];
+      if(state.filter !== 'all') posts = posts.filter(p => p.cat === state.filter || p.tags.includes(state.filter));
+      if(state.search.trim()){
+        const q = state.search.trim().toLowerCase();
+        posts = posts.filter(p => [p.title,p.cat,p.excerpt,p.author,...p.tags].join(' ').toLowerCase().includes(q));
+      }
+      posts.sort((a,b) => {
+        if(state.sort === 'oldest') return parseBanglaDate(a.date)-parseBanglaDate(b.date);
+        if(state.sort === 'popular') return b.views-a.views;
+        if(state.sort === 'title') return a.title.localeCompare(b.title,'bn');
+        return parseBanglaDate(b.date)-parseBanglaDate(a.date);
+      });
+      return posts;
+    }
+
+    function postCard(p){
+      return `<article class="reveal show blog-card rounded-[32px] shadow-soft">
+        <div class="thumb h-56 rounded-t-[32px]">
+          <img src="${p.img}" alt="${p.title}" onerror="thumbFallback(this)">
+          <div class="absolute z-10 left-5 top-5"><span class="px-3 py-1 rounded-full bg-gold text-ocean text-sm font-black">${p.cat}</span></div>
+        </div>
+        <div class="relative p-6">
+          <div class="flex flex-wrap items-center gap-3 text-sm text-ocean/55 mb-3"><span>${p.date}</span><span>•</span><span>${p.read}</span><span>•</span><span>${p.views} views</span></div>
+          <h3 class="text-2xl font-black text-ocean leading-snug line-clamp-2">${p.title}</h3>
+          <p class="mt-3 text-ocean/62 leading-7 line-clamp-3">${p.excerpt}</p>
+          <div class="mt-5 flex items-center justify-between gap-4">
+            <a href="#" class="font-bold text-skybrand">পূর্ণ লেখা পড়ুন →</a>
+            <button class="shareBtn w-10 h-10 rounded-full bg-cream text-ocean hover:bg-ocean hover:text-white duration-300" title="Share">↗</button>
+          </div>
+        </div>
+      </article>`;
+    }
+
+    function renderPosts(){
+      const all = filteredPosts();
+      const pages = Math.max(1, Math.ceil(all.length / state.perPage));
+      if(state.page > pages) state.page = pages;
+      const start = (state.page - 1) * state.perPage;
+      const paged = all.slice(start, start + state.perPage);
+      document.getElementById('blogGrid').innerHTML = paged.map(postCard).join('');
+      document.getElementById('emptyState').classList.toggle('show', all.length === 0);
+      renderPagination(pages);
+    }
+
+    function renderPagination(pages){
+      const wrap = document.getElementById('pagination');
+      let html = `<button class="px-4 py-2 rounded-full bg-white shadow-card font-bold text-ocean disabled:opacity-40" ${state.page===1?'disabled':''} data-page="prev">আগে</button>`;
+      for(let i=1;i<=pages;i++) html += `<button class="px-4 py-2 rounded-full ${i===state.page?'bg-ocean text-white':'bg-white text-ocean'} shadow-card font-bold" data-page="${i}">${i}</button>`;
+      html += `<button class="px-4 py-2 rounded-full bg-white shadow-card font-bold text-ocean disabled:opacity-40" ${state.page===pages?'disabled':''} data-page="next">পরের</button>`;
+      wrap.innerHTML = html;
+      wrap.querySelectorAll('button').forEach(btn => btn.addEventListener('click', () => {
+        const page = btn.dataset.page;
+        if(page === 'prev') state.page--;
+        else if(page === 'next') state.page++;
+        else state.page = Number(page);
+        renderPosts();
+        document.getElementById('blog-list').scrollIntoView({behavior:'smooth'});
+      }));
+    }
+
+    function renderSidebar(){
+      const side = document.getElementById('sidebarCats');
+      side.innerHTML = ['all',...cats].map(c => {
+        const count = c==='all' ? blogPosts.length : blogPosts.filter(p=>p.cat===c).length;
+        const label = c==='all' ? 'সব লেখা' : c;
+        return `<button class="category-item ${state.filter===c?'active':''} w-full flex items-center justify-between rounded-2xl border border-ocean/10 px-4 py-3 text-left font-bold text-ocean hover:bg-cream duration-300" data-cat="${c}"><span>${label}</span><span class="text-skybrand">${count}</span></button>`;
+      }).join('');
+      side.querySelectorAll('button').forEach(btn => btn.addEventListener('click',()=>setFilter(btn.dataset.cat)));
+
+      const popular = [...blogPosts].sort((a,b)=>b.views-a.views).slice(0,4);
+      document.getElementById('popularPosts').innerHTML = popular.map((p,i)=>`<a href="#" class="block rounded-2xl bg-white/8 border border-white/10 p-4 hover:bg-white/12 duration-300"><span class="text-gold font-inter text-sm font-black">0${i+1}</span><h4 class="mt-1 font-bold leading-snug">${p.title}</h4><p class="mt-1 text-white/45 text-sm">${p.cat} • ${p.views} views</p></a>`).join('');
+    }
+
+    function setFilter(value){
+      state.filter = value; state.page = 1;
+      document.querySelectorAll('.category-pill').forEach(b=>b.classList.toggle('active', b.dataset.filter===value));
+      renderSidebar(); renderPosts();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const date = new Date().toLocaleDateString('bn-BD', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+      document.getElementById('todayDate').textContent = date;
+
+      document.getElementById('menuBtn').addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'));
+      document.querySelectorAll('.category-pill').forEach(btn=>btn.addEventListener('click',()=>setFilter(btn.dataset.filter)));
+      document.querySelectorAll('.tagBtn').forEach(btn=>btn.addEventListener('click',()=>{state.search=btn.dataset.tag;document.getElementById('blogSearch').value=state.search;state.page=1;renderPosts()}));
+      document.getElementById('blogSearch').addEventListener('input',e=>{state.search=e.target.value;state.page=1;renderPosts()});
+      document.getElementById('globalSearch').addEventListener('input',e=>{state.search=e.target.value;document.getElementById('blogSearch').value=e.target.value;state.page=1;renderPosts()});
+      document.getElementById('sortSelect').addEventListener('change',e=>{state.sort=e.target.value;renderPosts()});
+      document.getElementById('resetBtn').addEventListener('click',()=>{state.filter='all';state.search='';state.sort='newest';state.page=1;document.getElementById('blogSearch').value='';document.getElementById('globalSearch').value='';document.getElementById('sortSelect').value='newest';document.querySelectorAll('.category-pill').forEach(b=>b.classList.toggle('active', b.dataset.filter==='all'));renderSidebar();renderPosts()});
+      document.getElementById('subscribeBtn').addEventListener('click',()=>document.getElementById('subscribeMsg').classList.remove('hidden'));
+
+      const observer = new IntersectionObserver((entries)=>entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add('show')}),{threshold:.12});
+      document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+      renderSidebar(); renderPosts();
+    });
+  </script>
+</body>
+</html>

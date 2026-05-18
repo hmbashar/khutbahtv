@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>নাস্তিকতাবাদের বাস্তবতা ও মুসলিমের অবস্থান — Khutbah TV</title>
+
+  <!-- =========================================================
+       EXTERNAL ASSETS
+  ========================================================== -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- =========================================================
+       TAILWIND THEME CONFIG
+  ========================================================== -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: '#043755',
+            skybrand: '#1493C5',
+            ink: '#09283A',
+            cream: '#F7F3EA',
+            gold: '#D7A83F',
+            mint: '#A9E9D5'
+          },
+          fontFamily: {
+            bangla: ['Hind Siliguri', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            premium: '0 28px 80px rgba(4,55,85,.18)',
+            soft: '0 18px 50px rgba(9,40,58,.12)',
+            card: '0 22px 70px rgba(9,40,58,.10)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- =========================================================
+       GLOBAL CUSTOM CSS
+  ========================================================== -->
+  <style>
+    :root{--ocean:#043755;--sky:#1493C5;--gold:#D7A83F;--cream:#F7F3EA;--ink:#09283A;}
+    *{scroll-behavior:smooth}
+    body{font-family:'Hind Siliguri',sans-serif;background:#fbfaf6;color:var(--ink);overflow-x:hidden;}
+    .font-inter{font-family:'Inter',sans-serif}
+    .pattern-bg{background-image:radial-gradient(circle at 1px 1px,rgba(4,55,85,.08) 1px,transparent 0);background-size:24px 24px;}
+    .islamic-grid{position:absolute;inset:0;opacity:.14;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D7A83F' stroke-width='1.2'%3E%3Cpath d='M60 4 80 40l36 20-36 20-20 36-20-36L4 60l36-20Z'/%3E%3Cpath d='M60 22 72 48l26 12-26 12-12 26-12-26-26-12 26-12Z'/%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3C/g%3E%3C/svg%3E");background-size:150px 150px;}
+    .hero-glow:before{content:"";position:absolute;width:560px;height:560px;border-radius:999px;background:radial-gradient(circle,rgba(20,147,197,.36),transparent 65%);right:-220px;top:-190px;filter:blur(6px)}
+    .hero-glow:after{content:"";position:absolute;width:420px;height:420px;border-radius:999px;background:radial-gradient(circle,rgba(215,168,63,.22),transparent 70%);left:-190px;bottom:-180px;filter:blur(10px)}
+    .glass{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.18);box-shadow:0 24px 70px rgba(0,0,0,.22);backdrop-filter:blur(18px)}
+    .light-glass{background:rgba(255,255,255,.76);border:1px solid rgba(255,255,255,.76);backdrop-filter:blur(16px)}
+    .btn-primary{background:linear-gradient(135deg,var(--sky),#0878A8);box-shadow:0 16px 34px rgba(20,147,197,.32)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(20,147,197,.38)}
+    .btn-gold{background:linear-gradient(135deg,#E8C76A,var(--gold));box-shadow:0 16px 34px rgba(215,168,63,.28)}
+    .section-eyebrow{letter-spacing:.18em;text-transform:uppercase;font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:var(--sky)}
+    .ornament{background-image:url("data:image/svg+xml,%3Csvg width='72' height='20' viewBox='0 0 72 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 1C43 1 45 10 52 10C59 10 61 1 71 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Cpath d='M36 1C29 1 27 10 20 10C13 10 11 1 1 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Ccircle cx='36' cy='10' r='5' stroke='%23D7A83F' stroke-width='1.5'/%3E%3C/svg%3E");width:72px;height:20px;background-repeat:no-repeat;background-position:center;}
+    .nav-link{position:relative}.nav-link:after{content:"";position:absolute;left:0;right:100%;height:2px;bottom:-7px;background:var(--gold);transition:.25s}.nav-link:hover:after,.nav-link.active:after{right:0}
+    .ticker{animation:ticker 22s linear infinite}@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .floating{animation:float 7s ease-in-out infinite}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+    .article-body{font-size:18px;line-height:2.05;color:rgba(9,40,58,.78)}
+    .article-body p{margin-bottom:1.45rem}.article-body h2{font-size:34px;line-height:1.28;font-weight:900;color:var(--ocean);margin:2.8rem 0 1rem}.article-body h3{font-size:26px;line-height:1.35;font-weight:800;color:var(--ocean);margin:2.2rem 0 .85rem}.article-body blockquote{border-right:5px solid var(--gold);background:#F7F3EA;border-radius:26px;padding:28px 30px;margin:2rem 0;color:var(--ocean);font-size:22px;font-weight:700;line-height:1.7}.article-body ul{margin:1.25rem 0 1.75rem;padding-right:1.2rem}.article-body li{margin:.7rem 0;list-style:none;position:relative;padding-right:1.4rem}.article-body li:before{content:'✦';position:absolute;right:0;color:var(--gold);font-size:13px;top:.35rem}
+    .thumb-img{background:linear-gradient(135deg,#06324E,#0A5D83 48%,#021927)}
+    .thumb-img img{width:100%;height:100%;object-fit:cover;display:block}.thumb-img:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.68),rgba(0,0,0,.1) 58%)}
+    .progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--sky));z-index:80;width:0%}
+    .mobile-panel{max-height:0;overflow:hidden;transition:max-height .35s ease}.mobile-panel.open{max-height:420px}
+    @media(max-width:768px){.article-body{font-size:17px;line-height:1.95}.article-body h2{font-size:28px}.hero-title{font-size:42px;line-height:1.14}.glass{backdrop-filter:blur(10px)}}
+  </style>
+</head>
+<body>
+  <!-- =========================================================
+       READING PROGRESS BAR
+  ========================================================== -->
+  <div id="readingProgress" class="progress"></div>
+
+  <!-- =========================================================
+       TOP NOTICE BAR
+  ========================================================== -->
+  <div class="bg-ocean text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4 overflow-hidden">
+      <div class="flex items-center gap-2 shrink-0"><span class="w-2 h-2 rounded-full bg-gold"></span><span>আসসালামু আলাইকুম — খুতবাহ টিভিতে আপনাকে স্বাগতম</span></div>
+      <div class="hidden md:flex items-center gap-5 text-white/80"><span>লাইভ অনুষ্ঠান</span><span>প্রশ্নোত্তর</span><span>বাংলা ইসলামিক কনটেন্ট</span></div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       HEADER / NAVIGATION
+  ========================================================== -->
+  <header class="sticky top-0 z-50 bg-white/84 backdrop-blur-xl border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-5">
+        <a href="#" class="flex items-center gap-3" aria-label="Khutbah TV Home">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png" alt="Khutbah TV" class="h-12 w-auto" onerror="this.onerror=null;this.src='https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png'" />
+        </a>
+        <nav class="hidden lg:flex items-center gap-7 font-semibold text-[15px] text-ocean">
+          <a class="nav-link" href="#">হোম</a>
+          <a class="nav-link" href="#">ভিডিও</a>
+          <a class="nav-link" href="#">কিতাব</a>
+          <a class="nav-link" href="#">প্রশ্নোত্তর</a>
+          <a class="nav-link active" href="#">প্রবন্ধ</a>
+          <a class="nav-link" href="#">লাইভ</a>
+          <a class="nav-link" href="#">যোগাযোগ</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-3">
+          <div class="relative">
+            <input id="headerSearch" class="w-56 rounded-full border border-ocean/15 bg-white px-5 py-3 text-sm outline-none focus:border-skybrand" placeholder="খুঁজুন..." />
+            <span class="absolute right-4 top-3.5 text-ocean/50">⌕</span>
+          </div>
+          <a href="#support" class="btn-primary duration-300 text-white px-5 py-3 rounded-full font-bold text-sm">দান করুন</a>
+        </div>
+        <button id="mobileMenuBtn" class="lg:hidden w-11 h-11 rounded-full border border-ocean/15 flex items-center justify-center text-ocean" aria-label="Open Menu">☰</button>
+      </div>
+      <div id="mobileMenu" class="mobile-panel lg:hidden">
+        <nav class="pb-5 grid gap-2 font-semibold text-ocean">
+          <a class="rounded-2xl px-4 py-3 hover:bg-cream" href="#">হোম</a>
+          <a class="rounded-2xl px-4 py-3 hover:bg-cream" href="#">ভিডিও</a>
+          <a class="rounded-2xl px-4 py-3 hover:bg-cream" href="#">কিতাব</a>
+          <a class="rounded-2xl px-4 py-3 bg-cream" href="#">প্রবন্ধ</a>
+          <a class="rounded-2xl px-4 py-3 hover:bg-cream" href="#">প্রশ্নোত্তর</a>
+          <a class="rounded-2xl px-4 py-3 hover:bg-cream" href="#">যোগাযোগ</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       LATEST NEWS TICKER
+  ========================================================== -->
+  <div class="bg-skybrand text-white overflow-hidden py-3 font-semibold">
+    <div class="ticker flex gap-10 whitespace-nowrap w-max">
+      <span>সর্বশেষ: নতুন প্রবন্ধ প্রকাশিত হয়েছে</span><span>•</span><span>নতুন প্রশ্নোত্তর পড়ুন</span><span>•</span><span>কিতাব ডাউনলোড করুন</span><span>•</span><span>লাইভ প্রোগ্রাম প্রতি সপ্তাহে</span><span>•</span>
+      <span>সর্বশেষ: নতুন প্রবন্ধ প্রকাশিত হয়েছে</span><span>•</span><span>নতুন প্রশ্নোত্তর পড়ুন</span><span>•</span><span>কিতাব ডাউনলোড করুন</span><span>•</span><span>লাইভ প্রোগ্রাম প্রতি সপ্তাহে</span><span>•</span>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       BLOG SINGLE HERO
+  ========================================================== -->
+  <main class="relative hero-glow overflow-hidden bg-ocean text-white">
+    <div class="islamic-grid"></div>
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-[1fr_.45fr] gap-12 items-end">
+        <div class="reveal">
+          <nav class="flex flex-wrap items-center gap-2 text-white/65 text-sm mb-7">
+            <a href="#" class="hover:text-white">হোম</a><span>›</span><a href="#" class="hover:text-white">প্রবন্ধ</a><span>›</span><span class="text-gold">ঈমান</span>
+          </nav>
+          <div class="inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 mb-7 text-sm text-white/85">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-7 h-7 rounded-full" alt="icon" />
+            নির্বাচিত প্রবন্ধ
+          </div>
+          <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.12] tracking-tight max-w-5xl">
+            নাস্তিকতাবাদের বাস্তবতা ও মুসলিমের অবস্থান
+          </h1>
+          <p class="mt-6 max-w-3xl text-lg sm:text-xl leading-9 text-white/74">
+            ঈমান, যুক্তি, সংশয় ও দাওয়াহর আলোকে একজন মুসলিম কীভাবে চিন্তা করবে — এ বিষয়ে সংক্ষিপ্ত কিন্তু গুরুত্বপূর্ণ আলোচনা।
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-3 text-sm">
+            <span class="bg-gold text-ocean font-black px-4 py-2 rounded-full">ঈমান</span>
+            <span class="bg-white/10 border border-white/15 px-4 py-2 rounded-full">লেখক: খুতবাহ টিভি টিম</span>
+            <span class="bg-white/10 border border-white/15 px-4 py-2 rounded-full">প্রকাশ: ১৯ মে ২০২৬</span>
+            <span class="bg-white/10 border border-white/15 px-4 py-2 rounded-full">পড়তে সময়: ৬ মিনিট</span>
+          </div>
+        </div>
+        <aside class="glass rounded-[34px] p-6 floating reveal">
+          <p class="text-white/60 text-sm">এই প্রবন্ধে</p>
+          <ul class="mt-4 space-y-3 text-white/80">
+            <li><a href="#intro" class="hover:text-gold">ভূমিকা</a></li>
+            <li><a href="#reality" class="hover:text-gold">বাস্তবতা বোঝা</a></li>
+            <li><a href="#position" class="hover:text-gold">মুসলিমের অবস্থান</a></li>
+            <li><a href="#dawah" class="hover:text-gold">দাওয়াহর পদ্ধতি</a></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       ARTICLE WRAPPER
+  ========================================================== -->
+  <section class="pattern-bg py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-[minmax(0,1fr)_360px] gap-10 items-start">
+
+        <!-- =====================================================
+             MAIN ARTICLE CONTENT
+        ====================================================== -->
+        <article class="bg-white rounded-[38px] shadow-card border border-ocean/8 overflow-hidden reveal">
+          <div class="relative thumb-img h-[320px] sm:h-[430px]">
+            <img src="https://images.unsplash.com/photo-1564769662533-4f00a87b4056?auto=format&fit=crop&w=1400&q=80" alt="Islamic architecture" onerror="this.onerror=null;this.src='https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png'" />
+            <div class="absolute left-6 bottom-6 z-10 flex flex-wrap gap-3">
+              <span class="bg-white/92 text-ocean font-black px-4 py-2 rounded-full">প্রবন্ধ</span>
+              <span class="bg-gold text-ocean font-black px-4 py-2 rounded-full">ঈমান ও আকিদা</span>
+            </div>
+          </div>
+
+          <!-- Article Control Bar -->
+          <div class="px-6 sm:px-10 pt-8 flex flex-col md:flex-row md:items-center md:justify-between gap-5 border-b border-ocean/10 pb-7">
+            <div class="flex items-center gap-4">
+              <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-14 h-14 rounded-2xl bg-ocean/5 p-2" alt="Khutbah TV" />
+              <div>
+                <p class="font-black text-ocean">Khutbah TV Editorial</p>
+                <p class="text-ocean/55 text-sm">ইসলামিক শিক্ষা ও দাওয়াহ কনটেন্ট</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button id="decreaseFont" class="w-11 h-11 rounded-full bg-cream text-ocean font-black hover:bg-ocean hover:text-white duration-300">A-</button>
+              <button id="increaseFont" class="w-11 h-11 rounded-full bg-cream text-ocean font-black hover:bg-ocean hover:text-white duration-300">A+</button>
+              <button id="copyLink" class="px-4 h-11 rounded-full bg-cream text-ocean font-bold hover:bg-ocean hover:text-white duration-300">লিংক কপি</button>
+              <button onclick="window.print()" class="px-4 h-11 rounded-full bg-cream text-ocean font-bold hover:bg-ocean hover:text-white duration-300">প্রিন্ট</button>
+            </div>
+          </div>
+
+          <!-- Article Body -->
+          <div id="articleBody" class="article-body px-6 sm:px-10 lg:px-14 py-10 sm:py-14">
+            <p id="intro">
+              বর্তমান সময়ে নাস্তিকতাবাদ, সংশয়বাদ এবং ধর্মবিমুখ চিন্তা অনেক তরুণের সামনে নানা প্রশ্ন তৈরি করছে। অনেক সময় এসব প্রশ্ন সত্য অনুসন্ধানের জন্য নয়; বরং বিভ্রান্তি, অসম্পূর্ণ তথ্য এবং ইসলামের ভুল উপস্থাপনার কারণে সৃষ্টি হয়। একজন মুসলিমের দায়িত্ব হলো জ্ঞান, ধৈর্য এবং সুন্দর আচরণের মাধ্যমে সত্যকে বোঝা এবং অন্যের কাছে পৌঁছে দেওয়া।
+            </p>
+
+            <blockquote>
+              “সত্যের প্রতি আত্মবিশ্বাসী মানুষ কখনো অস্থির হয় না; সে জ্ঞান অর্জন করে, প্রশ্ন বোঝে এবং উত্তম ভাষায় উত্তর দেয়।”
+            </blockquote>
+
+            <h2 id="reality">নাস্তিকতাবাদের বাস্তবতা বোঝা</h2>
+            <p>
+              নাস্তিকতাবাদ শুধু একটি মতবাদ নয়; অনেকের কাছে এটি ব্যক্তিগত অভিজ্ঞতা, সামাজিক প্রভাব, অনলাইন কনটেন্ট, কিছু অমীমাংসিত প্রশ্ন এবং কখনো কখনো ধর্মীয় মানুষের ভুল আচরণের প্রতিক্রিয়া হিসেবেও দেখা যায়। তাই কোনো ব্যক্তির প্রশ্ন শুনেই তাকে আক্রমণ করা বা অবজ্ঞা করা দাওয়াহর পদ্ধতি নয়।
+            </p>
+            <p>
+              ইসলামী দৃষ্টিতে মানুষের ফিতরাহ আল্লাহর দিকে আহ্বান করে। কিন্তু পরিবেশ, ভুল শিক্ষা, অহংকার, প্রবৃত্তি এবং বিভ্রান্তিকর প্রচারণা মানুষকে সেই ফিতরাহ থেকে দূরে নিতে পারে। এজন্য প্রয়োজন জ্ঞানভিত্তিক উত্তর, হৃদয়গ্রাহী ভাষা এবং বাস্তব জীবনে ইসলামের সৌন্দর্যের উপস্থাপন।
+            </p>
+
+            <h3>ভুল ধারণার কয়েকটি কারণ</h3>
+            <ul>
+              <li>ইসলামের উৎস সম্পর্কে অপর্যাপ্ত জ্ঞান।</li>
+              <li>ধর্মীয় মানুষের ভুল আচরণকে ধর্মের ওপর আরোপ করা।</li>
+              <li>অনলাইন বিতর্ককে জ্ঞানের একমাত্র উৎস মনে করা।</li>
+              <li>বিজ্ঞান ও ধর্মকে অপ্রয়োজনীয়ভাবে মুখোমুখি দাঁড় করানো।</li>
+              <li>জীবনের কষ্ট ও পরীক্ষার hikmah বুঝতে না পারা।</li>
+            </ul>
+
+            <h2 id="position">মুসলিমের অবস্থান কী হওয়া উচিত?</h2>
+            <p>
+              একজন মুসলিমের অবস্থান হবে ভারসাম্যপূর্ণ। একদিকে নিজের ঈমান ও জ্ঞানের ভিত্তি মজবুত করতে হবে, অন্যদিকে প্রশ্নকারী মানুষকে সম্মান করতে হবে। অহংকার, বিদ্রূপ বা অপমান কোনো দাওয়াহ নয়। আল্লাহর পথে আহ্বান করতে হলে হিকমাহ, সুন্দর উপদেশ এবং উত্তম পদ্ধতি প্রয়োজন।
+            </p>
+            <p>
+              প্রত্যেক প্রশ্নের উত্তর সঙ্গে সঙ্গে জানা জরুরি নয়। বরং “আমি জানি না, জেনে বলবো” — এই সততা অনেক সময় বেশি কার্যকর। কারণ ইসলামে জ্ঞান ছাড়া কথা বলা নিষিদ্ধ, আর দাওয়াহর কাজ হলো সত্যকে সুন্দরভাবে তুলে ধরা।
+            </p>
+
+            <h3>ব্যক্তিগত প্রস্তুতি</h3>
+            <ul>
+              <li>কুরআন ও সহিহ সুন্নাহর মৌলিক জ্ঞান অর্জন করা।</li>
+              <li>আকিদার ভিত্তি পরিষ্কার করা।</li>
+              <li>প্রশ্ন শুনে আগে বোঝার চেষ্টা করা।</li>
+              <li>অনলাইন বিতর্কের বদলে নির্ভরযোগ্য আলেম ও বইয়ের কাছে ফেরা।</li>
+            </ul>
+
+            <h2 id="dawah">দাওয়াহর পদ্ধতি</h2>
+            <p>
+              দাওয়াহ কোনো তর্ক জেতার নাম নয়; মানুষের হৃদয়ে সত্যের দরজা খুলে দেওয়ার চেষ্টা। তাই প্রশ্নকারীকে শত্রু ভাবা যাবে না। অনেক সময় কেউ কড়া ভাষায় প্রশ্ন করলেও তার ভেতরে সত্য জানার ইচ্ছা থাকতে পারে। ধৈর্য, সহমর্মিতা এবং স্পষ্ট যুক্তি — এই তিনটি বিষয় গুরুত্বপূর্ণ।
+            </p>
+            <p>
+              খুতবাহ টিভির লক্ষ্য হলো বাংলা ভাষায় ইসলামিক জ্ঞানকে সহজ, সুন্দর এবং প্রিমিয়াম ডিজিটাল অভিজ্ঞতার মাধ্যমে মানুষের কাছে পৌঁছে দেওয়া। আল্লাহ আমাদের কাজকে কবুল করুন এবং সত্যের ওপর অটল রাখুন। আমিন।
+            </p>
+          </div>
+
+          <!-- Article Tags + Navigation -->
+          <div class="px-6 sm:px-10 lg:px-14 pb-12">
+            <div class="flex flex-wrap gap-2 mb-8">
+              <span class="px-4 py-2 rounded-full bg-cream text-ocean font-bold">#ঈমান</span>
+              <span class="px-4 py-2 rounded-full bg-cream text-ocean font-bold">#আকিদা</span>
+              <span class="px-4 py-2 rounded-full bg-cream text-ocean font-bold">#দাওয়াহ</span>
+              <span class="px-4 py-2 rounded-full bg-cream text-ocean font-bold">#নাস্তিকতা</span>
+            </div>
+            <div class="grid md:grid-cols-2 gap-4">
+              <a href="#" class="rounded-[26px] border border-ocean/10 p-6 hover:bg-cream duration-300">
+                <p class="text-ocean/50 text-sm">আগের প্রবন্ধ</p>
+                <h4 class="mt-2 text-xl font-black text-ocean">সন্তান প্রতিপালনে ইসলামের নির্দেশনা</h4>
+              </a>
+              <a href="#" class="rounded-[26px] border border-ocean/10 p-6 hover:bg-cream duration-300 text-left md:text-right">
+                <p class="text-ocean/50 text-sm">পরের প্রবন্ধ</p>
+                <h4 class="mt-2 text-xl font-black text-ocean">ইসলামের ইতিহাস থেকে শিক্ষা</h4>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+        <aside class="space-y-6 lg:sticky lg:top-28 reveal">
+
+          <!-- Search Widget -->
+          <div class="bg-white rounded-[32px] shadow-soft border border-ocean/8 p-6">
+            <h3 class="text-2xl font-black text-ocean">প্রবন্ধ খুঁজুন</h3>
+            <div class="mt-5 relative">
+              <input id="sidebarSearch" class="w-full rounded-full border border-ocean/12 bg-cream px-5 py-4 outline-none focus:border-skybrand" placeholder="কীওয়ার্ড লিখুন..." />
+              <button id="sidebarSearchBtn" class="absolute left-1 top-1 bottom-1 px-5 rounded-full btn-primary text-white font-bold">⌕</button>
+            </div>
+          </div>
+
+          <!-- Author Card -->
+          <div class="relative overflow-hidden bg-ocean text-white rounded-[32px] shadow-soft p-6">
+            <div class="islamic-grid"></div>
+            <div class="relative">
+              <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-16 h-16 rounded-2xl bg-white p-2 mb-5" alt="icon" />
+              <h3 class="text-2xl font-black">Khutbah TV Editorial</h3>
+              <p class="mt-3 text-white/68 leading-7">বাংলা ইসলামিক প্রবন্ধ, প্রশ্নোত্তর, ভিডিও ও কিতাব কনটেন্ট প্রকাশে কাজ করছে।</p>
+              <a href="#" class="mt-5 inline-flex text-gold font-black">সব লেখা দেখুন →</a>
+            </div>
+          </div>
+
+          <!-- Category Widget -->
+          <div class="bg-white rounded-[32px] shadow-soft border border-ocean/8 p-6">
+            <h3 class="text-2xl font-black text-ocean">বিভাগ</h3>
+            <div class="mt-5 space-y-3">
+              <a href="#" class="flex items-center justify-between rounded-2xl bg-cream px-4 py-3 hover:bg-ocean hover:text-white duration-300"><span>ঈমান ও আকিদা</span><b>১২</b></a>
+              <a href="#" class="flex items-center justify-between rounded-2xl bg-cream px-4 py-3 hover:bg-ocean hover:text-white duration-300"><span>পরিবার</span><b>৮</b></a>
+              <a href="#" class="flex items-center justify-between rounded-2xl bg-cream px-4 py-3 hover:bg-ocean hover:text-white duration-300"><span>ফিকহ</span><b>১৫</b></a>
+              <a href="#" class="flex items-center justify-between rounded-2xl bg-cream px-4 py-3 hover:bg-ocean hover:text-white duration-300"><span>ইতিহাস</span><b>৬</b></a>
+              <a href="#" class="flex items-center justify-between rounded-2xl bg-cream px-4 py-3 hover:bg-ocean hover:text-white duration-300"><span>দাওয়াহ</span><b>৯</b></a>
+            </div>
+          </div>
+
+          <!-- Popular Posts Widget -->
+          <div class="bg-white rounded-[32px] shadow-soft border border-ocean/8 p-6">
+            <h3 class="text-2xl font-black text-ocean">জনপ্রিয় প্রবন্ধ</h3>
+            <div class="mt-5 space-y-4">
+              <a href="#" class="flex gap-4 group">
+                <div class="w-20 h-20 rounded-2xl bg-skybrand/15 flex items-center justify-center shrink-0"><img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-9 h-9" alt="icon"></div>
+                <div><h4 class="font-black text-ocean group-hover:text-skybrand duration-300">সুন্নাহর আলোকে জীবন গঠন</h4><p class="text-sm text-ocean/50 mt-1">৫ মিনিট পড়া</p></div>
+              </a>
+              <a href="#" class="flex gap-4 group">
+                <div class="w-20 h-20 rounded-2xl bg-gold/20 flex items-center justify-center shrink-0"><img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-9 h-9" alt="icon"></div>
+                <div><h4 class="font-black text-ocean group-hover:text-skybrand duration-300">পরিবারে ইসলামের সৌন্দর্য</h4><p class="text-sm text-ocean/50 mt-1">৪ মিনিট পড়া</p></div>
+              </a>
+              <a href="#" class="flex gap-4 group">
+                <div class="w-20 h-20 rounded-2xl bg-ocean/10 flex items-center justify-center shrink-0"><img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-9 h-9" alt="icon"></div>
+                <div><h4 class="font-black text-ocean group-hover:text-skybrand duration-300">যুব সমাজ ও সময়ের ফিতনা</h4><p class="text-sm text-ocean/50 mt-1">৭ মিনিট পড়া</p></div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Share Widget -->
+          <div class="bg-white rounded-[32px] shadow-soft border border-ocean/8 p-6">
+            <h3 class="text-2xl font-black text-ocean">শেয়ার করুন</h3>
+            <div class="mt-5 grid grid-cols-4 gap-3">
+              <button class="shareBtn h-12 rounded-full bg-[#1877F2] text-white font-black" data-platform="facebook">f</button>
+              <button class="shareBtn h-12 rounded-full bg-[#111827] text-white font-black" data-platform="x">𝕏</button>
+              <button class="shareBtn h-12 rounded-full bg-[#25D366] text-white font-black" data-platform="whatsapp">☘</button>
+              <button id="copyLink2" class="h-12 rounded-full bg-cream text-ocean font-black">🔗</button>
+            </div>
+            <p id="copyMessage" class="hidden mt-4 text-sm font-bold text-skybrand">লিংক কপি হয়েছে।</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       RELATED ARTICLES SECTION
+  ========================================================== -->
+  <section class="bg-white py-18 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10 reveal">
+        <div>
+          <p class="section-eyebrow">Related Articles</p>
+          <h2 class="mt-3 text-4xl lg:text-5xl font-black text-ocean">আরও পড়ুন</h2>
+          <div class="ornament mt-5"></div>
+        </div>
+        <a href="#" class="btn-primary text-white rounded-full px-7 py-4 font-black text-center">সব প্রবন্ধ দেখুন</a>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <article class="reveal bg-cream rounded-[32px] overflow-hidden shadow-soft hover:shadow-premium duration-300">
+          <div class="relative thumb-img h-56"><img src="https://images.unsplash.com/photo-1542816417-0983c9c9ad53?auto=format&fit=crop&w=900&q=80" alt="article" onerror="this.onerror=null;this.src='https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png'"></div>
+          <div class="p-6"><span class="text-skybrand font-black">পরিবার</span><h3 class="mt-2 text-2xl font-black text-ocean">সন্তান প্রতিপালনে ইসলামের নির্দেশনা</h3><p class="mt-3 text-ocean/60 leading-7">পরিবার ও চরিত্র গঠনের গুরুত্বপূর্ণ নীতিমালা।</p><a href="#" class="mt-5 inline-flex text-skybrand font-black">পড়ুন →</a></div>
+        </article>
+        <article class="reveal bg-cream rounded-[32px] overflow-hidden shadow-soft hover:shadow-premium duration-300">
+          <div class="relative thumb-img h-56"><img src="https://images.unsplash.com/photo-1564121211835-e88c852648ab?auto=format&fit=crop&w=900&q=80" alt="article" onerror="this.onerror=null;this.src='https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png'"></div>
+          <div class="p-6"><span class="text-skybrand font-black">ইতিহাস</span><h3 class="mt-2 text-2xl font-black text-ocean">ইসলামের ইতিহাস থেকে শিক্ষা</h3><p class="mt-3 text-ocean/60 leading-7">ইতিহাসের আলোকে বর্তমানের জন্য শিক্ষা।</p><a href="#" class="mt-5 inline-flex text-skybrand font-black">পড়ুন →</a></div>
+        </article>
+        <article class="reveal bg-cream rounded-[32px] overflow-hidden shadow-soft hover:shadow-premium duration-300">
+          <div class="relative thumb-img h-56"><img src="https://images.unsplash.com/photo-1574246604907-db69e30ddb97?auto=format&fit=crop&w=900&q=80" alt="article" onerror="this.onerror=null;this.src='https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png'"></div>
+          <div class="p-6"><span class="text-skybrand font-black">দাওয়াহ</span><h3 class="mt-2 text-2xl font-black text-ocean">সুন্দর ভাষায় সত্যের আহ্বান</h3><p class="mt-3 text-ocean/60 leading-7">আচরণ, জ্ঞান ও হিকমাহর মাধ্যমে দাওয়াহ।</p><a href="#" class="mt-5 inline-flex text-skybrand font-black">পড়ুন →</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       NEWSLETTER / SUPPORT CTA
+  ========================================================== -->
+  <section id="support" class="px-4 sm:px-6 lg:px-8 py-16 bg-white">
+    <div class="relative overflow-hidden max-w-7xl mx-auto rounded-[42px] bg-ocean p-8 sm:p-12 lg:p-16 text-white shadow-premium reveal">
+      <div class="islamic-grid"></div>
+      <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-center">
+        <div>
+          <p class="section-eyebrow text-gold">Support Khutbah TV</p>
+          <h2 class="mt-3 text-4xl lg:text-5xl font-black leading-tight">আপনার সহযোগিতায় দাওয়াহ আরও এগিয়ে যাবে</h2>
+          <p class="mt-5 max-w-2xl text-white/70 text-lg leading-8">ওয়েবসাইট, ভিডিও, কিতাব প্রকাশ ও ইসলামিক কনটেন্টকে আরও সুন্দরভাবে মানুষের কাছে পৌঁছাতে সহায়তা করুন।</p>
+        </div>
+        <a href="#" class="btn-gold text-ocean px-9 py-5 rounded-full font-black text-center">দান করুন</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer class="bg-[#021A28] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-white/10 pb-12">
+        <div class="lg:col-span-2">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png" class="h-14 w-auto" alt="Khutbah TV white" onerror="this.onerror=null;this.src='https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png'" />
+          <p class="mt-5 max-w-md text-white/62 leading-8">বাংলা ভাষায় ইসলামিক ভিডিও, বয়ান, প্রশ্নোত্তর, কিতাব ও দাওয়াহ কনটেন্টের ডিজিটাল প্ল্যাটফর্ম।</p>
+        </div>
+        <div><h4 class="font-bold text-xl mb-5">দ্রুত লিংক</h4><ul class="space-y-3 text-white/62"><li>ভিডিও</li><li>কিতাব</li><li>প্রশ্নোত্তর</li><li>প্রবন্ধ</li></ul></div>
+        <div><h4 class="font-bold text-xl mb-5">যোগাযোগ</h4><ul class="space-y-3 text-white/62"><li>contact@khutbahtv.com</li><li>YouTube</li><li>Facebook</li></ul></div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row justify-between gap-4 text-white/50 text-sm"><p>© Khutbah TV. All Rights Reserved.</p><p>Premium blog single concept</p></div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       PAGE INTERACTIONS / SMOOTH ANIMATION JAVASCRIPT
+  ========================================================== -->
+  <script>
+    /* ---------- Mobile menu ---------- */
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileBtn?.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+
+    /* ---------- Smooth reveal animation ---------- */
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => observer.observe(el));
+
+    /* ---------- Reading progress ---------- */
+    const progress = document.getElementById('readingProgress');
+    function updateProgress(){
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progress.style.width = percent + '%';
+    }
+    window.addEventListener('scroll', updateProgress);
+    updateProgress();
+
+    /* ---------- Article font size controls ---------- */
+    const articleBody = document.getElementById('articleBody');
+    let articleFont = 18;
+    document.getElementById('increaseFont')?.addEventListener('click', () => {
+      articleFont = Math.min(articleFont + 1, 22);
+      articleBody.style.fontSize = articleFont + 'px';
+    });
+    document.getElementById('decreaseFont')?.addEventListener('click', () => {
+      articleFont = Math.max(articleFont - 1, 16);
+      articleBody.style.fontSize = articleFont + 'px';
+    });
+
+    /* ---------- Copy link interaction ---------- */
+    function copyCurrentLink(){
+      const link = window.location.href;
+      if(navigator.clipboard){ navigator.clipboard.writeText(link); }
+      const msg = document.getElementById('copyMessage');
+      if(msg){ msg.classList.remove('hidden'); setTimeout(() => msg.classList.add('hidden'), 2200); }
+      alert('লিংক কপি হয়েছে।');
+    }
+    document.getElementById('copyLink')?.addEventListener('click', copyCurrentLink);
+    document.getElementById('copyLink2')?.addEventListener('click', copyCurrentLink);
+
+    /* ---------- Demo search action ---------- */
+    function runSearch(inputId){
+      const value = document.getElementById(inputId)?.value?.trim();
+      if(value){ alert('ডেমো সার্চ: ' + value); }
+    }
+    document.getElementById('headerSearch')?.addEventListener('keydown', e => { if(e.key === 'Enter') runSearch('headerSearch'); });
+    document.getElementById('sidebarSearchBtn')?.addEventListener('click', () => runSearch('sidebarSearch'));
+    document.getElementById('sidebarSearch')?.addEventListener('keydown', e => { if(e.key === 'Enter') runSearch('sidebarSearch'); });
+
+    /* ---------- Share buttons ---------- */
+    document.querySelectorAll('.shareBtn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const url = encodeURIComponent(window.location.href);
+        const title = encodeURIComponent(document.title);
+        const platform = btn.dataset.platform;
+        let shareUrl = '#';
+        if(platform === 'facebook') shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+        if(platform === 'x') shareUrl = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+        if(platform === 'whatsapp') shareUrl = `https://wa.me/?text=${title}%20${url}`;
+        window.open(shareUrl, '_blank', 'noopener,noreferrer,width=720,height=520');
+      });
+    });
+  </script>
+</body>
+</html>

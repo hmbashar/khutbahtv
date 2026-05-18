@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>প্রশ্নোত্তর — Khutbah TV</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- =========================================================
+       TAILWIND THEME CONFIG
+  ========================================================== -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: '#043755',
+            skybrand: '#1493C5',
+            ink: '#09283A',
+            cream: '#F7F3EA',
+            gold: '#D7A83F',
+            mint: '#A9E9D5',
+            night: '#021A28'
+          },
+          fontFamily: {
+            bangla: ['Hind Siliguri', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            premium: '0 28px 80px rgba(4,55,85,.18)',
+            soft: '0 18px 50px rgba(9,40,58,.12)',
+            card: '0 14px 38px rgba(4,55,85,.10)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- =========================================================
+       GLOBAL DESIGN SYSTEM + PAGE STYLES
+  ========================================================== -->
+  <style>
+    :root{--ocean:#043755;--sky:#1493C5;--gold:#D7A83F;--cream:#F7F3EA;--ink:#09283A;--night:#021A28;}
+    *{scroll-behavior:smooth}
+    body{font-family:'Hind Siliguri',sans-serif;background:#fbfaf6;color:var(--ink);}
+    .font-inter{font-family:'Inter',sans-serif}
+    .pattern-bg{background-image:radial-gradient(circle at 1px 1px, rgba(4,55,85,.075) 1px, transparent 0);background-size:24px 24px;}
+    .islamic-grid{position:absolute;inset:0;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D7A83F' stroke-width='1.2'%3E%3Cpath d='M60 4 80 40l36 20-36 20-20 36-20-36L4 60l36-20Z'/%3E%3Cpath d='M60 22 72 48l26 12-26 12-12 26-12-26-26-12 26-12Z'/%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3C/g%3E%3C/svg%3E");background-size:150px 150px;}
+    .hero-glow:before{content:"";position:absolute;width:560px;height:560px;border-radius:999px;background:radial-gradient(circle,rgba(20,147,197,.36),transparent 65%);right:-220px;top:-190px;filter:blur(6px)}
+    .hero-glow:after{content:"";position:absolute;width:420px;height:420px;border-radius:999px;background:radial-gradient(circle,rgba(215,168,63,.22),transparent 70%);left:-190px;bottom:-180px;filter:blur(10px)}
+    .glass{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.18);box-shadow:0 24px 70px rgba(0,0,0,.22);backdrop-filter:blur(18px)}
+    .light-glass{background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.75);backdrop-filter:blur(16px)}
+    .btn-primary{background:linear-gradient(135deg,var(--sky),#0878A8);box-shadow:0 16px 34px rgba(20,147,197,.32)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(20,147,197,.38)}
+    .btn-gold{background:linear-gradient(135deg,#E8C76A,var(--gold));box-shadow:0 16px 34px rgba(215,168,63,.28)}
+    .section-eyebrow{letter-spacing:.18em;text-transform:uppercase;font-family:'Inter',sans-serif;font-size:12px;font-weight:900;color:var(--sky)}
+    .nav-link{position:relative}.nav-link:after{content:"";position:absolute;left:0;right:100%;height:2px;bottom:-7px;background:var(--gold);transition:.25s}.nav-link:hover:after{right:0}
+    .ornament{background-image:url("data:image/svg+xml,%3Csvg width='72' height='20' viewBox='0 0 72 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 1C43 1 45 10 52 10C59 10 61 1 71 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Cpath d='M36 1C29 1 27 10 20 10C13 10 11 1 1 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Ccircle cx='36' cy='10' r='5' stroke='%23D7A83F' stroke-width='1.5'/%3E%3C/svg%3E");width:72px;height:20px;background-repeat:no-repeat;background-position:center;}
+    .premium-input{background:white;border:1px solid rgba(4,55,85,.14);outline:none}.premium-input:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(20,147,197,.1)}
+    .ticker{animation:ticker 25s linear infinite}@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}.reveal.show{opacity:1;transform:translateY(0)}
+    .qa-card{position:relative;overflow:hidden;border:1px solid rgba(4,55,85,.10);background:linear-gradient(180deg,#fff,rgba(247,243,234,.72));}
+    .qa-card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 94% 0%,rgba(20,147,197,.13),transparent 24%),radial-gradient(circle at 4% 100%,rgba(215,168,63,.12),transparent 28%);pointer-events:none;}
+    .qa-card:hover{transform:translateY(-6px);box-shadow:0 28px 80px rgba(4,55,85,.15)}
+    .count-badge{background:linear-gradient(135deg,var(--sky),#0878A8);box-shadow:0 14px 32px rgba(20,147,197,.25)}
+    .category-pill.active{background:var(--ocean);color:white;box-shadow:0 12px 26px rgba(4,55,85,.22)}
+    .faq-row{transition:.25s}.faq-row:hover{color:var(--sky);transform:translateX(-3px)}
+    .category-item.active{background:#043755;color:white;border-color:#043755}.category-item.active span{color:white}
+    .empty-state{display:none}.empty-state.show{display:block}
+    @media(max-width:768px){.hero-title{font-size:40px;line-height:1.13}.glass{backdrop-filter:blur(10px)}}
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+  <!-- =========================================================
+       SHARED JAVASCRIPT CONSTANTS + LOGO FALLBACK
+  ========================================================== -->
+  <script>
+    const ICON_URL = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png';
+    const WHITE_LOGO = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png';
+    const COLOR_LOGO = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png';
+    function fallbackLogo(img){img.onerror=null;img.src=ICON_URL;img.classList.add('rounded-full')}
+  </script>
+
+  <!-- =========================================================
+       FLOATING SOCIAL LINKS
+  ========================================================== -->
+  <div class="fixed left-3 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-2">
+    <a class="w-9 h-9 rounded-full bg-ocean text-white flex items-center justify-center shadow-card" href="#">f</a>
+    <a class="w-9 h-9 rounded-full bg-skybrand text-white flex items-center justify-center shadow-card" href="#">▶</a>
+    <a class="w-9 h-9 rounded-full bg-gold text-ocean flex items-center justify-center shadow-card" href="#">✉</a>
+  </div>
+
+  <!-- =========================================================
+       TOP NOTICE BAR
+  ========================================================== -->
+  <div class="bg-ocean text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4 overflow-hidden">
+      <div class="flex items-center gap-2 shrink-0"><span class="w-2 h-2 rounded-full bg-gold"></span><span>আসসালামু আলাইকুম — খুতবাহ টিভিতে আপনাকে স্বাগতম</span></div>
+      <div class="hidden md:flex items-center gap-5 text-white/80"><span>লাইভ অনুষ্ঠান</span><span>প্রশ্নোত্তর</span><span>বাংলা ইসলামিক কনটেন্ট</span><span class="text-gold">●</span><span id="todayDate">আজ</span></div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       HEADER / NAVIGATION
+  ========================================================== -->
+  <header class="sticky top-0 z-50 bg-white/84 backdrop-blur-xl border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-5">
+        <a href="#" class="flex items-center gap-3">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png" alt="Khutbah TV" class="h-12 w-auto" onerror="fallbackLogo(this)" />
+        </a>
+        <nav class="hidden lg:flex items-center gap-7 font-semibold text-[15px] text-ocean">
+          <a class="nav-link" href="#">হোম</a>
+          <a class="nav-link" href="#">ভিডিও</a>
+          <a class="nav-link" href="#">কিতাব</a>
+          <a class="nav-link" href="#">ইসলাম</a>
+          <a class="nav-link" href="#">আসুন শিখি</a>
+          <a class="nav-link" href="#">সীরাত</a>
+          <a class="nav-link" href="#">ব্লগ</a>
+          <a class="nav-link text-skybrand" href="#qa-list">প্রশ্ন/উত্তর</a>
+          <a class="nav-link" href="#">যোগাযোগ</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-3">
+          <div class="relative">
+            <input id="globalSearch" class="w-56 rounded-full border border-ocean/15 bg-white px-5 py-3 text-sm outline-none focus:border-skybrand" placeholder="খুঁজুন..." />
+            <span class="absolute right-4 top-3.5 text-ocean/50">⌕</span>
+          </div>
+          <a href="#ask" class="btn-primary duration-300 text-white px-5 py-3 rounded-full font-bold text-sm">প্রশ্ন করুন</a>
+        </div>
+        <button id="menuBtn" class="lg:hidden w-11 h-11 rounded-full border border-ocean/15 flex items-center justify-center text-ocean">☰</button>
+      </div>
+      <div id="mobileMenu" class="hidden lg:hidden pb-5">
+        <div class="grid gap-2 font-semibold text-ocean bg-cream rounded-3xl p-4">
+          <a href="#">হোম</a><a href="#">ভিডিও</a><a href="#">কিতাব</a><a href="#">ইসলাম</a><a href="#">আসুন শিখি</a><a href="#">সীরাত</a><a href="#">ব্লগ</a><a href="#qa-list">প্রশ্ন/উত্তর</a><a href="#">যোগাযোগ</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       LATEST NEWS TICKER
+  ========================================================== -->
+  <div class="bg-skybrand text-white overflow-hidden py-3 font-semibold">
+    <div class="ticker flex gap-10 whitespace-nowrap w-max">
+      <span>সর্বশেষ প্রশ্নোত্তর আপডেট হয়েছে</span><span>•</span><span>আপনার প্রশ্ন পাঠান</span><span>•</span><span>আকিদা, ফিকহ, পরিবার ও সমাজ বিষয়ক প্রশ্ন</span><span>•</span><span>সর্বশেষ প্রশ্নোত্তর আপডেট হয়েছে</span><span>•</span><span>আপনার প্রশ্ন পাঠান</span><span>•</span><span>আকিদা, ফিকহ, পরিবার ও সমাজ বিষয়ক প্রশ্ন</span><span>•</span>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       PAGE HERO
+  ========================================================== -->
+  <main class="relative hero-glow overflow-hidden bg-ocean text-white">
+    <div class="islamic-grid"></div>
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-10 items-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 mb-7 text-sm text-white/85">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-7 h-7 rounded-full" alt="icon" onerror="this.style.display='none'" />
+            বাংলা ইসলামিক প্রশ্নোত্তর আর্কাইভ
+          </div>
+          <h1 class="hero-title text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight">
+            প্রয়োজনীয় <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint via-white to-gold">প্রশ্নের উত্তর</span> সহজে খুঁজুন
+          </h1>
+          <p class="mt-7 max-w-2xl text-lg sm:text-xl leading-9 text-white/76">
+            মুসলিম, অমুসলিম, নাস্তিকতা, খ্রিস্টবাদ, হিন্দুইজম, আমানত ও দৈনন্দিন ইসলামিক জীবন সম্পর্কিত প্রশ্নগুলো সুন্দরভাবে বিভাগভিত্তিক সাজানো।
+          </p>
+          <div class="mt-9 flex flex-col sm:flex-row gap-4">
+            <a href="#qa-list" class="btn-primary duration-300 text-white px-7 py-4 rounded-full font-bold text-center">প্রশ্নগুলো দেখুন</a>
+            <a href="#ask" class="bg-white text-ocean px-7 py-4 rounded-full font-bold text-center hover:bg-cream duration-300">নতুন প্রশ্ন করুন</a>
+          </div>
+        </div>
+        <div class="reveal glass rounded-[38px] p-6 lg:p-8">
+          <p class="section-eyebrow text-gold">Quick Search</p>
+          <h2 class="mt-3 text-3xl font-black leading-tight">আপনার প্রশ্ন লিখে খুঁজুন</h2>
+          <div class="mt-6 bg-white rounded-[28px] p-3 flex flex-col sm:flex-row gap-3">
+            <input id="heroSearch" class="premium-input flex-1 rounded-full px-5 py-4 text-ocean" placeholder="যেমন: আমানত, নাস্তিক, মুসলিম, খ্রিস্টবাদ" />
+            <button id="heroSearchBtn" class="btn-gold text-ocean px-7 py-4 rounded-full font-black">Search</button>
+          </div>
+          <div class="mt-6 grid grid-cols-3 gap-3">
+            <div class="light-glass rounded-3xl p-4 text-ocean"><div class="font-inter text-2xl font-black">65</div><div class="text-sm text-ocean/65">প্রশ্ন</div></div>
+            <div class="light-glass rounded-3xl p-4 text-ocean"><div class="font-inter text-2xl font-black">6</div><div class="text-sm text-ocean/65">বিভাগ</div></div>
+            <div class="light-glass rounded-3xl p-4 text-ocean"><div class="font-inter text-2xl font-black">24/7</div><div class="text-sm text-ocean/65">অ্যাক্সেস</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       CATEGORY FILTER STRIP
+  ========================================================== -->
+  <section class="pattern-bg border-b border-ocean/10 py-7">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex gap-3 overflow-x-auto pb-2">
+        <button class="category-pill active shrink-0 rounded-full bg-white px-5 py-3 font-bold text-ocean shadow-card" data-filter="all">সব প্রশ্ন</button>
+        <button class="category-pill shrink-0 rounded-full bg-white px-5 py-3 font-bold text-ocean shadow-card" data-filter="মুসলিমদের প্রশ্নোত্তর">মুসলিমদের প্রশ্নোত্তর</button>
+        <button class="category-pill shrink-0 rounded-full bg-white px-5 py-3 font-bold text-ocean shadow-card" data-filter="নাস্তিকদের প্রশ্নোত্তর">নাস্তিকদের প্রশ্নোত্তর</button>
+        <button class="category-pill shrink-0 rounded-full bg-white px-5 py-3 font-bold text-ocean shadow-card" data-filter="হিন্দুইজম">হিন্দুইজম</button>
+        <button class="category-pill shrink-0 rounded-full bg-white px-5 py-3 font-bold text-ocean shadow-card" data-filter="খ্রিস্টবাদ">খ্রিস্টবাদ</button>
+        <button class="category-pill shrink-0 rounded-full bg-white px-5 py-3 font-bold text-ocean shadow-card" data-filter="আমানত">আমানত</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       QUESTION LIST CONTENT
+  ========================================================== -->
+  <section id="qa-list" class="pattern-bg py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-[1fr_340px] gap-8 items-start">
+        <div>
+          <!-- Search / Sort Toolbar -->
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-5 sm:p-6 mb-8">
+            <div class="grid md:grid-cols-[1fr_auto_auto] gap-3">
+              <input id="qaSearch" class="premium-input rounded-full px-5 py-4" placeholder="প্রশ্ন, বিভাগ বা কীওয়ার্ড লিখুন..." />
+              <select id="sortSelect" class="premium-input rounded-full px-5 py-4 min-w-44">
+                <option value="default">ডিফল্ট সাজানো</option>
+                <option value="count-desc">প্রশ্ন সংখ্যা বেশি</option>
+                <option value="count-asc">প্রশ্ন সংখ্যা কম</option>
+                <option value="az">নাম A-Z</option>
+              </select>
+              <button id="resetBtn" class="rounded-full bg-ocean text-white px-6 py-4 font-bold">রিসেট</button>
+            </div>
+          </div>
+
+          <!-- Question Category Cards -->
+          <div id="qaGrid" class="grid md:grid-cols-2 gap-6"></div>
+
+          <!-- Empty State -->
+          <div id="emptyState" class="empty-state reveal bg-white rounded-[34px] shadow-soft p-10 text-center mt-8">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-20 h-20 rounded-full mx-auto mb-5" alt="Khutbah TV" onerror="this.style.display='none'">
+            <h3 class="text-2xl font-black text-ocean">কোনো প্রশ্ন পাওয়া যায়নি</h3>
+            <p class="mt-2 text-ocean/60">অন্য কীওয়ার্ড দিয়ে আবার চেষ্টা করুন অথবা ফিল্টার রিসেট করুন।</p>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="lg:sticky lg:top-28 space-y-6">
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-6">
+            <p class="section-eyebrow">Categories</p>
+            <h3 class="mt-2 text-2xl font-black text-ocean">বিভাগসমূহ</h3>
+            <div id="sidebarCats" class="mt-5 space-y-3"></div>
+          </div>
+
+          <div id="ask" class="reveal relative overflow-hidden rounded-[34px] bg-ocean p-6 text-white shadow-premium">
+            <div class="islamic-grid"></div>
+            <div class="relative">
+              <p class="section-eyebrow text-gold">Ask Question</p>
+              <h3 class="mt-2 text-2xl font-black leading-snug">আপনার প্রশ্ন পাঠান</h3>
+              <p class="mt-3 text-white/70 leading-7">প্রশ্ন পাঠানোর জন্য নিচের বাটনে ক্লিক করুন। অ্যাডমিন রিভিউয়ের পর প্রকাশ করা যাবে।</p>
+              <button class="mt-5 btn-gold text-ocean rounded-full px-6 py-3 font-black">প্রশ্ন করুন</button>
+            </div>
+          </div>
+
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-6">
+            <p class="section-eyebrow">Popular Search</p>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <button class="tag rounded-full bg-cream px-4 py-2 font-semibold text-ocean" data-key="অমুসলিম">অমুসলিম</button>
+              <button class="tag rounded-full bg-cream px-4 py-2 font-semibold text-ocean" data-key="নাস্তিক">নাস্তিক</button>
+              <button class="tag rounded-full bg-cream px-4 py-2 font-semibold text-ocean" data-key="আমানত">আমানত</button>
+              <button class="tag rounded-full bg-cream px-4 py-2 font-semibold text-ocean" data-key="ইসলাম">ইসলাম</button>
+              <button class="tag rounded-full bg-cream px-4 py-2 font-semibold text-ocean" data-key="খ্রিস্টবাদ">খ্রিস্টবাদ</button>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SUPPORT CTA
+  ========================================================== -->
+  <section class="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28">
+    <div class="relative overflow-hidden max-w-7xl mx-auto rounded-[42px] bg-ocean p-8 sm:p-12 lg:p-16 text-white shadow-premium reveal">
+      <div class="islamic-grid"></div>
+      <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-center">
+        <div>
+          <p class="section-eyebrow text-gold">Khutbah TV Q&A</p>
+          <h2 class="mt-3 text-4xl lg:text-5xl font-black leading-tight">সঠিক প্রশ্ন, নির্ভরযোগ্য উত্তর</h2>
+          <p class="mt-5 max-w-2xl text-white/70 text-lg leading-8">প্রশ্নোত্তর আর্কাইভকে আরও সমৃদ্ধ করতে আপনার প্রশ্ন পাঠান এবং প্রয়োজনীয় কনটেন্ট শেয়ার করুন।</p>
+        </div>
+        <a href="#ask" class="btn-gold text-ocean px-9 py-5 rounded-full font-black text-center">প্রশ্ন পাঠান</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer class="bg-[#021A28] text-white pt-16 pb-8 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-30" style="background-image:url('https://images.unsplash.com/photo-1566669437685-e808f3a3133f?auto=format&fit=crop&w=1600&q=70');background-size:cover;background-position:center;"></div>
+    <div class="absolute inset-0 bg-night/88"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-white/10 pb-12">
+        <div class="lg:col-span-2">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png" class="h-14 w-auto" alt="Khutbah TV white" onerror="fallbackLogo(this)" />
+          <p class="mt-5 max-w-md text-white/62 leading-8">বাংলা ভাষায় ইসলামিক ভিডিও, বয়ান, প্রশ্নোত্তর, কিতাব ও দাওয়াহ কনটেন্টের ডিজিটাল প্ল্যাটফর্ম।</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-xl mb-5">দ্রুত লিংক</h4>
+          <ul class="space-y-3 text-white/62"><li>ভিডিও</li><li>কিতাব</li><li>প্রশ্নোত্তর</li><li>প্রবন্ধ</li></ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-xl mb-5">যোগাযোগ</h4>
+          <ul class="space-y-3 text-white/62"><li>contact@khutbahtv.com</li><li>YouTube</li><li>Facebook</li></ul>
+        </div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row justify-between gap-4 text-white/50 text-sm"><p>© Khutbah TV. All Rights Reserved.</p><p>Premium Q&A page concept</p></div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       PAGE DATA + INTERACTIONS
+  ========================================================== -->
+  <script>
+    const qaCategories = [
+      {
+        title:'অমুসলিমদের প্রশ্নোত্তর', count:9, icon:'✦',
+        questions:[
+          'ইসলামে অমুসলিমদের দাওয়াত দেয়ার বিধান কি?',
+          'অমুসলিমদের দাওয়াত দিতে সর্বপ্রথমে কি আইনগতভাবে কোন ও অনুমতি আছে কি?',
+          'মৃত্যুর পর কী হবে?',
+          'জান্নাত কী?',
+          'অমুসলিমদের দাওয়াত দেওয়া যাবে কিনা?',
+          'ইসলামিক কাজে ধর্ম?'
+        ]
+      },
+      {
+        title:'আপনার সমীপে আপনার আমানত', count:5, icon:'◈',
+        questions:[
+          'Returning Your Truth',
+          'كيف تعرف الحق',
+          'যে দ্বীন আপনি খুঁজছেন',
+          'আপনি আপনার আমানত নিন',
+          'আপনার আমানত ফেরত'
+        ]
+      },
+      {
+        title:'নাস্তিকদের প্রশ্নোত্তর', count:24, icon:'☾',
+        questions:[
+          'মুহাম্মদ সাঃ বলেছেন, কালোজিরা সকল রোগের ঔষধ, তাহলে ক্যান্সার বা জটিল রোগের চিকিৎসা পাওয়া যায় না কেন?',
+          'একজন অবিশ্বাসীর বিশ্বাস',
+          'আল্লাহ থাকলে এত প্রাকৃতিক দুর্যোগ কেন?',
+          'আল্লাহ তো জানেন কে বেহেশতে যাবে, কে দোজখে যাবে তাহলে মানুষকে পৃথিবীতে পাঠানোর দরকার কেন?',
+          'যাবার কেন সরাসরি জান্নাত বা জাহান্নামে পাঠানো হচ্ছে না?',
+          'সৃষ্টির পূর্বে আল্লাহ কোথায় ছিলেন?',
+          'আমার কেন একবার বললেই আল্লাহ থাকেন না এবং হয় কিভাবে?',
+          'বিবির বিধান মানা যায় না কেন?',
+          'তাকদীর: আমার কি সব নির্ধারিত?'
+        ]
+      },
+      {
+        title:'খ্রিস্টবাদ', count:6, icon:'✺',
+        questions:[
+          'খ্রিস্টানদের দাবি তাওরাত, ইঞ্জিল কেউ পরিবর্তন করতে পারবে না',
+          'ব্যাটিচারের একজন শান্তি দূত?',
+          'বাইবেলে কবর-নিয়ম ও শান্তি মৃত্যু',
+          'বাইবেল মতে ইহুদিরা বাংলাদেশে খ্রিস্ট ধর্ম প্রচার করতে পারবে না',
+          'কুরআন শুধু নবী ও তার আত্মীয়দের লোকেদের জন্য',
+          'তাওরাত-ইঞ্জিল প্রতিষ্ঠা করতে হবে'
+        ]
+      },
+      {
+        title:'হিন্দুইজম', count:6, icon:'✧',
+        questions:[
+          'হিন্দুদের গোড় বা বেদে বৈষম্য',
+          'পুনর্জন্ম মতবাদের বিরুদ্ধে তিনটি প্রমাণ',
+          'মূর্তি পূজা কী করে?',
+          'হিন্দু মুসলিম সম্পর্ক',
+          'হিন্দু ধর্মে গাভী নিষিদ্ধ – বেদ দ্বারা প্রমাণিত',
+          'মূর্তি পূজা এবং জাতি প্রথা'
+        ]
+      },
+      {
+        title:'মুসলিমদের প্রশ্নোত্তর', count:15, icon:'☪',
+        questions:[
+          'ইসলামে অমুসলিমদের দাওয়াত দেয়ার বিধান কি?',
+          'অমুসলিমদের দাওয়াত দিতে সর্বপ্রথমে বা আইনগতভাবে কোন ও অনুমতি আছে কি?',
+          'আমাকে বা হবে কি অমুসলিমদের দাওয়াত দেওয়া যাবে?',
+          'অমুসলিমদের দাওয়াত দিতে কি কি পদ্ধতি থাকা দরকার?',
+          'দায়ী গুরুত্ব কি কিছু বলবেন?',
+          'মুসলিম উম্মাহর বর্তমান সমস্যা সমাধান',
+          'অমুসলিমদের দাওয়াত দেয়ার দায়িত্ব কারদের?',
+          'অমুসলিমদের দাওয়াত দেয়ার ইসলামিক বিধান কি?',
+          'রাসূল ﷺ-এর সব চেয়ে প্রিয় সুন্নত কী?',
+          'জালিম কে?'
+        ]
+      }
+    ];
+
+    let activeFilter = 'all';
+
+    const qaGrid = document.getElementById('qaGrid');
+    const emptyState = document.getElementById('emptyState');
+    const qaSearch = document.getElementById('qaSearch');
+    const heroSearch = document.getElementById('heroSearch');
+    const sortSelect = document.getElementById('sortSelect');
+    const sidebarCats = document.getElementById('sidebarCats');
+
+    function cardTemplate(item){
+      const questions = item.questions.map(q => `<li class="faq-row flex gap-3 text-ocean/68 leading-7"><span class="mt-1 text-skybrand">▸</span><span>${q}</span></li>`).join('');
+      return `
+        <article class="qa-card reveal rounded-[34px] p-6 sm:p-7 shadow-card duration-300" data-title="${item.title}" data-search="${item.title} ${item.questions.join(' ')}">
+          <div class="relative z-10 flex items-start justify-between gap-4 mb-5">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-skybrand/10 text-skybrand flex items-center justify-center text-2xl">${item.icon}</div>
+              <div>
+                <h3 class="text-2xl font-black text-ocean leading-snug">${item.title}</h3>
+                <p class="text-sm text-ocean/55 mt-1">প্রশ্নোত্তর বিভাগ</p>
+              </div>
+            </div>
+            <div class="count-badge shrink-0 w-14 h-14 rounded-2xl text-white flex items-center justify-center font-inter font-black text-xl">${item.count}</div>
+          </div>
+          <ul class="relative z-10 space-y-2 max-h-72 overflow-hidden">${questions}</ul>
+          <div class="relative z-10 mt-7 flex items-center justify-between gap-4">
+            <button class="view-more rounded-full bg-ocean text-white px-5 py-3 font-bold hover:bg-skybrand duration-300" data-category="${item.title}">View More</button>
+            <span class="text-sm font-bold text-ocean/45">${item.count} টি প্রশ্ন</span>
+          </div>
+        </article>`;
+    }
+
+    function buildSidebar(){
+      sidebarCats.innerHTML = `<button class="category-item active w-full flex items-center justify-between gap-3 rounded-2xl border border-ocean/10 px-4 py-3 font-bold text-ocean" data-filter="all"><span>সব প্রশ্ন</span><b>${qaCategories.reduce((a,b)=>a+b.count,0)}</b></button>` + qaCategories.map(item => `
+        <button class="category-item w-full flex items-center justify-between gap-3 rounded-2xl border border-ocean/10 px-4 py-3 font-bold text-ocean hover:bg-cream duration-300" data-filter="${item.title}"><span>${item.title}</span><b>${item.count}</b></button>
+      `).join('');
+    }
+
+    function renderCards(){
+      const term = (qaSearch.value || '').trim().toLowerCase();
+      let list = qaCategories.filter(item => activeFilter === 'all' || item.title === activeFilter);
+      if(term){
+        list = list.filter(item => (item.title + ' ' + item.questions.join(' ')).toLowerCase().includes(term));
+      }
+      const sort = sortSelect.value;
+      if(sort === 'count-desc') list.sort((a,b)=>b.count-a.count);
+      if(sort === 'count-asc') list.sort((a,b)=>a.count-b.count);
+      if(sort === 'az') list.sort((a,b)=>a.title.localeCompare(b.title,'bn'));
+
+      qaGrid.innerHTML = list.map(cardTemplate).join('');
+      emptyState.classList.toggle('show', list.length === 0);
+      observeReveals();
+    }
+
+    function setFilter(filter){
+      activeFilter = filter;
+      document.querySelectorAll('.category-pill,.category-item').forEach(btn => btn.classList.toggle('active', btn.dataset.filter === filter));
+      renderCards();
+    }
+
+    function observeReveals(){
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('show'); observer.unobserve(entry.target); } });
+      },{threshold:.12});
+      document.querySelectorAll('.reveal:not(.show)').forEach(el=>observer.observe(el));
+    }
+
+    buildSidebar();
+    renderCards();
+    observeReveals();
+
+    document.querySelectorAll('.category-pill').forEach(btn => btn.addEventListener('click', () => setFilter(btn.dataset.filter)));
+    sidebarCats.addEventListener('click', e => {
+      const btn = e.target.closest('.category-item');
+      if(btn) setFilter(btn.dataset.filter);
+    });
+    qaSearch.addEventListener('input', renderCards);
+    sortSelect.addEventListener('change', renderCards);
+    document.getElementById('resetBtn').addEventListener('click', () => { qaSearch.value=''; heroSearch.value=''; sortSelect.value='default'; setFilter('all'); });
+    document.getElementById('heroSearchBtn').addEventListener('click', () => { qaSearch.value = heroSearch.value; location.hash = '#qa-list'; renderCards(); });
+    heroSearch.addEventListener('keydown', e => { if(e.key === 'Enter'){ document.getElementById('heroSearchBtn').click(); } });
+    document.querySelectorAll('.tag').forEach(btn => btn.addEventListener('click', () => { qaSearch.value = btn.dataset.key; location.hash = '#qa-list'; renderCards(); }));
+    document.getElementById('menuBtn').addEventListener('click', () => document.getElementById('mobileMenu').classList.toggle('hidden'));
+    document.getElementById('todayDate').textContent = new Date().toLocaleDateString('bn-BD',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+  </script>
+</body>
+</html>
