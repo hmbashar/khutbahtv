@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>পৃষ্ঠা পাওয়া যায়নি — Khutbah TV</title>
+
+  <!-- =========================================================
+       ASSET / FONT / TAILWIND SETUP
+       ========================================================= -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: '#043755',
+            skybrand: '#1493C5',
+            ink: '#09283A',
+            cream: '#F7F3EA',
+            gold: '#D7A83F',
+            mint: '#A9E9D5',
+            night: '#021A28'
+          },
+          fontFamily: {
+            bangla: ['Hind Siliguri', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            premium: '0 28px 80px rgba(4,55,85,.18)',
+            soft: '0 18px 50px rgba(9,40,58,.12)',
+            card: '0 14px 38px rgba(4,55,85,.10)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- =========================================================
+       GLOBAL DESIGN SYSTEM CSS
+       Matches Khutbah TV premium direction
+       ========================================================= -->
+  <style>
+    :root{--ocean:#043755;--sky:#1493C5;--gold:#D7A83F;--cream:#F7F3EA;--ink:#09283A;--night:#021A28;}
+    *{scroll-behavior:smooth}
+    body{font-family:'Hind Siliguri',sans-serif;background:#fbfaf6;color:var(--ink);}
+    .font-inter{font-family:'Inter',sans-serif}
+    .pattern-bg{background-image:radial-gradient(circle at 1px 1px, rgba(4,55,85,.075) 1px, transparent 0);background-size:24px 24px;}
+    .islamic-grid{position:absolute;inset:0;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D7A83F' stroke-width='1.2'%3E%3Cpath d='M60 4 80 40l36 20-36 20-20 36-20-36L4 60l36-20Z'/%3E%3Cpath d='M60 22 72 48l26 12-26 12-12 26-12-26-26-12 26-12Z'/%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3C/g%3E%3C/svg%3E");background-size:150px 150px;}
+    .hero-glow:before{content:"";position:absolute;width:620px;height:620px;border-radius:999px;background:radial-gradient(circle,rgba(20,147,197,.34),transparent 65%);right:-240px;top:-210px;filter:blur(6px)}
+    .hero-glow:after{content:"";position:absolute;width:460px;height:460px;border-radius:999px;background:radial-gradient(circle,rgba(215,168,63,.24),transparent 70%);left:-190px;bottom:-180px;filter:blur(10px)}
+    .glass{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.18);box-shadow:0 24px 70px rgba(0,0,0,.22);backdrop-filter:blur(18px)}
+    .light-glass{background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.75);backdrop-filter:blur(16px)}
+    .btn-primary{background:linear-gradient(135deg,var(--sky),#0878A8);box-shadow:0 16px 34px rgba(20,147,197,.32);transition:.3s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(20,147,197,.38)}
+    .btn-gold{background:linear-gradient(135deg,#E8C76A,var(--gold));box-shadow:0 16px 34px rgba(215,168,63,.28);transition:.3s}
+    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(215,168,63,.35)}
+    .section-eyebrow{letter-spacing:.18em;text-transform:uppercase;font-family:'Inter',sans-serif;font-size:12px;font-weight:900;color:var(--sky)}
+    .nav-link{position:relative}.nav-link:after{content:"";position:absolute;left:0;right:100%;height:2px;bottom:-7px;background:var(--gold);transition:.25s}.nav-link:hover:after{right:0}
+    .premium-input{background:white;border:1px solid rgba(4,55,85,.14);outline:none;transition:.2s}.premium-input:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(20,147,197,.1)}
+    .ornament{background-image:url("data:image/svg+xml,%3Csvg width='72' height='20' viewBox='0 0 72 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 1C43 1 45 10 52 10C59 10 61 1 71 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Cpath d='M36 1C29 1 27 10 20 10C13 10 11 1 1 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Ccircle cx='36' cy='10' r='5' stroke='%23D7A83F' stroke-width='1.5'/%3E%3C/svg%3E");width:72px;height:20px;background-repeat:no-repeat;background-position:center;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}.reveal.show{opacity:1;transform:translateY(0)}
+    .floating{animation:float 7s ease-in-out infinite}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    .error-number{font-family:'Inter',sans-serif;font-weight:900;letter-spacing:-.09em;line-height:.82;text-shadow:0 28px 70px rgba(0,0,0,.22)}
+    .number-shine{background:linear-gradient(120deg,#fff 0%,#A9E9D5 35%,#D7A83F 68%,#fff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;}
+    .error-card{background:rgba(255,255,255,.92);border:1px solid rgba(4,55,85,.08);transition:.3s ease}.error-card:hover{transform:translateY(-5px);box-shadow:0 24px 60px rgba(4,55,85,.14)}
+    .compass{position:relative;width:220px;height:220px;border-radius:999px;background:linear-gradient(145deg,rgba(255,255,255,.18),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 0 0 14px rgba(255,255,255,.06),0 28px 80px rgba(0,0,0,.2)}
+    .compass:before{content:"";position:absolute;inset:35px;border-radius:999px;border:1px dashed rgba(255,255,255,.28)}
+    .compass:after{content:"";position:absolute;left:50%;top:26px;transform:translateX(-50%);width:0;height:0;border-left:18px solid transparent;border-right:18px solid transparent;border-bottom:82px solid #D7A83F;filter:drop-shadow(0 12px 16px rgba(0,0,0,.2));transform-origin:50% 84px;animation:needle 4.5s ease-in-out infinite}
+    @keyframes needle{0%,100%{transform:translateX(-50%) rotate(-12deg)}50%{transform:translateX(-50%) rotate(18deg)}}
+    .mini-link{transition:.25s}.mini-link:hover{transform:translateX(-4px);background:rgba(20,147,197,.10);color:var(--sky)}
+    .toast{position:fixed;right:18px;bottom:18px;z-index:80;transform:translateY(24px);opacity:0;pointer-events:none;transition:.35s}.toast.show{transform:translateY(0);opacity:1}
+    @media(max-width:768px){.error-number{font-size:110px}.glass{backdrop-filter:blur(10px)}}
+  </style>
+</head>
+<body class="overflow-x-hidden">
+  <!-- =========================================================
+       GLOBAL JS VARIABLES / FALLBACKS
+       ========================================================= -->
+  <script>
+    const ICON_URL = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png';
+    const WHITE_LOGO = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png';
+    const COLOR_LOGO = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png';
+    function fallbackLogo(img){ img.onerror=null; img.src = ICON_URL; img.classList.add('rounded-full'); }
+  </script>
+
+  <!-- =========================================================
+       TOP NOTICE BAR
+       ========================================================= -->
+  <div class="bg-ocean text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4 overflow-hidden">
+      <div class="flex items-center gap-2 shrink-0"><span class="w-2 h-2 rounded-full bg-gold"></span><span>আসসালামু আলাইকুম — আপনি যে পেজটি খুঁজছেন সেটি পাওয়া যায়নি</span></div>
+      <div class="hidden md:flex items-center gap-5 text-white/80"><span>404</span><span>পৃষ্ঠা হারিয়েছে</span><span class="text-gold">●</span><span id="todayDate">আজ</span></div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       HEADER / NAVIGATION
+       ========================================================= -->
+  <header class="sticky top-0 z-50 bg-white/84 backdrop-blur-xl border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-5">
+        <a href="/" class="flex items-center gap-3">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png" alt="Khutbah TV" class="h-12 w-auto" onerror="fallbackLogo(this)" />
+        </a>
+        <nav class="hidden lg:flex items-center gap-7 font-semibold text-[15px] text-ocean">
+          <a class="nav-link" href="/">হোম</a>
+          <a class="nav-link" href="/videos">ভিডিও</a>
+          <a class="nav-link" href="/ebooks">কিতাব</a>
+          <a class="nav-link" href="/islam">ইসলাম</a>
+          <a class="nav-link" href="/ahle-sunnah">আহলে সুন্নাহ</a>
+          <a class="nav-link" href="/seerah">সীরাত</a>
+          <a class="nav-link" href="/qa">প্রশ্ন/উত্তর</a>
+          <a class="nav-link" href="/contact">যোগাযোগ</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-3">
+          <div class="relative">
+            <input id="globalSearch" class="w-56 rounded-full border border-ocean/15 bg-white px-5 py-3 text-sm outline-none focus:border-skybrand" placeholder="সাইটে খুঁজুন..." />
+            <span class="absolute right-4 top-3.5 text-ocean/50">⌕</span>
+          </div>
+          <a href="/donate" class="btn-primary duration-300 text-white px-5 py-3 rounded-full font-bold text-sm">দান করুন</a>
+        </div>
+        <button id="menuBtn" class="lg:hidden w-11 h-11 rounded-full border border-ocean/15 flex items-center justify-center text-ocean">☰</button>
+      </div>
+      <div id="mobileMenu" class="hidden lg:hidden pb-5">
+        <div class="grid gap-2 font-semibold text-ocean bg-cream rounded-3xl p-4">
+          <a href="/">হোম</a><a href="/videos">ভিডিও</a><a href="/ebooks">কিতাব</a><a href="/islam">ইসলাম</a><a href="/ahle-sunnah">আহলে সুন্নাহ</a><a href="/seerah">সীরাত</a><a href="/qa">প্রশ্ন/উত্তর</a><a href="/contact">যোগাযোগ</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       404 HERO
+       ========================================================= -->
+  <main class="relative hero-glow overflow-hidden bg-ocean text-white min-h-[calc(100vh-120px)]">
+    <div class="islamic-grid"></div>
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+      <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 mb-7 text-sm text-white/85">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-7 h-7 rounded-full" alt="icon" onerror="this.style.display='none'" />
+            Error 404 — Page Not Found
+          </div>
+
+          <div class="error-number number-shine text-[138px] sm:text-[190px] lg:text-[230px]">404</div>
+          <h1 class="mt-5 text-4xl sm:text-5xl lg:text-6xl font-black leading-tight">
+            দুঃখিত, পৃষ্ঠাটি খুঁজে পাওয়া যায়নি
+          </h1>
+          <p class="mt-6 max-w-2xl text-lg sm:text-xl leading-9 text-white/74">
+            আপনি যে লিংকটি অনুসরণ করেছেন সেটি পরিবর্তিত, মুছে ফেলা, অথবা ভুলভাবে টাইপ করা হতে পারে। নিচের সার্চ ব্যবহার করুন অথবা জনপ্রিয় বিভাগগুলোতে ফিরে যান।
+          </p>
+
+          <form id="errorSearchForm" class="mt-9 max-w-2xl">
+            <div class="light-glass rounded-full p-2 flex gap-2 shadow-premium">
+              <input id="errorSearch" class="flex-1 bg-transparent px-5 py-3 text-ocean placeholder:text-ocean/45 outline-none" placeholder="ভিডিও, কিতাব, প্রশ্নোত্তর বা বিষয় লিখুন..." />
+              <button class="btn-gold text-ocean rounded-full px-6 sm:px-8 py-3 font-black" type="submit">খুঁজুন</button>
+            </div>
+          </form>
+
+          <div class="mt-8 flex flex-col sm:flex-row gap-4">
+            <a href="/" class="btn-primary text-white px-7 py-4 rounded-full font-bold text-center">হোমে ফিরুন</a>
+            <button onclick="history.back()" class="bg-white text-ocean px-7 py-4 rounded-full font-bold text-center hover:bg-cream duration-300">আগের পেজে যান</button>
+          </div>
+        </div>
+
+        <div class="reveal relative min-h-[520px] flex items-center justify-center">
+          <div class="absolute right-0 top-6 w-[90%] h-[430px] rounded-[42px] bg-gradient-to-br from-white/18 to-white/5 border border-white/18"></div>
+          <div class="glass floating relative w-full max-w-[560px] rounded-[38px] p-6 sm:p-8">
+            <div class="flex justify-center mb-8">
+              <div class="compass flex items-center justify-center">
+                <div class="relative z-10 w-20 h-20 rounded-full bg-ocean/80 border border-white/20 flex items-center justify-center shadow-card">
+                  <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-14 h-14 rounded-full" alt="Khutbah TV" onerror="this.style.display='none'">
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <span class="inline-flex bg-gold text-ocean px-4 py-1.5 rounded-full font-black text-sm">হারানো পথের নির্দেশনা</span>
+              <h2 class="mt-5 text-3xl sm:text-4xl font-black leading-tight">জনপ্রিয় পেজগুলো দেখুন</h2>
+              <p class="mt-4 text-white/66 leading-8">সম্ভবত আপনি নিচের কোনো অংশ খুঁজছিলেন।</p>
+            </div>
+            <div class="mt-7 grid sm:grid-cols-2 gap-3">
+              <a class="rounded-2xl bg-white/10 hover:bg-white/15 p-4 border border-white/10 duration-300" href="/ebooks"><b class="block text-gold">কিতাব</b><span class="text-white/62 text-sm">ই-বুক লাইব্রেরি</span></a>
+              <a class="rounded-2xl bg-white/10 hover:bg-white/15 p-4 border border-white/10 duration-300" href="/videos"><b class="block text-gold">ভিডিও</b><span class="text-white/62 text-sm">বয়ান ও খুতবাহ</span></a>
+              <a class="rounded-2xl bg-white/10 hover:bg-white/15 p-4 border border-white/10 duration-300" href="/qa"><b class="block text-gold">প্রশ্নোত্তর</b><span class="text-white/62 text-sm">ইসলামিক জবাব</span></a>
+              <a class="rounded-2xl bg-white/10 hover:bg-white/15 p-4 border border-white/10 duration-300" href="/contact"><b class="block text-gold">যোগাযোগ</b><span class="text-white/62 text-sm">সাপোর্ট নিন</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       HELPFUL LINKS / ERROR RECOVERY
+       ========================================================= -->
+  <section class="pattern-bg py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal text-center max-w-3xl mx-auto mb-10">
+        <p class="section-eyebrow">Quick Recovery</p>
+        <h2 class="mt-3 text-4xl lg:text-5xl font-black text-ocean">এখান থেকে শুরু করতে পারেন</h2>
+        <div class="ornament mx-auto mt-4"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <a href="/ebooks" class="reveal error-card rounded-[30px] p-6">
+          <div class="w-14 h-14 rounded-2xl bg-skybrand/10 text-skybrand flex items-center justify-center text-2xl mb-5">📚</div>
+          <h3 class="text-2xl font-black text-ocean">ই-বুক আর্কাইভ</h3>
+          <p class="mt-3 text-ocean/62 leading-7">কিতাব, রিসালা ও PDF সংগ্রহ ব্রাউজ করুন।</p>
+        </a>
+        <a href="/videos" class="reveal error-card rounded-[30px] p-6">
+          <div class="w-14 h-14 rounded-2xl bg-gold/20 text-ocean flex items-center justify-center text-2xl mb-5">▶</div>
+          <h3 class="text-2xl font-black text-ocean">ভিডিও</h3>
+          <p class="mt-3 text-ocean/62 leading-7">খুতবাহ, বয়ান ও ইসলামিক ভিডিও দেখুন।</p>
+        </a>
+        <a href="/seerah" class="reveal error-card rounded-[30px] p-6">
+          <div class="w-14 h-14 rounded-2xl bg-mint/40 text-ocean flex items-center justify-center text-2xl mb-5">✦</div>
+          <h3 class="text-2xl font-black text-ocean">সীরাত</h3>
+          <p class="mt-3 text-ocean/62 leading-7">রাসূল ﷺ-এর জীবন থেকে শিক্ষা নিন।</p>
+        </a>
+        <a href="/contact" class="reveal error-card rounded-[30px] p-6">
+          <div class="w-14 h-14 rounded-2xl bg-ocean/10 text-ocean flex items-center justify-center text-2xl mb-5">✉</div>
+          <h3 class="text-2xl font-black text-ocean">রিপোর্ট করুন</h3>
+          <p class="mt-3 text-ocean/62 leading-7">ভাঙা লিংক হলে আমাদের জানাতে পারেন।</p>
+        </a>
+      </div>
+
+      <div class="reveal mt-10 grid lg:grid-cols-[1fr_360px] gap-6 items-start">
+        <div class="bg-white rounded-[34px] shadow-soft p-6 sm:p-8">
+          <div class="flex items-center justify-between gap-5 mb-6">
+            <div>
+              <p class="section-eyebrow">Suggested Paths</p>
+              <h3 class="mt-2 text-3xl font-black text-ocean">দ্রুত লিংক</h3>
+            </div>
+            <span class="hidden sm:inline-flex px-4 py-2 rounded-full bg-cream text-ocean font-bold">404 Help</span>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <a class="mini-link rounded-2xl border border-ocean/8 px-4 py-4 text-ocean/75 font-bold" href="/category/aqeedah">→ আকিদা বিষয়ক কনটেন্ট</a>
+            <a class="mini-link rounded-2xl border border-ocean/8 px-4 py-4 text-ocean/75 font-bold" href="/category/fiqh">→ ফিকহ বিষয়ক কনটেন্ট</a>
+            <a class="mini-link rounded-2xl border border-ocean/8 px-4 py-4 text-ocean/75 font-bold" href="/category/quran">→ কুরআন বিষয়ক কনটেন্ট</a>
+            <a class="mini-link rounded-2xl border border-ocean/8 px-4 py-4 text-ocean/75 font-bold" href="/category/dawah">→ দাওয়াহ বিষয়ক কনটেন্ট</a>
+            <a class="mini-link rounded-2xl border border-ocean/8 px-4 py-4 text-ocean/75 font-bold" href="/archive">→ আর্কাইভ</a>
+            <a class="mini-link rounded-2xl border border-ocean/8 px-4 py-4 text-ocean/75 font-bold" href="/sitemap">→ সাইটম্যাপ</a>
+          </div>
+        </div>
+
+        <aside class="bg-ocean rounded-[34px] shadow-premium p-6 sm:p-8 text-white relative overflow-hidden">
+          <div class="islamic-grid"></div>
+          <div class="relative">
+            <p class="section-eyebrow text-gold">Need Help?</p>
+            <h3 class="mt-3 text-3xl font-black">লিংকটি কাজ করছে না?</h3>
+            <p class="mt-4 text-white/66 leading-8">লিংকটি যদি আমাদের ওয়েবসাইটের কোনো পুরনো পেজ হয়, তাহলে রিপোর্ট করলে আমরা ঠিক করার চেষ্টা করব।</p>
+            <a href="/contact" class="mt-6 inline-flex btn-gold text-ocean px-6 py-3 rounded-full font-black">যোগাযোগ করুন</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="bg-[#021A28] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-white/10 pb-12">
+        <div class="lg:col-span-2"><img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png" class="h-14 w-auto" alt="Khutbah TV white" onerror="fallbackLogo(this)" /><p class="mt-5 max-w-md text-white/62 leading-8">বাংলা ভাষায় ইসলামিক ভিডিও, বয়ান, প্রশ্নোত্তর, কিতাব ও দাওয়াহ কনটেন্টের ডিজিটাল প্ল্যাটফর্ম।</p></div>
+        <div><h4 class="font-bold text-xl mb-5">দ্রুত লিংক</h4><ul class="space-y-3 text-white/62"><li><a href="/videos">ভিডিও</a></li><li><a href="/ebooks">কিতাব</a></li><li><a href="/qa">প্রশ্নোত্তর</a></li><li><a href="/articles">প্রবন্ধ</a></li></ul></div>
+        <div><h4 class="font-bold text-xl mb-5">যোগাযোগ</h4><ul class="space-y-3 text-white/62"><li>contact@khutbahtv.com</li><li>YouTube</li><li>Facebook</li></ul></div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row justify-between gap-4 text-white/50 text-sm"><p>© Khutbah TV. All Rights Reserved.</p><p>Premium 404 error page concept</p></div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       TOAST / FEEDBACK
+       ========================================================= -->
+  <div id="toast" class="toast bg-ocean text-white rounded-2xl shadow-premium px-5 py-4 font-bold"></div>
+
+  <!-- =========================================================
+       PAGE INTERACTIONS
+       ========================================================= -->
+  <script>
+    function showToast(message){
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'), 2300);
+    }
+
+    function goSearch(value){
+      const q = String(value || '').trim();
+      if(!q){ showToast('অনুগ্রহ করে সার্চ কীওয়ার্ড লিখুন'); return; }
+      window.location.href = '/?s=' + encodeURIComponent(q);
+    }
+
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.getElementById('todayDate').textContent = new Intl.DateTimeFormat('bn-BD',{weekday:'long',year:'numeric',month:'long',day:'numeric'}).format(new Date());
+      document.getElementById('menuBtn')?.addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'));
+      document.getElementById('globalSearch')?.addEventListener('keydown', e=>{if(e.key==='Enter') goSearch(e.target.value);});
+      document.getElementById('errorSearchForm')?.addEventListener('submit', e=>{e.preventDefault(); goSearch(document.getElementById('errorSearch').value);});
+
+      const observer = new IntersectionObserver((entries)=>entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add('show')}),{threshold:.12});
+      document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    });
+  </script>
+</body>
+</html>

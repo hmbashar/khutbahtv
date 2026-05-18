@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <!-- =========================================================
+       META / TITLE
+  ========================================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Archive — Khutbah TV</title>
+
+  <!-- =========================================================
+       FONTS / TAILWIND
+  ========================================================== -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- =========================================================
+       TAILWIND CONFIG
+  ========================================================== -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: '#043755',
+            skybrand: '#1493C5',
+            ink: '#09283A',
+            cream: '#F7F3EA',
+            gold: '#D7A83F',
+            mint: '#A9E9D5'
+          },
+          fontFamily: {
+            bangla: ['Hind Siliguri', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            premium: '0 28px 80px rgba(4,55,85,.18)',
+            soft: '0 18px 50px rgba(9,40,58,.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- =========================================================
+       CUSTOM CSS / DESIGN SYSTEM
+  ========================================================== -->
+  <style>
+    :root{--ocean:#043755;--sky:#1493C5;--gold:#D7A83F;--cream:#F7F3EA;--ink:#09283A;}
+    *{scroll-behavior:smooth}
+    body{font-family:'Hind Siliguri',sans-serif;background:#fbfaf6;color:var(--ink);}
+    .font-inter{font-family:'Inter',sans-serif}
+
+    .pattern-bg{background-image:radial-gradient(circle at 1px 1px, rgba(4,55,85,.08) 1px, transparent 0);background-size:24px 24px;}
+    .islamic-grid{position:absolute;inset:0;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D7A83F' stroke-width='1.2'%3E%3Cpath d='M60 4 80 40l36 20-36 20-20 36-20-36L4 60l36-20Z'/%3E%3Cpath d='M60 22 72 48l26 12-26 12-12 26-12-26-26-12 26-12Z'/%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3C/g%3E%3C/svg%3E");background-size:150px 150px;}
+    .hero-glow:before{content:"";position:absolute;width:560px;height:560px;border-radius:999px;background:radial-gradient(circle,rgba(20,147,197,.34),transparent 65%);right:-220px;top:-190px;filter:blur(6px)}
+    .hero-glow:after{content:"";position:absolute;width:420px;height:420px;border-radius:999px;background:radial-gradient(circle,rgba(215,168,63,.22),transparent 70%);left:-190px;bottom:-180px;filter:blur(10px)}
+    .glass{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.18);box-shadow:0 24px 70px rgba(0,0,0,.22);backdrop-filter:blur(18px)}
+    .premium-card{background:rgba(255,255,255,.88);border:1px solid rgba(4,55,85,.08);box-shadow:0 18px 50px rgba(9,40,58,.10);backdrop-filter:blur(12px)}
+    .btn-primary{background:linear-gradient(135deg,var(--sky),#0878A8);box-shadow:0 16px 34px rgba(20,147,197,.32);transition:.25s ease}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(20,147,197,.38)}
+    .btn-gold{background:linear-gradient(135deg,#E8C76A,var(--gold));box-shadow:0 16px 34px rgba(215,168,63,.28);transition:.25s ease}
+    .btn-gold:hover{transform:translateY(-2px)}
+    .section-eyebrow{letter-spacing:.18em;text-transform:uppercase;font-family:'Inter',sans-serif;font-size:12px;font-weight:800;color:var(--sky)}
+    .nav-link{position:relative}.nav-link:after{content:"";position:absolute;left:0;right:100%;height:2px;bottom:-7px;background:var(--gold);transition:.25s}.nav-link:hover:after{right:0}
+    .ornament{background-image:url("data:image/svg+xml,%3Csvg width='72' height='20' viewBox='0 0 72 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 1C43 1 45 10 52 10C59 10 61 1 71 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Cpath d='M36 1C29 1 27 10 20 10C13 10 11 1 1 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Ccircle cx='36' cy='10' r='5' stroke='%23D7A83F' stroke-width='1.5'/%3E%3C/svg%3E");width:72px;height:20px;background-repeat:no-repeat;background-position:center}
+
+    .post-card{transition:.28s ease}
+    .post-card:hover{transform:translateY(-8px);box-shadow:0 28px 80px rgba(4,55,85,.15)}
+    .post-thumb{position:relative;overflow:hidden;background:linear-gradient(135deg,#06324E,#0A5D83 48%,#021927)}
+    .post-thumb:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 10%,rgba(255,255,255,.16),transparent 28%),linear-gradient(0deg,rgba(0,0,0,.62),transparent 58%)}
+    .view-btn.active{background:var(--ocean);color:#fff}
+    .archive-pill.active{background:var(--ocean);color:#fff;border-color:var(--ocean)}
+    .sidebar-link.active,.date-link.active{background:rgba(20,147,197,.12);color:var(--sky);font-weight:800}
+    .archive-type.active{background:var(--cream);color:var(--ocean)}
+    .list-mode .post-grid{grid-template-columns:1fr !important}
+    .list-mode .post-card-inner{display:grid;grid-template-columns:280px 1fr;gap:24px}
+    .list-mode .post-thumb{height:250px !important}
+    .pagination-btn.active{background:var(--ocean);color:#fff}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease, transform .75s ease}
+    .reveal.show{opacity:1;transform:translateY(0)}
+    .toast{transform:translateY(16px);opacity:0;pointer-events:none;transition:.25s ease}
+    .toast.active{transform:translateY(0);opacity:1}
+
+    @media(max-width:768px){
+      .hero-title{font-size:40px;line-height:1.14}
+      .list-mode .post-card-inner{display:block}
+      .list-mode .post-thumb{height:250px !important}
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+  <!-- =========================================================
+       TOP NOTICE BAR
+  ========================================================== -->
+  <div class="bg-ocean text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4 overflow-hidden">
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="w-2 h-2 rounded-full bg-gold"></span>
+        <span>আর্কাইভ — খুতবাহ টিভিতে আপনাকে স্বাগতম</span>
+      </div>
+      <div class="hidden md:flex items-center gap-5 text-white/80">
+        <span>Category Archive</span><span>Date Archive</span><span>Post Archive</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       HEADER / NAVIGATION
+  ========================================================== -->
+  <header class="sticky top-0 z-50 bg-white/82 backdrop-blur-xl border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-5">
+        <a href="#" class="flex items-center gap-3" aria-label="Khutbah TV Home">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png" alt="Khutbah TV" class="h-12 w-auto" onerror="this.src='https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png'" />
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-7 font-semibold text-[15px] text-ocean">
+          <a class="nav-link" href="#">হোম</a>
+          <a class="nav-link" href="#">ভিডিও</a>
+          <a class="nav-link" href="#">কিতাব</a>
+          <a class="nav-link" href="#">ইসলাম</a>
+          <a class="nav-link" href="#">আলোর পথ</a>
+          <a class="nav-link" href="#">সীরাত</a>
+          <a class="nav-link" href="#">ব্লগ</a>
+          <a class="nav-link" href="#">Live</a>
+          <a class="nav-link" href="#">প্রশ্ন/উত্তর</a>
+          <a class="nav-link" href="#">যোগাযোগ</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-3">
+          <div class="relative">
+            <input id="headerSearch" class="w-56 rounded-full border border-ocean/15 bg-white px-5 py-3 text-sm outline-none focus:border-skybrand" placeholder="খুঁজুন..." />
+            <span class="absolute right-4 top-3.5 text-ocean/50">⌕</span>
+          </div>
+          <a href="#archive" class="btn-primary text-white px-5 py-3 rounded-full font-bold text-sm">পোস্ট দেখুন</a>
+        </div>
+
+        <button id="mobileMenuBtn" class="lg:hidden w-11 h-11 rounded-full border border-ocean/15 flex items-center justify-center text-ocean" aria-label="Open menu">☰</button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="hidden lg:hidden pb-5">
+        <div class="grid gap-2 rounded-3xl bg-cream p-4 font-semibold text-ocean">
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">হোম</a>
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">ভিডিও</a>
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">কিতাব</a>
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">ব্লগ</a>
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">যোগাযোগ</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       ARCHIVE HERO
+  ========================================================== -->
+  <main class="relative hero-glow overflow-hidden bg-ocean text-white">
+    <div class="islamic-grid"></div>
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-[1fr_.42fr] gap-10 items-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 mb-7 text-sm text-white/85">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-7 h-7 rounded-full" alt="icon" />
+            Post / Category / Date Archive
+          </div>
+          <h1 id="archiveHeroTitle" class="hero-title text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight">
+            পোস্ট <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint via-white to-gold">আর্কাইভ</span>
+          </h1>
+          <p id="archiveHeroText" class="mt-7 max-w-3xl text-lg sm:text-xl leading-9 text-white/76">
+            খুতবাহ টিভির সব প্রবন্ধ, ইসলামিক লেখা, ক্যাটাগরি এবং তারিখ অনুযায়ী প্রকাশিত কনটেন্ট সুন্দরভাবে ব্রাউজ করুন।
+          </p>
+          <div class="mt-9 flex flex-col sm:flex-row gap-4">
+            <a href="#archive" class="btn-primary text-white px-7 py-4 rounded-full font-bold text-center">আর্কাইভ ব্রাউজ করুন</a>
+            <button id="categoryModeBtn" class="bg-white text-ocean px-7 py-4 rounded-full font-bold text-center hover:bg-cream duration-300">ক্যাটাগরি ভিউ</button>
+          </div>
+        </div>
+
+        <div class="glass rounded-[38px] p-6 reveal">
+          <p class="text-white/55 text-sm">Archive Summary</p>
+          <div class="mt-6 grid grid-cols-2 gap-4">
+            <div class="rounded-3xl bg-white/10 p-5 border border-white/10">
+              <div id="summaryPosts" class="font-inter text-4xl font-black text-gold">12</div>
+              <p class="mt-1 text-white/65">পোস্ট</p>
+            </div>
+            <div class="rounded-3xl bg-white/10 p-5 border border-white/10">
+              <div class="font-inter text-4xl font-black text-gold">8</div>
+              <p class="mt-1 text-white/65">ক্যাটাগরি</p>
+            </div>
+            <div class="rounded-3xl bg-white/10 p-5 border border-white/10 col-span-2">
+              <p class="text-white/55 text-sm">Current Archive</p>
+              <h3 id="currentArchiveLabel" class="mt-1 text-2xl font-black">সব পোস্ট</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       ARCHIVE CONTENT
+  ========================================================== -->
+  <section id="archive" class="pattern-bg py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- =====================================================
+           TOOLBAR / FILTERS
+      ====================================================== -->
+      <div class="premium-card rounded-[34px] p-5 sm:p-6 mb-8 reveal">
+        <div class="grid lg:grid-cols-[1fr_auto_auto] gap-4 items-center">
+          <div class="relative">
+            <input id="searchInput" class="w-full rounded-full border border-ocean/10 bg-white px-5 py-4 outline-none focus:border-skybrand" placeholder="পোস্টের নাম, লেখক, ক্যাটাগরি অথবা তারিখ দিয়ে খুঁজুন..." />
+            <span class="absolute right-5 top-4 text-ocean/45">⌕</span>
+          </div>
+
+          <div class="flex gap-2">
+            <select id="dateFilter" class="rounded-full border border-ocean/10 bg-white px-5 py-4 outline-none focus:border-skybrand">
+              <option value="all">সব তারিখ</option>
+              <option value="may-2026">May 2026</option>
+              <option value="apr-2026">April 2026</option>
+              <option value="mar-2026">March 2026</option>
+              <option value="jan-2020">January 2020</option>
+              <option value="nov-2015">November 2015</option>
+            </select>
+
+            <select id="sortFilter" class="rounded-full border border-ocean/10 bg-white px-5 py-4 outline-none focus:border-skybrand">
+              <option value="newest">সর্বশেষ</option>
+              <option value="oldest">পুরনো</option>
+              <option value="popular">জনপ্রিয়</option>
+              <option value="title">নাম অনুযায়ী</option>
+            </select>
+          </div>
+
+          <div class="flex items-center gap-2 justify-end">
+            <button id="gridViewBtn" class="view-btn active w-12 h-12 rounded-full bg-cream text-ocean font-black">▦</button>
+            <button id="listViewBtn" class="view-btn w-12 h-12 rounded-full bg-cream text-ocean font-black">☰</button>
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-2" id="quickFilters">
+          <button class="archive-pill active px-5 py-3 rounded-full border border-ocean/10 bg-white text-ocean font-bold" data-category="all">সব</button>
+          <button class="archive-pill px-5 py-3 rounded-full border border-ocean/10 bg-white text-ocean font-bold" data-category="ইসলাম">ইসলাম</button>
+          <button class="archive-pill px-5 py-3 rounded-full border border-ocean/10 bg-white text-ocean font-bold" data-category="আকিদা">আকিদা</button>
+          <button class="archive-pill px-5 py-3 rounded-full border border-ocean/10 bg-white text-ocean font-bold" data-category="পরিবার">পরিবার</button>
+          <button class="archive-pill px-5 py-3 rounded-full border border-ocean/10 bg-white text-ocean font-bold" data-category="সীরাত">সীরাত</button>
+          <button class="archive-pill px-5 py-3 rounded-full border border-ocean/10 bg-white text-ocean font-bold" data-category="প্রশ্নোত্তর">প্রশ্নোত্তর</button>
+          <button class="archive-pill px-5 py-3 rounded-full border border-ocean/10 bg-white text-ocean font-bold" data-category="আলোর পথ">আলোর পথ</button>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-[1fr_340px] gap-8 lg:gap-10">
+
+        <!-- ===================================================
+             POSTS AREA
+        ==================================================== -->
+        <div id="archiveWrap">
+          <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7 reveal">
+            <div>
+              <p class="section-eyebrow">Archive Results</p>
+              <h2 id="resultTitle" class="mt-2 text-3xl lg:text-4xl font-black text-ocean">সব পোস্ট</h2>
+              <p id="resultCount" class="mt-2 text-ocean/60">মোট ১২টি পোস্ট দেখানো হচ্ছে</p>
+            </div>
+            <button id="resetBtn" class="rounded-full bg-cream px-5 py-3 text-ocean font-black">ফিল্টার রিসেট</button>
+          </div>
+
+          <div id="postGrid" class="post-grid grid sm:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+
+          <!-- Empty State -->
+          <div id="emptyState" class="hidden premium-card rounded-[34px] p-10 text-center">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-20 h-20 mx-auto rounded-full" alt="Khutbah TV">
+            <h3 class="mt-5 text-3xl font-black text-ocean">কোনো পোস্ট পাওয়া যায়নি</h3>
+            <p class="mt-3 text-ocean/60">সার্চ বা ফিল্টার পরিবর্তন করে আবার চেষ্টা করুন।</p>
+          </div>
+
+          <!-- Pagination -->
+          <div id="pagination" class="mt-10 flex items-center justify-center gap-2"></div>
+        </div>
+
+        <!-- ===================================================
+             SIDEBAR
+        ==================================================== -->
+        <aside class="space-y-6 lg:sticky lg:top-28 h-max">
+
+          <!-- Archive Type Switcher -->
+          <div class="premium-card rounded-[30px] p-5 reveal">
+            <h3 class="text-2xl font-black text-ocean">Archive Type</h3>
+            <div class="mt-5 grid gap-2">
+              <button class="archive-type active text-left rounded-2xl bg-cream px-4 py-3 font-bold text-ocean" data-type="post">Post Archive</button>
+              <button class="archive-type text-left rounded-2xl hover:bg-cream px-4 py-3 font-bold text-ocean/70" data-type="category">Category Archive</button>
+              <button class="archive-type text-left rounded-2xl hover:bg-cream px-4 py-3 font-bold text-ocean/70" data-type="date">Date Archive</button>
+            </div>
+          </div>
+
+          <!-- Categories -->
+          <div class="premium-card rounded-[30px] p-5 reveal">
+            <h3 class="text-2xl font-black text-ocean">Categories</h3>
+            <div class="ornament mt-3"></div>
+            <div id="categoryList" class="mt-5 space-y-2"></div>
+          </div>
+
+          <!-- Date Archives -->
+          <div class="premium-card rounded-[30px] p-5 reveal">
+            <h3 class="text-2xl font-black text-ocean">Date Archives</h3>
+            <div id="dateList" class="mt-5 space-y-2"></div>
+          </div>
+
+          <!-- Popular Tags -->
+          <div class="premium-card rounded-[30px] p-5 reveal">
+            <h3 class="text-2xl font-black text-ocean">Popular Tags</h3>
+            <div class="mt-5 flex flex-wrap gap-2">
+              <button class="tag-btn rounded-full bg-cream px-4 py-2 text-ocean/70 font-bold" data-tag="নামাজ">নামাজ</button>
+              <button class="tag-btn rounded-full bg-cream px-4 py-2 text-ocean/70 font-bold" data-tag="ঈমান">ঈমান</button>
+              <button class="tag-btn rounded-full bg-cream px-4 py-2 text-ocean/70 font-bold" data-tag="দোয়া">দোয়া</button>
+              <button class="tag-btn rounded-full bg-cream px-4 py-2 text-ocean/70 font-bold" data-tag="পরিবার">পরিবার</button>
+              <button class="tag-btn rounded-full bg-cream px-4 py-2 text-ocean/70 font-bold" data-tag="সীরাত">সীরাত</button>
+              <button class="tag-btn rounded-full bg-cream px-4 py-2 text-ocean/70 font-bold" data-tag="আকিদা">আকিদা</button>
+            </div>
+          </div>
+
+          <!-- Newsletter / CTA -->
+          <div class="relative overflow-hidden rounded-[30px] bg-ocean p-6 text-white shadow-premium reveal">
+            <div class="islamic-grid"></div>
+            <div class="relative">
+              <p class="section-eyebrow text-gold">Stay Updated</p>
+              <h3 class="mt-2 text-2xl font-black">নতুন পোস্ট পেতে চান?</h3>
+              <p class="mt-3 text-white/70 leading-7">খুতবাহ টিভির নতুন লেখা, ভিডিও ও প্রশ্নোত্তর আপডেট পেতে সাবস্ক্রাইব করুন।</p>
+              <form id="subscribeForm" class="mt-5 space-y-3">
+                <input class="w-full rounded-2xl border border-white/10 bg-white/10 px-4 py-3 outline-none placeholder:text-white/50 focus:border-gold" placeholder="আপনার ইমেইল">
+                <button class="btn-gold w-full rounded-full px-5 py-3 text-ocean font-black">Subscribe</button>
+              </form>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SUPPORT CTA
+  ========================================================== -->
+  <section class="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28 pattern-bg">
+    <div class="relative overflow-hidden max-w-7xl mx-auto rounded-[42px] bg-ocean p-8 sm:p-12 lg:p-16 text-white shadow-premium reveal">
+      <div class="islamic-grid"></div>
+      <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-center">
+        <div>
+          <p class="section-eyebrow text-gold">Support Khutbah TV</p>
+          <h2 class="mt-3 text-4xl lg:text-5xl font-black leading-tight">ইসলামিক কনটেন্ট ছড়িয়ে দিতে সহযোগিতা করুন</h2>
+          <p class="mt-5 max-w-2xl text-white/70 text-lg leading-8">প্রবন্ধ, ভিডিও, কিতাব ও প্রশ্নোত্তর কনটেন্টকে আরও সুন্দরভাবে মানুষের কাছে পৌঁছাতে সহায়তা করুন।</p>
+        </div>
+        <a href="#" class="btn-gold text-ocean px-9 py-5 rounded-full font-black text-center">দান করুন</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer class="bg-[#021A28] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-white/10 pb-12">
+        <div class="lg:col-span-2">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png" class="h-14 w-auto" alt="Khutbah TV white" onerror="this.src='https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png'" />
+          <p class="mt-5 max-w-md text-white/62 leading-8">বাংলা ভাষায় ইসলামিক ভিডিও, বয়ান, প্রশ্নোত্তর, কিতাব ও দাওয়াহ কনটেন্টের ডিজিটাল প্ল্যাটফর্ম।</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-xl mb-5">দ্রুত লিংক</h4>
+          <ul class="space-y-3 text-white/62"><li>ভিডিও</li><li>কিতাব</li><li>প্রশ্নোত্তর</li><li>প্রবন্ধ</li></ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-xl mb-5">যোগাযোগ</h4>
+          <ul class="space-y-3 text-white/62"><li>contact@khutbahtv.com</li><li>YouTube</li><li>Facebook</li></ul>
+        </div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row justify-between gap-4 text-white/50 text-sm">
+        <p>© Khutbah TV. All Rights Reserved.</p>
+        <p>Premium archive template</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       TOAST
+  ========================================================== -->
+  <div id="toast" class="toast fixed bottom-6 left-1/2 -translate-x-1/2 z-[120] rounded-full bg-ocean text-white px-6 py-4 shadow-premium font-bold">
+    Action completed successfully.
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================== -->
+  <script>
+    const posts = [
+      {id:1201,title:'নাস্তিকতাবাদের বাস্তবতা ও মুসলিমের অবস্থান',category:'আকিদা',author:'মুফতি যুবায়ের আহমাদ',date:'May 19, 2026',month:'may-2026',views:2401,excerpt:'ঈমান, যুক্তি ও আধুনিক সংশয় নিয়ে গুরুত্বপূর্ণ আলোচনা।',tags:['ঈমান','আকিদা'],color:'linear-gradient(135deg,#06324E,#0A5D83,#021927)'},
+      {id:1202,title:'সন্তান প্রতিপালনে ইসলামের নির্দেশনা',category:'পরিবার',author:'মাওলানা আব্দুল্লাহ',date:'May 15, 2026',month:'may-2026',views:1890,excerpt:'পরিবার, চরিত্র, শিক্ষা ও আদর্শ গঠনের বিষয়গুলো।',tags:['পরিবার','সন্তান'],color:'linear-gradient(135deg,#3E2112,#A4611B,#041521)'},
+      {id:1203,title:'ইসলামের ইতিহাস থেকে শিক্ষা',category:'সীরাত',author:'ড. সালেহ আহমদ',date:'May 10, 2026',month:'may-2026',views:1440,excerpt:'ইতিহাসের গুরুত্বপূর্ণ ঘটনা ও শিক্ষণীয় দিক।',tags:['সীরাত','ইতিহাস'],color:'linear-gradient(135deg,#0B3B2F,#13836B,#041521)'},
+      {id:1204,title:'নামাজে মনোযোগ বৃদ্ধির উপায়',category:'ইবাদত',author:'মাওলানা নাসির উদ্দিন',date:'April 28, 2026',month:'apr-2026',views:2100,excerpt:'নামাজে খুশু-খুজু ও মনোযোগ বৃদ্ধির করণীয়।',tags:['নামাজ','ইবাদত'],color:'linear-gradient(135deg,#08283C,#14826C,#041521)'},
+      {id:1205,title:'দোয়া কবুলের শর্ত ও আদব',category:'ইসলাম',author:'আবু তাহের মিসবাহ',date:'April 20, 2026',month:'apr-2026',views:987,excerpt:'দোয়া, ইখলাস ও আল্লাহর প্রতি নির্ভরতার আলোচনা।',tags:['দোয়া','ইসলাম'],color:'linear-gradient(135deg,#31133E,#71358B,#041521)'},
+      {id:1206,title:'যুব সমাজ ও সময়ের ফিতনা',category:'আলোর পথ',author:'মুফতি যুবায়ের আহমাদ',date:'April 12, 2026',month:'apr-2026',views:2600,excerpt:'বর্তমান সময়ের চ্যালেঞ্জ নিয়ে গুরুত্বপূর্ণ দিকনির্দেশনা।',tags:['যুবক','ফিতনা'],color:'linear-gradient(135deg,#1F2937,#043755,#1493C5)'},
+      {id:1207,title:'আকিদা বিষয়ে সাধারণ প্রশ্ন',category:'প্রশ্নোত্তর',author:'খুতবাহ টিভি',date:'March 30, 2026',month:'mar-2026',views:1602,excerpt:'ঈমান ও আকিদা সম্পর্কিত সংক্ষিপ্ত প্রশ্নোত্তর।',tags:['প্রশ্নোত্তর','আকিদা'],color:'linear-gradient(135deg,#111827,#043755,#D7A83F)'},
+      {id:1208,title:'সুন্নাহর আলোকে জীবন গঠন',category:'ইসলাম',author:'মাওলানা আব্দুল্লাহ',date:'March 18, 2026',month:'mar-2026',views:1330,excerpt:'নববী আদর্শে ব্যক্তিগত ও পারিবারিক জীবন।',tags:['সুন্নাহ','ইসলাম'],color:'linear-gradient(135deg,#0E7490,#043755,#E7C665)'},
+      {id:1209,title:'রোজার শিক্ষা ও উদ্দেশ্য',category:'ইবাদত',author:'মাওলানা নাসির উদ্দিন',date:'January 12, 2020',month:'jan-2020',views:1722,excerpt:'রোজার মাধ্যমে তাকওয়া, ধৈর্য ও আত্মশুদ্ধির আলোচনা।',tags:['রোজা','ইবাদত'],color:'linear-gradient(135deg,#064E3B,#10B981,#E7C665)'},
+      {id:1210,title:'মুসলিম পরিবারের দায়িত্ব',category:'পরিবার',author:'আবু তাহের মিসবাহ',date:'January 03, 2020',month:'jan-2020',views:1880,excerpt:'পরিবারে দায়িত্ব, আদব ও ইসলামী জীবনব্যবস্থা।',tags:['পরিবার','আদব'],color:'linear-gradient(135deg,#14532D,#2BAE66,#E7C665)'},
+      {id:1211,title:'কুরআন বোঝার সহজ পদ্ধতি',category:'কুরআন',author:'ড. সালেহ আহমদ',date:'November 25, 2015',month:'nov-2015',views:2310,excerpt:'কুরআন তিলাওয়াত, অনুধাবন ও আমলের সংক্ষিপ্ত গাইড।',tags:['কুরআন','তাফসির'],color:'linear-gradient(135deg,#312E81,#1493C5,#D7A83F)'},
+      {id:1212,title:'সীরাতে রাসূল ﷺ থেকে শিক্ষা',category:'সীরাত',author:'আল্লামা সফিউর রহমান',date:'November 02, 2015',month:'nov-2015',views:2651,excerpt:'রাসূল ﷺ-এর জীবন থেকে ব্যক্তি ও সমাজ গঠনের শিক্ষা।',tags:['সীরাত','সুন্নাহ'],color:'linear-gradient(135deg,#1E1B4B,#4338CA,#D7A83F)'}
+    ];
+
+    const perPage = 6;
+    let currentPage = 1;
+    let activeCategory = 'all';
+    let activeType = 'post';
+    let activeTag = '';
+    let currentItems = [...posts];
+
+    const archiveWrap = document.getElementById('archiveWrap');
+    const postGrid = document.getElementById('postGrid');
+    const resultCount = document.getElementById('resultCount');
+    const resultTitle = document.getElementById('resultTitle');
+    const pagination = document.getElementById('pagination');
+    const emptyState = document.getElementById('emptyState');
+    const searchInput = document.getElementById('searchInput');
+    const headerSearch = document.getElementById('headerSearch');
+    const dateFilter = document.getElementById('dateFilter');
+    const sortFilter = document.getElementById('sortFilter');
+    const archiveHeroTitle = document.getElementById('archiveHeroTitle');
+    const archiveHeroText = document.getElementById('archiveHeroText');
+    const currentArchiveLabel = document.getElementById('currentArchiveLabel');
+    const summaryPosts = document.getElementById('summaryPosts');
+
+    const normalize = value => String(value || '').toLowerCase();
+
+    function uniqueCount(key) {
+      const map = {};
+      posts.forEach(item => map[item[key]] = (map[item[key]] || 0) + 1);
+      return map;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('active');
+      setTimeout(() => toast.classList.remove('active'), 2600);
+    }
+
+    function renderCategoryList() {
+      const counts = uniqueCount('category');
+      const list = document.getElementById('categoryList');
+
+      list.innerHTML = `
+        <button class="sidebar-link active w-full flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-cream text-ocean/70" data-category="all">
+          <span>সব ক্যাটাগরি</span><b>${posts.length}</b>
+        </button>
+      ` + Object.entries(counts).map(([cat, count]) => `
+        <button class="sidebar-link w-full flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-cream text-ocean/70" data-category="${cat}">
+          <span>${cat}</span><b>${count}</b>
+        </button>
+      `).join('');
+
+      list.querySelectorAll('.sidebar-link').forEach(button => {
+        button.addEventListener('click', () => {
+          activeCategory = button.dataset.category;
+          activeTag = '';
+          activeType = 'category';
+          setArchiveTypeUI('category');
+          syncCategoryUI();
+          currentPage = 1;
+          applyFilters();
+        });
+      });
+    }
+
+    function renderDateList() {
+      const monthLabel = {
+        'may-2026':'May 2026',
+        'apr-2026':'April 2026',
+        'mar-2026':'March 2026',
+        'jan-2020':'January 2020',
+        'nov-2015':'November 2015'
+      };
+
+      const counts = uniqueCount('month');
+      const list = document.getElementById('dateList');
+
+      list.innerHTML = `
+        <button class="date-link active w-full flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-cream text-ocean/70" data-month="all">
+          <span>সব তারিখ</span><b>${posts.length}</b>
+        </button>
+      ` + Object.entries(counts).map(([month, count]) => `
+        <button class="date-link w-full flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-cream text-ocean/70" data-month="${month}">
+          <span>${monthLabel[month] || month}</span><b>${count}</b>
+        </button>
+      `).join('');
+
+      list.querySelectorAll('.date-link').forEach(button => {
+        button.addEventListener('click', () => {
+          dateFilter.value = button.dataset.month;
+          activeType = 'date';
+          setArchiveTypeUI('date');
+          syncDateUI();
+          currentPage = 1;
+          applyFilters();
+        });
+      });
+    }
+
+    function postCard(item) {
+      return `
+        <article class="post-card premium-card rounded-[30px] overflow-hidden">
+          <div class="post-card-inner">
+            <div class="post-thumb h-60 flex items-end p-5" style="background:${item.color}">
+              <div class="relative z-10">
+                <span class="inline-flex bg-gold text-ocean px-3 py-1 rounded-full font-bold text-sm">${item.category}</span>
+                <h3 class="mt-4 text-white text-2xl font-black leading-tight">${item.title}</h3>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div class="flex flex-wrap items-center gap-2 text-sm">
+                <span class="px-3 py-1 rounded-full bg-skybrand/10 text-skybrand font-bold">${item.date}</span>
+                <span class="px-3 py-1 rounded-full bg-gold/15 text-ocean font-bold">${item.views} views</span>
+              </div>
+
+              <h3 class="mt-4 text-2xl font-black text-ocean leading-tight">${item.title}</h3>
+              <p class="mt-3 text-ocean/62 leading-7">${item.excerpt}</p>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                ${item.tags.map(tag => `<span class="rounded-full bg-cream px-3 py-1 text-sm font-bold text-ocean/65">#${tag}</span>`).join('')}
+              </div>
+
+              <div class="mt-5 flex items-center justify-between gap-4">
+                <p class="text-sm text-ocean/55">By <b class="text-ocean">${item.author}</b></p>
+                <a href="#" class="font-black text-skybrand">পড়ুন →</a>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function applyFilters() {
+      const query = normalize(searchInput.value);
+      const selectedMonth = dateFilter.value;
+      const sort = sortFilter.value;
+
+      currentItems = posts.filter(item => {
+        const matchesSearch = !query || [item.title, item.category, item.author, item.date, item.excerpt, ...item.tags].some(field => normalize(field).includes(query));
+        const matchesCategory = activeCategory === 'all' || item.category === activeCategory;
+        const matchesDate = selectedMonth === 'all' || item.month === selectedMonth;
+        const matchesTag = !activeTag || item.tags.includes(activeTag);
+
+        return matchesSearch && matchesCategory && matchesDate && matchesTag;
+      });
+
+      currentItems.sort((a, b) => {
+        if (sort === 'oldest') return a.id - b.id;
+        if (sort === 'popular') return b.views - a.views;
+        if (sort === 'title') return a.title.localeCompare(b.title, 'bn');
+        return b.id - a.id;
+      });
+
+      updateArchiveLabels();
+      renderPosts();
+    }
+
+    function updateArchiveLabels() {
+      const monthText = dateFilter.options[dateFilter.selectedIndex].text;
+      let label = 'সব পোস্ট';
+
+      if (activeType === 'category' && activeCategory !== 'all') label = `ক্যাটাগরি: ${activeCategory}`;
+      if (activeType === 'date' && dateFilter.value !== 'all') label = `তারিখ: ${monthText}`;
+      if (activeTag) label = `ট্যাগ: ${activeTag}`;
+
+      resultTitle.textContent = label;
+      currentArchiveLabel.textContent = label;
+      summaryPosts.textContent = currentItems.length;
+
+      if (activeType === 'category') {
+        archiveHeroTitle.innerHTML = `ক্যাটাগরি <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint via-white to-gold">আর্কাইভ</span>`;
+        archiveHeroText.textContent = 'নির্দিষ্ট ক্যাটাগরির সব ইসলামিক প্রবন্ধ, লেখা ও পোস্ট সুন্দরভাবে ব্রাউজ করুন।';
+      } else if (activeType === 'date') {
+        archiveHeroTitle.innerHTML = `তারিখভিত্তিক <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint via-white to-gold">আর্কাইভ</span>`;
+        archiveHeroText.textContent = 'মাস বা তারিখ অনুযায়ী প্রকাশিত সব পোস্ট ও ইসলামিক কনটেন্ট খুঁজে নিন।';
+      } else {
+        archiveHeroTitle.innerHTML = `পোস্ট <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint via-white to-gold">আর্কাইভ</span>`;
+        archiveHeroText.textContent = 'খুতবাহ টিভির সব প্রবন্ধ, ইসলামিক লেখা, ক্যাটাগরি এবং তারিখ অনুযায়ী প্রকাশিত কনটেন্ট সুন্দরভাবে ব্রাউজ করুন।';
+      }
+    }
+
+    function renderPosts() {
+      const total = currentItems.length;
+      const totalPages = Math.max(1, Math.ceil(total / perPage));
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      const start = (currentPage - 1) * perPage;
+      const pageItems = currentItems.slice(start, start + perPage);
+
+      resultCount.textContent = `মোট ${total}টি পোস্ট দেখানো হচ্ছে`;
+      postGrid.innerHTML = pageItems.map(postCard).join('');
+      emptyState.classList.toggle('hidden', total !== 0);
+      postGrid.classList.toggle('hidden', total === 0);
+
+      renderPagination(totalPages);
+    }
+
+    function renderPagination(totalPages) {
+      pagination.innerHTML = '';
+      if (totalPages <= 1) return;
+
+      const prev = document.createElement('button');
+      prev.className = 'pagination-btn rounded-full bg-cream px-4 py-3 text-ocean font-bold disabled:opacity-40';
+      prev.textContent = 'Prev';
+      prev.disabled = currentPage === 1;
+      prev.addEventListener('click', () => {
+        currentPage--;
+        renderPosts();
+        document.getElementById('archive').scrollIntoView({behavior:'smooth'});
+      });
+      pagination.appendChild(prev);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.className = `pagination-btn rounded-full px-4 py-3 font-bold ${i === currentPage ? 'active' : 'bg-cream text-ocean'}`;
+        btn.textContent = i;
+        btn.addEventListener('click', () => {
+          currentPage = i;
+          renderPosts();
+          document.getElementById('archive').scrollIntoView({behavior:'smooth'});
+        });
+        pagination.appendChild(btn);
+      }
+
+      const next = document.createElement('button');
+      next.className = 'pagination-btn rounded-full bg-cream px-4 py-3 text-ocean font-bold disabled:opacity-40';
+      next.textContent = 'Next';
+      next.disabled = currentPage === totalPages;
+      next.addEventListener('click', () => {
+        currentPage++;
+        renderPosts();
+        document.getElementById('archive').scrollIntoView({behavior:'smooth'});
+      });
+      pagination.appendChild(next);
+    }
+
+    function syncCategoryUI() {
+      document.querySelectorAll('.archive-pill').forEach(btn => btn.classList.toggle('active', btn.dataset.category === activeCategory));
+      document.querySelectorAll('.sidebar-link').forEach(btn => btn.classList.toggle('active', btn.dataset.category === activeCategory));
+      if (!document.querySelector('.archive-pill.active')) document.querySelector('.archive-pill[data-category="all"]').classList.add('active');
+    }
+
+    function syncDateUI() {
+      document.querySelectorAll('.date-link').forEach(btn => btn.classList.toggle('active', btn.dataset.month === dateFilter.value));
+    }
+
+    function setArchiveTypeUI(type) {
+      activeType = type;
+      document.querySelectorAll('.archive-type').forEach(btn => {
+        const isActive = btn.dataset.type === type;
+        btn.classList.toggle('active', isActive);
+        btn.classList.toggle('bg-cream', isActive);
+        btn.classList.toggle('text-ocean', isActive);
+        btn.classList.toggle('text-ocean/70', !isActive);
+      });
+    }
+
+    searchInput.addEventListener('input', () => {
+      currentPage = 1;
+      applyFilters();
+    });
+
+    headerSearch.addEventListener('input', () => {
+      searchInput.value = headerSearch.value;
+      currentPage = 1;
+      applyFilters();
+    });
+
+    dateFilter.addEventListener('change', () => {
+      activeType = dateFilter.value === 'all' ? activeType : 'date';
+      setArchiveTypeUI(activeType);
+      syncDateUI();
+      currentPage = 1;
+      applyFilters();
+    });
+
+    sortFilter.addEventListener('change', applyFilters);
+
+    document.querySelectorAll('.archive-pill').forEach(button => {
+      button.addEventListener('click', () => {
+        activeCategory = button.dataset.category;
+        activeTag = '';
+        activeType = activeCategory === 'all' ? 'post' : 'category';
+        setArchiveTypeUI(activeType);
+        syncCategoryUI();
+        currentPage = 1;
+        applyFilters();
+      });
+    });
+
+    document.querySelectorAll('.archive-type').forEach(button => {
+      button.addEventListener('click', () => {
+        const type = button.dataset.type;
+        setArchiveTypeUI(type);
+
+        if (type === 'post') {
+          activeCategory = 'all';
+          activeTag = '';
+          dateFilter.value = 'all';
+          syncCategoryUI();
+          syncDateUI();
+        }
+
+        currentPage = 1;
+        applyFilters();
+      });
+    });
+
+    document.querySelectorAll('.tag-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        activeTag = button.dataset.tag;
+        activeCategory = 'all';
+        activeType = 'post';
+        setArchiveTypeUI('post');
+        syncCategoryUI();
+        currentPage = 1;
+        applyFilters();
+      });
+    });
+
+    document.getElementById('categoryModeBtn').addEventListener('click', () => {
+      activeType = 'category';
+      setArchiveTypeUI('category');
+      document.getElementById('archive').scrollIntoView({behavior:'smooth'});
+      applyFilters();
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      searchInput.value = '';
+      headerSearch.value = '';
+      dateFilter.value = 'all';
+      sortFilter.value = 'newest';
+      activeCategory = 'all';
+      activeTag = '';
+      activeType = 'post';
+      currentPage = 1;
+      setArchiveTypeUI('post');
+      syncCategoryUI();
+      syncDateUI();
+      applyFilters();
+      showToast('ফিল্টার রিসেট করা হয়েছে।');
+    });
+
+    document.getElementById('gridViewBtn').addEventListener('click', () => {
+      archiveWrap.classList.remove('list-mode');
+      document.getElementById('gridViewBtn').classList.add('active');
+      document.getElementById('listViewBtn').classList.remove('active');
+    });
+
+    document.getElementById('listViewBtn').addEventListener('click', () => {
+      archiveWrap.classList.add('list-mode');
+      document.getElementById('listViewBtn').classList.add('active');
+      document.getElementById('gridViewBtn').classList.remove('active');
+    });
+
+    document.getElementById('subscribeForm').addEventListener('submit', event => {
+      event.preventDefault();
+      showToast('সাবস্ক্রিপশন ডেমো সফল হয়েছে।');
+      event.target.reset();
+    });
+
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    mobileMenuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    const revealItems = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.12});
+    revealItems.forEach(item => revealObserver.observe(item));
+
+    renderCategoryList();
+    renderDateList();
+    applyFilters();
+  </script>
+</body>
+</html>

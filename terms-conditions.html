@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>শর্তাবলী — Khutbah TV</title>
+
+  <!-- =========================================================
+       ASSET / FONT / TAILWIND SETUP
+       ========================================================= -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: '#043755',
+            skybrand: '#1493C5',
+            ink: '#09283A',
+            cream: '#F7F3EA',
+            gold: '#D7A83F',
+            mint: '#A9E9D5',
+            night: '#021A28'
+          },
+          fontFamily: {
+            bangla: ['Hind Siliguri', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            premium: '0 28px 80px rgba(4,55,85,.18)',
+            soft: '0 18px 50px rgba(9,40,58,.12)',
+            card: '0 14px 38px rgba(4,55,85,.10)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- =========================================================
+       GLOBAL DESIGN SYSTEM CSS
+       Khutbah TV premium direction + legal page utilities
+       ========================================================= -->
+  <style>
+    :root{--ocean:#043755;--sky:#1493C5;--gold:#D7A83F;--cream:#F7F3EA;--ink:#09283A;--night:#021A28;}
+    *{scroll-behavior:smooth}
+    body{font-family:'Hind Siliguri',sans-serif;background:#fbfaf6;color:var(--ink);}
+    .font-inter{font-family:'Inter',sans-serif}
+    .pattern-bg{background-image:radial-gradient(circle at 1px 1px, rgba(4,55,85,.075) 1px, transparent 0);background-size:24px 24px;}
+    .islamic-grid{position:absolute;inset:0;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D7A83F' stroke-width='1.2'%3E%3Cpath d='M60 4 80 40l36 20-36 20-20 36-20-36L4 60l36-20Z'/%3E%3Cpath d='M60 22 72 48l26 12-26 12-12 26-12-26-26-12 26-12Z'/%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3C/g%3E%3C/svg%3E");background-size:150px 150px;}
+    .hero-glow:before{content:"";position:absolute;width:560px;height:560px;border-radius:999px;background:radial-gradient(circle,rgba(20,147,197,.36),transparent 65%);right:-220px;top:-190px;filter:blur(6px)}
+    .hero-glow:after{content:"";position:absolute;width:420px;height:420px;border-radius:999px;background:radial-gradient(circle,rgba(215,168,63,.22),transparent 70%);left:-190px;bottom:-180px;filter:blur(10px)}
+    .glass{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.18);box-shadow:0 24px 70px rgba(0,0,0,.22);backdrop-filter:blur(18px)}
+    .light-glass{background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.75);backdrop-filter:blur(16px)}
+    .btn-primary{background:linear-gradient(135deg,var(--sky),#0878A8);box-shadow:0 16px 34px rgba(20,147,197,.32);transition:.3s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(20,147,197,.38)}
+    .btn-gold{background:linear-gradient(135deg,#E8C76A,var(--gold));box-shadow:0 16px 34px rgba(215,168,63,.28);transition:.3s}
+    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(215,168,63,.34)}
+    .section-eyebrow{letter-spacing:.18em;text-transform:uppercase;font-family:'Inter',sans-serif;font-size:12px;font-weight:900;color:var(--sky)}
+    .nav-link{position:relative}.nav-link:after{content:"";position:absolute;left:0;right:100%;height:2px;bottom:-7px;background:var(--gold);transition:.25s}.nav-link:hover:after,.nav-link.active:after{right:0}
+    .premium-input{background:white;border:1px solid rgba(4,55,85,.14);outline:none;transition:.2s}.premium-input:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(20,147,197,.1)}
+    .ornament{background-image:url("data:image/svg+xml,%3Csvg width='72' height='20' viewBox='0 0 72 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 1C43 1 45 10 52 10C59 10 61 1 71 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Cpath d='M36 1C29 1 27 10 20 10C13 10 11 1 1 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Ccircle cx='36' cy='10' r='5' stroke='%23D7A83F' stroke-width='1.5'/%3E%3C/svg%3E");width:72px;height:20px;background-repeat:no-repeat;background-position:center;}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}.reveal.show{opacity:1;transform:translateY(0)}
+    .floating{animation:float 7s ease-in-out infinite}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    .ticker{animation:ticker 25s linear infinite}@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .legal-card{background:rgba(255,255,255,.92);border:1px solid rgba(4,55,85,.08);box-shadow:0 14px 38px rgba(4,55,85,.08);transition:.3s ease}
+    .legal-card:hover{transform:translateY(-4px);box-shadow:0 24px 62px rgba(4,55,85,.12)}
+    .toc-link{border:1px solid rgba(4,55,85,.08);transition:.25s}.toc-link:hover,.toc-link.active{background:rgba(20,147,197,.12);color:var(--sky);border-color:rgba(20,147,197,.24);font-weight:800}
+    .legal-content h2{scroll-margin-top:110px}.legal-content p{line-height:1.95}.legal-content li{line-height:1.85}
+    .notice-icon{background:linear-gradient(145deg,rgba(20,147,197,.14),rgba(215,168,63,.18));box-shadow:inset 0 0 0 1px rgba(255,255,255,.55)}
+    .toast{position:fixed;right:18px;bottom:18px;z-index:80;transform:translateY(24px);opacity:0;pointer-events:none;transition:.35s}.toast.show{transform:translateY(0);opacity:1}
+    @media(max-width:768px){.hero-title{font-size:42px;line-height:1.12}.glass{backdrop-filter:blur(10px)}}
+  </style>
+</head>
+<body class="overflow-x-hidden">
+  <!-- =========================================================
+       GLOBAL JS VARIABLES / FALLBACKS
+       ========================================================= -->
+  <script>
+    const ICON_URL = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png';
+    const WHITE_LOGO = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png';
+    const COLOR_LOGO = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png';
+    function fallbackLogo(img){ img.onerror=null; img.src = ICON_URL; img.classList.add('rounded-full'); }
+  </script>
+
+  <!-- =========================================================
+       FLOATING SOCIAL / UTILITY BUTTONS
+       ========================================================= -->
+  <div class="fixed left-3 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-2">
+    <a class="w-9 h-9 rounded-full bg-ocean text-white flex items-center justify-center shadow-card" href="#top">↑</a>
+    <button class="w-9 h-9 rounded-full bg-skybrand text-white flex items-center justify-center shadow-card" onclick="copyPageLink()">⛓</button>
+    <button class="w-9 h-9 rounded-full bg-gold text-ocean flex items-center justify-center shadow-card" onclick="window.print()">⎙</button>
+  </div>
+
+  <!-- =========================================================
+       TOP NOTICE BAR
+       ========================================================= -->
+  <div id="top" class="bg-ocean text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4 overflow-hidden">
+      <div class="flex items-center gap-2 shrink-0"><span class="w-2 h-2 rounded-full bg-gold"></span><span>Khutbah TV ব্যবহার করার আগে অনুগ্রহ করে শর্তাবলী পড়ে নিন</span></div>
+      <div class="hidden md:flex items-center gap-5 text-white/80"><span>Terms</span><span>Privacy</span><span>Usage</span><span class="text-gold">●</span><span id="todayDate">আজ</span></div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       HEADER / NAVIGATION
+       ========================================================= -->
+  <header class="sticky top-0 z-50 bg-white/84 backdrop-blur-xl border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-5">
+        <a href="#" class="flex items-center gap-3">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png" alt="Khutbah TV" class="h-12 w-auto" onerror="fallbackLogo(this)" />
+        </a>
+        <nav class="hidden lg:flex items-center gap-7 font-semibold text-[15px] text-ocean">
+          <a class="nav-link" href="#">হোম</a>
+          <a class="nav-link" href="#">ভিডিও</a>
+          <a class="nav-link" href="#">কিতাব</a>
+          <a class="nav-link" href="#">ইসলাম</a>
+          <a class="nav-link" href="#">আহলে সুন্নাহ</a>
+          <a class="nav-link active" href="#terms">শর্তাবলী</a>
+          <a class="nav-link" href="#contact">যোগাযোগ</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-3">
+          <div class="relative">
+            <input id="globalSearch" class="w-56 rounded-full border border-ocean/15 bg-white px-5 py-3 text-sm outline-none focus:border-skybrand" placeholder="শর্তাবলীতে খুঁজুন..." />
+            <span class="absolute right-4 top-3.5 text-ocean/50">⌕</span>
+          </div>
+          <a href="#contact" class="btn-primary duration-300 text-white px-5 py-3 rounded-full font-bold text-sm">যোগাযোগ</a>
+        </div>
+        <button id="menuBtn" class="lg:hidden w-11 h-11 rounded-full border border-ocean/15 flex items-center justify-center text-ocean">☰</button>
+      </div>
+      <div id="mobileMenu" class="hidden lg:hidden pb-5">
+        <div class="grid gap-2 font-semibold text-ocean bg-cream rounded-3xl p-4">
+          <a href="#">হোম</a><a href="#">ভিডিও</a><a href="#">কিতাব</a><a href="#terms">শর্তাবলী</a><a href="#contact">যোগাযোগ</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       BREAKING / LEGAL NOTICE TICKER
+       ========================================================= -->
+  <div class="bg-skybrand text-white overflow-hidden py-3 font-semibold">
+    <div class="ticker flex gap-10 whitespace-nowrap w-max">
+      <span>ওয়েবসাইট ব্যবহারের শর্তাবলী</span><span>•</span><span>কনটেন্ট ব্যবহারের নিয়ম</span><span>•</span><span>ডাউনলোড ও শেয়ারিং নীতিমালা</span><span>•</span><span>গোপনীয়তা ও দায়বদ্ধতা</span><span>•</span>
+      <span>ওয়েবসাইট ব্যবহারের শর্তাবলী</span><span>•</span><span>কনটেন্ট ব্যবহারের নিয়ম</span><span>•</span><span>ডাউনলোড ও শেয়ারিং নীতিমালা</span><span>•</span><span>গোপনীয়তা ও দায়বদ্ধতা</span><span>•</span>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       PAGE HERO / TERMS INTRODUCTION
+       ========================================================= -->
+  <main class="relative hero-glow overflow-hidden bg-ocean text-white">
+    <div class="islamic-grid"></div>
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 mb-7 text-sm text-white/85">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-7 h-7 rounded-full" alt="icon" onerror="this.style.display='none'" />
+            ওয়েবসাইট ব্যবহারের নীতিমালা ও দায়বদ্ধতার বিবরণ
+          </div>
+          <h1 class="hero-title text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight">
+            Terms & <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint via-white to-gold">Conditions</span>
+          </h1>
+          <p class="mt-7 max-w-2xl text-lg sm:text-xl leading-9 text-white/76">
+            Khutbah TV ওয়েবসাইট, ভিডিও, ই-বুক, ডাউনলোডযোগ্য কনটেন্ট ও সেবা ব্যবহারের সাধারণ শর্তাবলী এখানে সহজ ভাষায় সাজানো হয়েছে।
+          </p>
+          <div class="mt-9 flex flex-col sm:flex-row gap-4">
+            <a href="#terms" class="btn-primary text-white px-7 py-4 rounded-full font-bold text-center">শর্তাবলী পড়ুন</a>
+            <button onclick="window.print()" class="bg-white text-ocean px-7 py-4 rounded-full font-bold text-center hover:bg-cream duration-300">প্রিন্ট করুন</button>
+          </div>
+        </div>
+
+        <!-- Hero summary card -->
+        <div class="reveal relative min-h-[430px]">
+          <div class="absolute right-0 top-4 w-[88%] h-[380px] rounded-[42px] bg-gradient-to-br from-white/18 to-white/5 border border-white/18"></div>
+          <div class="glass floating relative ml-auto w-full max-w-[560px] rounded-[38px] p-6">
+            <div class="flex items-start gap-5">
+              <div class="notice-icon w-16 h-16 rounded-3xl flex items-center justify-center text-3xl shrink-0">⚖</div>
+              <div>
+                <span class="inline-flex bg-gold text-ocean px-3 py-1 rounded-full font-bold text-sm mb-4">Legal Notice</span>
+                <h2 class="text-3xl font-black leading-tight">সাইট ব্যবহারের আগে যা জানা জরুরি</h2>
+                <p class="mt-4 text-white/68 leading-8">এই পেজটি ব্যবহারকারী, পাঠক, দর্শক, ডাউনলোডকারী এবং কনটেন্ট শেয়ারকারীদের জন্য প্রযোজ্য।</p>
+              </div>
+            </div>
+            <div class="mt-7 grid sm:grid-cols-2 gap-3">
+              <div class="rounded-2xl bg-white/10 p-4 border border-white/10"><p class="text-white/60 text-sm">Last Updated</p><b class="font-inter text-xl">May 2026</b></div>
+              <div class="rounded-2xl bg-white/10 p-4 border border-white/10"><p class="text-white/60 text-sm">Applies To</p><b>Website Users</b></div>
+              <div class="rounded-2xl bg-white/10 p-4 border border-white/10"><p class="text-white/60 text-sm">Content Type</p><b>Video / Ebook</b></div>
+              <div class="rounded-2xl bg-white/10 p-4 border border-white/10"><p class="text-white/60 text-sm">Language</p><b>বাংলা</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       IMPORTANT DISCLAIMER STRIP
+       ========================================================= -->
+  <section class="pattern-bg py-10 border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal bg-white rounded-[34px] shadow-soft p-6 lg:p-8 grid lg:grid-cols-[auto_1fr_auto] gap-5 items-center">
+        <div class="notice-icon w-16 h-16 rounded-3xl flex items-center justify-center text-3xl">ℹ</div>
+        <div>
+          <p class="section-eyebrow">Important Note</p>
+          <h2 class="mt-2 text-2xl lg:text-3xl font-black text-ocean">এই শর্তাবলী একটি ওয়েবসাইট টেমপ্লেট কনটেন্ট</h2>
+          <p class="mt-2 text-ocean/65 leading-8">লাইভ ওয়েবসাইটে প্রকাশ করার আগে আপনার আইনগত উপদেষ্টা/অ্যাডমিন টিম দিয়ে কনটেন্ট যাচাই করে নেওয়া উত্তম।</p>
+        </div>
+        <a href="#contact" class="btn-gold text-ocean rounded-full px-6 py-4 font-black text-center">প্রশ্ন করুন</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       TERMS CONTENT + STICKY TABLE OF CONTENTS
+       ========================================================= -->
+  <section id="terms" class="pattern-bg py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-[320px_1fr] gap-8 items-start">
+        <!-- Sticky table of contents -->
+        <aside class="lg:sticky lg:top-28 space-y-6">
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-6">
+            <h3 class="text-2xl font-black text-ocean">সূচিপত্র</h3>
+            <div class="ornament mt-3 mb-5"></div>
+            <nav id="toc" class="space-y-2">
+              <a class="toc-link block rounded-2xl px-4 py-3 text-ocean/70" href="#acceptance">১. শর্ত মেনে নেওয়া</a>
+              <a class="toc-link block rounded-2xl px-4 py-3 text-ocean/70" href="#content-use">২. কনটেন্ট ব্যবহার</a>
+              <a class="toc-link block rounded-2xl px-4 py-3 text-ocean/70" href="#downloads">৩. ই-বুক ও ডাউনলোড</a>
+              <a class="toc-link block rounded-2xl px-4 py-3 text-ocean/70" href="#user-conduct">৪. ব্যবহারকারীর আচরণ</a>
+              <a class="toc-link block rounded-2xl px-4 py-3 text-ocean/70" href="#copyright">৫. কপিরাইট</a>
+              <a class="toc-link block rounded-2xl px-4 py-3 text-ocean/70" href="#third-party">৬. তৃতীয় পক্ষের লিংক</a>
+              <a class="toc-link block rounded-2xl px-4 py-3 text-ocean/70" href="#liability">৭. দায়বদ্ধতা সীমাবদ্ধতা</a>
+              <a class="toc-link block rounded-2xl px-4 py-3 text-ocean/70" href="#changes">৮. পরিবর্তন</a>
+              <a class="toc-link block rounded-2xl px-4 py-3 text-ocean/70" href="#contact">৯. যোগাযোগ</a>
+            </nav>
+          </div>
+
+          <div class="reveal bg-ocean text-white rounded-[34px] shadow-premium p-6 overflow-hidden relative">
+            <div class="islamic-grid"></div>
+            <div class="relative">
+              <h3 class="text-2xl font-black">দ্রুত সহায়তা</h3>
+              <p class="mt-3 text-white/68 leading-7">শর্তাবলী নিয়ে প্রশ্ন থাকলে আমাদের সাথে যোগাযোগ করতে পারেন।</p>
+              <a href="#contact" class="mt-5 inline-flex btn-gold text-ocean rounded-full px-5 py-3 font-black">Contact</a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main legal content -->
+        <div class="legal-content space-y-6">
+          <div class="reveal mb-8">
+            <p class="section-eyebrow">Legal Information</p>
+            <h2 class="mt-3 text-4xl lg:text-5xl font-black text-ocean">ব্যবহারের শর্তাবলী</h2>
+            <p class="mt-4 text-ocean/62 leading-8 max-w-3xl">নিম্নোক্ত শর্তাবলী Khutbah TV ওয়েবসাইট, এর কনটেন্ট, ডাউনলোডযোগ্য রিসোর্স, ভিডিও, প্রবন্ধ, ই-বুক ও সংশ্লিষ্ট সেবার ক্ষেত্রে প্রযোজ্য।</p>
+          </div>
+
+          <!-- Section 1 -->
+          <article id="acceptance" class="reveal legal-card rounded-[34px] p-6 lg:p-8">
+            <div class="flex items-start gap-4">
+              <span class="w-11 h-11 rounded-2xl bg-skybrand/10 text-skybrand flex items-center justify-center font-inter font-black shrink-0">01</span>
+              <div>
+                <h2 class="text-3xl font-black text-ocean">শর্ত মেনে নেওয়া</h2>
+                <p class="mt-4 text-ocean/70">এই ওয়েবসাইট ব্যবহার করার মাধ্যমে আপনি এই Terms & Conditions, Privacy Policy এবং প্রযোজ্য অন্যান্য নীতিমালা মেনে নিতে সম্মত হচ্ছেন। আপনি যদি এই শর্তাবলীর কোনো অংশের সাথে একমত না হন, তাহলে ওয়েবসাইট ব্যবহার বন্ধ করতে পারেন।</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 2 -->
+          <article id="content-use" class="reveal legal-card rounded-[34px] p-6 lg:p-8">
+            <div class="flex items-start gap-4">
+              <span class="w-11 h-11 rounded-2xl bg-skybrand/10 text-skybrand flex items-center justify-center font-inter font-black shrink-0">02</span>
+              <div>
+                <h2 class="text-3xl font-black text-ocean">কনটেন্ট ব্যবহার</h2>
+                <p class="mt-4 text-ocean/70">Khutbah TV-এর ভিডিও, প্রবন্ধ, ই-বুক, অডিও, গ্রাফিক্স এবং অন্যান্য কনটেন্ট শুধুমাত্র শিক্ষামূলক, দাওয়াহ এবং ব্যক্তিগত ব্যবহারের জন্য প্রদান করা হয়।</p>
+                <ul class="mt-5 grid gap-3 text-ocean/70 list-disc pl-6">
+                  <li>কনটেন্ট বিকৃত, ভুলভাবে উপস্থাপন বা বিভ্রান্তিকরভাবে শেয়ার করা যাবে না।</li>
+                  <li>বাণিজ্যিক উদ্দেশ্যে ব্যবহার করতে হলে পূর্বানুমতি নেওয়া প্রয়োজন হতে পারে।</li>
+                  <li>শেয়ার করার সময় মূল উৎস হিসেবে Khutbah TV-এর নাম/লিংক উল্লেখ করা উচিত।</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 3 -->
+          <article id="downloads" class="reveal legal-card rounded-[34px] p-6 lg:p-8">
+            <div class="flex items-start gap-4">
+              <span class="w-11 h-11 rounded-2xl bg-skybrand/10 text-skybrand flex items-center justify-center font-inter font-black shrink-0">03</span>
+              <div>
+                <h2 class="text-3xl font-black text-ocean">ই-বুক ও ডাউনলোড নীতিমালা</h2>
+                <p class="mt-4 text-ocean/70">ওয়েবসাইটে থাকা ই-বুক, PDF, রিসালা বা অন্যান্য ডাউনলোডযোগ্য ফাইল ব্যবহারকারীর সুবিধার্থে প্রদান করা হয়। ফাইল ডাউনলোড বা সংরক্ষণের সময় ব্যবহারকারী নিজ দায়িত্বে ডিভাইস নিরাপত্তা নিশ্চিত করবেন।</p>
+                <div class="mt-6 grid md:grid-cols-2 gap-4">
+                  <div class="rounded-3xl bg-cream p-5"><b class="text-ocean">Allowed</b><p class="mt-2 text-ocean/65">ব্যক্তিগত পড়াশোনা, শিক্ষামূলক শেয়ারিং, রেফারেন্স হিসেবে ব্যবহার।</p></div>
+                  <div class="rounded-3xl bg-cream p-5"><b class="text-ocean">Not Allowed</b><p class="mt-2 text-ocean/65">অনুমতি ছাড়া বিক্রি, কপিরাইট অপসারণ, ভুল নামে প্রকাশ।</p></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 4 -->
+          <article id="user-conduct" class="reveal legal-card rounded-[34px] p-6 lg:p-8">
+            <div class="flex items-start gap-4">
+              <span class="w-11 h-11 rounded-2xl bg-skybrand/10 text-skybrand flex items-center justify-center font-inter font-black shrink-0">04</span>
+              <div>
+                <h2 class="text-3xl font-black text-ocean">ব্যবহারকারীর আচরণ</h2>
+                <p class="mt-4 text-ocean/70">ব্যবহারকারীরা ওয়েবসাইট ব্যবহার করার সময় ভদ্রতা, সততা এবং আইনসম্মত আচরণ বজায় রাখবেন। কোনো ধরনের ক্ষতিকর কোড, স্প্যাম, অবৈধ কনটেন্ট, ঘৃণামূলক বক্তব্য বা অন্যের অধিকার লঙ্ঘনকারী কার্যক্রম গ্রহণযোগ্য নয়।</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 5 -->
+          <article id="copyright" class="reveal legal-card rounded-[34px] p-6 lg:p-8">
+            <div class="flex items-start gap-4">
+              <span class="w-11 h-11 rounded-2xl bg-skybrand/10 text-skybrand flex items-center justify-center font-inter font-black shrink-0">05</span>
+              <div>
+                <h2 class="text-3xl font-black text-ocean">কপিরাইট ও মেধাস্বত্ব</h2>
+                <p class="mt-4 text-ocean/70">ওয়েবসাইটের লোগো, ডিজাইন, টেক্সট, ভিডিও, ইমেজ, অডিও, কোড, গ্রাফিক্স এবং অন্যান্য উপাদান Khutbah TV বা সংশ্লিষ্ট স্বত্বাধিকারীর সম্পত্তি হতে পারে। অনুমতি ছাড়া পুনঃপ্রকাশ, সম্পাদনা, বিক্রি বা বাণিজ্যিক ব্যবহার নিষিদ্ধ হতে পারে।</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 6 -->
+          <article id="third-party" class="reveal legal-card rounded-[34px] p-6 lg:p-8">
+            <div class="flex items-start gap-4">
+              <span class="w-11 h-11 rounded-2xl bg-skybrand/10 text-skybrand flex items-center justify-center font-inter font-black shrink-0">06</span>
+              <div>
+                <h2 class="text-3xl font-black text-ocean">তৃতীয় পক্ষের লিংক</h2>
+                <p class="mt-4 text-ocean/70">ওয়েবসাইটে YouTube, Facebook, external PDF source, payment gateway বা অন্যান্য তৃতীয় পক্ষের লিংক থাকতে পারে। এসব বাহ্যিক সাইটের কনটেন্ট, নিরাপত্তা, গোপনীয়তা বা কার্যক্রমের জন্য Khutbah TV দায়ী নয়।</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 7 -->
+          <article id="liability" class="reveal legal-card rounded-[34px] p-6 lg:p-8">
+            <div class="flex items-start gap-4">
+              <span class="w-11 h-11 rounded-2xl bg-skybrand/10 text-skybrand flex items-center justify-center font-inter font-black shrink-0">07</span>
+              <div>
+                <h2 class="text-3xl font-black text-ocean">দায়বদ্ধতার সীমাবদ্ধতা</h2>
+                <p class="mt-4 text-ocean/70">ওয়েবসাইটের তথ্য যথাসম্ভব সঠিক রাখার চেষ্টা করা হলেও কোনো তথ্যের সম্পূর্ণতা, নিরবচ্ছিন্ন প্রাপ্যতা বা ভুলমুক্ত হওয়া নিশ্চিত করা যায় না। ওয়েবসাইট ব্যবহার বা কনটেন্টের উপর নির্ভরতার ফলে সৃষ্ট ক্ষতির জন্য Khutbah TV দায় সীমিত রাখে।</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 8 -->
+          <article id="changes" class="reveal legal-card rounded-[34px] p-6 lg:p-8">
+            <div class="flex items-start gap-4">
+              <span class="w-11 h-11 rounded-2xl bg-skybrand/10 text-skybrand flex items-center justify-center font-inter font-black shrink-0">08</span>
+              <div>
+                <h2 class="text-3xl font-black text-ocean">শর্তাবলী পরিবর্তন</h2>
+                <p class="mt-4 text-ocean/70">Khutbah TV প্রয়োজনে এই শর্তাবলী পরিবর্তন, সংশোধন বা আপডেট করতে পারে। পরিবর্তনের পর ওয়েবসাইট ব্যবহার চালিয়ে গেলে ব্যবহারকারী নতুন শর্তাবলী মেনে নিয়েছেন বলে বিবেচিত হবে।</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Section 9 -->
+          <article id="contact" class="reveal legal-card rounded-[34px] p-6 lg:p-8">
+            <div class="flex items-start gap-4">
+              <span class="w-11 h-11 rounded-2xl bg-skybrand/10 text-skybrand flex items-center justify-center font-inter font-black shrink-0">09</span>
+              <div class="w-full">
+                <h2 class="text-3xl font-black text-ocean">যোগাযোগ</h2>
+                <p class="mt-4 text-ocean/70">এই Terms & Conditions সম্পর্কে কোনো প্রশ্ন, কপিরাইট অনুরোধ, সংশোধন প্রস্তাব বা অনুমতির প্রয়োজন হলে আমাদের সাথে যোগাযোগ করুন।</p>
+                <div class="mt-6 grid md:grid-cols-3 gap-4">
+                  <a href="mailto:contact@khutbahtv.com" class="rounded-3xl bg-cream p-5 hover:bg-ocean hover:text-white duration-300"><b>Email</b><p class="mt-2 text-sm opacity-75">contact@khutbahtv.com</p></a>
+                  <a href="#" class="rounded-3xl bg-cream p-5 hover:bg-ocean hover:text-white duration-300"><b>Facebook</b><p class="mt-2 text-sm opacity-75">Official page</p></a>
+                  <a href="#" class="rounded-3xl bg-cream p-5 hover:bg-ocean hover:text-white duration-300"><b>YouTube</b><p class="mt-2 text-sm opacity-75">Khutbah TV</p></a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SUPPORT / CTA SECTION
+       ========================================================= -->
+  <section class="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28 pattern-bg">
+    <div class="reveal relative overflow-hidden max-w-7xl mx-auto rounded-[42px] bg-ocean p-8 sm:p-12 lg:p-16 text-white shadow-premium">
+      <div class="islamic-grid"></div>
+      <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-center">
+        <div>
+          <p class="section-eyebrow text-gold">Need Help?</p>
+          <h2 class="mt-3 text-4xl lg:text-5xl font-black leading-tight">নীতিমালা নিয়ে কোনো প্রশ্ন আছে?</h2>
+          <p class="mt-5 max-w-2xl text-white/70 text-lg leading-8">কপিরাইট, কনটেন্ট ব্যবহার, ডাউনলোড বা ওয়েবসাইট ব্যবহারের নিয়ম সম্পর্কে জানতে যোগাযোগ করুন।</p>
+        </div>
+        <a href="mailto:contact@khutbahtv.com" class="btn-gold text-ocean px-9 py-5 rounded-full font-black text-center">ইমেইল করুন</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="bg-[#021A28] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-white/10 pb-12">
+        <div class="lg:col-span-2"><img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png" class="h-14 w-auto" alt="Khutbah TV white" onerror="fallbackLogo(this)" /><p class="mt-5 max-w-md text-white/62 leading-8">বাংলা ভাষায় ইসলামিক ভিডিও, বয়ান, প্রশ্নোত্তর, কিতাব ও দাওয়াহ কনটেন্টের ডিজিটাল প্ল্যাটফর্ম।</p></div>
+        <div><h4 class="font-bold text-xl mb-5">দ্রুত লিংক</h4><ul class="space-y-3 text-white/62"><li>ভিডিও</li><li>কিতাব</li><li>প্রশ্নোত্তর</li><li>প্রবন্ধ</li></ul></div>
+        <div><h4 class="font-bold text-xl mb-5">নীতিমালা</h4><ul class="space-y-3 text-white/62"><li>Terms & Conditions</li><li>Privacy Policy</li><li>Copyright</li><li>Contact</li></ul></div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row justify-between gap-4 text-white/50 text-sm"><p>© Khutbah TV. All Rights Reserved.</p><p>Premium terms & conditions page concept</p></div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       TOAST / FEEDBACK
+       ========================================================= -->
+  <div id="toast" class="toast bg-ocean text-white rounded-2xl shadow-premium px-5 py-4 font-bold"></div>
+
+  <!-- =========================================================
+       PAGE INTERACTIONS / ANIMATIONS / SEARCH HIGHLIGHT
+       ========================================================= -->
+  <script>
+    /* ------------------------------
+       Date formatting
+    ------------------------------ */
+    document.addEventListener('DOMContentLoaded',()=>{
+      const todayDate = document.getElementById('todayDate');
+      if(todayDate){
+        todayDate.textContent = new Intl.DateTimeFormat('bn-BD',{weekday:'long',year:'numeric',month:'long',day:'numeric'}).format(new Date());
+      }
+    });
+
+    /* ------------------------------
+       Mobile menu toggle
+    ------------------------------ */
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.getElementById('menuBtn')?.addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'));
+    });
+
+    /* ------------------------------
+       Toast helper
+    ------------------------------ */
+    function showToast(message){
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'), 2300);
+    }
+
+    /* ------------------------------
+       Copy current page link
+    ------------------------------ */
+    function copyPageLink(){
+      const url = window.location.href;
+      if(navigator.clipboard){
+        navigator.clipboard.writeText(url).then(()=>showToast('পেজ লিংক কপি হয়েছে'));
+      }else{
+        showToast('লিংক কপি করতে ব্রাউজার সাপোর্ট প্রয়োজন');
+      }
+    }
+
+    /* ------------------------------
+       Reveal on scroll animation
+    ------------------------------ */
+    document.addEventListener('DOMContentLoaded',()=>{
+      const observer = new IntersectionObserver((entries)=>entries.forEach(entry=>{
+        if(entry.isIntersecting) entry.target.classList.add('show')
+      }),{threshold:.12});
+      document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+    });
+
+    /* ------------------------------
+       Active table-of-contents link while scrolling
+    ------------------------------ */
+    document.addEventListener('DOMContentLoaded',()=>{
+      const sections = [...document.querySelectorAll('.legal-content article')];
+      const links = [...document.querySelectorAll('.toc-link')];
+      const setActive = () => {
+        let current = sections[0]?.id;
+        sections.forEach(section=>{
+          const top = section.getBoundingClientRect().top;
+          if(top <= 150) current = section.id;
+        });
+        links.forEach(link=>link.classList.toggle('active', link.getAttribute('href') === `#${current}`));
+      };
+      window.addEventListener('scroll', setActive, {passive:true});
+      setActive();
+    });
+
+    /* ------------------------------
+       Search within terms sections
+    ------------------------------ */
+    document.addEventListener('DOMContentLoaded',()=>{
+      const search = document.getElementById('globalSearch');
+      const cards = [...document.querySelectorAll('.legal-content article')];
+      search?.addEventListener('keydown', e=>{
+        if(e.key !== 'Enter') return;
+        const q = e.target.value.trim().toLowerCase();
+        if(!q){ showToast('অনুসন্ধানের জন্য কিছু লিখুন'); return; }
+        const match = cards.find(card => card.textContent.toLowerCase().includes(q));
+        if(match){
+          match.scrollIntoView({behavior:'smooth', block:'start'});
+          match.classList.add('ring-4','ring-skybrand/20');
+          showToast('মিল পাওয়া গেছে');
+          setTimeout(()=>match.classList.remove('ring-4','ring-skybrand/20'),1800);
+        }else{
+          showToast('কোনো মিল পাওয়া যায়নি');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <!-- =========================================================
+       META / TITLE
+  ========================================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ইযহারুল হাক্ব — E-Book Details | Khutbah TV</title>
+
+  <!-- =========================================================
+       FONTS / TAILWIND
+  ========================================================== -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- =========================================================
+       TAILWIND CONFIG
+  ========================================================== -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: '#043755',
+            skybrand: '#1493C5',
+            ink: '#09283A',
+            cream: '#F7F3EA',
+            gold: '#D7A83F',
+            mint: '#A9E9D5'
+          },
+          fontFamily: {
+            bangla: ['Hind Siliguri', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            premium: '0 28px 80px rgba(4,55,85,.18)',
+            soft: '0 18px 50px rgba(9,40,58,.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- =========================================================
+       CUSTOM CSS / DESIGN SYSTEM
+  ========================================================== -->
+  <style>
+    :root {
+      --ocean:#043755;
+      --sky:#1493C5;
+      --gold:#D7A83F;
+      --cream:#F7F3EA;
+      --ink:#09283A;
+    }
+
+    * { scroll-behavior:smooth; }
+
+    body {
+      font-family:'Hind Siliguri', sans-serif;
+      background:#fbfaf6;
+      color:var(--ink);
+    }
+
+    .font-inter { font-family:'Inter', sans-serif; }
+
+    .pattern-bg {
+      background-image: radial-gradient(circle at 1px 1px, rgba(4,55,85,.08) 1px, transparent 0);
+      background-size:24px 24px;
+    }
+
+    .islamic-grid {
+      position:absolute;
+      inset:0;
+      opacity:.13;
+      background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D7A83F' stroke-width='1.2'%3E%3Cpath d='M60 4 80 40l36 20-36 20-20 36-20-36L4 60l36-20Z'/%3E%3Cpath d='M60 22 72 48l26 12-26 12-12 26-12-26-26-12 26-12Z'/%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3C/g%3E%3C/svg%3E");
+      background-size:150px 150px;
+    }
+
+    .hero-glow:before {
+      content:"";
+      position:absolute;
+      width:560px;
+      height:560px;
+      border-radius:999px;
+      background:radial-gradient(circle,rgba(20,147,197,.34),transparent 65%);
+      right:-220px;
+      top:-190px;
+      filter:blur(6px);
+    }
+
+    .hero-glow:after {
+      content:"";
+      position:absolute;
+      width:420px;
+      height:420px;
+      border-radius:999px;
+      background:radial-gradient(circle,rgba(215,168,63,.22),transparent 70%);
+      left:-190px;
+      bottom:-180px;
+      filter:blur(10px);
+    }
+
+    .premium-card {
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(4,55,85,.08);
+      box-shadow:0 18px 50px rgba(9,40,58,.10);
+      backdrop-filter:blur(12px);
+    }
+
+    .glass {
+      background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:0 24px 70px rgba(0,0,0,.22);
+      backdrop-filter:blur(18px);
+    }
+
+    .btn-primary {
+      background:linear-gradient(135deg,var(--sky),#0878A8);
+      box-shadow:0 16px 34px rgba(20,147,197,.32);
+      transition:.25s ease;
+    }
+
+    .btn-primary:hover {
+      transform:translateY(-2px);
+      box-shadow:0 22px 46px rgba(20,147,197,.38);
+    }
+
+    .btn-gold {
+      background:linear-gradient(135deg,#E8C76A,var(--gold));
+      box-shadow:0 16px 34px rgba(215,168,63,.28);
+      transition:.25s ease;
+    }
+
+    .btn-gold:hover {
+      transform:translateY(-2px);
+    }
+
+    .section-eyebrow {
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-family:'Inter', sans-serif;
+      font-size:12px;
+      font-weight:800;
+      color:var(--sky);
+    }
+
+    .nav-link {
+      position:relative;
+    }
+
+    .nav-link:after {
+      content:"";
+      position:absolute;
+      left:0;
+      right:100%;
+      height:2px;
+      bottom:-7px;
+      background:var(--gold);
+      transition:.25s;
+    }
+
+    .nav-link:hover:after {
+      right:0;
+    }
+
+    .ornament {
+      background-image:url("data:image/svg+xml,%3Csvg width='72' height='20' viewBox='0 0 72 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 1C43 1 45 10 52 10C59 10 61 1 71 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Cpath d='M36 1C29 1 27 10 20 10C13 10 11 1 1 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Ccircle cx='36' cy='10' r='5' stroke='%23D7A83F' stroke-width='1.5'/%3E%3C/svg%3E");
+      width:72px;
+      height:20px;
+      background-repeat:no-repeat;
+      background-position:center;
+    }
+
+    .book-3d {
+      perspective:1200px;
+    }
+
+    .book-cover {
+      position:relative;
+      transform:rotateY(-9deg) rotateX(2deg);
+      transform-origin:left center;
+      box-shadow:24px 28px 60px rgba(4,55,85,.24);
+      background:linear-gradient(160deg,#dfffdc 0%,#fff6da 35%,#dff6ed 70%,#248a67 100%);
+    }
+
+    .book-cover:before {
+      content:"";
+      position:absolute;
+      inset:18px;
+      border:1px solid rgba(4,55,85,.18);
+      border-radius:18px;
+    }
+
+    .book-cover:after {
+      content:"";
+      position:absolute;
+      left:-13px;
+      top:12px;
+      bottom:12px;
+      width:18px;
+      background:linear-gradient(90deg,#174f44,#0d2a26);
+      border-radius:12px 0 0 12px;
+      box-shadow:inset -5px 0 8px rgba(255,255,255,.16);
+    }
+
+    .book-shine {
+      position:absolute;
+      inset:0;
+      background:linear-gradient(105deg,transparent 10%,rgba(255,255,255,.55) 36%,transparent 52%);
+      opacity:.55;
+    }
+
+    .article-body p {
+      font-size:18px;
+      line-height:2;
+      color:rgba(9,40,58,.82);
+      margin-bottom:22px;
+    }
+
+    .article-body h2 {
+      font-size:30px;
+      line-height:1.25;
+      font-weight:900;
+      color:var(--ocean);
+      margin:42px 0 16px;
+    }
+
+    .article-body blockquote {
+      border-left:4px solid var(--gold);
+      background:#fbf6e9;
+      border-radius:0 18px 18px 0;
+      padding:22px 26px;
+      margin:30px 0;
+      color:rgba(4,55,85,.82);
+      font-size:20px;
+      line-height:1.8;
+    }
+
+    .reveal {
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity .75s ease, transform .75s ease;
+    }
+
+    .reveal.show {
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .modal {
+      opacity:0;
+      pointer-events:none;
+      transition:opacity .25s ease;
+    }
+
+    .modal.active {
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .modal-panel {
+      transform:translateY(22px) scale(.96);
+      transition:transform .25s ease;
+    }
+
+    .modal.active .modal-panel {
+      transform:translateY(0) scale(1);
+    }
+
+    .toast {
+      transform:translateY(16px);
+      opacity:0;
+      pointer-events:none;
+      transition:.25s ease;
+    }
+
+    .toast.active {
+      transform:translateY(0);
+      opacity:1;
+    }
+
+    @media(max-width:768px) {
+      .hero-title {
+        font-size:40px;
+        line-height:1.14;
+      }
+
+      .article-body p {
+        font-size:17px;
+      }
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+  <!-- =========================================================
+       TOP NOTICE BAR
+  ========================================================== -->
+  <div class="bg-ocean text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4 overflow-hidden">
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="w-2 h-2 rounded-full bg-gold"></span>
+        <span>আসসালামু আলাইকুম — খুতবাহ টিভিতে আপনাকে স্বাগতম</span>
+      </div>
+
+      <div class="hidden md:flex items-center gap-5 text-white/80">
+        <span>ই-বুক</span>
+        <span>কিতাব</span>
+        <span>ডাউনলোড</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       HEADER / NAVIGATION
+  ========================================================== -->
+  <header class="sticky top-0 z-50 bg-white/82 backdrop-blur-xl border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-5">
+        <a href="#" class="flex items-center gap-3" aria-label="Khutbah TV Home">
+          <img
+            src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png"
+            alt="Khutbah TV"
+            class="h-12 w-auto"
+            onerror="this.src='https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png'"
+          />
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-7 font-semibold text-[15px] text-ocean">
+          <a class="nav-link" href="#">হোম</a>
+          <a class="nav-link" href="#">ভিডিও</a>
+          <a class="nav-link" href="#">কিতাব</a>
+          <a class="nav-link" href="#">ইসলাম</a>
+          <a class="nav-link" href="#">আলোর পথ</a>
+          <a class="nav-link" href="#">সীরাত</a>
+          <a class="nav-link" href="#">ব্লগ</a>
+          <a class="nav-link" href="#">Live</a>
+          <a class="nav-link" href="#">প্রশ্ন/উত্তর</a>
+          <a class="nav-link" href="#">যোগাযোগ</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-3">
+          <div class="relative">
+            <input class="w-56 rounded-full border border-ocean/15 bg-white px-5 py-3 text-sm outline-none focus:border-skybrand" placeholder="খুঁজুন..." />
+            <span class="absolute right-4 top-3.5 text-ocean/50">⌕</span>
+          </div>
+
+          <a href="#download" class="btn-primary duration-300 text-white px-5 py-3 rounded-full font-bold text-sm">
+            Download
+          </a>
+        </div>
+
+        <button id="mobileMenuBtn" class="lg:hidden w-11 h-11 rounded-full border border-ocean/15 flex items-center justify-center text-ocean" aria-label="Open menu">
+          ☰
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="hidden lg:hidden pb-5">
+        <div class="grid gap-2 rounded-3xl bg-cream p-4 font-semibold text-ocean">
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">হোম</a>
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">ভিডিও</a>
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">কিতাব</a>
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">প্রশ্ন/উত্তর</a>
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">যোগাযোগ</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       HERO / BOOK SUMMARY
+  ========================================================== -->
+  <main class="relative hero-glow overflow-hidden bg-ocean text-white">
+    <div class="islamic-grid"></div>
+
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-22">
+      <div class="grid lg:grid-cols-[1fr_.34fr] gap-10 items-end">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 mb-7 text-sm text-white/85">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-7 h-7 rounded-full" alt="icon" />
+            কিতাব ঘর / ই-বুক বিস্তারিত
+          </div>
+
+          <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight max-w-5xl">
+            ইযহারুল হাক্ব <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint via-white to-gold">(সত্যের বিজয়)</span>
+          </h1>
+
+          <p class="mt-6 max-w-3xl text-lg sm:text-xl leading-9 text-white/76">
+            খ্রিস্টধর্মের আলোচনায় প্রামাণ্য গ্রন্থ — ১ম-২য় খণ্ড। লেখক, প্রকাশক, মূল্য, ডাউনলোড ও রিপোর্ট অপশনসহ প্রিমিয়াম বই বিস্তারিত পৃষ্ঠা।
+          </p>
+        </div>
+
+        <div class="glass rounded-[32px] p-5 reveal">
+          <p class="text-white/55 text-sm">Book ID</p>
+          <div class="mt-1 font-inter font-black text-5xl text-gold">4997</div>
+          <p class="mt-3 text-white/70">Price: <b class="text-white">800</b></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       MAIN CONTENT
+  ========================================================== -->
+  <section class="pattern-bg py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="grid lg:grid-cols-[1fr_360px] gap-8 lg:gap-10">
+
+        <!-- ===================================================
+             LEFT CONTENT
+        ==================================================== -->
+        <div class="space-y-8">
+
+          <!-- Book Title / Meta Card -->
+          <article class="premium-card rounded-[34px] p-6 sm:p-8 reveal">
+            <div class="flex flex-wrap items-center gap-3 text-sm font-bold">
+              <span class="px-4 py-2 rounded-full bg-skybrand/10 text-skybrand">ই-বুক</span>
+              <span class="px-4 py-2 rounded-full bg-gold/15 text-ocean">খ্রিস্টান মিশনারী</span>
+              <span class="px-4 py-2 rounded-full bg-ocean/8 text-ocean">প্রামাণ্য গ্রন্থ</span>
+            </div>
+
+            <h2 class="mt-6 text-3xl lg:text-5xl font-black text-ocean leading-tight">
+              ইযহারুল হাক্ব (সত্যের বিজয়) – খ্রিস্টধর্মের আলোচনায় প্রামাণ্য গ্রন্থ (১ম-২য় খণ্ড)
+            </h2>
+
+            <div class="mt-7 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              <div class="rounded-3xl bg-cream p-4">
+                <p class="text-ocean/55 text-sm">Views</p>
+                <b class="font-inter text-xl text-ocean">১,১৪৯</b>
+              </div>
+
+              <div class="rounded-3xl bg-cream p-4">
+                <p class="text-ocean/55 text-sm">Publish Date</p>
+                <b class="text-ocean">২৩ এপ্রিল, ২০২০</b>
+              </div>
+
+              <div class="rounded-3xl bg-cream p-4">
+                <p class="text-ocean/55 text-sm">Last Update</p>
+                <b class="text-ocean">২৩ সেপ্টেম্বর, ২০২০</b>
+              </div>
+
+              <div class="rounded-3xl bg-cream p-4">
+                <p class="text-ocean/55 text-sm">Time</p>
+                <b class="text-ocean">৯:০৫ অপরাহ্ণ</b>
+              </div>
+            </div>
+          </article>
+
+          <!-- Book Details Card -->
+          <section id="download" class="premium-card rounded-[38px] p-6 sm:p-8 reveal">
+            <div class="grid md:grid-cols-[300px_1fr] gap-8 lg:gap-10 items-center">
+
+              <!-- CSS Book Cover -->
+              <div class="book-3d">
+                <div class="book-cover relative h-[420px] rounded-[30px] overflow-hidden p-8 flex flex-col justify-between">
+                  <div class="book-shine"></div>
+
+                  <div class="relative z-10">
+                    <p class="font-bold text-ocean/70">প্রামাণ্য গ্রন্থ</p>
+                    <h3 class="mt-4 text-3xl font-black text-ocean leading-tight">ইযহারুল হাক্ব</h3>
+                    <p class="mt-2 text-xl font-bold text-emerald-800">সত্যের বিজয়</p>
+                  </div>
+
+                  <div class="relative z-10">
+                    <p class="text-sm font-bold text-ocean/65">খ্রিস্টধর্মের আলোচনায়</p>
+                    <div class="mt-4 h-12 w-12 rounded-full bg-ocean flex items-center justify-center">
+                      <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="h-8 w-8" alt="icon">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Book Info -->
+              <div>
+                <p class="section-eyebrow">Book Information</p>
+                <h3 class="mt-3 text-3xl font-black text-ocean">বইয়ের বিবরণ</h3>
+
+                <dl class="mt-7 grid sm:grid-cols-2 gap-4">
+                  <div class="rounded-3xl bg-cream p-5">
+                    <dt class="text-ocean/55">Author</dt>
+                    <dd class="mt-1 font-bold text-ocean">অনুবাদক: ড. খোন্দকার আব্দুল্লাহ জাহাঙ্গীর</dd>
+                  </div>
+
+                  <div class="rounded-3xl bg-cream p-5">
+                    <dt class="text-ocean/55">Publisher</dt>
+                    <dd class="mt-1 font-bold text-ocean">ইসলামিক ফাউন্ডেশন বাংলাদেশ</dd>
+                  </div>
+
+                  <div class="rounded-3xl bg-cream p-5">
+                    <dt class="text-ocean/55">Publish Date</dt>
+                    <dd class="mt-1 font-bold text-ocean">1st Published, 2007</dd>
+                  </div>
+
+                  <div class="rounded-3xl bg-cream p-5">
+                    <dt class="text-ocean/55">Number of pages</dt>
+                    <dd class="mt-1 font-bold text-ocean">1000</dd>
+                  </div>
+
+                  <div class="rounded-3xl bg-cream p-5">
+                    <dt class="text-ocean/55">Size</dt>
+                    <dd class="mt-1 font-bold text-ocean">60</dd>
+                  </div>
+
+                  <div class="rounded-3xl bg-cream p-5">
+                    <dt class="text-ocean/55">Price</dt>
+                    <dd class="mt-1 font-bold text-ocean">800</dd>
+                  </div>
+                </dl>
+
+                <div class="mt-8 flex flex-wrap gap-3">
+                  <button id="downloadBtn" class="btn-primary text-white px-6 py-4 rounded-full font-black">
+                    Free Download
+                  </button>
+
+                  <button data-modal-open="orderModal" class="btn-gold text-ocean px-6 py-4 rounded-full font-black">
+                    Order Now
+                  </button>
+
+                  <button data-modal-open="reportModal" class="bg-red-600 hover:bg-red-700 duration-300 text-white px-6 py-4 rounded-full font-black">
+                    Report!
+                  </button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Book Description -->
+          <section class="premium-card rounded-[38px] p-6 sm:p-8 lg:p-10 reveal">
+            <p class="section-eyebrow">Description</p>
+            <div class="ornament mt-4"></div>
+
+            <div class="article-body mt-7">
+              <p>
+                ইসলামই মানব জাতির জন্য মহান আল্লাহ তা‘আলার মনোনীত একমাত্র দ্বীন। আর সর্বকালের সর্বশ্রেষ্ঠ সর্বশেষ রাসূল মুহাম্মাদ ﷺ-এর মাধ্যমে এই দ্বীনের পূর্ণাঙ্গ বিধান মানবজাতির কাছে পৌঁছে দেওয়া হয়েছে।
+              </p>
+
+              <p>
+                যুগে যুগে ইসলামের বিরুদ্ধে নানা প্রশ্ন, সংশয় ও আপত্তি উত্থাপিত হয়েছে। এ গ্রন্থে খ্রিস্টধর্ম, ত্রিত্ববাদ, বাইবেল-সংক্রান্ত আলোচনা এবং ইসলামের সত্যতা নিয়ে প্রামাণ্য আলোচনা উপস্থাপন করা হয়েছে।
+              </p>
+
+              <blockquote>
+                বইটি গবেষণামূলক আলোচনার জন্য গুরুত্বপূর্ণ — বিশেষ করে তুলনামূলক ধর্মতত্ত্ব, দাওয়াহ এবং ইসলামের প্রামাণ্যতা নিয়ে যারা পড়াশোনা করেন তাদের জন্য।
+              </blockquote>
+
+              <h2>গ্রন্থের বিষয়বস্তু</h2>
+
+              <p>
+                এতে খ্রিস্টান মিশনারীদের উত্থাপিত অভিযোগ, বাইবেলের বিভিন্ন অসঙ্গতি, ত্রিত্ববাদের ঐতিহাসিক প্রেক্ষাপট এবং ইসলামী দৃষ্টিকোণ থেকে সেগুলোর জবাব সুন্দরভাবে তুলে ধরা হয়েছে।
+              </p>
+
+              <p>
+                অনুবাদক ড. খোন্দকার আব্দুল্লাহ জাহাঙ্গীর রহ. তাঁর স্বভাবসুলভ প্রাঞ্জল ভাষায় পাঠকের জন্য বিষয়গুলো সহজবোধ্য করেছেন। ফলে সাধারণ পাঠকও জটিল আলোচনাগুলো সহজে বুঝতে পারবেন।
+              </p>
+
+              <h2>কার জন্য উপযোগী?</h2>
+
+              <p>
+                দাওয়াহ কর্মী, গবেষক, ছাত্র, শিক্ষক এবং তুলনামূলক ধর্ম বিষয়ে আগ্রহী পাঠকদের জন্য এটি একটি প্রয়োজনীয় গ্রন্থ। বিশেষত বাংলাভাষী পাঠকের জন্য খ্রিস্টধর্ম বিষয়ক আলোচনায় এটি গুরুত্বপূর্ণ সহায়ক।
+              </p>
+            </div>
+          </section>
+
+          <!-- Related Books -->
+          <section class="reveal">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7">
+              <div>
+                <p class="section-eyebrow">Related E-Books</p>
+                <h2 class="mt-2 text-3xl lg:text-4xl font-black text-ocean">আরও সম্পর্কিত বই</h2>
+              </div>
+
+              <a href="#" class="font-bold text-skybrand">সব বই দেখুন →</a>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              <article class="premium-card rounded-[28px] p-5 hover:-translate-y-1 duration-300">
+                <div class="h-44 rounded-2xl bg-gradient-to-br from-ocean to-skybrand flex items-center justify-center text-white font-black text-2xl text-center p-5">
+                  আকিদার পাঠ
+                </div>
+                <h3 class="mt-5 text-xl font-bold text-ocean">আকিদার সংক্ষিপ্ত আলোচনা</h3>
+                <button class="mt-4 w-full rounded-full bg-ocean text-white py-3 font-bold">Download Now</button>
+              </article>
+
+              <article class="premium-card rounded-[28px] p-5 hover:-translate-y-1 duration-300">
+                <div class="h-44 rounded-2xl bg-gradient-to-br from-emerald-800 to-gold flex items-center justify-center text-white font-black text-2xl text-center p-5">
+                  দাওয়াহ
+                </div>
+                <h3 class="mt-5 text-xl font-bold text-ocean">দাওয়াহ ও যুক্তির ভাষা</h3>
+                <button class="mt-4 w-full rounded-full bg-ocean text-white py-3 font-bold">Download Now</button>
+              </article>
+
+              <article class="premium-card rounded-[28px] p-5 hover:-translate-y-1 duration-300">
+                <div class="h-44 rounded-2xl bg-gradient-to-br from-slate-800 to-skybrand flex items-center justify-center text-white font-black text-2xl text-center p-5">
+                  ইসলাম
+                </div>
+                <h3 class="mt-5 text-xl font-bold text-ocean">ইসলামের সৌন্দর্য</h3>
+                <button class="mt-4 w-full rounded-full bg-ocean text-white py-3 font-bold">Download Now</button>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <!-- ===================================================
+             RIGHT SIDEBAR
+        ==================================================== -->
+        <aside class="space-y-6 lg:sticky lg:top-28 h-max">
+
+          <!-- Sidebar Search -->
+          <div class="premium-card rounded-[30px] p-5 reveal">
+            <h3 class="text-xl font-black text-ocean">Search E-Books</h3>
+
+            <form class="mt-4 flex gap-2" id="sidebarSearchForm">
+              <input class="min-w-0 flex-1 rounded-2xl border border-ocean/10 bg-white px-4 py-3 outline-none focus:border-skybrand" placeholder="Search ..." />
+              <button class="btn-primary text-white px-5 py-3 rounded-2xl font-bold">Search</button>
+            </form>
+          </div>
+
+          <!-- Categories -->
+          <div class="premium-card rounded-[30px] p-5 reveal">
+            <h3 class="text-2xl font-black text-ocean">Categories</h3>
+            <div class="ornament mt-3"></div>
+
+            <div class="mt-5 grid grid-cols-2 gap-x-4 gap-y-2 text-ocean/72">
+              <a class="hover:text-skybrand" href="#">Quran</a>
+              <a class="hover:text-skybrand" href="#">Religion</a>
+              <a class="hover:text-skybrand" href="#">আলোর পথ</a>
+              <a class="hover:text-skybrand" href="#">ইসলাম</a>
+              <a class="hover:text-skybrand" href="#">ইবাদত</a>
+              <a class="hover:text-skybrand" href="#">ওয়াজিব</a>
+              <a class="hover:text-skybrand" href="#">কবিতা</a>
+              <a class="hover:text-skybrand" href="#">খবর</a>
+              <a class="hover:text-skybrand" href="#">খ্রিস্টান ধর্ম</a>
+              <a class="hover:text-skybrand" href="#">জান্নাত</a>
+              <a class="hover:text-skybrand" href="#">দাওয়াহ</a>
+              <a class="hover:text-skybrand" href="#">নাস্তিকতা</a>
+              <a class="hover:text-skybrand" href="#">প্রশ্ন ও উত্তর</a>
+              <a class="hover:text-skybrand" href="#">ফরজ</a>
+              <a class="hover:text-skybrand" href="#">বিজ্ঞান ও প্রযুক্তি</a>
+              <a class="hover:text-skybrand" href="#">সীরাত</a>
+              <a class="hover:text-skybrand" href="#">সুন্নত</a>
+              <a class="hover:text-skybrand" href="#">স্বাস্থ্য</a>
+              <a class="hover:text-skybrand" href="#">হজ্জ</a>
+              <a class="hover:text-skybrand" href="#">হিন্দু ধর্ম</a>
+            </div>
+          </div>
+
+          <!-- Archives -->
+          <div class="premium-card rounded-[30px] p-5 reveal">
+            <h3 class="text-2xl font-black text-ocean">Archives</h3>
+
+            <select class="mt-5 w-full rounded-2xl border border-ocean/10 bg-white px-4 py-3 outline-none focus:border-skybrand">
+              <option>Select Month</option>
+              <option>May 2026</option>
+              <option>April 2026</option>
+              <option>March 2026</option>
+            </select>
+
+            <div class="mt-5 rounded-3xl bg-cream p-4">
+              <div class="grid grid-cols-7 gap-2 text-center text-sm text-ocean/45 font-bold">
+                <span>S</span><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span>
+              </div>
+
+              <div class="mt-4 grid grid-cols-7 gap-2 text-center text-sm text-ocean/70">
+                <span></span><span></span><span></span><span></span><span></span>
+                <span class="p-2">1</span><span class="p-2">2</span>
+                <span class="p-2">3</span><span class="p-2">4</span><span class="p-2">5</span><span class="p-2">6</span><span class="p-2">7</span><span class="p-2">8</span><span class="p-2">9</span>
+                <span class="p-2">10</span><span class="p-2">11</span><span class="p-2">12</span><span class="p-2">13</span><span class="p-2">14</span><span class="p-2">15</span><span class="p-2">16</span>
+                <span class="p-2">17</span><span class="p-2">18</span><span class="p-2 rounded-xl bg-skybrand text-white font-black">19</span><span class="p-2">20</span><span class="p-2">21</span><span class="p-2">22</span><span class="p-2">23</span>
+                <span class="p-2">24</span><span class="p-2">25</span><span class="p-2">26</span><span class="p-2">27</span><span class="p-2">28</span><span class="p-2">29</span><span class="p-2">30</span>
+              </div>
+
+              <p class="mt-5 text-center font-black text-ocean/65">May 2026</p>
+            </div>
+          </div>
+
+          <!-- Help CTA -->
+          <div class="relative overflow-hidden rounded-[30px] bg-ocean p-6 text-white shadow-premium reveal">
+            <div class="islamic-grid"></div>
+
+            <div class="relative">
+              <h3 class="text-2xl font-black">বই অর্ডার করতে চান?</h3>
+              <p class="mt-3 text-white/70 leading-7">যে কোন প্রয়োজনে যোগাযোগ করুন</p>
+              <a href="tel:01916122140" class="mt-5 inline-flex btn-gold text-ocean px-5 py-3 rounded-full font-black">
+                01916122140
+              </a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ORDER MODAL
+  ========================================================== -->
+  <div id="orderModal" class="modal fixed inset-0 z-[100] bg-ocean/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="modal-panel w-full max-w-xl rounded-[34px] bg-white shadow-premium overflow-hidden">
+      <div class="relative bg-ocean text-white p-7">
+        <div class="islamic-grid"></div>
+        <button data-modal-close class="absolute right-5 top-5 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20">×</button>
+
+        <div class="relative">
+          <p class="section-eyebrow text-gold">Order Book</p>
+          <h3 class="mt-2 text-3xl font-black">অর্ডার তথ্য</h3>
+        </div>
+      </div>
+
+      <div class="p-7">
+        <p class="text-lg text-ocean/72 leading-8">You need to contact us for order book.</p>
+
+        <div class="mt-5 space-y-3 rounded-3xl bg-cream p-5">
+          <p><b>Book Name:</b> ইযহারুল হাক্ব (সত্যের বিজয়) – খ্রিস্টধর্মের আলোচনায় প্রামাণ্য গ্রন্থ (১ম-২য় খণ্ড)</p>
+          <p><b>Book ID:</b> 4997</p>
+          <p><b>Price:</b> 800</p>
+        </div>
+
+        <div class="mt-5 rounded-3xl bg-skybrand/10 p-5 text-ocean">
+          <p class="font-bold">যে কোন প্রয়োজনে যোগাযোগ করুন</p>
+          <a href="tel:01916122140" class="mt-1 inline-flex text-2xl font-black text-skybrand">01916122140</a>
+        </div>
+
+        <div class="mt-7 flex justify-end gap-3">
+          <button data-modal-close class="px-5 py-3 rounded-full bg-cream text-ocean font-bold">Close</button>
+          <a href="tel:01916122140" class="btn-primary text-white px-6 py-3 rounded-full font-black">Call Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       REPORT MODAL
+  ========================================================== -->
+  <div id="reportModal" class="modal fixed inset-0 z-[100] bg-ocean/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="modal-panel w-full max-w-2xl rounded-[34px] bg-white shadow-premium overflow-hidden">
+      <div class="relative bg-ocean text-white p-7">
+        <div class="islamic-grid"></div>
+        <button data-modal-close class="absolute right-5 top-5 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20">×</button>
+
+        <div class="relative">
+          <p class="section-eyebrow text-gold">Report E-Book</p>
+          <h3 class="mt-2 text-3xl font-black">Submit Your Report!</h3>
+        </div>
+      </div>
+
+      <form id="reportForm" class="p-7">
+        <div class="grid md:grid-cols-2 gap-4">
+          <label class="block md:col-span-2">
+            <span class="font-bold text-ocean">E-Book Name</span>
+            <input readonly value="ইযহারুল হাক্ব (সত্যের বিজয়) – খ্রিস্টধর্মের আলোচনায় প্রামাণ্য গ্রন্থ (১ম-২য় খণ্ড)" class="mt-2 w-full rounded-2xl border border-ocean/10 bg-cream px-4 py-3 outline-none" />
+          </label>
+
+          <label class="block">
+            <span class="font-bold text-ocean">E-Book ID</span>
+            <input readonly value="4997" class="mt-2 w-full rounded-2xl border border-ocean/10 bg-cream px-4 py-3 outline-none" />
+          </label>
+
+          <label class="block">
+            <span class="font-bold text-ocean">Your Name</span>
+            <input required placeholder="আপনার নাম" class="mt-2 w-full rounded-2xl border border-ocean/10 bg-white px-4 py-3 outline-none focus:border-skybrand" />
+          </label>
+
+          <label class="block md:col-span-2">
+            <span class="font-bold text-ocean">Email / Phone</span>
+            <input required placeholder="ইমেইল অথবা ফোন" class="mt-2 w-full rounded-2xl border border-ocean/10 bg-white px-4 py-3 outline-none focus:border-skybrand" />
+          </label>
+
+          <label class="block md:col-span-2">
+            <span class="font-bold text-ocean">Report Details</span>
+            <textarea required rows="5" placeholder="আপনার রিপোর্ট বিস্তারিত লিখুন..." class="mt-2 w-full rounded-2xl border border-ocean/10 bg-white px-4 py-3 outline-none focus:border-skybrand"></textarea>
+          </label>
+        </div>
+
+        <div class="mt-7 flex justify-end gap-3">
+          <button type="button" data-modal-close class="px-5 py-3 rounded-full bg-cream text-ocean font-bold">Cancel</button>
+          <button type="submit" class="btn-primary text-white px-6 py-3 rounded-full font-black">Submit Report</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SUPPORT CTA
+  ========================================================== -->
+  <section class="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28 pattern-bg">
+    <div class="relative overflow-hidden max-w-7xl mx-auto rounded-[42px] bg-ocean p-8 sm:p-12 lg:p-16 text-white shadow-premium reveal">
+      <div class="islamic-grid"></div>
+
+      <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-center">
+        <div>
+          <p class="section-eyebrow text-gold">Support Khutbah TV</p>
+          <h2 class="mt-3 text-4xl lg:text-5xl font-black leading-tight">ইসলামিক বই ও জ্ঞান ছড়িয়ে দিতে সহযোগিতা করুন</h2>
+          <p class="mt-5 max-w-2xl text-white/70 text-lg leading-8">ওয়েবসাইট, কিতাব, ভিডিও ও ইসলামিক কনটেন্টকে আরও সুন্দরভাবে মানুষের কাছে পৌঁছাতে সহায়তা করুন।</p>
+        </div>
+
+        <a href="#" class="btn-gold text-ocean px-9 py-5 rounded-full font-black text-center">দান করুন</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer class="bg-[#021A28] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-white/10 pb-12">
+        <div class="lg:col-span-2">
+          <img
+            src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png"
+            class="h-14 w-auto"
+            alt="Khutbah TV white"
+            onerror="this.src='https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png'"
+          />
+
+          <p class="mt-5 max-w-md text-white/62 leading-8">
+            বাংলা ভাষায় ইসলামিক ভিডিও, বয়ান, প্রশ্নোত্তর, কিতাব ও দাওয়াহ কনটেন্টের ডিজিটাল প্ল্যাটফর্ম।
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-xl mb-5">দ্রুত লিংক</h4>
+          <ul class="space-y-3 text-white/62">
+            <li>ভিডিও</li>
+            <li>কিতাব</li>
+            <li>প্রশ্নোত্তর</li>
+            <li>প্রবন্ধ</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-xl mb-5">যোগাযোগ</h4>
+          <ul class="space-y-3 text-white/62">
+            <li>contact@khutbahtv.com</li>
+            <li>YouTube</li>
+            <li>Facebook</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row justify-between gap-4 text-white/50 text-sm">
+        <p>© Khutbah TV. All Rights Reserved.</p>
+        <p>Premium e-book single page</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       TOAST
+  ========================================================== -->
+  <div id="toast" class="toast fixed bottom-6 left-1/2 -translate-x-1/2 z-[120] rounded-full bg-ocean text-white px-6 py-4 shadow-premium font-bold">
+    Action completed successfully.
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================== -->
+  <script>
+    // ------------------------------
+    // Mobile menu
+    // ------------------------------
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // ------------------------------
+    // Smooth reveal animation
+    // ------------------------------
+    const revealItems = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    // ------------------------------
+    // Modal logic
+    // ------------------------------
+    const openModal = (id) => {
+      const modal = document.getElementById(id);
+      modal?.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+
+    const closeModals = () => {
+      document.querySelectorAll('.modal.active').forEach((modal) => {
+        modal.classList.remove('active');
+      });
+
+      document.body.style.overflow = '';
+    };
+
+    document.querySelectorAll('[data-modal-open]').forEach((button) => {
+      button.addEventListener('click', () => {
+        openModal(button.getAttribute('data-modal-open'));
+      });
+    });
+
+    document.querySelectorAll('[data-modal-close]').forEach((button) => {
+      button.addEventListener('click', closeModals);
+    });
+
+    document.querySelectorAll('.modal').forEach((modal) => {
+      modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeModals();
+      });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeModals();
+    });
+
+    // ------------------------------
+    // Toast helper
+    // ------------------------------
+    const toast = document.getElementById('toast');
+
+    const showToast = (message) => {
+      toast.textContent = message;
+      toast.classList.add('active');
+
+      setTimeout(() => {
+        toast.classList.remove('active');
+      }, 2600);
+    };
+
+    // ------------------------------
+    // Demo actions
+    // ------------------------------
+    document.getElementById('downloadBtn')?.addEventListener('click', () => {
+      showToast('ডাউনলোড শুরু করার ডেমো অ্যাকশন।');
+    });
+
+    document.getElementById('reportForm')?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      closeModals();
+      showToast('আপনার রিপোর্ট সফলভাবে সাবমিট হয়েছে।');
+      event.target.reset();
+    });
+
+    document.getElementById('sidebarSearchForm')?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      showToast('সার্চ ফিচারের ডেমো অ্যাকশন।');
+    });
+  </script>
+</body>
+</html>

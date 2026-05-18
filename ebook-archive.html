@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ই-বুক আর্কাইভ — Khutbah TV</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: '#043755',
+            skybrand: '#1493C5',
+            ink: '#09283A',
+            cream: '#F7F3EA',
+            gold: '#D7A83F',
+            mint: '#A9E9D5',
+            night: '#021A28'
+          },
+          fontFamily: {
+            bangla: ['Hind Siliguri', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            premium: '0 28px 80px rgba(4,55,85,.18)',
+            soft: '0 18px 50px rgba(9,40,58,.12)',
+            card: '0 14px 38px rgba(4,55,85,.10)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    :root{--ocean:#043755;--sky:#1493C5;--gold:#D7A83F;--cream:#F7F3EA;--ink:#09283A;--night:#021A28;}
+    *{scroll-behavior:smooth}
+    body{font-family:'Hind Siliguri',sans-serif;background:#fbfaf6;color:var(--ink)}
+    .font-inter{font-family:'Inter',sans-serif}
+    .pattern-bg{background-image:radial-gradient(circle at 1px 1px, rgba(4,55,85,.075) 1px, transparent 0);background-size:24px 24px;}
+    .islamic-grid{position:absolute;inset:0;opacity:.12;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D7A83F' stroke-width='1.2'%3E%3Cpath d='M60 4 80 40l36 20-36 20-20 36-20-36L4 60l36-20Z'/%3E%3Cpath d='M60 22 72 48l26 12-26 12-12 26-12-26-26-12 26-12Z'/%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3C/g%3E%3C/svg%3E");background-size:150px 150px;}
+    .hero-glow:before{content:"";position:absolute;width:520px;height:520px;border-radius:999px;background:radial-gradient(circle,rgba(20,147,197,.34),transparent 65%);right:-220px;top:-220px;filter:blur(7px)}
+    .hero-glow:after{content:"";position:absolute;width:390px;height:390px;border-radius:999px;background:radial-gradient(circle,rgba(215,168,63,.22),transparent 70%);left:-170px;bottom:-170px;filter:blur(10px)}
+    .glass{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.18);box-shadow:0 24px 70px rgba(0,0,0,.22);backdrop-filter:blur(18px)}
+    .btn-primary{background:linear-gradient(135deg,var(--sky),#0878A8);box-shadow:0 16px 34px rgba(20,147,197,.32);transition:.3s}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(20,147,197,.38)}
+    .btn-gold{background:linear-gradient(135deg,#E8C76A,var(--gold));box-shadow:0 16px 34px rgba(215,168,63,.28);transition:.3s}
+    .section-eyebrow{letter-spacing:.18em;text-transform:uppercase;font-family:'Inter',sans-serif;font-size:12px;font-weight:900;color:var(--sky)}
+    .nav-link{position:relative}.nav-link:after{content:"";position:absolute;left:0;right:100%;height:2px;bottom:-7px;background:var(--gold);transition:.25s}.nav-link:hover:after,.nav-link.active:after{right:0}
+    .premium-input{background:white;border:1px solid rgba(4,55,85,.14);outline:none;transition:.2s}.premium-input:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(20,147,197,.1)}
+    .ornament{background-image:url("data:image/svg+xml,%3Csvg width='72' height='20' viewBox='0 0 72 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 1C43 1 45 10 52 10C59 10 61 1 71 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Cpath d='M36 1C29 1 27 10 20 10C13 10 11 1 1 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Ccircle cx='36' cy='10' r='5' stroke='%23D7A83F' stroke-width='1.5'/%3E%3C/svg%3E");width:72px;height:20px;background-repeat:no-repeat;background-position:center;}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}.reveal.show{opacity:1;transform:translateY(0)}
+    .archive-chip.active,.side-link.active{background:rgba(20,147,197,.12);color:var(--sky);border-color:rgba(20,147,197,.24);font-weight:900}
+    .archive-row{background:rgba(255,255,255,.92);border:1px solid rgba(4,55,85,.08);transition:.28s ease}.archive-row:hover{transform:translateY(-3px);box-shadow:0 20px 55px rgba(4,55,85,.13);border-color:rgba(20,147,197,.22)}
+    .mini-cover{position:relative;overflow:hidden;background:linear-gradient(160deg,#073650,#105E7A 55%,#E7C665);box-shadow:inset 8px 0 14px rgba(0,0,0,.2),0 10px 22px rgba(4,55,85,.15)}
+    .mini-cover:before{content:"";position:absolute;inset:8px;border:1px solid rgba(255,255,255,.3);border-radius:14px;pointer-events:none}.mini-cover:after{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:linear-gradient(90deg,rgba(0,0,0,.25),rgba(255,255,255,.08))}
+    .timeline-dot{box-shadow:0 0 0 7px rgba(20,147,197,.12)}
+    .toast{position:fixed;right:18px;bottom:18px;z-index:80;transform:translateY(24px);opacity:0;pointer-events:none;transition:.35s}.toast.show{transform:translateY(0);opacity:1}
+    @media(max-width:768px){.hero-title{font-size:40px;line-height:1.12}.glass{backdrop-filter:blur(10px)}}
+  </style>
+</head>
+<body class="overflow-x-hidden">
+  <script>
+    const ICON_URL = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png';
+    const WHITE_LOGO = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png';
+    const COLOR_LOGO = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png';
+    function fallbackLogo(img){ img.onerror=null; img.src = ICON_URL; img.classList.add('rounded-full'); }
+  </script>
+
+  <div class="bg-ocean text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4 overflow-hidden">
+      <div class="flex items-center gap-2 shrink-0"><span class="w-2 h-2 rounded-full bg-gold"></span><span>আসসালামু আলাইকুম — খুতবাহ টিভির ই-বুক আর্কাইভে আপনাকে স্বাগতম</span></div>
+      <div class="hidden md:flex items-center gap-5 text-white/80"><span>Archive</span><span>PDF</span><span>Download</span><span class="text-gold">●</span><span id="todayDate">আজ</span></div>
+    </div>
+  </div>
+
+  <header class="sticky top-0 z-50 bg-white/84 backdrop-blur-xl border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-5">
+        <a href="#" class="flex items-center gap-3"><img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png" alt="Khutbah TV" class="h-12 w-auto" onerror="fallbackLogo(this)" /></a>
+        <nav class="hidden lg:flex items-center gap-7 font-semibold text-[15px] text-ocean">
+          <a class="nav-link" href="#">হোম</a><a class="nav-link" href="#">ভিডিও</a><a class="nav-link active" href="#archive">কিতাব আর্কাইভ</a><a class="nav-link" href="#">ইসলাম</a><a class="nav-link" href="#">আহলে সুন্নাহ</a><a class="nav-link" href="#">সীরাত</a><a class="nav-link" href="#">যোগাযোগ</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-3">
+          <input id="globalSearch" class="w-56 rounded-full border border-ocean/15 bg-white px-5 py-3 text-sm outline-none focus:border-skybrand" placeholder="আর্কাইভে খুঁজুন..." />
+          <a href="#support" class="btn-primary text-white px-5 py-3 rounded-full font-bold text-sm">দান করুন</a>
+        </div>
+        <button id="menuBtn" class="lg:hidden w-11 h-11 rounded-full border border-ocean/15 flex items-center justify-center text-ocean">☰</button>
+      </div>
+      <div id="mobileMenu" class="hidden lg:hidden pb-5"><div class="grid gap-2 font-semibold text-ocean bg-cream rounded-3xl p-4"><a href="#">হোম</a><a href="#">ভিডিও</a><a href="#archive">কিতাব আর্কাইভ</a><a href="#">ইসলাম</a><a href="#">আহলে সুন্নাহ</a><a href="#">সীরাত</a><a href="#">যোগাযোগ</a></div></div>
+    </div>
+  </header>
+
+  <main id="archive" class="relative hero-glow overflow-hidden bg-ocean text-white">
+    <div class="islamic-grid"></div>
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+      <div class="grid lg:grid-cols-[1fr_430px] gap-10 items-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 mb-7 text-sm text-white/85">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-7 h-7 rounded-full" alt="icon" onerror="this.style.display='none'" />
+            মাস, বছর ও বিভাগ অনুযায়ী ই-বুক আর্কাইভ
+          </div>
+          <h1 class="hero-title text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight">ই-বুক <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint via-white to-gold">আর্কাইভ</span></h1>
+          <p class="mt-6 max-w-2xl text-lg sm:text-xl leading-9 text-white/76">এই পেজটি মূল ই-বুক গ্রিডের বদলে আর্কাইভ ব্রাউজিংয়ের জন্য বানানো — মাসভিত্তিক টাইমলাইন, বছরভিত্তিক গ্রুপিং, কমপ্যাক্ট লিস্ট ও দ্রুত ফিল্টার।</p>
+          <div class="mt-8 flex flex-col sm:flex-row gap-4"><a href="#archiveList" class="btn-primary text-white px-7 py-4 rounded-full font-bold text-center">আর্কাইভ দেখুন</a><a href="#archiveFilters" class="bg-white text-ocean px-7 py-4 rounded-full font-bold text-center hover:bg-cream duration-300">ফিল্টার করুন</a></div>
+        </div>
+        <div class="reveal glass rounded-[36px] p-6">
+          <p class="text-gold font-black uppercase tracking-[.18em] text-xs font-inter">Archive Overview</p>
+          <h2 class="mt-3 text-3xl font-black">লাইব্রেরির সময়রেখা</h2>
+          <div class="mt-7 grid grid-cols-2 gap-3">
+            <div class="rounded-3xl bg-white/10 border border-white/10 p-5"><p class="text-white/60 text-sm">মোট বই</p><b id="statBooks" class="font-inter text-3xl">0</b></div>
+            <div class="rounded-3xl bg-white/10 border border-white/10 p-5"><p class="text-white/60 text-sm">বছর</p><b id="statYears" class="font-inter text-3xl">0</b></div>
+            <div class="rounded-3xl bg-white/10 border border-white/10 p-5"><p class="text-white/60 text-sm">বিভাগ</p><b id="statCats" class="font-inter text-3xl">0</b></div>
+            <div class="rounded-3xl bg-white/10 border border-white/10 p-5"><p class="text-white/60 text-sm">ডাউনলোড</p><b class="font-inter text-3xl">10k+</b></div>
+          </div>
+          <div class="mt-6 rounded-3xl bg-white/10 border border-white/10 p-5">
+            <p class="text-white/60 text-sm mb-3">সর্বশেষ যুক্ত হয়েছে</p>
+            <div id="latestPreview" class="space-y-3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="archiveFilters" class="pattern-bg py-8 border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal bg-white rounded-[34px] shadow-soft p-5 sm:p-6">
+        <div class="grid lg:grid-cols-[1fr_190px_190px_auto] gap-4 items-center">
+          <div class="relative"><input id="searchInput" class="premium-input w-full rounded-full px-6 py-4 pr-12" placeholder="বইয়ের নাম, লেখক, প্রকাশক বা বিভাগ লিখুন..." /><span class="absolute right-5 top-4 text-ocean/45 text-xl">⌕</span></div>
+          <select id="yearSelect" class="premium-input rounded-full px-5 py-4 font-semibold text-ocean"><option value="all">সব বছর</option></select>
+          <select id="sortSelect" class="premium-input rounded-full px-5 py-4 font-semibold text-ocean"><option value="newest">সর্বশেষ আগে</option><option value="oldest">পুরনো আগে</option><option value="popular">জনপ্রিয় আগে</option><option value="title">নাম অনুযায়ী</option></select>
+          <button id="resetBtn" class="rounded-full px-6 py-4 bg-cream text-ocean font-black hover:bg-ocean hover:text-white duration-300">রিসেট</button>
+        </div>
+        <div id="categoryChips" class="mt-5 flex gap-2 overflow-x-auto pb-1"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="archiveList" class="pattern-bg py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid xl:grid-cols-[250px_1fr_300px] gap-8 items-start">
+        <aside class="hidden xl:block sticky top-28 reveal bg-white rounded-[34px] shadow-soft p-6">
+          <p class="section-eyebrow">Timeline</p>
+          <h3 class="mt-3 text-2xl font-black text-ocean">বছর অনুযায়ী</h3>
+          <div class="ornament mt-3 mb-5"></div>
+          <div id="yearTimeline" class="space-y-3"></div>
+        </aside>
+
+        <div>
+          <div class="reveal flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-8">
+            <div><p class="section-eyebrow">Grouped Archive</p><h2 class="mt-3 text-4xl lg:text-5xl font-black text-ocean">মাসভিত্তিক তালিকা</h2><p id="resultCount" class="mt-3 text-ocean/62">সব বই দেখানো হচ্ছে</p></div>
+            <button id="compactToggle" class="rounded-full px-5 py-3 bg-ocean text-white font-black shadow-card">Compact View</button>
+          </div>
+          <div id="monthGroups" class="space-y-9"></div>
+          <div id="emptyState" class="hidden reveal bg-white rounded-[34px] shadow-soft p-10 text-center mt-8"><img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-20 h-20 mx-auto rounded-full" alt="Khutbah TV"><h3 class="mt-5 text-2xl font-black text-ocean">কোনো আর্কাইভ পাওয়া যায়নি</h3><p class="mt-2 text-ocean/62">অন্য কীওয়ার্ড, বছর বা বিভাগ দিয়ে আবার চেষ্টা করুন।</p><button class="mt-6 btn-primary text-white rounded-full px-6 py-3 font-bold" onclick="resetFilters()">সব আর্কাইভ দেখুন</button></div>
+        </div>
+
+        <aside class="lg:sticky lg:top-28 space-y-6">
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-6">
+            <h3 class="text-2xl font-black text-ocean">Archive Months</h3><div class="ornament mt-3 mb-5"></div><div id="monthLinks" class="space-y-2"></div>
+          </div>
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-6">
+            <h3 class="text-2xl font-black text-ocean">Categories</h3><div class="ornament mt-3 mb-5"></div><div id="categoryList" class="space-y-2"></div>
+          </div>
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-6">
+            <h3 class="text-2xl font-black text-ocean">Quick Summary</h3><div class="ornament mt-3 mb-5"></div><div id="summaryBox" class="space-y-3 text-ocean/70"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="support" class="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28 pattern-bg">
+    <div class="reveal relative overflow-hidden max-w-7xl mx-auto rounded-[42px] bg-ocean p-8 sm:p-12 lg:p-16 text-white shadow-premium"><div class="islamic-grid"></div><div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-center"><div><p class="section-eyebrow text-gold">Support Khutbah TV</p><h2 class="mt-3 text-4xl lg:text-5xl font-black leading-tight">ই-বুক আর্কাইভ সমৃদ্ধ করতে সহযোগিতা করুন</h2><p class="mt-5 max-w-2xl text-white/70 text-lg leading-8">পুরনো বই ডিজিটাইজেশন, PDF আপলোড, মেটাডাটা আপডেট ও আর্কাইভ রক্ষণাবেক্ষণে সহায়তা করুন।</p></div><a href="#" class="btn-gold text-ocean px-9 py-5 rounded-full font-black text-center">দান করুন</a></div></div>
+  </section>
+
+  <footer class="bg-[#021A28] text-white pt-16 pb-8"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-white/10 pb-12"><div class="lg:col-span-2"><img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png" class="h-14 w-auto" alt="Khutbah TV white" onerror="fallbackLogo(this)" /><p class="mt-5 max-w-md text-white/62 leading-8">বাংলা ভাষায় ইসলামিক ভিডিও, বয়ান, প্রশ্নোত্তর, কিতাব ও দাওয়াহ কনটেন্টের ডিজিটাল প্ল্যাটফর্ম।</p></div><div><h4 class="font-bold text-xl mb-5">দ্রুত লিংক</h4><ul class="space-y-3 text-white/62"><li>ভিডিও</li><li>কিতাব</li><li>আর্কাইভ</li><li>প্রবন্ধ</li></ul></div><div><h4 class="font-bold text-xl mb-5">যোগাযোগ</h4><ul class="space-y-3 text-white/62"><li>contact@khutbahtv.com</li><li>YouTube</li><li>Facebook</li></ul></div></div><div class="pt-8 flex flex-col sm:flex-row justify-between gap-4 text-white/50 text-sm"><p>© Khutbah TV. All Rights Reserved.</p><p>Premium e-book archive page concept</p></div></div></footer>
+
+  <div id="toast" class="toast bg-ocean text-white rounded-2xl shadow-premium px-5 py-4 font-bold"></div>
+
+  <script>
+    const ebooks = [
+      {id:1,title:'আলোর বাণী',author:'মুফতি যুবায়ের আহমাদ',publisher:'হিন্দুস্তান বুকস',date:'2019-05',dateText:'মে, ২০১৯',size:'561KB',views:8658,category:'দাওয়াহ',color:'linear-gradient(160deg,#6D3E12,#E1B352,#06324E)'},
+      {id:2,title:'শিশু মুসলিম সংখ্যা',author:'মুফতি যুবায়ের আহমাদ',publisher:'হিন্দুস্তান বুকস',date:'2020-10',dateText:'অক্টোবর, ২০২০',size:'2.34MB',views:12840,category:'শিশু',color:'linear-gradient(160deg,#A5362D,#F1C267,#06324E)'},
+      {id:3,title:'আল-কুরআন ফি আল কুরআন',author:'মুফতি যুবায়ের আহমাদ',publisher:'হিন্দুস্তান বুকস',date:'2016-04',dateText:'এপ্রিল, ২০১৬',size:'488KB',views:10398,category:'কুরআন',color:'linear-gradient(160deg,#4A1526,#C7445C,#F2C768)'},
+      {id:4,title:'বিশ্ব মুসলিম মিডিয়াতে চোখ রাখা',author:'মুফতি যুবায়ের আহমাদ',publisher:'হিন্দুস্তান বুকস',date:'2016-04',dateText:'এপ্রিল, ২০১৬',size:'715KB',views:1829,category:'সমাজ',color:'linear-gradient(160deg,#4C3421,#9E7A4D,#F3D98A)'},
+      {id:5,title:'কিছু আলেমে পীর জীবনকথা',author:'মুফতি যুবায়ের আহমাদ',publisher:'হিন্দুস্তান বুকস',date:'2020-01',dateText:'জানুয়ারি, ২০২০',size:'182KB',views:18127,category:'সীরাত',color:'linear-gradient(160deg,#174936,#1D967A,#E7C665)'},
+      {id:6,title:'মিশনারি আলেম জীবনকথা',author:'মুফতি যুবায়ের আহমাদ',publisher:'হিন্দুস্তান বুকস',date:'2019-10',dateText:'অক্টোবর, ২০১৯',size:'231KB',views:4376,category:'দাওয়াহ',color:'linear-gradient(160deg,#102C4B,#2479A0,#E7C665)'},
+      {id:7,title:'ঈমানী পরশ',author:'মুফতি যুবায়ের আহমাদ',publisher:'হিন্দুস্তান বুকস',date:'2019-05',dateText:'মে, ২০১৯',size:'227KB',views:10685,category:'আকিদা',color:'linear-gradient(160deg,#0D2F48,#0A6689,#E8C76A)'},
+      {id:8,title:'দাওয়াত ও তাবলীগ',author:'মুফতি যুবায়ের আহমাদ',publisher:'হিন্দুস্তান বুকস',date:'2019-05',dateText:'মে, ২০১৯',size:'256KB',views:987,category:'দাওয়াহ',color:'linear-gradient(160deg,#60441C,#BA8B28,#F3D98A)'},
+      {id:9,title:'মৃত্যুর পরে জীবন এবং আখেরাতের বাস্তবতা',author:'মুফতি যুবায়ের আহমাদ',publisher:'হিন্দুস্তান বুকস',date:'2019-11',dateText:'নভেম্বর ২, ২০১৯',size:'290KB',views:988,category:'আকিদা',color:'linear-gradient(160deg,#49505A,#8B949E,#F8F1E3)'},
+      {id:10,title:'মাওলানা কেন?',author:'মুফতি যুবায়ের আহমাদ',publisher:'হিন্দুস্তান বুকস',date:'2020-07',dateText:'জুলাই ২০২০',size:'425KB',views:1028,category:'সমাজ',color:'linear-gradient(160deg,#0D3C34,#1E856F,#D7A83F)'},
+      {id:11,title:'মাদ্রাসা শিক্ষার আলো',author:'মুফতি যুবায়ের আহমাদ',publisher:'হিন্দুস্তান বুকস',date:'2019-08',dateText:'আগস্ট ২০১৯',size:'227KB',views:753,category:'শিক্ষা',color:'linear-gradient(160deg,#463D47,#89738F,#E6D7B9)'},
+      {id:12,title:'আলোর পথে',author:'মুফতি যুবায়ের আহমাদ',publisher:'হিন্দুস্তান বুকস',date:'2017-08',dateText:'আগস্ট ২০১৭',size:'1MB',views:632,category:'আকিদা',color:'linear-gradient(160deg,#1F1E3F,#3D4B98,#D7A83F)'},
+      {id:13,title:'মুসলমানদের কর্তব্য',author:'আব্দুল্লাহ',publisher:'ইসলামিক ফাউন্ডেশন',date:'2007-01',dateText:'1st Published, 2007',size:'60',views:1184,category:'ফিকহ',color:'linear-gradient(160deg,#346C43,#9ACA6D,#F7F3EA)'},
+      {id:14,title:'দেয়া',author:'নাঈমা আক্তার',publisher:'সমকালীন প্রকাশন',date:'2017-01',dateText:'1st Published, 2017',size:'42',views:576,category:'দোয়া',color:'linear-gradient(160deg,#1F1F1F,#666,#F5F5F5)'},
+      {id:15,title:'দোয়া ও যিকির',author:'আরিফ আজাদ',publisher:'সিয়ান পাবলিকেশন',date:'2020-11',dateText:'২৫ নভেম্বর ২০২০',size:'41',views:6230,category:'দোয়া',color:'linear-gradient(160deg,#0A5E34,#12A66A,#D7A83F)'},
+      {id:16,title:'ইসলাম বনাম আধুনিকতা',author:'মাওলানা আবুল মালেক',publisher:'মাকতাবাতুল ইসলাম',date:'2013-07',dateText:'July 2013',size:'4',views:6578,category:'সমাজ',color:'linear-gradient(160deg,#103C2D,#6FAC56,#F2E3B2)'},
+      {id:17,title:'তাওহীদের মূল পাঠ',author:'শাইখ সালেহ',publisher:'মদিনা পাবলিকেশন',date:'2020-06',dateText:'জুন ২০২০',size:'880KB',views:21562,category:'আকিদা',color:'linear-gradient(160deg,#061E31,#1493C5,#E8C76A)'},
+      {id:18,title:'সীরাতে রাসূল ﷺ',author:'মুফতি যুবায়ের আহমাদ',publisher:'হিন্দুস্তান বুকস',date:'2020-04',dateText:'এপ্রিল ২০২০',size:'1.8MB',views:19740,category:'সীরাত',color:'linear-gradient(160deg,#3F2414,#9D6B2E,#F2D477)'}
+    ];
+
+    const state = { q:'', category:'all', year:'all', sort:'newest', compact:false };
+    const bengaliDigits = n => String(n).replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+    const unique = arr => [...new Set(arr)];
+    const monthNames = {'01':'জানুয়ারি','02':'ফেব্রুয়ারি','03':'মার্চ','04':'এপ্রিল','05':'মে','06':'জুন','07':'জুলাই','08':'আগস্ট','09':'সেপ্টেম্বর','10':'অক্টোবর','11':'নভেম্বর','12':'ডিসেম্বর'};
+    const monthLabel = key => `${monthNames[key.slice(5,7)]} ${bengaliDigits(key.slice(0,4))}`;
+    const getYear = date => date.slice(0,4);
+
+    function showToast(message){ const toast = document.getElementById('toast'); toast.textContent = message; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'), 2300); }
+    function downloadBook(title){ showToast(`“${title}” ডাউনলোড ডেমো শুরু হয়েছে`); }
+    function orderBook(title){ showToast(`“${title}” অর্ডার রিকোয়েস্ট ডেমো`); }
+
+    function getFiltered(){
+      let list = ebooks.filter(book => {
+        const searchable = `${book.title} ${book.author} ${book.publisher} ${book.category} ${book.dateText}`.toLowerCase();
+        return searchable.includes(state.q.toLowerCase()) && (state.category==='all' || book.category===state.category) && (state.year==='all' || getYear(book.date)===state.year);
+      });
+      list.sort((a,b)=>{ if(state.sort==='oldest') return a.date.localeCompare(b.date); if(state.sort==='popular') return b.views-a.views; if(state.sort==='title') return a.title.localeCompare(b.title,'bn'); return b.date.localeCompare(a.date); });
+      return list;
+    }
+
+    function groupByMonth(list){
+      return list.reduce((acc,book)=>{ const key = book.date; if(!acc[key]) acc[key]=[]; acc[key].push(book); return acc; },{});
+    }
+
+    function archiveRow(book){
+      return `<article class="archive-row reveal show rounded-[28px] p-4 sm:p-5 ${state.compact ? '' : 'sm:grid sm:grid-cols-[92px_1fr_auto] sm:items-center'} gap-5">
+        <div class="mini-cover ${state.compact ? 'hidden' : 'w-20 h-24'} rounded-2xl flex items-center justify-center text-center px-3" style="background:${book.color}"><span class="relative z-10 text-white font-black text-xl">${book.title.slice(0,1)}</span></div>
+        <div>
+          <div class="flex flex-wrap items-center gap-2 mb-2"><span class="px-3 py-1 rounded-full bg-skybrand/10 text-skybrand font-black text-xs">${book.category}</span><span class="text-ocean/45 text-sm">${book.dateText}</span><span class="text-ocean/45 text-sm">👁 ${bengaliDigits(book.views)}</span></div>
+          <h3 class="text-xl sm:text-2xl font-black text-ocean leading-tight">${book.title}</h3>
+          <p class="mt-2 text-ocean/65"><b class="text-ocean">Author:</b> ${book.author} <span class="mx-2 text-ocean/25">|</span> <b class="text-ocean">Publisher:</b> ${book.publisher}</p>
+          <p class="mt-1 text-ocean/50 text-sm"><b>Size:</b> ${book.size}</p>
+        </div>
+        <div class="mt-4 sm:mt-0 flex sm:flex-col gap-2 sm:min-w-[130px]"><button onclick="downloadBook('${book.title}')" class="btn-primary text-white rounded-full px-4 py-3 text-sm font-black">Download</button><button onclick="orderBook('${book.title}')" class="rounded-full px-4 py-3 text-sm font-black bg-cream text-ocean hover:bg-ocean hover:text-white duration-300">Order</button></div>
+      </article>`;
+    }
+
+    function renderGroups(){
+      const list = getFiltered(); const groups = groupByMonth(list); const keys = Object.keys(groups).sort((a,b)=> state.sort==='oldest' ? a.localeCompare(b) : b.localeCompare(a));
+      document.getElementById('monthGroups').innerHTML = keys.map(key => `<section class="reveal show scroll-mt-28" id="m-${key}"><div class="flex items-center gap-4 mb-4"><span class="timeline-dot w-4 h-4 rounded-full bg-skybrand shrink-0"></span><div><h3 class="text-2xl sm:text-3xl font-black text-ocean">${monthLabel(key)}</h3><p class="text-ocean/55">${bengaliDigits(groups[key].length)}টি বই</p></div></div><div class="space-y-4 border-l-2 border-skybrand/18 pl-5 sm:pl-8">${groups[key].map(archiveRow).join('')}</div></section>`).join('');
+      document.getElementById('emptyState').classList.toggle('hidden', list.length > 0);
+      document.getElementById('resultCount').textContent = `${bengaliDigits(list.length)}টি আর্কাইভ আইটেম পাওয়া গেছে`;
+    }
+
+    function renderNavs(){
+      const cats = unique(ebooks.map(b=>b.category)).sort((a,b)=>a.localeCompare(b,'bn'));
+      document.getElementById('categoryChips').innerHTML = `<button class="archive-chip ${state.category==='all'?'active':''} px-5 py-3 rounded-full bg-cream text-ocean font-bold whitespace-nowrap border border-transparent" onclick="setCategory('all')">সব বিভাগ</button>` + cats.map(cat=>`<button class="archive-chip ${state.category===cat?'active':''} px-5 py-3 rounded-full bg-cream text-ocean font-bold whitespace-nowrap border border-transparent" onclick="setCategory('${cat}')">${cat}</button>`).join('');
+      document.getElementById('categoryList').innerHTML = `<button class="side-link ${state.category==='all'?'active':''} w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70" onclick="setCategory('all')"><span>সব বিভাগ</span><b>${bengaliDigits(ebooks.length)}</b></button>` + cats.map(cat=>`<button class="side-link ${state.category===cat?'active':''} w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70" onclick="setCategory('${cat}')"><span>${cat}</span><b>${bengaliDigits(ebooks.filter(b=>b.category===cat).length)}</b></button>`).join('');
+      const years = unique(ebooks.map(b=>getYear(b.date))).sort((a,b)=>b.localeCompare(a));
+      const yearSelect = document.getElementById('yearSelect'); yearSelect.innerHTML = `<option value="all">সব বছর</option>` + years.map(y=>`<option value="${y}">${bengaliDigits(y)}</option>`).join(''); yearSelect.value = state.year;
+      document.getElementById('yearTimeline').innerHTML = `<button class="side-link ${state.year==='all'?'active':''} w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70" onclick="setYear('all')"><span>সব বছর</span><b>${bengaliDigits(ebooks.length)}</b></button>` + years.map(y=>`<button class="side-link ${state.year===y?'active':''} w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70" onclick="setYear('${y}')"><span>${bengaliDigits(y)}</span><b>${bengaliDigits(ebooks.filter(b=>getYear(b.date)===y).length)}</b></button>`).join('');
+      const months = Object.keys(groupByMonth(ebooks)).sort((a,b)=>b.localeCompare(a));
+      document.getElementById('monthLinks').innerHTML = months.slice(0,8).map(m=>`<a href="#m-${m}" class="side-link w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70"><span>${monthLabel(m)}</span><b>${bengaliDigits(ebooks.filter(b=>b.date===m).length)}</b></a>`).join('');
+    }
+
+    function renderStats(){
+      const years = unique(ebooks.map(b=>getYear(b.date))); const cats = unique(ebooks.map(b=>b.category)); const latest = [...ebooks].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,3);
+      document.getElementById('statBooks').textContent = bengaliDigits(ebooks.length); document.getElementById('statYears').textContent = bengaliDigits(years.length); document.getElementById('statCats').textContent = bengaliDigits(cats.length);
+      document.getElementById('latestPreview').innerHTML = latest.map(b=>`<div class="flex items-center justify-between gap-3"><span class="font-bold">${b.title}</span><span class="text-white/50 text-sm">${b.dateText}</span></div>`).join('');
+      const mostPopular = [...ebooks].sort((a,b)=>b.views-a.views)[0];
+      document.getElementById('summaryBox').innerHTML = `<p><b class="text-ocean">Most popular:</b> ${mostPopular.title}</p><p><b class="text-ocean">Top category:</b> ${cats[0]}</p><p><b class="text-ocean">Current view:</b> ${state.compact ? 'Compact archive rows' : 'Detailed archive rows'}</p>`;
+    }
+
+    function render(){ renderNavs(); renderGroups(); renderStats(); document.getElementById('compactToggle').textContent = state.compact ? 'Detailed View' : 'Compact View'; }
+    function setCategory(cat){ state.category = cat; render(); }
+    function setYear(year){ state.year = year; render(); }
+    function resetFilters(){ state.q=''; state.category='all'; state.year='all'; state.sort='newest'; document.getElementById('searchInput').value=''; document.getElementById('sortSelect').value='newest'; render(); }
+
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.getElementById('todayDate').textContent = new Intl.DateTimeFormat('bn-BD',{weekday:'long',year:'numeric',month:'long',day:'numeric'}).format(new Date());
+      document.getElementById('menuBtn')?.addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'));
+      document.getElementById('searchInput').addEventListener('input', e=>{state.q=e.target.value;render();});
+      document.getElementById('yearSelect').addEventListener('change', e=>{state.year=e.target.value;render();});
+      document.getElementById('sortSelect').addEventListener('change', e=>{state.sort=e.target.value;render();});
+      document.getElementById('resetBtn').addEventListener('click', resetFilters);
+      document.getElementById('compactToggle').addEventListener('click',()=>{state.compact=!state.compact;render();});
+      document.getElementById('globalSearch').addEventListener('keydown', e=>{if(e.key==='Enter'){document.getElementById('searchInput').value=e.target.value;state.q=e.target.value;render();document.getElementById('archiveList').scrollIntoView({behavior:'smooth'});}});
+      const observer = new IntersectionObserver((entries)=>entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add('show')}),{threshold:.12}); document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+      render();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>সার্চ রেজাল্ট — Khutbah TV</title>
+
+  <!-- =========================================================
+       SECTION: ASSET / FONT / TAILWIND SETUP
+       Purpose: Loads Tailwind, Bengali/English fonts, and shared theme tokens.
+       ========================================================= -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: '#043755',
+            skybrand: '#1493C5',
+            ink: '#09283A',
+            cream: '#F7F3EA',
+            gold: '#D7A83F',
+            mint: '#A9E9D5',
+            night: '#021A28'
+          },
+          fontFamily: {
+            bangla: ['Hind Siliguri', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            premium: '0 28px 80px rgba(4,55,85,.18)',
+            soft: '0 18px 50px rgba(9,40,58,.12)',
+            card: '0 14px 38px rgba(4,55,85,.10)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- =========================================================
+       SECTION: GLOBAL DESIGN SYSTEM CSS
+       Purpose: Khutbah TV brand styling, animations, reusable UI classes.
+       ========================================================= -->
+  <style>
+    :root{--ocean:#043755;--sky:#1493C5;--gold:#D7A83F;--cream:#F7F3EA;--ink:#09283A;--night:#021A28;--mint:#A9E9D5;}
+    *{scroll-behavior:smooth}
+    body{font-family:'Hind Siliguri',sans-serif;background:#fbfaf6;color:var(--ink);}
+    .font-inter{font-family:'Inter',sans-serif}
+
+    /* =========================================================
+       SECTION: BACKGROUNDS / ORNAMENTS
+       Purpose: Premium Islamic pattern, subtle dot pattern, hero glow.
+       ========================================================= */
+    .pattern-bg{background-image:radial-gradient(circle at 1px 1px, rgba(4,55,85,.075) 1px, transparent 0);background-size:24px 24px;}
+    .islamic-grid{position:absolute;inset:0;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D7A83F' stroke-width='1.2'%3E%3Cpath d='M60 4 80 40l36 20-36 20-20 36-20-36L4 60l36-20Z'/%3E%3Cpath d='M60 22 72 48l26 12-26 12-12 26-12-26-26-12 26-12Z'/%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3C/g%3E%3C/svg%3E");background-size:150px 150px;}
+    .hero-glow:before{content:"";position:absolute;width:560px;height:560px;border-radius:999px;background:radial-gradient(circle,rgba(20,147,197,.35),transparent 66%);right:-230px;top:-210px;filter:blur(8px)}
+    .hero-glow:after{content:"";position:absolute;width:430px;height:430px;border-radius:999px;background:radial-gradient(circle,rgba(215,168,63,.22),transparent 70%);left:-180px;bottom:-200px;filter:blur(10px)}
+    .ornament{background-image:url("data:image/svg+xml,%3Csvg width='72' height='20' viewBox='0 0 72 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 1C43 1 45 10 52 10C59 10 61 1 71 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Cpath d='M36 1C29 1 27 10 20 10C13 10 11 1 1 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Ccircle cx='36' cy='10' r='5' stroke='%23D7A83F' stroke-width='1.5'/%3E%3C/svg%3E");width:72px;height:20px;background-repeat:no-repeat;background-position:center;}
+
+    /* =========================================================
+       SECTION: BUTTONS / FORM ELEMENTS
+       Purpose: Reusable CTAs and search input styles.
+       ========================================================= */
+    .btn-primary{background:linear-gradient(135deg,var(--sky),#0878A8);box-shadow:0 16px 34px rgba(20,147,197,.32);transition:.3s ease;}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(20,147,197,.38)}
+    .btn-gold{background:linear-gradient(135deg,#E8C76A,var(--gold));box-shadow:0 16px 34px rgba(215,168,63,.28);transition:.3s ease;}
+    .btn-gold:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(215,168,63,.35)}
+    .premium-input{background:white;border:1px solid rgba(4,55,85,.14);outline:none;transition:.25s ease;}
+    .premium-input:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(20,147,197,.1)}
+    .section-eyebrow{letter-spacing:.18em;text-transform:uppercase;font-family:'Inter',sans-serif;font-size:12px;font-weight:900;color:var(--sky)}
+
+    /* =========================================================
+       SECTION: NAVIGATION / MENUS
+       Purpose: Header hover underline and active menu states.
+       ========================================================= */
+    .nav-link{position:relative}.nav-link:after{content:"";position:absolute;left:0;right:100%;height:2px;bottom:-7px;background:var(--gold);transition:.25s}.nav-link:hover:after,.nav-link.active:after{right:0}
+
+    /* =========================================================
+       SECTION: ANIMATIONS
+       Purpose: Smooth reveal, floating, pulse, ticker, card entrance.
+       ========================================================= */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}.reveal.show{opacity:1;transform:translateY(0)}
+    .reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .75s ease,transform .75s ease}.reveal-left.show{opacity:1;transform:translateX(0)}
+    .reveal-right{opacity:0;transform:translateX(28px);transition:opacity .75s ease,transform .75s ease}.reveal-right.show{opacity:1;transform:translateX(0)}
+    .floating{animation:float 7s ease-in-out infinite}@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    .ticker{animation:ticker 25s linear infinite}@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .soft-pulse{animation:softPulse 2.4s ease-in-out infinite}@keyframes softPulse{0%,100%{box-shadow:0 0 0 0 rgba(215,168,63,.30)}50%{box-shadow:0 0 0 12px rgba(215,168,63,0)}}
+    .result-card{animation:cardEnter .45s ease both}@keyframes cardEnter{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+    /* =========================================================
+       SECTION: SEARCH RESULT SPECIFIC COMPONENTS
+       Purpose: Search result cards, type badges, filter chips, sidebar blocks.
+       ========================================================= */
+    .glass{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.18);box-shadow:0 24px 70px rgba(0,0,0,.22);backdrop-filter:blur(18px)}
+    .search-card{background:rgba(255,255,255,.94);border:1px solid rgba(4,55,85,.08);transition:.32s ease;}
+    .search-card:hover{transform:translateY(-5px);box-shadow:0 28px 80px rgba(4,55,85,.15);border-color:rgba(20,147,197,.22)}
+    .type-badge{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:7px 12px;font-weight:800;font-size:13px;}
+    .filter-chip.active,.sidebar-link.active{background:var(--ocean);color:#fff;border-color:var(--ocean);box-shadow:0 14px 28px rgba(4,55,85,.18)}
+    .highlight{background:linear-gradient(180deg,transparent 48%,rgba(215,168,63,.38) 48%);font-weight:800;color:var(--ocean)}
+    .mini-progress{height:8px;border-radius:999px;background:rgba(4,55,85,.09);overflow:hidden}.mini-progress span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--sky),var(--gold))}
+    .icon-tile{background:linear-gradient(145deg,rgba(20,147,197,.12),rgba(215,168,63,.12));border:1px solid rgba(4,55,85,.08)}
+    .toast{position:fixed;right:18px;bottom:18px;z-index:80;transform:translateY(24px);opacity:0;pointer-events:none;transition:.35s}.toast.show{transform:translateY(0);opacity:1}
+
+    /* =========================================================
+       SECTION: RESPONSIVE TWEAKS
+       Purpose: Keeps hero and glass effects mobile friendly.
+       ========================================================= */
+    @media(max-width:768px){.hero-title{font-size:42px;line-height:1.12}.glass{backdrop-filter:blur(10px)}}
+  </style>
+</head>
+<body class="overflow-x-hidden">
+
+  <!-- =========================================================
+       SECTION: GLOBAL JS VARIABLES / IMAGE FALLBACKS
+       Purpose: Shared logo assets and fallback behavior.
+       ========================================================= -->
+  <script>
+    const ICON_URL = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png';
+    const WHITE_LOGO = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png';
+    const COLOR_LOGO = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png';
+    function fallbackLogo(img){ img.onerror=null; img.src = ICON_URL; img.classList.add('rounded-full'); }
+  </script>
+
+  <!-- =========================================================
+       SECTION: FLOATING SOCIAL SHARE
+       Purpose: Desktop floating social shortcuts.
+       ========================================================= -->
+  <div class="fixed left-3 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-2">
+    <a class="w-9 h-9 rounded-full bg-ocean text-white flex items-center justify-center shadow-card hover:-translate-y-1 duration-300" href="#">f</a>
+    <a class="w-9 h-9 rounded-full bg-skybrand text-white flex items-center justify-center shadow-card hover:-translate-y-1 duration-300" href="#">▶</a>
+    <a class="w-9 h-9 rounded-full bg-gold text-ocean flex items-center justify-center shadow-card hover:-translate-y-1 duration-300" href="#">✉</a>
+  </div>
+
+  <!-- =========================================================
+       SECTION: TOP NOTICE BAR
+       Purpose: Small welcome/info strip above navigation.
+       ========================================================= -->
+  <div class="bg-ocean text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4 overflow-hidden">
+      <div class="flex items-center gap-2 shrink-0"><span class="w-2 h-2 rounded-full bg-gold soft-pulse"></span><span>আসসালামু আলাইকুম — খুতবাহ টিভিতে খুঁজুন ইসলামিক কনটেন্ট</span></div>
+      <div class="hidden md:flex items-center gap-5 text-white/80"><span>ভিডিও</span><span>কিতাব</span><span>প্রবন্ধ</span><span class="text-gold">●</span><span id="todayDate">আজ</span></div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SECTION: HEADER / NAVIGATION
+       Purpose: Sticky site navigation with mobile menu.
+       ========================================================= -->
+  <header class="sticky top-0 z-50 bg-white/84 backdrop-blur-xl border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-5">
+        <a href="#" class="flex items-center gap-3">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png" alt="Khutbah TV" class="h-12 w-auto" onerror="fallbackLogo(this)" />
+        </a>
+        <nav class="hidden lg:flex items-center gap-7 font-semibold text-[15px] text-ocean">
+          <a class="nav-link" href="#">হোম</a>
+          <a class="nav-link" href="#">ভিডিও</a>
+          <a class="nav-link" href="#">কিতাব</a>
+          <a class="nav-link active" href="#searchResults">সার্চ</a>
+          <a class="nav-link" href="#">আহলে সুন্নাহ</a>
+          <a class="nav-link" href="#">সীরাত</a>
+          <a class="nav-link" href="#">প্রশ্ন/উত্তর</a>
+          <a class="nav-link" href="#">যোগাযোগ</a>
+        </nav>
+        <div class="hidden md:flex items-center gap-3">
+          <div class="relative">
+            <input id="globalSearch" class="w-56 rounded-full border border-ocean/15 bg-white px-5 py-3 text-sm outline-none focus:border-skybrand" placeholder="সাইটে খুঁজুন..." value="আকিদা" />
+            <span class="absolute right-4 top-3.5 text-ocean/50">⌕</span>
+          </div>
+          <a href="#support" class="btn-primary duration-300 text-white px-5 py-3 rounded-full font-bold text-sm">দান করুন</a>
+        </div>
+        <button id="menuBtn" class="lg:hidden w-11 h-11 rounded-full border border-ocean/15 flex items-center justify-center text-ocean">☰</button>
+      </div>
+      <div id="mobileMenu" class="hidden lg:hidden pb-5">
+        <div class="grid gap-2 font-semibold text-ocean bg-cream rounded-3xl p-4">
+          <a href="#">হোম</a><a href="#">ভিডিও</a><a href="#">কিতাব</a><a href="#searchResults">সার্চ</a><a href="#">আহলে সুন্নাহ</a><a href="#">সীরাত</a><a href="#">প্রশ্ন/উত্তর</a><a href="#">যোগাযোগ</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       SECTION: LATEST TICKER
+       Purpose: Animated latest content strip.
+       ========================================================= -->
+  <div class="bg-skybrand text-white overflow-hidden py-3 font-semibold">
+    <div class="ticker flex gap-10 whitespace-nowrap w-max">
+      <span>আপনার সার্চ অনুযায়ী ভিডিও, বই, প্রবন্ধ ও প্রশ্নোত্তর দেখুন</span><span>•</span><span>ফিল্টার ব্যবহার করে দ্রুত ফলাফল খুঁজুন</span><span>•</span><span>জনপ্রিয় ও নতুন কনটেন্ট আলাদা করুন</span><span>•</span>
+      <span>আপনার সার্চ অনুযায়ী ভিডিও, বই, প্রবন্ধ ও প্রশ্নোত্তর দেখুন</span><span>•</span><span>ফিল্টার ব্যবহার করে দ্রুত ফলাফল খুঁজুন</span><span>•</span><span>জনপ্রিয় ও নতুন কনটেন্ট আলাদা করুন</span><span>•</span>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SECTION: SEARCH HERO
+       Purpose: Search page intro, primary search form, and stats.
+       ========================================================= -->
+  <main class="relative hero-glow overflow-hidden bg-ocean text-white">
+    <div class="islamic-grid"></div>
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
+        <div class="reveal-left">
+          <div class="inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 mb-7 text-sm text-white/85">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-7 h-7 rounded-full" alt="icon" onerror="this.style.display='none'" />
+            সার্চ রেজাল্ট পেজ — ভিডিও, কিতাব, প্রবন্ধ ও প্রশ্নোত্তর
+          </div>
+          <h1 class="hero-title text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight">
+            আপনার <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint via-white to-gold">সার্চ</span> ফলাফল
+          </h1>
+          <p class="mt-7 max-w-2xl text-lg sm:text-xl leading-9 text-white/76">
+            খুঁজুন নির্ভরযোগ্য ইসলামিক কনটেন্ট — বই, ভিডিও, প্রবন্ধ, দোয়া, সীরাত ও প্রশ্নোত্তর এক জায়গায়।
+          </p>
+
+          <!-- Hero Search Form -->
+          <div class="mt-9 glass rounded-[28px] p-3 sm:p-4">
+            <div class="grid sm:grid-cols-[1fr_auto] gap-3">
+              <div class="relative">
+                <input id="heroSearch" class="w-full rounded-full bg-white text-ocean px-6 py-4 pr-12 outline-none font-semibold" value="আকিদা" placeholder="আপনি কী খুঁজছেন?" />
+                <span class="absolute right-5 top-4 text-ocean/45 text-xl">⌕</span>
+              </div>
+              <button id="heroSearchBtn" class="btn-gold text-ocean px-8 py-4 rounded-full font-black">সার্চ করুন</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Search Summary Card -->
+        <div class="reveal-right relative min-h-[390px]">
+          <div class="absolute right-0 top-4 w-[88%] h-[330px] rounded-[42px] bg-gradient-to-br from-white/18 to-white/5 border border-white/18"></div>
+          <div class="glass floating relative ml-auto w-full max-w-[560px] rounded-[38px] p-6">
+            <div class="flex items-center justify-between gap-4 mb-6">
+              <div>
+                <p class="text-white/60">Search Analytics</p>
+                <h2 class="text-3xl font-black">রেজাল্ট সামারি</h2>
+              </div>
+              <div class="w-16 h-16 rounded-full bg-gold text-ocean flex items-center justify-center text-3xl shadow-card">⌕</div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="rounded-3xl bg-white/10 p-5 border border-white/10"><p class="text-white/60 text-sm">মোট ফলাফল</p><b id="heroTotal" class="font-inter text-3xl">24</b></div>
+              <div class="rounded-3xl bg-white/10 p-5 border border-white/10"><p class="text-white/60 text-sm">ক্যাটাগরি</p><b class="font-inter text-3xl">4</b></div>
+              <div class="rounded-3xl bg-white/10 p-5 border border-white/10"><p class="text-white/60 text-sm">জনপ্রিয়</p><b>ভিডিও</b></div>
+              <div class="rounded-3xl bg-white/10 p-5 border border-white/10"><p class="text-white/60 text-sm">সর্বশেষ</p><b>আজ আপডেট</b></div>
+            </div>
+            <div class="mt-6 rounded-3xl bg-white/10 border border-white/10 p-5">
+              <div class="flex items-center justify-between mb-2"><span class="text-white/65">রেজাল্ট ম্যাচ স্কোর</span><b>৮৭%</b></div>
+              <div class="mini-progress bg-white/10"><span style="width:87%"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       SECTION: SEARCH CONTROL BAR
+       Purpose: Main search box, sorting, view mode and quick filters.
+       ========================================================= -->
+  <section id="searchResults" class="pattern-bg py-10 border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal bg-white rounded-[34px] shadow-soft p-5 sm:p-6">
+        <div class="grid lg:grid-cols-[1fr_auto_auto_auto] gap-4 items-center">
+          <div class="relative">
+            <input id="searchInput" class="premium-input w-full rounded-full px-6 py-4 pr-12" value="আকিদা" placeholder="ভিডিও, বই, প্রবন্ধ, লেখক বা বিষয় লিখুন..." />
+            <span class="absolute right-5 top-4 text-ocean/45 text-xl">⌕</span>
+          </div>
+          <select id="typeSelect" class="premium-input rounded-full px-5 py-4 font-semibold text-ocean">
+            <option value="all">সব ধরনের ফলাফল</option>
+            <option value="ভিডিও">ভিডিও</option>
+            <option value="ই-বুক">ই-বুক</option>
+            <option value="প্রবন্ধ">প্রবন্ধ</option>
+            <option value="প্রশ্নোত্তর">প্রশ্নোত্তর</option>
+          </select>
+          <select id="sortSelect" class="premium-input rounded-full px-5 py-4 font-semibold text-ocean">
+            <option value="relevant">প্রাসঙ্গিক আগে</option>
+            <option value="newest">সর্বশেষ আগে</option>
+            <option value="popular">জনপ্রিয় আগে</option>
+            <option value="title">নাম অনুযায়ী</option>
+          </select>
+          <button id="resetBtn" class="rounded-full px-6 py-4 bg-cream text-ocean font-black hover:bg-ocean hover:text-white duration-300">রিসেট</button>
+        </div>
+
+        <!-- Quick Filter Chips -->
+        <div id="quickFilters" class="mt-5 flex gap-2 overflow-x-auto pb-1">
+          <button class="filter-chip active px-5 py-3 rounded-full bg-cream border border-ocean/8 text-ocean font-bold whitespace-nowrap duration-300" data-category="all">সব</button>
+          <button class="filter-chip px-5 py-3 rounded-full bg-cream border border-ocean/8 text-ocean font-bold whitespace-nowrap duration-300" data-category="আকিদা">আকিদা</button>
+          <button class="filter-chip px-5 py-3 rounded-full bg-cream border border-ocean/8 text-ocean font-bold whitespace-nowrap duration-300" data-category="কুরআন">কুরআন</button>
+          <button class="filter-chip px-5 py-3 rounded-full bg-cream border border-ocean/8 text-ocean font-bold whitespace-nowrap duration-300" data-category="সীরাত">সীরাত</button>
+          <button class="filter-chip px-5 py-3 rounded-full bg-cream border border-ocean/8 text-ocean font-bold whitespace-nowrap duration-300" data-category="ফিকহ">ফিকহ</button>
+          <button class="filter-chip px-5 py-3 rounded-full bg-cream border border-ocean/8 text-ocean font-bold whitespace-nowrap duration-300" data-category="দোয়া">দোয়া</button>
+          <button class="filter-chip px-5 py-3 rounded-full bg-cream border border-ocean/8 text-ocean font-bold whitespace-nowrap duration-300" data-category="দাওয়াহ">দাওয়াহ</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION: MAIN SEARCH RESULTS LAYOUT
+       Purpose: Results list, sidebar filters, popular searches, pagination.
+       ========================================================= -->
+  <section class="pattern-bg py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-[320px_1fr] gap-8 items-start">
+
+        <!-- =========================================================
+             SUBSECTION: LEFT SIDEBAR FILTERS
+             Purpose: Type/category counts, date filters and helpful widgets.
+             ========================================================= -->
+        <aside class="lg:sticky lg:top-28 space-y-6 order-2 lg:order-1">
+
+          <!-- Content Type Filter -->
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-6">
+            <h3 class="text-2xl font-black text-ocean">ফলাফলের ধরন</h3>
+            <div class="ornament mt-3 mb-5"></div>
+            <div id="typeSidebar" class="space-y-2"></div>
+          </div>
+
+          <!-- Category Filter -->
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-6">
+            <h3 class="text-2xl font-black text-ocean">বিষয়ভিত্তিক ফিল্টার</h3>
+            <div class="ornament mt-3 mb-5"></div>
+            <div id="categorySidebar" class="space-y-2"></div>
+          </div>
+
+          <!-- Date Filter -->
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-6">
+            <h3 class="text-2xl font-black text-ocean">সময় অনুযায়ী</h3>
+            <div class="ornament mt-3 mb-5"></div>
+            <div class="space-y-2">
+              <button class="date-filter active sidebar-link w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70 duration-300" data-date="all"><span>সব সময়</span><b>All</b></button>
+              <button class="date-filter sidebar-link w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70 duration-300" data-date="week"><span>এই সপ্তাহ</span><b>7d</b></button>
+              <button class="date-filter sidebar-link w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70 duration-300" data-date="month"><span>এই মাস</span><b>30d</b></button>
+              <button class="date-filter sidebar-link w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70 duration-300" data-date="year"><span>এই বছর</span><b>2026</b></button>
+            </div>
+          </div>
+
+          <!-- Popular Search Terms -->
+          <div class="reveal bg-ocean text-white rounded-[34px] shadow-premium p-6 overflow-hidden relative">
+            <div class="islamic-grid"></div>
+            <div class="relative">
+              <h3 class="text-2xl font-black">জনপ্রিয় সার্চ</h3>
+              <p class="mt-2 text-white/62 leading-7">দর্শকরা সবচেয়ে বেশি যে বিষয়গুলো খুঁজছেন।</p>
+              <div class="mt-5 flex flex-wrap gap-2">
+                <button class="popular-term bg-white/10 hover:bg-gold hover:text-ocean duration-300 rounded-full px-4 py-2 font-bold" data-term="আকিদা">আকিদা</button>
+                <button class="popular-term bg-white/10 hover:bg-gold hover:text-ocean duration-300 rounded-full px-4 py-2 font-bold" data-term="সীরাত">সীরাত</button>
+                <button class="popular-term bg-white/10 hover:bg-gold hover:text-ocean duration-300 rounded-full px-4 py-2 font-bold" data-term="দোয়া">দোয়া</button>
+                <button class="popular-term bg-white/10 hover:bg-gold hover:text-ocean duration-300 rounded-full px-4 py-2 font-bold" data-term="ফিকহ">ফিকহ</button>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <!-- =========================================================
+             SUBSECTION: SEARCH RESULTS COLUMN
+             Purpose: Result summary, view toggle, result cards, empty state.
+             ========================================================= -->
+        <div class="order-1 lg:order-2">
+          <div class="reveal flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-8">
+            <div>
+              <p class="section-eyebrow">Search Results</p>
+              <h2 class="mt-3 text-4xl lg:text-5xl font-black text-ocean">সার্চ ফলাফল</h2>
+              <p id="resultSummary" class="mt-3 text-ocean/62">“আকিদা” এর জন্য ফলাফল দেখানো হচ্ছে</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button id="comfortableView" class="view-btn active w-11 h-11 rounded-full bg-ocean text-white flex items-center justify-center" title="Comfortable View">▤</button>
+              <button id="compactView" class="view-btn w-11 h-11 rounded-full bg-cream text-ocean flex items-center justify-center" title="Compact View">☰</button>
+            </div>
+          </div>
+
+          <!-- Results Container -->
+          <div id="resultsList" class="space-y-5"></div>
+
+          <!-- Empty State -->
+          <div id="emptyState" class="hidden reveal bg-white rounded-[34px] shadow-soft p-10 text-center mt-8">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-20 h-20 mx-auto rounded-full" alt="Khutbah TV">
+            <h3 class="mt-5 text-2xl font-black text-ocean">কোনো ফলাফল পাওয়া যায়নি</h3>
+            <p class="mt-2 text-ocean/62">অন্য কীওয়ার্ড, বিভাগ বা ফিল্টার দিয়ে আবার চেষ্টা করুন।</p>
+            <button class="mt-6 btn-primary text-white rounded-full px-6 py-3 font-bold" onclick="resetFilters()">সব ফলাফল দেখুন</button>
+          </div>
+
+          <!-- Pagination -->
+          <div id="pagination" class="flex justify-center items-center gap-2 mt-12"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION: SEARCH HELP / CTA
+       Purpose: Helps users recover if they cannot find content.
+       ========================================================= -->
+  <section id="support" class="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28 pattern-bg">
+    <div class="reveal relative overflow-hidden max-w-7xl mx-auto rounded-[42px] bg-ocean p-8 sm:p-12 lg:p-16 text-white shadow-premium">
+      <div class="islamic-grid"></div>
+      <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-center">
+        <div>
+          <p class="section-eyebrow text-gold">Need Help?</p>
+          <h2 class="mt-3 text-4xl lg:text-5xl font-black leading-tight">যা খুঁজছেন পাচ্ছেন না?</h2>
+          <p class="mt-5 max-w-2xl text-white/70 text-lg leading-8">আপনার প্রয়োজনীয় কিতাব, ভিডিও বা প্রশ্নোত্তর খুঁজে না পেলে আমাদের সাথে যোগাযোগ করুন অথবা নতুন কনটেন্ট প্রকাশনায় সহযোগিতা করুন।</p>
+        </div>
+        <div class="flex flex-col sm:flex-row lg:flex-col gap-3">
+          <a href="#searchResults" class="btn-gold text-ocean px-9 py-5 rounded-full font-black text-center">আবার সার্চ করুন</a>
+          <a href="#" class="bg-white/10 border border-white/15 text-white px-9 py-5 rounded-full font-black text-center hover:bg-white hover:text-ocean duration-300">যোগাযোগ করুন</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION: FOOTER
+       Purpose: Site footer matching Khutbah TV branding.
+       ========================================================= -->
+  <footer class="bg-[#021A28] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-white/10 pb-12">
+        <div class="lg:col-span-2"><img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png" class="h-14 w-auto" alt="Khutbah TV white" onerror="fallbackLogo(this)" /><p class="mt-5 max-w-md text-white/62 leading-8">বাংলা ভাষায় ইসলামিক ভিডিও, বয়ান, প্রশ্নোত্তর, কিতাব ও দাওয়াহ কনটেন্টের ডিজিটাল প্ল্যাটফর্ম।</p></div>
+        <div><h4 class="font-bold text-xl mb-5">দ্রুত লিংক</h4><ul class="space-y-3 text-white/62"><li>ভিডিও</li><li>কিতাব</li><li>প্রশ্নোত্তর</li><li>প্রবন্ধ</li></ul></div>
+        <div><h4 class="font-bold text-xl mb-5">যোগাযোগ</h4><ul class="space-y-3 text-white/62"><li>contact@khutbahtv.com</li><li>YouTube</li><li>Facebook</li></ul></div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row justify-between gap-4 text-white/50 text-sm"><p>© Khutbah TV. All Rights Reserved.</p><p>Premium search result page concept</p></div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       SECTION: TOAST / FEEDBACK
+       Purpose: Small animated user feedback messages.
+       ========================================================= -->
+  <div id="toast" class="toast bg-ocean text-white rounded-2xl shadow-premium px-5 py-4 font-bold"></div>
+
+  <!-- =========================================================
+       SECTION: PAGE INTERACTIONS / FILTERING / ANIMATIONS
+       Purpose: Search filtering, pagination, view modes, reveal animation.
+       ========================================================= -->
+  <script>
+    /* =========================================================
+       DATA: Demo search results
+       Replace this array with backend/API data in production.
+       ========================================================= */
+    const searchResults = [
+      {id:1,type:'ভিডিও',title:'আকিদার মৌলিক আলোচনা',excerpt:'ইসলামের <mark>আকিদা</mark> বিষয়ে সহজ ভাষায় গুরুত্বপূর্ণ আলোচনা এবং ঈমানের মূল ভিত্তি।',category:'আকিদা',author:'মুফতি যুবায়ের আহমাদ',date:'2026-05-18',dateLabel:'১৮ মে ২০২৬',views:18240,duration:'34:20',url:'#'},
+      {id:2,type:'ই-বুক',title:'ঈমানী পরশ',excerpt:'আল্লাহর প্রতি বিশ্বাস, রাসূল ﷺ এর অনুসরণ এবং <mark>আকিদা</mark> শুদ্ধ রাখার প্রয়োজনীয়তা।',category:'আকিদা',author:'মুফতি যুবায়ের আহমাদ',date:'2026-04-26',dateLabel:'২৬ এপ্রিল ২০২৬',views:10685,duration:'PDF · 227KB',url:'#'},
+      {id:3,type:'প্রবন্ধ',title:'তাওহীদ কেন গুরুত্বপূর্ণ?',excerpt:'তাওহীদ হলো ইসলামের কেন্দ্রীয় বিষয়। মুসলিম জীবনে বিশুদ্ধ <mark>আকিদা</mark> কীভাবে প্রভাব ফেলে।',category:'আকিদা',author:'সম্পাদকীয় বিভাগ',date:'2026-04-10',dateLabel:'১০ এপ্রিল ২০২৬',views:7832,duration:'পড়তে ৬ মিনিট',url:'#'},
+      {id:4,type:'প্রশ্নোত্তর',title:'আকিদা সংশোধনের প্রথম ধাপ কী?',excerpt:'প্রশ্নোত্তরে আলোচনা করা হয়েছে কিভাবে একজন মুসলিম নিজের <mark>আকিদা</mark> যাচাই ও সংশোধন করবেন।',category:'আকিদা',author:'উত্তর বিভাগ',date:'2026-03-21',dateLabel:'২১ মার্চ ২০২৬',views:5420,duration:'উত্তর',url:'#'},
+      {id:5,type:'ভিডিও',title:'সীরাতে রাসূল ﷺ থেকে শিক্ষা',excerpt:'রাসূল ﷺ এর জীবন থেকে ঈমান, চরিত্র ও দাওয়াহর অনুপ্রেরণামূলক শিক্ষা।',category:'সীরাত',author:'মুফতি যুবায়ের আহমাদ',date:'2026-03-15',dateLabel:'১৫ মার্চ ২০২৬',views:19740,duration:'48:12',url:'#'},
+      {id:6,type:'ই-বুক',title:'তাওহীদের মূল পাঠ',excerpt:'তাওহীদ, ঈমান ও বিশুদ্ধ ধর্মীয় চিন্তার উপর একটি সংক্ষিপ্ত কিন্তু উপকারী পাঠ।',category:'আকিদা',author:'শাইখ সালেহ',date:'2026-02-22',dateLabel:'২২ ফেব্রুয়ারি ২০২৬',views:21562,duration:'PDF · 880KB',url:'#'},
+      {id:7,type:'প্রবন্ধ',title:'কুরআন অধ্যয়নের আদব',excerpt:'কুরআন পড়া, বোঝা ও আমল করার ক্ষেত্রে প্রয়োজনীয় আদব এবং নিয়ম।',category:'কুরআন',author:'গবেষণা বিভাগ',date:'2026-02-03',dateLabel:'৩ ফেব্রুয়ারি ২০২৬',views:3860,duration:'পড়তে ৮ মিনিট',url:'#'},
+      {id:8,type:'ভিডিও',title:'দোয়া কবুলের সময় ও আদব',excerpt:'দোয়া করার আদব, উত্তম সময় এবং আল্লাহর কাছে বিনয়ী হওয়ার শিক্ষা।',category:'দোয়া',author:'মাওলানা আবুল মালেক',date:'2026-01-18',dateLabel:'১৮ জানুয়ারি ২০২৬',views:12840,duration:'29:40',url:'#'},
+      {id:9,type:'প্রশ্নোত্তর',title:'ফিকহি মতভেদ কীভাবে বুঝব?',excerpt:'ফিকহি মতভেদ, আলেমদের সম্মান এবং সাধারণ মানুষের করণীয় নিয়ে আলোচনা।',category:'ফিকহ',author:'উত্তর বিভাগ',date:'2025-12-12',dateLabel:'১২ ডিসেম্বর ২০২৫',views:6578,duration:'উত্তর',url:'#'},
+      {id:10,type:'ই-বুক',title:'আলোর পথে',excerpt:'ঈমান, আমল ও ইসলামী জীবনধারার দিকে ফিরে আসার অনুপ্রেরণামূলক লেখা।',category:'দাওয়াহ',author:'মুফতি যুবায়ের আহমাদ',date:'2025-11-03',dateLabel:'৩ নভেম্বর ২০২৫',views:6320,duration:'PDF · 1MB',url:'#'},
+      {id:11,type:'ভিডিও',title:'দাওয়াতের ভাষা ও কৌশল',excerpt:'মানুষকে ইসলামের দিকে আহ্বান করার সুন্দর পদ্ধতি এবং আচরণগত নির্দেশনা।',category:'দাওয়াহ',author:'দাওয়াহ বিভাগ',date:'2025-09-19',dateLabel:'১৯ সেপ্টেম্বর ২০২৫',views:9870,duration:'41:05',url:'#'},
+      {id:12,type:'প্রবন্ধ',title:'আধুনিকতা ও মুসলিম পরিচয়',excerpt:'আধুনিক সমাজে মুসলিম পরিচয়, চিন্তা ও মূল্যবোধ রক্ষার বিষয়ে বিশ্লেষণ।',category:'সমাজ',author:'মাওলানা আবুল মালেক',date:'2025-07-09',dateLabel:'৯ জুলাই ২০২৫',views:8658,duration:'পড়তে ১০ মিনিট',url:'#'}
+    ];
+
+    /* =========================================================
+       STATE: Current UI state for filters, sorting and pagination.
+       ========================================================= */
+    const state = { q:'আকিদা', type:'all', category:'all', date:'all', sort:'relevant', page:1, perPage:6, view:'comfortable' };
+    const bengaliDigits = n => String(n).replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+    const unique = arr => [...new Set(arr)];
+
+    /* =========================================================
+       UTILITY: Toast notification.
+       ========================================================= */
+    function showToast(message){
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'), 2300);
+    }
+
+    /* =========================================================
+       UTILITY: Get icon and badge style by result type.
+       ========================================================= */
+    function getTypeMeta(type){
+      const meta = {
+        'ভিডিও': {icon:'▶', cls:'bg-skybrand/10 text-skybrand'},
+        'ই-বুক': {icon:'▣', cls:'bg-gold/15 text-ocean'},
+        'প্রবন্ধ': {icon:'✦', cls:'bg-mint/30 text-ocean'},
+        'প্রশ্নোত্তর': {icon:'?', cls:'bg-ocean/10 text-ocean'}
+      };
+      return meta[type] || {icon:'•', cls:'bg-cream text-ocean'};
+    }
+
+    /* =========================================================
+       FILTER LOGIC: Applies search text, type, category and date filters.
+       ========================================================= */
+    function getFiltered(){
+      let list = searchResults.filter(item => {
+        const searchable = `${item.title} ${item.excerpt.replace(/<[^>]+>/g,'')} ${item.category} ${item.author} ${item.type}`.toLowerCase();
+        const matchQ = !state.q || searchable.includes(state.q.toLowerCase());
+        const matchType = state.type === 'all' || item.type === state.type;
+        const matchCategory = state.category === 'all' || item.category === state.category;
+        const itemDate = new Date(item.date);
+        const now = new Date('2026-05-19');
+        const diffDays = Math.floor((now - itemDate) / (1000 * 60 * 60 * 24));
+        const matchDate = state.date === 'all' || (state.date === 'week' && diffDays <= 7) || (state.date === 'month' && diffDays <= 30) || (state.date === 'year' && itemDate.getFullYear() === 2026);
+        return matchQ && matchType && matchCategory && matchDate;
+      });
+      list.sort((a,b)=>{
+        if(state.sort === 'newest') return b.date.localeCompare(a.date);
+        if(state.sort === 'popular') return b.views - a.views;
+        if(state.sort === 'title') return a.title.localeCompare(b.title, 'bn');
+        return (b.views + Date.parse(b.date)/100000000) - (a.views + Date.parse(a.date)/100000000);
+      });
+      return list;
+    }
+
+    /* =========================================================
+       RENDER: Single search result card.
+       ========================================================= */
+    function resultCard(item, index){
+      const meta = getTypeMeta(item.type);
+      const compact = state.view === 'compact';
+      return `<article class="result-card search-card rounded-[30px] p-5 sm:p-6" style="animation-delay:${index * 55}ms">
+        <div class="grid ${compact ? 'md:grid-cols-[auto_1fr_auto]' : 'md:grid-cols-[86px_1fr_auto]'} gap-5 items-start">
+          <div class="${compact ? 'w-14 h-14' : 'w-20 h-20'} icon-tile rounded-3xl flex items-center justify-center text-3xl text-ocean shadow-card shrink-0">${meta.icon}</div>
+          <div>
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="type-badge ${meta.cls}">${meta.icon} ${item.type}</span>
+              <span class="px-3 py-1 rounded-full bg-cream text-ocean/70 font-bold text-sm">${item.category}</span>
+              <span class="text-ocean/45 text-sm">${item.dateLabel}</span>
+            </div>
+            <h3 class="text-2xl ${compact ? 'sm:text-[22px]' : 'sm:text-3xl'} font-black text-ocean leading-tight hover:text-skybrand duration-300"><a href="${item.url}">${item.title}</a></h3>
+            <p class="mt-3 ${compact ? 'line-clamp-1' : ''} text-ocean/68 leading-8">${item.excerpt.replace(/<mark>/g,'<span class="highlight">').replace(/<\/mark>/g,'</span>')}</p>
+            <div class="mt-4 flex flex-wrap items-center gap-4 text-sm text-ocean/55 font-semibold">
+              <span>লেখক: ${item.author}</span>
+              <span>👁 ${bengaliDigits(item.views)} views</span>
+              <span>${item.duration}</span>
+            </div>
+          </div>
+          <div class="flex md:flex-col gap-2 md:items-end">
+            <a href="${item.url}" class="btn-primary text-white rounded-full px-5 py-3 text-sm font-black whitespace-nowrap">দেখুন</a>
+            <button onclick="saveResult('${item.title}')" class="rounded-full px-5 py-3 text-sm font-black bg-cream text-ocean hover:bg-ocean hover:text-white duration-300 whitespace-nowrap">সেভ</button>
+          </div>
+        </div>
+      </article>`;
+    }
+
+    /* =========================================================
+       RENDER: Sidebar type and category filters.
+       ========================================================= */
+    function renderSidebars(){
+      const types = unique(searchResults.map(i=>i.type));
+      document.getElementById('typeSidebar').innerHTML = `<button class="sidebar-link ${state.type==='all'?'active':''} w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70 duration-300" onclick="setType('all')"><span>সব ধরনের</span><b>${bengaliDigits(searchResults.length)}</b></button>` + types.map(type => `
+        <button class="sidebar-link ${state.type===type?'active':''} w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70 duration-300" onclick="setType('${type}')"><span>${type}</span><b>${bengaliDigits(searchResults.filter(i=>i.type===type).length)}</b></button>
+      `).join('');
+
+      const categories = unique(searchResults.map(i=>i.category));
+      document.getElementById('categorySidebar').innerHTML = `<button class="sidebar-link ${state.category==='all'?'active':''} w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70 duration-300" onclick="setCategory('all')"><span>সব বিষয়</span><b>${bengaliDigits(searchResults.length)}</b></button>` + categories.map(cat => `
+        <button class="sidebar-link ${state.category===cat?'active':''} w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70 duration-300" onclick="setCategory('${cat}')"><span>${cat}</span><b>${bengaliDigits(searchResults.filter(i=>i.category===cat).length)}</b></button>
+      `).join('');
+    }
+
+    /* =========================================================
+       RENDER: Pagination controls.
+       ========================================================= */
+    function renderPagination(total){
+      const pages = Math.max(1, Math.ceil(total / state.perPage));
+      if(state.page > pages) state.page = pages;
+      let html = `<button class="w-11 h-11 rounded-full ${state.page===1?'bg-ocean/10 text-ocean/35':'bg-white text-ocean shadow-card'}" ${state.page===1?'disabled':''} onclick="goPage(${state.page-1})">‹</button>`;
+      for(let i=1;i<=pages;i++) html += `<button class="w-11 h-11 rounded-full font-black ${i===state.page?'bg-skybrand text-white shadow-card':'bg-white text-ocean shadow-card'}" onclick="goPage(${i})">${bengaliDigits(i)}</button>`;
+      html += `<button class="w-11 h-11 rounded-full ${state.page===pages?'bg-ocean/10 text-ocean/35':'bg-white text-ocean shadow-card'}" ${state.page===pages?'disabled':''} onclick="goPage(${state.page+1})">›</button>`;
+      document.getElementById('pagination').innerHTML = total ? html : '';
+    }
+
+    /* =========================================================
+       RENDER: Full page refresh after state changes.
+       ========================================================= */
+    function render(){
+      renderSidebars();
+      const list = getFiltered();
+      const start = (state.page - 1) * state.perPage;
+      const pageItems = list.slice(start, start + state.perPage);
+      document.getElementById('resultsList').innerHTML = pageItems.map(resultCard).join('');
+      document.getElementById('emptyState').classList.toggle('hidden', list.length > 0);
+      document.getElementById('resultSummary').innerHTML = `“<b>${state.q || 'সব'}</b>” এর জন্য <b>${bengaliDigits(list.length)}</b>টি ফলাফল পাওয়া গেছে`;
+      document.getElementById('heroTotal').textContent = bengaliDigits(list.length);
+      renderPagination(list.length);
+      document.querySelectorAll('.filter-chip').forEach(btn=>btn.classList.toggle('active', btn.dataset.category === state.category));
+      document.querySelectorAll('.date-filter').forEach(btn=>btn.classList.toggle('active', btn.dataset.date === state.date));
+      document.getElementById('typeSelect').value = state.type;
+      document.getElementById('sortSelect').value = state.sort;
+      document.getElementById('searchInput').value = state.q;
+      document.getElementById('heroSearch').value = state.q;
+      document.getElementById('globalSearch').value = state.q;
+      document.getElementById('comfortableView').className = `view-btn w-11 h-11 rounded-full flex items-center justify-center ${state.view==='comfortable'?'active bg-ocean text-white':'bg-cream text-ocean'}`;
+      document.getElementById('compactView').className = `view-btn w-11 h-11 rounded-full flex items-center justify-center ${state.view==='compact'?'active bg-ocean text-white':'bg-cream text-ocean'}`;
+    }
+
+    /* =========================================================
+       ACTIONS: State update helpers.
+       ========================================================= */
+    function setType(type){ state.type = type; state.page = 1; render(); }
+    function setCategory(cat){ state.category = cat; state.page = 1; render(); }
+    function setDateFilter(date){ state.date = date; state.page = 1; render(); }
+    function goPage(page){ state.page = page; render(); document.getElementById('searchResults').scrollIntoView({behavior:'smooth'}); }
+    function saveResult(title){ showToast(`“${title}” সেভ করা হয়েছে — ডেমো`); }
+    function resetFilters(){
+      state.q=''; state.type='all'; state.category='all'; state.date='all'; state.sort='relevant'; state.page=1; state.view='comfortable';
+      render();
+      showToast('সব ফিল্টার রিসেট হয়েছে');
+    }
+    function runSearch(value){ state.q = value.trim(); state.page = 1; render(); document.getElementById('searchResults').scrollIntoView({behavior:'smooth'}); }
+
+    /* =========================================================
+       INIT: DOM events, reveal animations, smooth search interactions.
+       ========================================================= */
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.getElementById('todayDate').textContent = new Intl.DateTimeFormat('bn-BD',{weekday:'long',year:'numeric',month:'long',day:'numeric'}).format(new Date());
+      document.getElementById('menuBtn')?.addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'));
+
+      document.getElementById('searchInput').addEventListener('input', e=>{ state.q=e.target.value; state.page=1; render(); });
+      document.getElementById('heroSearchBtn').addEventListener('click',()=>runSearch(document.getElementById('heroSearch').value));
+      document.getElementById('heroSearch').addEventListener('keydown', e=>{ if(e.key==='Enter') runSearch(e.target.value); });
+      document.getElementById('globalSearch').addEventListener('keydown', e=>{ if(e.key==='Enter') runSearch(e.target.value); });
+      document.getElementById('typeSelect').addEventListener('change', e=>{ state.type=e.target.value; state.page=1; render(); });
+      document.getElementById('sortSelect').addEventListener('change', e=>{ state.sort=e.target.value; state.page=1; render(); });
+      document.getElementById('resetBtn').addEventListener('click', resetFilters);
+      document.getElementById('quickFilters').addEventListener('click', e=>{ const btn=e.target.closest('[data-category]'); if(btn) setCategory(btn.dataset.category); });
+      document.querySelectorAll('.date-filter').forEach(btn=>btn.addEventListener('click',()=>setDateFilter(btn.dataset.date)));
+      document.querySelectorAll('.popular-term').forEach(btn=>btn.addEventListener('click',()=>runSearch(btn.dataset.term)));
+      document.getElementById('comfortableView').addEventListener('click',()=>{ state.view='comfortable'; render(); });
+      document.getElementById('compactView').addEventListener('click',()=>{ state.view='compact'; render(); });
+
+      const observer = new IntersectionObserver((entries)=>entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('show'); }),{threshold:.12});
+      document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el));
+      render();
+    });
+  </script>
+</body>
+</html>
