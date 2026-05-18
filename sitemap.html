@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- =========================================================
+       PAGE TITLE / SEO
+       ========================================================= -->
+  <title>সাইটম্যাপ — Khutbah TV</title>
+  <meta name="description" content="Khutbah TV sitemap page — ওয়েবসাইটের সব গুরুত্বপূর্ণ পেজ, বিভাগ, ই-বুক, ভিডিও ও যোগাযোগ লিংক এক জায়গায়।" />
+
+  <!-- =========================================================
+       ASSET / FONT / TAILWIND SETUP
+       ========================================================= -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- =========================================================
+       TAILWIND DESIGN TOKENS
+       ========================================================= -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: '#043755',
+            skybrand: '#1493C5',
+            ink: '#09283A',
+            cream: '#F7F3EA',
+            gold: '#D7A83F',
+            mint: '#A9E9D5',
+            night: '#021A28'
+          },
+          fontFamily: {
+            bangla: ['Hind Siliguri', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            premium: '0 28px 80px rgba(4,55,85,.18)',
+            soft: '0 18px 50px rgba(9,40,58,.12)',
+            card: '0 14px 38px rgba(4,55,85,.10)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- =========================================================
+       GLOBAL DESIGN SYSTEM CSS
+       ========================================================= -->
+  <style>
+    :root{--ocean:#043755;--sky:#1493C5;--gold:#D7A83F;--cream:#F7F3EA;--ink:#09283A;--night:#021A28;}
+    *{scroll-behavior:smooth}
+    body{font-family:'Hind Siliguri',sans-serif;background:#fbfaf6;color:var(--ink);overflow-x:hidden;}
+    .font-inter{font-family:'Inter',sans-serif}
+
+    /* =========================================================
+       BACKGROUND PATTERNS / DECORATIONS
+       ========================================================= */
+    .pattern-bg{background-image:radial-gradient(circle at 1px 1px, rgba(4,55,85,.075) 1px, transparent 0);background-size:24px 24px;}
+    .islamic-grid{position:absolute;inset:0;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D7A83F' stroke-width='1.2'%3E%3Cpath d='M60 4 80 40l36 20-36 20-20 36-20-36L4 60l36-20Z'/%3E%3Cpath d='M60 22 72 48l26 12-26 12-12 26-12-26-26-12 26-12Z'/%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3C/g%3E%3C/svg%3E");background-size:150px 150px;}
+    .hero-glow:before{content:"";position:absolute;width:560px;height:560px;border-radius:999px;background:radial-gradient(circle,rgba(20,147,197,.36),transparent 65%);right:-220px;top:-190px;filter:blur(6px)}
+    .hero-glow:after{content:"";position:absolute;width:420px;height:420px;border-radius:999px;background:radial-gradient(circle,rgba(215,168,63,.22),transparent 70%);left:-190px;bottom:-180px;filter:blur(10px)}
+
+    /* =========================================================
+       REUSABLE COMPONENTS
+       ========================================================= */
+    .glass{background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.18);box-shadow:0 24px 70px rgba(0,0,0,.22);backdrop-filter:blur(18px)}
+    .btn-primary{background:linear-gradient(135deg,var(--sky),#0878A8);box-shadow:0 16px 34px rgba(20,147,197,.32);transition:.3s ease}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 22px 46px rgba(20,147,197,.38)}
+    .btn-gold{background:linear-gradient(135deg,#E8C76A,var(--gold));box-shadow:0 16px 34px rgba(215,168,63,.28);transition:.3s ease}
+    .btn-gold:hover{transform:translateY(-2px)}
+    .section-eyebrow{letter-spacing:.18em;text-transform:uppercase;font-family:'Inter',sans-serif;font-size:12px;font-weight:900;color:var(--sky)}
+    .premium-input{background:white;border:1px solid rgba(4,55,85,.14);outline:none;transition:.2s ease}
+    .premium-input:focus{border-color:var(--sky);box-shadow:0 0 0 4px rgba(20,147,197,.1)}
+    .ornament{background-image:url("data:image/svg+xml,%3Csvg width='72' height='20' viewBox='0 0 72 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 1C43 1 45 10 52 10C59 10 61 1 71 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Cpath d='M36 1C29 1 27 10 20 10C13 10 11 1 1 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Ccircle cx='36' cy='10' r='5' stroke='%23D7A83F' stroke-width='1.5'/%3E%3C/svg%3E");width:72px;height:20px;background-repeat:no-repeat;background-position:center}
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
+    .nav-link{position:relative}
+    .nav-link:after{content:"";position:absolute;left:0;right:100%;height:2px;bottom:-7px;background:var(--gold);transition:.25s ease}
+    .nav-link:hover:after,.nav-link.active:after{right:0}
+
+    /* =========================================================
+       SITEMAP CARDS / LINK ITEMS
+       ========================================================= */
+    .sitemap-card{background:rgba(255,255,255,.93);border:1px solid rgba(4,55,85,.09);transition:.32s ease;overflow:hidden}
+    .sitemap-card:hover{transform:translateY(-5px);box-shadow:0 24px 70px rgba(4,55,85,.14)}
+    .sitemap-link{transition:.24s ease;border:1px solid rgba(4,55,85,.08)}
+    .sitemap-link:hover{background:rgba(20,147,197,.1);border-color:rgba(20,147,197,.22);transform:translateX(-4px)}
+    .category-pill.active,.sidebar-link.active{background:rgba(20,147,197,.12);color:var(--sky);border-color:rgba(20,147,197,.22);font-weight:800}
+    .xml-box{background:#021A28;color:#D9F7FF;border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+    .node-line{position:relative;padding-left:30px}
+    .node-line:before{content:"";position:absolute;left:10px;top:0;bottom:0;width:1px;background:rgba(20,147,197,.25)}
+    .node-line:after{content:"";position:absolute;left:10px;top:21px;width:14px;height:1px;background:rgba(20,147,197,.25)}
+
+    /* =========================================================
+       ANIMATIONS
+       ========================================================= */
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s ease}
+    .reveal.show{opacity:1;transform:translateY(0)}
+    .floating{animation:float 7s ease-in-out infinite}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    .ticker{animation:ticker 25s linear infinite}
+    @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    .pulse-soft{animation:pulseSoft 2.8s ease-in-out infinite}
+    @keyframes pulseSoft{0%,100%{box-shadow:0 0 0 0 rgba(215,168,63,.28)}50%{box-shadow:0 0 0 18px rgba(215,168,63,0)}}
+    .toast{position:fixed;right:18px;bottom:18px;z-index:80;transform:translateY(24px);opacity:0;pointer-events:none;transition:.35s ease}
+    .toast.show{transform:translateY(0);opacity:1}
+
+    /* =========================================================
+       RESPONSIVE FIXES
+       ========================================================= */
+    @media(max-width:768px){.hero-title{font-size:42px;line-height:1.12}.glass{backdrop-filter:blur(10px)}}
+  </style>
+</head>
+
+<body>
+  <!-- =========================================================
+       GLOBAL JS VARIABLES / FALLBACKS
+       ========================================================= -->
+  <script>
+    const ICON_URL = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png';
+    const WHITE_LOGO = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png';
+    const COLOR_LOGO = 'https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png';
+    function fallbackLogo(img){ img.onerror=null; img.src = ICON_URL; img.classList.add('rounded-full'); }
+  </script>
+
+  <!-- =========================================================
+       FLOATING SOCIAL SHARE
+       ========================================================= -->
+  <div class="fixed left-3 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-2">
+    <a class="w-9 h-9 rounded-full bg-ocean text-white flex items-center justify-center shadow-card hover:scale-110 duration-300" href="#">f</a>
+    <a class="w-9 h-9 rounded-full bg-skybrand text-white flex items-center justify-center shadow-card hover:scale-110 duration-300" href="#">▶</a>
+    <a class="w-9 h-9 rounded-full bg-gold text-ocean flex items-center justify-center shadow-card hover:scale-110 duration-300" href="#">✉</a>
+  </div>
+
+  <!-- =========================================================
+       TOP NOTICE BAR
+       ========================================================= -->
+  <div class="bg-ocean text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4 overflow-hidden">
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="w-2 h-2 rounded-full bg-gold pulse-soft"></span>
+        <span>আসসালামু আলাইকুম — Khutbah TV সাইটম্যাপে আপনাকে স্বাগতম</span>
+      </div>
+      <div class="hidden md:flex items-center gap-5 text-white/80">
+        <span>Sitemap</span><span>Pages</span><span>Links</span><span class="text-gold">●</span><span id="todayDate">আজ</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       HEADER / NAVIGATION
+       ========================================================= -->
+  <header class="sticky top-0 z-50 bg-white/84 backdrop-blur-xl border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-5">
+        <a href="#" class="flex items-center gap-3">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png" alt="Khutbah TV" class="h-12 w-auto" onerror="fallbackLogo(this)" />
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-7 font-semibold text-[15px] text-ocean">
+          <a class="nav-link" href="#">হোম</a>
+          <a class="nav-link" href="#">ভিডিও</a>
+          <a class="nav-link" href="#">কিতাব</a>
+          <a class="nav-link" href="#">ইসলাম</a>
+          <a class="nav-link" href="#">আহলে সুন্নাহ</a>
+          <a class="nav-link" href="#">সীরাত</a>
+          <a class="nav-link" href="#">প্রশ্ন/উত্তর</a>
+          <a class="nav-link active" href="#sitemap">সাইটম্যাপ</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-3">
+          <div class="relative">
+            <input id="globalSearch" class="w-56 rounded-full border border-ocean/15 bg-white px-5 py-3 text-sm outline-none focus:border-skybrand" placeholder="লিংক খুঁজুন..." />
+            <span class="absolute right-4 top-3.5 text-ocean/50">⌕</span>
+          </div>
+          <a href="#xml" class="btn-primary duration-300 text-white px-5 py-3 rounded-full font-bold text-sm">XML দেখুন</a>
+        </div>
+
+        <button id="menuBtn" class="lg:hidden w-11 h-11 rounded-full border border-ocean/15 flex items-center justify-center text-ocean">☰</button>
+      </div>
+
+      <!-- =====================================================
+           MOBILE MENU
+           ===================================================== -->
+      <div id="mobileMenu" class="hidden lg:hidden pb-5">
+        <div class="grid gap-2 font-semibold text-ocean bg-cream rounded-3xl p-4">
+          <a href="#">হোম</a>
+          <a href="#">ভিডিও</a>
+          <a href="#">কিতাব</a>
+          <a href="#">ইসলাম</a>
+          <a href="#">আহলে সুন্নাহ</a>
+          <a href="#">সীরাত</a>
+          <a href="#">প্রশ্ন/উত্তর</a>
+          <a href="#sitemap">সাইটম্যাপ</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       SITEMAP TICKER
+       ========================================================= -->
+  <div class="bg-skybrand text-white overflow-hidden py-3 font-semibold">
+    <div class="ticker flex gap-10 whitespace-nowrap w-max">
+      <span>সব গুরুত্বপূর্ণ পেজ এক জায়গায়</span><span>•</span><span>ই-বুক, ভিডিও, FAQ, Archive, Contact এবং Policy লিংক</span><span>•</span><span>SEO-friendly sitemap page</span><span>•</span>
+      <span>সব গুরুত্বপূর্ণ পেজ এক জায়গায়</span><span>•</span><span>ই-বুক, ভিডিও, FAQ, Archive, Contact এবং Policy লিংক</span><span>•</span><span>SEO-friendly sitemap page</span><span>•</span>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       HERO SECTION
+       ========================================================= -->
+  <main class="relative hero-glow overflow-hidden bg-ocean text-white">
+    <div class="islamic-grid"></div>
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 mb-7 text-sm text-white/85">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-7 h-7 rounded-full" alt="icon" onerror="this.style.display='none'" />
+            ওয়েবসাইটের সব গুরুত্বপূর্ণ লিংক
+          </div>
+
+          <h1 class="hero-title text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight">
+            Khutbah TV <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint via-white to-gold">সাইটম্যাপ</span>
+          </h1>
+
+          <p class="mt-7 max-w-2xl text-lg sm:text-xl leading-9 text-white/76">
+            হোম, ভিডিও, ই-বুক, আর্কাইভ, FAQ, নীতিমালা, যোগাযোগ এবং গুরুত্বপূর্ণ কনটেন্ট পেজগুলো সহজে খুঁজে পাওয়ার জন্য সুন্দরভাবে সাজানো সাইটম্যাপ।
+          </p>
+
+          <div class="mt-9 flex flex-col sm:flex-row gap-4">
+            <a href="#sitemap" class="btn-primary text-white px-7 py-4 rounded-full font-bold text-center">সাইটম্যাপ দেখুন</a>
+            <a href="#xml" class="bg-white text-ocean px-7 py-4 rounded-full font-bold text-center hover:bg-cream duration-300">XML Preview</a>
+          </div>
+        </div>
+
+        <!-- =====================================================
+             HERO VISUAL CARD
+             ===================================================== -->
+        <div class="reveal relative min-h-[430px]">
+          <div class="absolute right-0 top-4 w-[88%] h-[390px] rounded-[42px] bg-gradient-to-br from-white/18 to-white/5 border border-white/18"></div>
+          <div class="glass floating relative ml-auto w-full max-w-[560px] rounded-[38px] p-6">
+            <div class="rounded-[30px] bg-white text-ocean p-7 shadow-premium">
+              <div class="flex items-center gap-4">
+                <div class="w-16 h-16 rounded-2xl bg-ocean text-white flex items-center justify-center text-3xl">☷</div>
+                <div>
+                  <p class="section-eyebrow">Website Structure</p>
+                  <h2 class="text-3xl font-black">লিংক ম্যাপ</h2>
+                </div>
+              </div>
+
+              <div class="mt-7 space-y-3">
+                <div class="node-line rounded-2xl bg-cream p-4"><b>Home</b><p class="text-ocean/55 text-sm">প্রধান পেজ</p></div>
+                <div class="node-line rounded-2xl bg-cream p-4"><b>E-Books</b><p class="text-ocean/55 text-sm">লাইব্রেরি, আর্কাইভ, বিস্তারিত</p></div>
+                <div class="node-line rounded-2xl bg-cream p-4"><b>Support</b><p class="text-ocean/55 text-sm">FAQ, Terms, Contact</p></div>
+              </div>
+
+              <div class="mt-6 grid grid-cols-3 gap-3 text-center">
+                <div class="rounded-2xl bg-ocean text-white p-4"><b class="font-inter text-2xl" id="totalLinksHero">0</b><p class="text-white/60 text-xs">Links</p></div>
+                <div class="rounded-2xl bg-ocean text-white p-4"><b class="font-inter text-2xl" id="totalGroupsHero">0</b><p class="text-white/60 text-xs">Groups</p></div>
+                <div class="rounded-2xl bg-ocean text-white p-4"><b>SEO</b><p class="text-white/60 text-xs">Ready</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       SEARCH / FILTER TOOLBAR
+       ========================================================= -->
+  <section class="pattern-bg py-10 border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal bg-white rounded-[34px] shadow-soft p-5 sm:p-6">
+        <div class="grid lg:grid-cols-[1fr_auto_auto] gap-4 items-center">
+          <div class="relative">
+            <input id="sitemapSearch" class="premium-input w-full rounded-full px-6 py-4 pr-12" placeholder="পেজ, বিভাগ, লিংক বা কীওয়ার্ড লিখুন..." />
+            <span class="absolute right-5 top-4 text-ocean/45 text-xl">⌕</span>
+          </div>
+          <select id="typeSelect" class="premium-input rounded-full px-5 py-4 font-semibold text-ocean">
+            <option value="all">সব টাইপ</option>
+            <option value="page">Page</option>
+            <option value="archive">Archive</option>
+            <option value="content">Content</option>
+            <option value="legal">Legal</option>
+          </select>
+          <button id="resetBtn" class="rounded-full px-7 py-4 bg-cream text-ocean font-black hover:bg-ocean hover:text-white duration-300">রিসেট</button>
+        </div>
+
+        <div id="categoryFilters" class="mt-5 flex gap-2 overflow-x-auto pb-1">
+          <button class="category-pill active px-5 py-3 rounded-full bg-cream text-ocean border border-transparent font-bold whitespace-nowrap duration-300" data-category="all">সব লিংক</button>
+          <button class="category-pill px-5 py-3 rounded-full bg-cream text-ocean border border-transparent font-bold whitespace-nowrap duration-300" data-category="মূল পেজ">মূল পেজ</button>
+          <button class="category-pill px-5 py-3 rounded-full bg-cream text-ocean border border-transparent font-bold whitespace-nowrap duration-300" data-category="ই-বুক">ই-বুক</button>
+          <button class="category-pill px-5 py-3 rounded-full bg-cream text-ocean border border-transparent font-bold whitespace-nowrap duration-300" data-category="ভিডিও">ভিডিও</button>
+          <button class="category-pill px-5 py-3 rounded-full bg-cream text-ocean border border-transparent font-bold whitespace-nowrap duration-300" data-category="সহায়তা">সহায়তা</button>
+          <button class="category-pill px-5 py-3 rounded-full bg-cream text-ocean border border-transparent font-bold whitespace-nowrap duration-300" data-category="নীতি">নীতি</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       MAIN SITEMAP CONTENT + SIDEBAR
+       ========================================================= -->
+  <section id="sitemap" class="pattern-bg py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-[1fr_330px] gap-8 items-start">
+
+        <!-- =====================================================
+             SITEMAP LINK GROUPS COLUMN
+             ===================================================== -->
+        <div>
+          <div class="reveal flex flex-col sm:flex-row sm:items-end sm:justify-between gap-5 mb-8">
+            <div>
+              <p class="section-eyebrow">HTML Sitemap</p>
+              <h2 class="mt-3 text-4xl lg:text-5xl font-black text-ocean">সব পেজ ও লিংক</h2>
+              <p id="resultCount" class="mt-3 text-ocean/62">সব লিংক দেখানো হচ্ছে</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button id="gridView" class="view-btn active w-11 h-11 rounded-full bg-ocean text-white flex items-center justify-center">▦</button>
+              <button id="listView" class="view-btn w-11 h-11 rounded-full bg-cream text-ocean flex items-center justify-center">☰</button>
+            </div>
+          </div>
+
+          <div id="sitemapGrid" class="grid md:grid-cols-2 gap-6"></div>
+
+          <!-- Empty State -->
+          <div id="emptyState" class="hidden reveal bg-white rounded-[34px] shadow-soft p-10 text-center mt-8">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-20 h-20 mx-auto rounded-full" alt="Khutbah TV">
+            <h3 class="mt-5 text-2xl font-black text-ocean">কোনো লিংক পাওয়া যায়নি</h3>
+            <p class="mt-2 text-ocean/62">অন্য কীওয়ার্ড বা বিভাগ দিয়ে আবার চেষ্টা করুন।</p>
+            <button class="mt-6 btn-primary text-white rounded-full px-6 py-3 font-bold" onclick="resetFilters()">সব লিংক দেখুন</button>
+          </div>
+        </div>
+
+        <!-- =====================================================
+             SIDEBAR COLUMN
+             ===================================================== -->
+        <aside class="lg:sticky lg:top-28 space-y-6">
+
+          <!-- Category Summary -->
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-6">
+            <h3 class="text-2xl font-black text-ocean">সাইটম্যাপ বিভাগ</h3>
+            <div class="ornament mt-3 mb-5"></div>
+            <div id="sidebarCategories" class="space-y-2"></div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="reveal bg-white rounded-[34px] shadow-soft p-6">
+            <h3 class="text-2xl font-black text-ocean">দ্রুত কাজ</h3>
+            <div class="ornament mt-3 mb-5"></div>
+            <div class="grid gap-3">
+              <button onclick="copySitemapLink()" class="rounded-2xl bg-cream text-ocean px-4 py-3 font-bold hover:bg-ocean hover:text-white duration-300 text-left">সাইটম্যাপ লিংক কপি</button>
+              <button onclick="window.print()" class="rounded-2xl bg-cream text-ocean px-4 py-3 font-bold hover:bg-ocean hover:text-white duration-300 text-left">প্রিন্ট করুন</button>
+              <a href="#xml" class="rounded-2xl bg-cream text-ocean px-4 py-3 font-bold hover:bg-ocean hover:text-white duration-300">XML Preview দেখুন</a>
+            </div>
+          </div>
+
+          <!-- SEO Note -->
+          <div class="reveal overflow-hidden relative bg-ocean rounded-[34px] shadow-premium p-6 text-white">
+            <div class="islamic-grid"></div>
+            <div class="relative">
+              <p class="section-eyebrow text-gold">SEO Friendly</p>
+              <h3 class="mt-3 text-3xl font-black leading-tight">ইউজার ও সার্চ ইঞ্জিনের জন্য</h3>
+              <p class="mt-4 text-white/68 leading-7">এই HTML sitemap ইউজারদের জন্য। সার্চ ইঞ্জিনের জন্য XML sitemap ফাইলও রাখা যেতে পারে।</p>
+              <a href="#xml" class="mt-6 inline-flex btn-gold text-ocean rounded-full px-6 py-3 font-black">XML দেখুন</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       XML SITEMAP PREVIEW SECTION
+       ========================================================= -->
+  <section id="xml" class="pattern-bg px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28">
+    <div class="reveal max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-[.85fr_1.15fr] gap-8 items-start">
+        <div class="bg-white rounded-[34px] shadow-soft p-6 sm:p-8">
+          <p class="section-eyebrow">XML Sitemap Preview</p>
+          <h2 class="mt-3 text-4xl font-black text-ocean">সার্চ ইঞ্জিনের জন্য কাঠামো</h2>
+          <p class="mt-4 text-ocean/65 leading-8">এটি একটি visual preview। আপনার WordPress/website setup অনুযায়ী প্রকৃত <b>sitemap.xml</b> ডাইনামিকভাবে তৈরি হতে পারে।</p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <button onclick="copyXml()" class="btn-primary text-white rounded-full px-6 py-3 font-bold">XML কপি</button>
+            <a href="#sitemap" class="rounded-full bg-cream text-ocean px-6 py-3 font-bold hover:bg-ocean hover:text-white duration-300">HTML Sitemap</a>
+          </div>
+        </div>
+
+        <pre id="xmlPreview" class="xml-box rounded-[34px] p-6 overflow-x-auto text-sm leading-7 font-mono"></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SUPPORT CTA SECTION
+       ========================================================= -->
+  <section class="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28 pattern-bg">
+    <div class="reveal relative overflow-hidden max-w-7xl mx-auto rounded-[42px] bg-ocean p-8 sm:p-12 lg:p-16 text-white shadow-premium">
+      <div class="islamic-grid"></div>
+      <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-center">
+        <div>
+          <p class="section-eyebrow text-gold">Explore Khutbah TV</p>
+          <h2 class="mt-3 text-4xl lg:text-5xl font-black leading-tight">প্রয়োজনীয় পেজ দ্রুত খুঁজুন</h2>
+          <p class="mt-5 max-w-2xl text-white/70 text-lg leading-8">সাইটম্যাপ থেকে ভিডিও, ই-বুক, FAQ, Terms, Archive ও যোগাযোগ পেজে সহজে যেতে পারবেন।</p>
+        </div>
+        <a href="#" class="btn-gold text-ocean px-9 py-5 rounded-full font-black text-center">হোমে যান</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+       ========================================================= -->
+  <footer class="bg-[#021A28] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-white/10 pb-12">
+        <div class="lg:col-span-2">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png" class="h-14 w-auto" alt="Khutbah TV white" onerror="fallbackLogo(this)" />
+          <p class="mt-5 max-w-md text-white/62 leading-8">বাংলা ভাষায় ইসলামিক ভিডিও, বয়ান, প্রশ্নোত্তর, কিতাব ও দাওয়াহ কনটেন্টের ডিজিটাল প্ল্যাটফর্ম।</p>
+        </div>
+        <div>
+          <h4 class="font-bold text-xl mb-5">দ্রুত লিংক</h4>
+          <ul class="space-y-3 text-white/62"><li>ভিডিও</li><li>কিতাব</li><li>প্রশ্নোত্তর</li><li>প্রবন্ধ</li></ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-xl mb-5">যোগাযোগ</h4>
+          <ul class="space-y-3 text-white/62"><li>contact@khutbahtv.com</li><li>YouTube</li><li>Facebook</li></ul>
+        </div>
+      </div>
+      <div class="pt-8 flex flex-col sm:flex-row justify-between gap-4 text-white/50 text-sm">
+        <p>© Khutbah TV. All Rights Reserved.</p>
+        <p>Premium sitemap page concept</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       TOAST / FEEDBACK
+       ========================================================= -->
+  <div id="toast" class="toast bg-ocean text-white rounded-2xl shadow-premium px-5 py-4 font-bold"></div>
+
+  <!-- =========================================================
+       PAGE INTERACTIONS / FILTERING / ANIMATIONS
+       ========================================================= -->
+  <script>
+    /* =========================================================
+       SITEMAP DATA
+       Replace href values with your real website URLs later.
+       ========================================================= */
+    const sitemapGroups = [
+      {
+        title: 'মূল পেজ',
+        icon: '⌂',
+        category: 'মূল পেজ',
+        links: [
+          {label:'হোম', href:'#', type:'page', desc:'প্রধান ল্যান্ডিং পেজ'},
+          {label:'আমাদের সম্পর্কে', href:'#', type:'page', desc:'Khutbah TV পরিচিতি'},
+          {label:'যোগাযোগ', href:'#', type:'page', desc:'ইমেইল ও সোশ্যাল যোগাযোগ'},
+          {label:'দান করুন', href:'#', type:'page', desc:'দাওয়াহ কাজে সহযোগিতা'}
+        ]
+      },
+      {
+        title: 'ই-বুক ও কিতাব',
+        icon: '☰',
+        category: 'ই-বুক',
+        links: [
+          {label:'ই-বুক লাইব্রেরি', href:'#', type:'content', desc:'সব বইয়ের তালিকা'},
+          {label:'ই-বুক আর্কাইভ', href:'#', type:'archive', desc:'মাস/বছর অনুযায়ী বই'},
+          {label:'ই-বুক বিস্তারিত', href:'#', type:'content', desc:'একক বইয়ের বিস্তারিত পেজ'},
+          {label:'ক্যাটাগরি: আকিদা', href:'#', type:'archive', desc:'আকিদা বিষয়ক বই'},
+          {label:'ক্যাটাগরি: সীরাত', href:'#', type:'archive', desc:'সীরাত বিষয়ক বই'},
+          {label:'ক্যাটাগরি: দোয়া', href:'#', type:'archive', desc:'দোয়া ও যিকির বই'}
+        ]
+      },
+      {
+        title: 'ভিডিও ও কনটেন্ট',
+        icon: '▶',
+        category: 'ভিডিও',
+        links: [
+          {label:'সব ভিডিও', href:'#', type:'content', desc:'ভিডিও আর্কাইভ'},
+          {label:'বয়ান', href:'#', type:'archive', desc:'বয়ান ভিডিও বিভাগ'},
+          {label:'প্রশ্নোত্তর ভিডিও', href:'#', type:'content', desc:'ভিডিও Q&A'},
+          {label:'ইসলাম', href:'#', type:'archive', desc:'ইসলাম বিষয়ক কনটেন্ট'},
+          {label:'আহলে সুন্নাহ', href:'#', type:'archive', desc:'আহলে সুন্নাহ বিভাগ'},
+          {label:'সীরাত', href:'#', type:'archive', desc:'সীরাত বিষয়ক কনটেন্ট'}
+        ]
+      },
+      {
+        title: 'সহায়তা',
+        icon: '?',
+        category: 'সহায়তা',
+        links: [
+          {label:'FAQ', href:'#', type:'page', desc:'সাধারণ প্রশ্নোত্তর'},
+          {label:'সার্চ রেজাল্ট', href:'#', type:'page', desc:'সাইট সার্চ ফলাফল'},
+          {label:'404 Error Page', href:'#', type:'page', desc:'পেজ পাওয়া যায়নি'},
+          {label:'সাপোর্ট', href:'#', type:'page', desc:'সহায়তা কেন্দ্র'}
+        ]
+      },
+      {
+        title: 'নীতি ও আইনি পেজ',
+        icon: '§',
+        category: 'নীতি',
+        links: [
+          {label:'Terms & Conditions', href:'#', type:'legal', desc:'ব্যবহারের শর্তাবলী'},
+          {label:'Privacy Policy', href:'#', type:'legal', desc:'গোপনীয়তা নীতি'},
+          {label:'Disclaimer', href:'#', type:'legal', desc:'দায়বদ্ধতা সংক্রান্ত নোটিশ'},
+          {label:'Copyright Policy', href:'#', type:'legal', desc:'কপিরাইট নির্দেশনা'}
+        ]
+      },
+      {
+        title: 'আর্কাইভ',
+        icon: '◷',
+        category: 'ই-বুক',
+        links: [
+          {label:'মে ২০২৬', href:'#', type:'archive', desc:'মাসিক আর্কাইভ'},
+          {label:'এপ্রিল ২০২৬', href:'#', type:'archive', desc:'মাসিক আর্কাইভ'},
+          {label:'২০২৫ আর্কাইভ', href:'#', type:'archive', desc:'বার্ষিক আর্কাইভ'},
+          {label:'লেখক আর্কাইভ', href:'#', type:'archive', desc:'লেখক অনুযায়ী বই'}
+        ]
+      }
+    ];
+
+    /* =========================================================
+       PAGE STATE
+       ========================================================= */
+    const state = {
+      q: '',
+      category: 'all',
+      type: 'all',
+      view: 'grid'
+    };
+
+    const bengaliDigits = n => String(n).replace(/\d/g, d => '০১২৩৪৫৬৭৮৯'[d]);
+    const unique = arr => [...new Set(arr)];
+
+    /* =========================================================
+       TOAST HELPER
+       ========================================================= */
+    function showToast(message){
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(()=>toast.classList.remove('show'), 2300);
+    }
+
+    /* =========================================================
+       DATA HELPERS
+       ========================================================= */
+    function getAllLinks(){
+      return sitemapGroups.flatMap(group => group.links.map(link => ({...link, groupTitle: group.title, category: group.category, icon: group.icon})));
+    }
+
+    function getFilteredGroups(){
+      return sitemapGroups.map(group => {
+        const links = group.links.filter(link => {
+          const searchable = `${group.title} ${group.category} ${link.label} ${link.desc} ${link.type}`.toLowerCase();
+          const matchQ = searchable.includes(state.q.toLowerCase());
+          const matchCategory = state.category === 'all' || group.category === state.category;
+          const matchType = state.type === 'all' || link.type === state.type;
+          return matchQ && matchCategory && matchType;
+        });
+        return {...group, links};
+      }).filter(group => group.links.length > 0);
+    }
+
+    /* =========================================================
+       SITEMAP GROUP TEMPLATE
+       ========================================================= */
+    function sitemapCard(group){
+      const isList = state.view === 'list';
+      return `
+        <article class="sitemap-card reveal show rounded-[34px] p-6 ${isList ? 'md:col-span-2' : ''}">
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-2xl bg-ocean text-white flex items-center justify-center text-2xl shadow-card">${group.icon}</div>
+              <div>
+                <span class="inline-flex rounded-full bg-skybrand/10 text-skybrand px-3 py-1 text-sm font-bold">${group.category}</span>
+                <h3 class="mt-2 text-2xl font-black text-ocean">${group.title}</h3>
+              </div>
+            </div>
+            <b class="font-inter text-ocean/35 text-3xl">${bengaliDigits(group.links.length)}</b>
+          </div>
+
+          <div class="mt-6 grid ${isList ? 'md:grid-cols-2' : 'grid-cols-1'} gap-3">
+            ${group.links.map(link => `
+              <a href="${link.href}" class="sitemap-link rounded-2xl bg-cream/70 px-4 py-4 flex items-start justify-between gap-4">
+                <span>
+                  <b class="block text-ocean text-lg">${link.label}</b>
+                  <small class="block mt-1 text-ocean/55 leading-5">${link.desc}</small>
+                </span>
+                <span class="shrink-0 rounded-full bg-white text-skybrand px-3 py-1 text-xs font-black uppercase">${link.type}</span>
+              </a>
+            `).join('')}
+          </div>
+        </article>
+      `;
+    }
+
+    /* =========================================================
+       SIDEBAR CATEGORY RENDER
+       ========================================================= */
+    function renderSidebar(){
+      const allLinks = getAllLinks();
+      const categories = unique(sitemapGroups.map(group => group.category));
+
+      document.getElementById('sidebarCategories').innerHTML =
+        `<button class="sidebar-link ${state.category === 'all' ? 'active' : ''} w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70" onclick="setCategory('all')"><span>সব বিভাগ</span><b>${bengaliDigits(allLinks.length)}</b></button>` +
+        categories.map(cat => {
+          const count = allLinks.filter(link => link.category === cat).length;
+          return `<button class="sidebar-link ${state.category === cat ? 'active' : ''} w-full flex items-center justify-between rounded-2xl border border-ocean/8 px-4 py-3 text-left text-ocean/70" onclick="setCategory('${cat}')"><span>${cat}</span><b>${bengaliDigits(count)}</b></button>`;
+        }).join('');
+    }
+
+    /* =========================================================
+       XML PREVIEW GENERATOR
+       ========================================================= */
+    function generateXml(){
+      const urls = getAllLinks().slice(0, 14).map(link => {
+        const slug = link.label.toLowerCase().replace(/\s+/g, '-');
+        return `  <url>\n    <loc>https://www.khutbahtv.com/${slug}</loc>\n    <changefreq>${link.type === 'archive' ? 'weekly' : 'monthly'}</changefreq>\n    <priority>${link.type === 'page' ? '0.90' : '0.70'}</priority>\n  </url>`;
+      }).join('\n');
+
+      return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`;
+    }
+
+    /* =========================================================
+       MAIN RENDER
+       ========================================================= */
+    function render(){
+      renderSidebar();
+
+      const filteredGroups = getFilteredGroups();
+      const totalLinks = filteredGroups.reduce((sum, group) => sum + group.links.length, 0);
+
+      const grid = document.getElementById('sitemapGrid');
+      grid.className = state.view === 'grid' ? 'grid md:grid-cols-2 gap-6' : 'grid grid-cols-1 gap-6';
+      grid.innerHTML = filteredGroups.map(sitemapCard).join('');
+
+      document.getElementById('emptyState').classList.toggle('hidden', totalLinks > 0);
+      document.getElementById('resultCount').textContent = `${bengaliDigits(totalLinks)}টি লিংক পাওয়া গেছে`;
+
+      document.querySelectorAll('.category-pill').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.category === state.category);
+      });
+
+      document.getElementById('gridView').className = `view-btn w-11 h-11 rounded-full flex items-center justify-center ${state.view === 'grid' ? 'active bg-ocean text-white' : 'bg-cream text-ocean'}`;
+      document.getElementById('listView').className = `view-btn w-11 h-11 rounded-full flex items-center justify-center ${state.view === 'list' ? 'active bg-ocean text-white' : 'bg-cream text-ocean'}`;
+
+      document.getElementById('totalLinksHero').textContent = bengaliDigits(getAllLinks().length);
+      document.getElementById('totalGroupsHero').textContent = bengaliDigits(sitemapGroups.length);
+      document.getElementById('xmlPreview').textContent = generateXml();
+    }
+
+    /* =========================================================
+       USER ACTIONS
+       ========================================================= */
+    function setCategory(category){
+      state.category = category;
+      render();
+      document.getElementById('sitemap').scrollIntoView({behavior:'smooth'});
+    }
+
+    function resetFilters(){
+      state.q = '';
+      state.category = 'all';
+      state.type = 'all';
+      document.getElementById('sitemapSearch').value = '';
+      document.getElementById('typeSelect').value = 'all';
+      render();
+      showToast('সব ফিল্টার রিসেট হয়েছে');
+    }
+
+    function copySitemapLink(){
+      navigator.clipboard?.writeText(window.location.href);
+      showToast('সাইটম্যাপ লিংক কপি হয়েছে');
+    }
+
+    function copyXml(){
+      navigator.clipboard?.writeText(generateXml());
+      showToast('XML preview কপি হয়েছে');
+    }
+
+    /* =========================================================
+       DOM READY / EVENT BINDINGS / SCROLL ANIMATION
+       ========================================================= */
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('todayDate').textContent = new Intl.DateTimeFormat('bn-BD',{weekday:'long',year:'numeric',month:'long',day:'numeric'}).format(new Date());
+
+      document.getElementById('menuBtn')?.addEventListener('click', () => {
+        document.getElementById('mobileMenu').classList.toggle('hidden');
+      });
+
+      document.getElementById('sitemapSearch').addEventListener('input', e => {
+        state.q = e.target.value;
+        render();
+      });
+
+      document.getElementById('globalSearch').addEventListener('keydown', e => {
+        if(e.key === 'Enter'){
+          document.getElementById('sitemapSearch').value = e.target.value;
+          state.q = e.target.value;
+          render();
+          document.getElementById('sitemap').scrollIntoView({behavior:'smooth'});
+        }
+      });
+
+      document.getElementById('typeSelect').addEventListener('change', e => {
+        state.type = e.target.value;
+        render();
+      });
+
+      document.getElementById('categoryFilters').addEventListener('click', e => {
+        const btn = e.target.closest('[data-category]');
+        if(btn) setCategory(btn.dataset.category);
+      });
+
+      document.getElementById('resetBtn').addEventListener('click', resetFilters);
+      document.getElementById('gridView').addEventListener('click', () => { state.view = 'grid'; render(); });
+      document.getElementById('listView').addEventListener('click', () => { state.view = 'list'; render(); });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if(entry.isIntersecting) entry.target.classList.add('show');
+        });
+      }, {threshold:.12});
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      render();
+    });
+  </script>
+</body>
+</html>

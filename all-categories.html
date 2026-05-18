@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <!-- =========================================================
+       META / TITLE
+  ========================================================== -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>সব ক্যাটাগরি — Khutbah TV</title>
+
+  <!-- =========================================================
+       FONTS / TAILWIND
+  ========================================================== -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- =========================================================
+       TAILWIND CONFIG
+  ========================================================== -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ocean: '#043755',
+            skybrand: '#1493C5',
+            ink: '#09283A',
+            cream: '#F7F3EA',
+            gold: '#D7A83F',
+            mint: '#A9E9D5'
+          },
+          fontFamily: {
+            bangla: ['Hind Siliguri', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            premium: '0 28px 80px rgba(4,55,85,.18)',
+            soft: '0 18px 50px rgba(9,40,58,.12)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- =========================================================
+       CUSTOM CSS / DESIGN SYSTEM
+  ========================================================== -->
+  <style>
+    :root {
+      --ocean:#043755;
+      --sky:#1493C5;
+      --gold:#D7A83F;
+      --cream:#F7F3EA;
+      --ink:#09283A;
+    }
+
+    * {
+      scroll-behavior:smooth;
+    }
+
+    body {
+      font-family:'Hind Siliguri', sans-serif;
+      background:#fbfaf6;
+      color:var(--ink);
+    }
+
+    .font-inter {
+      font-family:'Inter', sans-serif;
+    }
+
+    .pattern-bg {
+      background-image:radial-gradient(circle at 1px 1px, rgba(4,55,85,.08) 1px, transparent 0);
+      background-size:24px 24px;
+    }
+
+    .islamic-grid {
+      position:absolute;
+      inset:0;
+      opacity:.13;
+      background-image:url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D7A83F' stroke-width='1.2'%3E%3Cpath d='M60 4 80 40l36 20-36 20-20 36-20-36L4 60l36-20Z'/%3E%3Cpath d='M60 22 72 48l26 12-26 12-12 26-12-26-26-12 26-12Z'/%3E%3Ccircle cx='60' cy='60' r='18'/%3E%3C/g%3E%3C/svg%3E");
+      background-size:150px 150px;
+    }
+
+    .hero-glow::before {
+      content:"";
+      position:absolute;
+      width:560px;
+      height:560px;
+      border-radius:999px;
+      background:radial-gradient(circle,rgba(20,147,197,.34),transparent 65%);
+      right:-220px;
+      top:-190px;
+      filter:blur(6px);
+    }
+
+    .hero-glow::after {
+      content:"";
+      position:absolute;
+      width:420px;
+      height:420px;
+      border-radius:999px;
+      background:radial-gradient(circle,rgba(215,168,63,.22),transparent 70%);
+      left:-190px;
+      bottom:-180px;
+      filter:blur(10px);
+    }
+
+    .glass {
+      background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.05));
+      border:1px solid rgba(255,255,255,.18);
+      box-shadow:0 24px 70px rgba(0,0,0,.22);
+      backdrop-filter:blur(18px);
+    }
+
+    .premium-card {
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(4,55,85,.08);
+      box-shadow:0 18px 50px rgba(9,40,58,.10);
+      backdrop-filter:blur(12px);
+    }
+
+    .btn-primary {
+      background:linear-gradient(135deg,var(--sky),#0878A8);
+      box-shadow:0 16px 34px rgba(20,147,197,.32);
+      transition:.25s ease;
+    }
+
+    .btn-primary:hover {
+      transform:translateY(-2px);
+      box-shadow:0 22px 46px rgba(20,147,197,.38);
+    }
+
+    .btn-gold {
+      background:linear-gradient(135deg,#E8C76A,var(--gold));
+      box-shadow:0 16px 34px rgba(215,168,63,.28);
+      transition:.25s ease;
+    }
+
+    .btn-gold:hover {
+      transform:translateY(-2px);
+    }
+
+    .section-eyebrow {
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-family:'Inter', sans-serif;
+      font-size:12px;
+      font-weight:800;
+      color:var(--sky);
+    }
+
+    .nav-link {
+      position:relative;
+    }
+
+    .nav-link::after {
+      content:"";
+      position:absolute;
+      left:0;
+      right:100%;
+      height:2px;
+      bottom:-7px;
+      background:var(--gold);
+      transition:.25s;
+    }
+
+    .nav-link:hover::after {
+      right:0;
+    }
+
+    .ornament {
+      background-image:url("data:image/svg+xml,%3Csvg width='72' height='20' viewBox='0 0 72 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 1C43 1 45 10 52 10C59 10 61 1 71 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Cpath d='M36 1C29 1 27 10 20 10C13 10 11 1 1 1' stroke='%23D7A83F' stroke-width='1.5'/%3E%3Ccircle cx='36' cy='10' r='5' stroke='%23D7A83F' stroke-width='1.5'/%3E%3C/svg%3E");
+      width:72px;
+      height:20px;
+      background-repeat:no-repeat;
+      background-position:center;
+    }
+
+    .category-card {
+      transition:.28s ease;
+    }
+
+    .category-card:hover {
+      transform:translateY(-8px);
+      box-shadow:0 28px 80px rgba(4,55,85,.15);
+    }
+
+    .category-visual {
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(135deg,#06324E,#0A5D83 48%,#021927);
+    }
+
+    .category-visual::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 75% 10%,rgba(255,255,255,.16),transparent 28%),
+        linear-gradient(0deg,rgba(0,0,0,.45),transparent 58%);
+    }
+
+    .filter-pill.active {
+      background:var(--ocean);
+      color:#fff;
+      border-color:var(--ocean);
+    }
+
+    .type-pill.active {
+      background:var(--ocean);
+      color:#fff;
+      border-color:var(--ocean);
+    }
+
+    .view-btn.active {
+      background:var(--ocean);
+      color:#fff;
+    }
+
+    .list-mode .categories-grid {
+      grid-template-columns:1fr !important;
+    }
+
+    .list-mode .category-card-inner {
+      display:grid;
+      grid-template-columns:220px 1fr auto;
+      align-items:center;
+      gap:24px;
+    }
+
+    .list-mode .category-visual {
+      height:180px !important;
+    }
+
+    .progress-track {
+      height:8px;
+      background:rgba(4,55,85,.08);
+      border-radius:999px;
+      overflow:hidden;
+    }
+
+    .progress-fill {
+      height:100%;
+      background:linear-gradient(90deg,var(--sky),var(--gold));
+      border-radius:999px;
+    }
+
+    .pagination-btn.active {
+      background:var(--ocean);
+      color:#fff;
+    }
+
+    .reveal {
+      opacity:0;
+      transform:translateY(28px);
+      transition:opacity .75s ease, transform .75s ease;
+    }
+
+    .reveal.show {
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .toast {
+      transform:translateY(16px);
+      opacity:0;
+      pointer-events:none;
+      transition:.25s ease;
+    }
+
+    .toast.active {
+      transform:translateY(0);
+      opacity:1;
+    }
+
+    @media(max-width:768px) {
+      .hero-title {
+        font-size:40px;
+        line-height:1.14;
+      }
+
+      .glass {
+        backdrop-filter:blur(10px);
+      }
+
+      .list-mode .category-card-inner {
+        display:block;
+      }
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+  <!-- =========================================================
+       TOP NOTICE BAR
+  ========================================================== -->
+  <div class="bg-ocean text-white text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between gap-4 overflow-hidden">
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="w-2 h-2 rounded-full bg-gold"></span>
+        <span>সব ক্যাটাগরি — খুতবাহ টিভিতে আপনাকে স্বাগতম</span>
+      </div>
+
+      <div class="hidden md:flex items-center gap-5 text-white/80">
+        <span>Topics</span>
+        <span>Categories</span>
+        <span>Archives</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       HEADER / NAVIGATION
+  ========================================================== -->
+  <header class="sticky top-0 z-50 bg-white/82 backdrop-blur-xl border-b border-ocean/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="h-20 flex items-center justify-between gap-5">
+        <a href="#" class="flex items-center gap-3" aria-label="Khutbah TV Home">
+          <img
+            src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925-1.png"
+            alt="Khutbah TV"
+            class="h-12 w-auto"
+            onerror="this.src='https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png'"
+          />
+        </a>
+
+        <nav class="hidden lg:flex items-center gap-7 font-semibold text-[15px] text-ocean">
+          <a class="nav-link" href="#">হোম</a>
+          <a class="nav-link" href="#">ভিডিও</a>
+          <a class="nav-link" href="#">কিতাব</a>
+          <a class="nav-link" href="#">ইসলাম</a>
+          <a class="nav-link" href="#">আলোর পথ</a>
+          <a class="nav-link" href="#">সীরাত</a>
+          <a class="nav-link" href="#">ব্লগ</a>
+          <a class="nav-link" href="#">Live</a>
+          <a class="nav-link" href="#">প্রশ্ন/উত্তর</a>
+          <a class="nav-link" href="#">যোগাযোগ</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-3">
+          <div class="relative">
+            <input id="headerSearch" class="w-56 rounded-full border border-ocean/15 bg-white px-5 py-3 text-sm outline-none focus:border-skybrand" placeholder="খুঁজুন..." />
+            <span class="absolute right-4 top-3.5 text-ocean/50">⌕</span>
+          </div>
+
+          <a href="#categories" class="btn-primary text-white px-5 py-3 rounded-full font-bold text-sm">
+            ক্যাটাগরি দেখুন
+          </a>
+        </div>
+
+        <button id="mobileMenuBtn" class="lg:hidden w-11 h-11 rounded-full border border-ocean/15 flex items-center justify-center text-ocean" aria-label="Open menu">
+          ☰
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobileMenu" class="hidden lg:hidden pb-5">
+        <div class="grid gap-2 rounded-3xl bg-cream p-4 font-semibold text-ocean">
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">হোম</a>
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">ভিডিও</a>
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">কিতাব</a>
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">ক্যাটাগরি</a>
+          <a href="#" class="px-4 py-3 rounded-2xl hover:bg-white">যোগাযোগ</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================
+       HERO / CATEGORIES INTRO
+  ========================================================== -->
+  <main class="relative hero-glow overflow-hidden bg-ocean text-white">
+    <div class="islamic-grid"></div>
+
+    <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-[1fr_.42fr] gap-10 items-center">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-3 rounded-full bg-white/10 border border-white/15 px-4 py-2 mb-7 text-sm text-white/85">
+            <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-7 h-7 rounded-full" alt="icon" />
+            Browse All Topics
+          </div>
+
+          <h1 class="hero-title text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight">
+            ইসলামিক কনটেন্টের <span class="text-transparent bg-clip-text bg-gradient-to-r from-mint via-white to-gold">সব ক্যাটাগরি</span>
+          </h1>
+
+          <p class="mt-7 max-w-3xl text-lg sm:text-xl leading-9 text-white/76">
+            আকিদা, ইবাদত, পরিবার, দাওয়াহ, কুরআন, সীরাত, প্রশ্নোত্তর, ই-বুক, খুতবাহ ও লাইভ কনটেন্ট — সব বিষয়ভিত্তিক আর্কাইভ এক জায়গায় ব্রাউজ করুন।
+          </p>
+
+          <div class="mt-9 flex flex-col sm:flex-row gap-4">
+            <a href="#categories" class="btn-primary text-white px-7 py-4 rounded-full font-bold text-center">সব ক্যাটাগরি দেখুন</a>
+            <a href="#featured" class="bg-white text-ocean px-7 py-4 rounded-full font-bold text-center hover:bg-cream duration-300">Featured Topics</a>
+          </div>
+        </div>
+
+        <div class="glass rounded-[38px] p-6 reveal">
+          <p class="text-white/55 text-sm">Category Overview</p>
+          <div class="mt-6 grid grid-cols-2 gap-4">
+            <div class="rounded-3xl bg-white/10 p-5 border border-white/10">
+              <div class="font-inter text-4xl font-black text-gold">24+</div>
+              <p class="mt-1 text-white/65">ক্যাটাগরি</p>
+            </div>
+            <div class="rounded-3xl bg-white/10 p-5 border border-white/10">
+              <div class="font-inter text-4xl font-black text-gold">900+</div>
+              <p class="mt-1 text-white/65">কনটেন্ট</p>
+            </div>
+            <div class="rounded-3xl bg-white/10 p-5 border border-white/10 col-span-2">
+              <p class="text-white/55 text-sm">Popular Category</p>
+              <h3 class="mt-1 text-2xl font-black">আকিদা ও প্রশ্নোত্তর</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       FEATURED CATEGORIES SECTION
+  ========================================================== -->
+  <section id="featured" class="pattern-bg py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+        <p class="section-eyebrow">Featured Topics</p>
+        <h2 class="mt-3 text-4xl lg:text-5xl font-black text-ocean">জনপ্রিয় ক্যাটাগরি</h2>
+        <div class="ornament mx-auto mt-5"></div>
+        <p class="mt-5 text-lg text-ocean/65 leading-8">
+          ব্যবহারকারীরা সবচেয়ে বেশি যে বিষয়গুলো খুঁজে থাকেন।
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <article class="category-card premium-card rounded-[30px] p-7 reveal">
+          <div class="w-14 h-14 rounded-2xl bg-skybrand/10 text-skybrand flex items-center justify-center text-2xl mb-7">✓</div>
+          <h3 class="text-2xl font-black text-ocean">আকিদা</h3>
+          <p class="mt-3 text-ocean/65 leading-7">ঈমান, তাওহীদ, শিরক, কুফর ও সংশয় নিরসন।</p>
+          <div class="mt-5 progress-track"><div class="progress-fill w-[90%]"></div></div>
+          <p class="mt-3 text-sm font-bold text-ocean/50">156 Contents</p>
+        </article>
+
+        <article class="category-card premium-card rounded-[30px] p-7 reveal">
+          <div class="w-14 h-14 rounded-2xl bg-gold/15 text-gold flex items-center justify-center text-2xl mb-7">?</div>
+          <h3 class="text-2xl font-black text-ocean">প্রশ্নোত্তর</h3>
+          <p class="mt-3 text-ocean/65 leading-7">দৈনন্দিন জীবনের ইসলামিক প্রশ্ন ও উত্তর।</p>
+          <div class="mt-5 progress-track"><div class="progress-fill w-[82%]"></div></div>
+          <p class="mt-3 text-sm font-bold text-ocean/50">134 Contents</p>
+        </article>
+
+        <article class="category-card premium-card rounded-[30px] p-7 reveal">
+          <div class="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mb-7">☾</div>
+          <h3 class="text-2xl font-black text-ocean">ইবাদত</h3>
+          <p class="mt-3 text-ocean/65 leading-7">নামাজ, রোজা, যাকাত, দোয়া ও আমল।</p>
+          <div class="mt-5 progress-track"><div class="progress-fill w-[76%]"></div></div>
+          <p class="mt-3 text-sm font-bold text-ocean/50">121 Contents</p>
+        </article>
+
+        <article class="category-card premium-card rounded-[30px] p-7 reveal">
+          <div class="w-14 h-14 rounded-2xl bg-ocean/10 text-ocean flex items-center justify-center text-2xl mb-7">⌘</div>
+          <h3 class="text-2xl font-black text-ocean">ই-বুক</h3>
+          <p class="mt-3 text-ocean/65 leading-7">ইসলামিক বই, রিসালা ও ডাউনলোডযোগ্য কিতাব।</p>
+          <div class="mt-5 progress-track"><div class="progress-fill w-[70%]"></div></div>
+          <p class="mt-3 text-sm font-bold text-ocean/50">98 Contents</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       ALL CATEGORIES DIRECTORY SECTION
+  ========================================================== -->
+  <section id="categories" class="bg-white py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- =====================================================
+           FILTER TOOLBAR
+      ====================================================== -->
+      <div class="premium-card rounded-[34px] p-5 sm:p-6 mb-8 reveal">
+        <div class="grid lg:grid-cols-[1fr_auto_auto] gap-4 items-center">
+          <div class="relative">
+            <input id="searchInput" class="w-full rounded-full border border-ocean/10 bg-white px-5 py-4 outline-none focus:border-skybrand" placeholder="ক্যাটাগরি, বিষয় বা কনটেন্ট টাইপ দিয়ে খুঁজুন..." />
+            <span class="absolute right-5 top-4 text-ocean/45">⌕</span>
+          </div>
+
+          <select id="sortFilter" class="rounded-full border border-ocean/10 bg-white px-5 py-4 outline-none focus:border-skybrand">
+            <option value="popular">জনপ্রিয়</option>
+            <option value="name">নাম অনুযায়ী</option>
+            <option value="content">কনটেন্ট সংখ্যা</option>
+            <option value="newest">সর্বশেষ আপডেট</option>
+          </select>
+
+          <div class="flex items-center gap-2 justify-end">
+            <button id="gridViewBtn" class="view-btn active w-12 h-12 rounded-full bg-cream text-ocean font-black">▦</button>
+            <button id="listViewBtn" class="view-btn w-12 h-12 rounded-full bg-cream text-ocean font-black">☰</button>
+          </div>
+        </div>
+
+        <!-- Type Filters -->
+        <div class="mt-5 flex flex-wrap gap-2">
+          <button class="type-pill active px-5 py-3 rounded-full border border-ocean/10 bg-white text-ocean font-bold" data-type="all">সব</button>
+          <button class="type-pill px-5 py-3 rounded-full border border-ocean/10 bg-white text-ocean font-bold" data-type="Video">Video</button>
+          <button class="type-pill px-5 py-3 rounded-full border border-ocean/10 bg-white text-ocean font-bold" data-type="Blog">Blog</button>
+          <button class="type-pill px-5 py-3 rounded-full border border-ocean/10 bg-white text-ocean font-bold" data-type="Q&A">Q&A</button>
+          <button class="type-pill px-5 py-3 rounded-full border border-ocean/10 bg-white text-ocean font-bold" data-type="E-book">E-book</button>
+          <button class="type-pill px-5 py-3 rounded-full border border-ocean/10 bg-white text-ocean font-bold" data-type="Live">Live</button>
+        </div>
+      </div>
+
+      <!-- =====================================================
+           RESULT HEADER
+      ====================================================== -->
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-7 reveal">
+        <div>
+          <p class="section-eyebrow">Category Directory</p>
+          <h2 class="mt-2 text-3xl lg:text-4xl font-black text-ocean">সব ক্যাটাগরি</h2>
+          <p id="resultCount" class="mt-2 text-ocean/60">মোট ২৪টি ক্যাটাগরি দেখানো হচ্ছে</p>
+        </div>
+
+        <button id="resetBtn" class="rounded-full bg-cream px-5 py-3 text-ocean font-black">ফিল্টার রিসেট</button>
+      </div>
+
+      <!-- =====================================================
+           CATEGORIES GRID
+      ====================================================== -->
+      <div id="categoriesWrap">
+        <div id="categoriesGrid" class="categories-grid grid sm:grid-cols-2 xl:grid-cols-3 gap-6"></div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden premium-card rounded-[34px] p-10 text-center">
+          <img src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png" class="w-20 h-20 mx-auto rounded-full" alt="Khutbah TV">
+          <h3 class="mt-5 text-3xl font-black text-ocean">কোনো ক্যাটাগরি পাওয়া যায়নি</h3>
+          <p class="mt-3 text-ocean/60">সার্চ বা ফিল্টার পরিবর্তন করে আবার চেষ্টা করুন।</p>
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination" class="mt-10 flex items-center justify-center gap-2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       CATEGORY MAP SECTION
+  ========================================================== -->
+  <section class="pattern-bg py-16 lg:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-10 items-start">
+        <div class="lg:sticky lg:top-28 reveal">
+          <p class="section-eyebrow">Content Map</p>
+          <h2 class="mt-3 text-4xl lg:text-5xl font-black text-ocean leading-tight">কোন কনটেন্ট কোথায়?</h2>
+          <div class="ornament mt-5"></div>
+          <p class="mt-5 text-lg text-ocean/65 leading-8">
+            ইউজার যেন দ্রুত বুঝতে পারে কোন ক্যাটাগরিতে কোন ধরনের কনটেন্ট পাওয়া যাবে।
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-5">
+          <article class="premium-card rounded-[30px] p-6 reveal">
+            <p class="section-eyebrow">Video</p>
+            <h3 class="mt-3 text-2xl font-black text-ocean">খুতবাহ ও বয়ান</h3>
+            <p class="mt-3 text-ocean/65 leading-7">ভিডিও লেকচার, খুতবাহ, live recording ও সংক্ষিপ্ত ক্লিপ।</p>
+          </article>
+
+          <article class="premium-card rounded-[30px] p-6 reveal">
+            <p class="section-eyebrow">Q&A</p>
+            <h3 class="mt-3 text-2xl font-black text-ocean">প্রশ্নোত্তর</h3>
+            <p class="mt-3 text-ocean/65 leading-7">ইসলাম বিষয়ক প্রশ্ন, ফতোয়া, নির্দেশনা ও practical answer।</p>
+          </article>
+
+          <article class="premium-card rounded-[30px] p-6 reveal">
+            <p class="section-eyebrow">E-book</p>
+            <h3 class="mt-3 text-2xl font-black text-ocean">কিতাব ও রিসালা</h3>
+            <p class="mt-3 text-ocean/65 leading-7">ডাউনলোডযোগ্য বই, orderable book এবং report option।</p>
+          </article>
+
+          <article class="premium-card rounded-[30px] p-6 reveal">
+            <p class="section-eyebrow">Blog</p>
+            <h3 class="mt-3 text-2xl font-black text-ocean">প্রবন্ধ ও গবেষণা</h3>
+            <p class="mt-3 text-ocean/65 leading-7">লেখালেখি, গবেষণামূলক article, announcement ও guide।</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       REQUEST CATEGORY CTA SECTION
+  ========================================================== -->
+  <section class="px-4 sm:px-6 lg:px-8 py-20 pattern-bg">
+    <div class="relative overflow-hidden max-w-7xl mx-auto rounded-[42px] bg-ocean p-8 sm:p-12 lg:p-16 text-white shadow-premium reveal">
+      <div class="islamic-grid"></div>
+
+      <div class="relative grid lg:grid-cols-[1fr_auto] gap-8 items-center">
+        <div>
+          <p class="section-eyebrow text-gold">Request Category</p>
+          <h2 class="mt-3 text-4xl lg:text-5xl font-black leading-tight">নতুন ক্যাটাগরি প্রয়োজন?</h2>
+          <p class="mt-5 max-w-2xl text-white/70 text-lg leading-8">
+            নতুন বিষয়, স্কলার বা কনটেন্ট গ্রুপ যুক্ত করতে চাইলে admin panel থেকে নতুন taxonomy/category তৈরি করা যাবে।
+          </p>
+        </div>
+
+        <a href="#" class="btn-gold text-ocean px-9 py-5 rounded-full font-black text-center">
+          যোগাযোগ করুন
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+  <footer class="bg-[#021A28] text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 border-b border-white/10 pb-12">
+        <div class="lg:col-span-2">
+          <img
+            src="https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000925.png"
+            class="h-14 w-auto"
+            alt="Khutbah TV white"
+            onerror="this.src='https://www.khutbahtv.com/wp-content/uploads/2026/05/Group-1000000924.png'"
+          />
+          <p class="mt-5 max-w-md text-white/62 leading-8">
+            বাংলা ভাষায় ইসলামিক ভিডিও, বয়ান, প্রশ্নোত্তর, কিতাব ও দাওয়াহ কনটেন্টের ডিজিটাল প্ল্যাটফর্ম।
+          </p>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-xl mb-5">দ্রুত লিংক</h4>
+          <ul class="space-y-3 text-white/62">
+            <li>ভিডিও</li>
+            <li>কিতাব</li>
+            <li>প্রশ্নোত্তর</li>
+            <li>প্রবন্ধ</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-xl mb-5">ক্যাটাগরি</h4>
+          <ul class="space-y-3 text-white/62">
+            <li>আকিদা</li>
+            <li>ইবাদত</li>
+            <li>ই-বুক</li>
+            <li>সব ক্যাটাগরি</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row justify-between gap-4 text-white/50 text-sm">
+        <p>© Khutbah TV. All Rights Reserved.</p>
+        <p>Premium categories directory page</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       TOAST
+  ========================================================== -->
+  <div id="toast" class="toast fixed bottom-6 left-1/2 -translate-x-1/2 z-[120] rounded-full bg-ocean text-white px-6 py-4 shadow-premium font-bold">
+    Action completed successfully.
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT: CATEGORY DATA / FILTERS / PAGINATION / ANIMATION
+  ========================================================== -->
+  <script>
+    // ------------------------------
+    // Demo category data
+    // ------------------------------
+    const categories = [
+      {id:1,name:'আকিদা',type:'Blog',icon:'✓',count:156,updated:24,popularity:98,description:'ঈমান, তাওহীদ, শিরক, কুফর ও সংশয় নিরসন বিষয়ক কনটেন্ট।',colors:'linear-gradient(135deg,#06324E,#0A5D83,#021927)'},
+      {id:2,name:'প্রশ্নোত্তর',type:'Q&A',icon:'?',count:134,updated:22,popularity:95,description:'দৈনন্দিন জীবনের ইসলামিক প্রশ্ন, ফতোয়া ও নির্দেশনা।',colors:'linear-gradient(135deg,#3E2112,#A4611B,#041521)'},
+      {id:3,name:'ইবাদত',type:'Video',icon:'☾',count:121,updated:18,popularity:90,description:'নামাজ, রোজা, যাকাত, দোয়া, আমল ও ইবাদতের নিয়ম।',colors:'linear-gradient(135deg,#0B3B2F,#13836B,#041521)'},
+      {id:4,name:'ই-বুক',type:'E-book',icon:'⌘',count:98,updated:12,popularity:84,description:'ইসলামিক বই, রিসালা, PDF ও অর্ডারযোগ্য কিতাব।',colors:'linear-gradient(135deg,#312E81,#1493C5,#D7A83F)'},
+      {id:5,name:'পরিবার',type:'Blog',icon:'◇',count:87,updated:16,popularity:78,description:'বিয়ে, সন্তান, পারিবারিক সম্পর্ক, আদব ও সমাজ।',colors:'linear-gradient(135deg,#14532D,#2BAE66,#E7C665)'},
+      {id:6,name:'দাওয়াহ',type:'Video',icon:'✦',count:82,updated:14,popularity:76,description:'দাওয়াহ পদ্ধতি, তুলনামূলক ধর্মতত্ত্ব ও আলোচনার আদব।',colors:'linear-gradient(135deg,#1F2937,#043755,#1493C5)'},
+      {id:7,name:'কুরআন',type:'Blog',icon:'◉',count:75,updated:9,popularity:72,description:'কুরআন শিক্ষা, তাফসির, অনুধাবন ও আমল।',colors:'linear-gradient(135deg,#064E3B,#10B981,#E7C665)'},
+      {id:8,name:'সীরাত',type:'Video',icon:'ﷺ',count:69,updated:10,popularity:70,description:'রাসূল ﷺ-এর জীবন, চরিত্র ও নববী আদর্শ।',colors:'linear-gradient(135deg,#1E1B4B,#4338CA,#D7A83F)'},
+      {id:9,name:'খুতবাহ',type:'Video',icon:'▶',count:63,updated:17,popularity:69,description:'জুমার খুতবাহ, বয়ান ও ভিডিও আলোচনার আর্কাইভ।',colors:'linear-gradient(135deg,#08283C,#14826C,#041521)'},
+      {id:10,name:'লাইভ',type:'Live',icon:'Live',count:34,updated:25,popularity:66,description:'YouTube/Facebook live program, live Q&A ও বিশেষ অনুষ্ঠান।',colors:'linear-gradient(135deg,#7C2D12,#D97706,#043755)'},
+      {id:11,name:'আলোর পথ',type:'Blog',icon:'✺',count:58,updated:11,popularity:64,description:'আত্মশুদ্ধি, জীবন গঠন, যুব সমাজ ও দিকনির্দেশনা।',colors:'linear-gradient(135deg,#31133E,#71358B,#041521)'},
+      {id:12,name:'নামাজ',type:'Q&A',icon:'☾',count:52,updated:15,popularity:62,description:'নামাজের নিয়ম, মাসআলা, মনোযোগ ও খুশু-খুজু।',colors:'linear-gradient(135deg,#0E7490,#043755,#E7C665)'},
+      {id:13,name:'রোজা',type:'Q&A',icon:'○',count:47,updated:8,popularity:57,description:'রমজান, সিয়াম, রোজার মাসআলা ও শিক্ষা।',colors:'linear-gradient(135deg,#4C1D95,#7C3AED,#D7A83F)'},
+      {id:14,name:'হাদিস',type:'Blog',icon:'۞',count:44,updated:7,popularity:55,description:'হাদিস, সুন্নাহ, ব্যাখ্যা ও আমলযোগ্য শিক্ষা।',colors:'linear-gradient(135deg,#0F172A,#0369A1,#D7A83F)'},
+      {id:15,name:'ব্যবসা',type:'Q&A',icon:'৳',count:39,updated:5,popularity:48,description:'হালাল উপার্জন, ব্যবসা, লেনদেন ও অর্থনীতি।',colors:'linear-gradient(135deg,#422006,#CA8A04,#043755)'},
+      {id:16,name:'নারী',type:'Q&A',icon:'◇',count:35,updated:6,popularity:46,description:'নারী বিষয়ক প্রশ্ন, পরিবার, ইবাদত ও সামাজিক জীবন।',colors:'linear-gradient(135deg,#831843,#DB2777,#043755)'},
+      {id:17,name:'যুব সমাজ',type:'Video',icon:'✦',count:31,updated:13,popularity:45,description:'যুবকদের সমস্যা, আত্মশুদ্ধি, ফিতনা ও সময়ের চ্যালেঞ্জ।',colors:'linear-gradient(135deg,#111827,#2563EB,#D7A83F)'},
+      {id:18,name:'ইতিহাস',type:'Blog',icon:'⌘',count:29,updated:4,popularity:42,description:'ইসলামের ইতিহাস, শিক্ষণীয় ঘটনা ও সভ্যতা।',colors:'linear-gradient(135deg,#292524,#78716C,#D7A83F)'},
+      {id:19,name:'দোয়া',type:'Q&A',icon:'☾',count:26,updated:10,popularity:40,description:'দোয়া, যিকির, আমল ও আল্লাহর কাছে প্রার্থনা।',colors:'linear-gradient(135deg,#022C22,#059669,#D7A83F)'},
+      {id:20,name:'শিশু শিক্ষা',type:'Blog',icon:'✿',count:21,updated:3,popularity:35,description:'সন্তান প্রতিপালন, শিশু শিক্ষা ও চরিত্র গঠন।',colors:'linear-gradient(135deg,#164E63,#06B6D4,#D7A83F)'},
+      {id:21,name:'ঘোষণা',type:'Blog',icon:'!',count:18,updated:19,popularity:32,description:'ওয়েবসাইট আপডেট, অনুষ্ঠান ঘোষণা ও নোটিশ।',colors:'linear-gradient(135deg,#7F1D1D,#EF4444,#043755)'},
+      {id:22,name:'রিপোর্ট',type:'E-book',icon:'⚑',count:15,updated:2,popularity:30,description:'ই-বুক রিপোর্ট, ভুল সংশোধন ও user feedback category।',colors:'linear-gradient(135deg,#374151,#64748B,#D7A83F)'},
+      {id:23,name:'অর্ডার',type:'E-book',icon:'৳',count:12,updated:1,popularity:25,description:'বই অর্ডার, inquiry এবং payment-related category।',colors:'linear-gradient(135deg,#713F12,#EAB308,#043755)'},
+      {id:24,name:'অন্যান্য',type:'Blog',icon:'+',count:10,updated:6,popularity:20,description:'যেসব কনটেন্ট নির্দিষ্ট ক্যাটাগরিতে পড়ে না।',colors:'linear-gradient(135deg,#334155,#0F172A,#1493C5)'}
+    ];
+
+    const perPage = 9;
+    let currentPage = 1;
+    let activeType = 'all';
+    let currentItems = [...categories];
+
+    // ------------------------------
+    // DOM references
+    // ------------------------------
+    const categoriesWrap = document.getElementById('categoriesWrap');
+    const categoriesGrid = document.getElementById('categoriesGrid');
+    const resultCount = document.getElementById('resultCount');
+    const pagination = document.getElementById('pagination');
+    const emptyState = document.getElementById('emptyState');
+    const searchInput = document.getElementById('searchInput');
+    const headerSearch = document.getElementById('headerSearch');
+    const sortFilter = document.getElementById('sortFilter');
+
+    // ------------------------------
+    // Utility helpers
+    // ------------------------------
+    const normalize = (value) => String(value || '').toLowerCase();
+
+    const showToast = (message) => {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('active');
+      setTimeout(() => toast.classList.remove('active'), 2600);
+    };
+
+    // ------------------------------
+    // Category card template
+    // ------------------------------
+    function categoryCard(category) {
+      return `
+        <article class="category-card premium-card rounded-[30px] overflow-hidden">
+          <div class="category-card-inner">
+            <div class="category-visual h-56 flex items-end p-6" style="background:${category.colors}">
+              <div class="relative z-10 text-white">
+                <div class="w-16 h-16 rounded-3xl bg-white/15 border border-white/20 flex items-center justify-center text-2xl font-black mb-5">${category.icon}</div>
+                <span class="inline-flex bg-gold text-ocean px-3 py-1 rounded-full font-bold text-sm">${category.type}</span>
+              </div>
+            </div>
+
+            <div class="p-6">
+              <div class="flex items-center justify-between gap-4">
+                <h3 class="text-3xl font-black text-ocean leading-tight">${category.name}</h3>
+                <span class="font-inter text-3xl font-black text-skybrand">${category.count}</span>
+              </div>
+
+              <p class="mt-3 text-ocean/62 leading-7">${category.description}</p>
+
+              <div class="mt-5 progress-track">
+                <div class="progress-fill" style="width:${category.popularity}%"></div>
+              </div>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="rounded-full bg-cream px-3 py-1 text-sm font-bold text-ocean/65">${category.count} Contents</span>
+                <span class="rounded-full bg-skybrand/10 px-3 py-1 text-sm font-bold text-skybrand">${category.updated} Updated</span>
+              </div>
+
+              <div class="mt-6 flex gap-3">
+                <a href="#" class="flex-1 btn-primary text-white rounded-full px-5 py-3 text-center font-black">Browse</a>
+                <button class="save-demo flex-1 btn-gold text-ocean rounded-full px-5 py-3 font-black">Save</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // ------------------------------
+    // Apply filters and sorting
+    // ------------------------------
+    function applyFilters() {
+      const query = normalize(searchInput.value);
+      const sort = sortFilter.value;
+
+      currentItems = categories.filter(category => {
+        const searchable = [category.name, category.type, category.description].map(normalize).join(' ');
+        const matchesSearch = !query || searchable.includes(query);
+        const matchesType = activeType === 'all' || category.type === activeType;
+        return matchesSearch && matchesType;
+      });
+
+      currentItems.sort((a, b) => {
+        if (sort === 'name') return a.name.localeCompare(b.name, 'bn');
+        if (sort === 'content') return b.count - a.count;
+        if (sort === 'newest') return b.updated - a.updated;
+        return b.popularity - a.popularity;
+      });
+
+      renderCategories();
+    }
+
+    // ------------------------------
+    // Render categories
+    // ------------------------------
+    function renderCategories() {
+      const total = currentItems.length;
+      const totalPages = Math.max(1, Math.ceil(total / perPage));
+
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      const start = (currentPage - 1) * perPage;
+      const pageItems = currentItems.slice(start, start + perPage);
+
+      resultCount.textContent = `মোট ${total}টি ক্যাটাগরি দেখানো হচ্ছে`;
+      categoriesGrid.innerHTML = pageItems.map(categoryCard).join('');
+      emptyState.classList.toggle('hidden', total !== 0);
+      categoriesGrid.classList.toggle('hidden', total === 0);
+
+      renderPagination(totalPages);
+      bindCardActions();
+    }
+
+    // ------------------------------
+    // Render pagination
+    // ------------------------------
+    function renderPagination(totalPages) {
+      pagination.innerHTML = '';
+      if (totalPages <= 1) return;
+
+      const prev = document.createElement('button');
+      prev.className = 'pagination-btn rounded-full bg-cream px-4 py-3 text-ocean font-bold disabled:opacity-40';
+      prev.textContent = 'Prev';
+      prev.disabled = currentPage === 1;
+      prev.addEventListener('click', () => {
+        currentPage--;
+        renderCategories();
+        document.getElementById('categories').scrollIntoView({behavior:'smooth'});
+      });
+      pagination.appendChild(prev);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.className = `pagination-btn rounded-full px-4 py-3 font-bold ${i === currentPage ? 'active' : 'bg-cream text-ocean'}`;
+        btn.textContent = i;
+        btn.addEventListener('click', () => {
+          currentPage = i;
+          renderCategories();
+          document.getElementById('categories').scrollIntoView({behavior:'smooth'});
+        });
+        pagination.appendChild(btn);
+      }
+
+      const next = document.createElement('button');
+      next.className = 'pagination-btn rounded-full bg-cream px-4 py-3 text-ocean font-bold disabled:opacity-40';
+      next.textContent = 'Next';
+      next.disabled = currentPage === totalPages;
+      next.addEventListener('click', () => {
+        currentPage++;
+        renderCategories();
+        document.getElementById('categories').scrollIntoView({behavior:'smooth'});
+      });
+      pagination.appendChild(next);
+    }
+
+    // ------------------------------
+    // Card actions
+    // ------------------------------
+    function bindCardActions() {
+      document.querySelectorAll('.save-demo').forEach(button => {
+        button.addEventListener('click', () => showToast('ক্যাটাগরি save করার ডেমো অ্যাকশন।'));
+      });
+    }
+
+    // ------------------------------
+    // Event bindings
+    // ------------------------------
+    searchInput.addEventListener('input', () => {
+      currentPage = 1;
+      applyFilters();
+    });
+
+    headerSearch.addEventListener('input', () => {
+      searchInput.value = headerSearch.value;
+      currentPage = 1;
+      applyFilters();
+    });
+
+    sortFilter.addEventListener('change', () => {
+      currentPage = 1;
+      applyFilters();
+    });
+
+    document.querySelectorAll('.type-pill').forEach(button => {
+      button.addEventListener('click', () => {
+        activeType = button.dataset.type;
+        document.querySelectorAll('.type-pill').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        currentPage = 1;
+        applyFilters();
+      });
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      searchInput.value = '';
+      headerSearch.value = '';
+      sortFilter.value = 'popular';
+      activeType = 'all';
+      currentPage = 1;
+
+      document.querySelectorAll('.type-pill').forEach(btn => btn.classList.toggle('active', btn.dataset.type === 'all'));
+      applyFilters();
+      showToast('ফিল্টার রিসেট করা হয়েছে।');
+    });
+
+    document.getElementById('gridViewBtn').addEventListener('click', () => {
+      categoriesWrap.classList.remove('list-mode');
+      document.getElementById('gridViewBtn').classList.add('active');
+      document.getElementById('listViewBtn').classList.remove('active');
+    });
+
+    document.getElementById('listViewBtn').addEventListener('click', () => {
+      categoriesWrap.classList.add('list-mode');
+      document.getElementById('listViewBtn').classList.add('active');
+      document.getElementById('gridViewBtn').classList.remove('active');
+    });
+
+    // ------------------------------
+    // Mobile menu
+    // ------------------------------
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileMenuBtn?.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // ------------------------------
+    // Smooth reveal animation
+    // ------------------------------
+    const revealItems = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    // ------------------------------
+    // Initialize page
+    // ------------------------------
+    applyFilters();
+  </script>
+</body>
+</html>
