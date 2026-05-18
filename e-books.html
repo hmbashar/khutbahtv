@@ -137,6 +137,12 @@
   <!-- =========================================================
        HEADER / MEGA MENU NAVIGATION
   ========================================================== -->
+  <!-- =========================================================
+       HEADER / MEGA MENU NAVIGATION
+  ========================================================== -->
+  <!-- =========================================================
+       HEADER / MEGA MENU NAVIGATION
+  ========================================================== -->
   <header id="siteHeader" class="sticky top-0 z-50 bg-white/86 backdrop-blur-xl border-b border-ocean/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="h-20 flex items-center justify-between gap-5">
@@ -296,6 +302,10 @@
   </aside>
 
 <!-- =========================================================
+       MOBILE DRAWER MENU
+  ========================================================== --><!-- =========================================================
+       MOBILE DRAWER MENU
+  ========================================================== --><!-- =========================================================
        BREAKING / LATEST TICKER
        ========================================================= -->
   <div class="bg-skybrand text-white overflow-hidden py-3 font-semibold">
@@ -643,7 +653,7 @@
       document.getElementById('quickFilters').addEventListener('click', e=>{const btn=e.target.closest('[data-category]'); if(btn) setCategory(btn.dataset.category);});
       document.getElementById('gridView').addEventListener('click',()=>{state.view='grid';render();});
       document.getElementById('listView').addEventListener('click',()=>{state.view='list';render();});
-      document.getElementById('globalSearch').addEventListener('keydown', e=>{if(e.key==='Enter'){document.getElementById('searchInput').value=e.target.value;state.q=e.target.value;state.page=1;render();document.getElementById('library').scrollIntoView({behavior:'smooth'});}});
+      document.getElementById('headerSearch').addEventListener('keydown', e=>{if(e.key==='Enter'){document.getElementById('searchInput').value=e.target.value;state.q=e.target.value;state.page=1;render();document.getElementById('library').scrollIntoView({behavior:'smooth'});}});
 
       const observer = new IntersectionObserver((entries)=>entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add('show')}),{threshold:.12});
       document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
@@ -706,6 +716,7 @@
       if(!s) return;
       s.addEventListener('keydown', e=>{
         if(e.key==='Enter'){
+          if(document.getElementById('searchInput') || document.getElementById('blogSearch') || document.getElementById('qaSearch') || window.location.pathname.includes('search.html')) return;
           e.preventDefault();
           const q = s.value.trim();
           if(q) window.location.href = 'search.html?s=' + encodeURIComponent(q);

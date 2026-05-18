@@ -176,6 +176,12 @@
   <!-- =========================================================
        HEADER / MEGA MENU NAVIGATION
   ========================================================== -->
+  <!-- =========================================================
+       HEADER / MEGA MENU NAVIGATION
+  ========================================================== -->
+  <!-- =========================================================
+       HEADER / MEGA MENU NAVIGATION
+  ========================================================== -->
   <header id="siteHeader" class="sticky top-0 z-50 bg-white/86 backdrop-blur-xl border-b border-ocean/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="h-20 flex items-center justify-between gap-5">
@@ -335,6 +341,10 @@
   </aside>
 
 <!-- =========================================================
+       MOBILE DRAWER MENU
+  ========================================================== --><!-- =========================================================
+       MOBILE DRAWER MENU
+  ========================================================== --><!-- =========================================================
        SECTION: LATEST TICKER
        Purpose: Animated latest content strip.
        ========================================================= -->
@@ -734,7 +744,7 @@
       document.getElementById('sortSelect').value = state.sort;
       document.getElementById('searchInput').value = state.q;
       document.getElementById('heroSearch').value = state.q;
-      document.getElementById('globalSearch').value = state.q;
+      document.getElementById('headerSearch').value = state.q;
       document.getElementById('comfortableView').className = `view-btn w-11 h-11 rounded-full flex items-center justify-center ${state.view==='comfortable'?'active bg-ocean text-white':'bg-cream text-ocean'}`;
       document.getElementById('compactView').className = `view-btn w-11 h-11 rounded-full flex items-center justify-center ${state.view==='compact'?'active bg-ocean text-white':'bg-cream text-ocean'}`;
     }
@@ -764,7 +774,7 @@
       document.getElementById('searchInput').addEventListener('input', e=>{ state.q=e.target.value; state.page=1; render(); });
       document.getElementById('heroSearchBtn').addEventListener('click',()=>runSearch(document.getElementById('heroSearch').value));
       document.getElementById('heroSearch').addEventListener('keydown', e=>{ if(e.key==='Enter') runSearch(e.target.value); });
-      document.getElementById('globalSearch').addEventListener('keydown', e=>{ if(e.key==='Enter') runSearch(e.target.value); });
+      document.getElementById('headerSearch').addEventListener('keydown', e=>{ if(e.key==='Enter') runSearch(e.target.value); });
       document.getElementById('typeSelect').addEventListener('change', e=>{ state.type=e.target.value; state.page=1; render(); });
       document.getElementById('sortSelect').addEventListener('change', e=>{ state.sort=e.target.value; state.page=1; render(); });
       document.getElementById('resetBtn').addEventListener('click', resetFilters);
@@ -835,6 +845,7 @@
       if(!s) return;
       s.addEventListener('keydown', e=>{
         if(e.key==='Enter'){
+          if(document.getElementById('searchInput') || document.getElementById('blogSearch') || document.getElementById('qaSearch') || window.location.pathname.includes('search.html')) return;
           e.preventDefault();
           const q = s.value.trim();
           if(q) window.location.href = 'search.html?s=' + encodeURIComponent(q);

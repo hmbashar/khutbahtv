@@ -139,6 +139,12 @@
   <!-- =========================================================
        HEADER / MEGA MENU NAVIGATION
   ========================================================== -->
+  <!-- =========================================================
+       HEADER / MEGA MENU NAVIGATION
+  ========================================================== -->
+  <!-- =========================================================
+       HEADER / MEGA MENU NAVIGATION
+  ========================================================== -->
   <header id="siteHeader" class="sticky top-0 z-50 bg-white/86 backdrop-blur-xl border-b border-ocean/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="h-20 flex items-center justify-between gap-5">
@@ -298,6 +304,10 @@
   </aside>
 
 <!-- =========================================================
+       MOBILE DRAWER MENU
+  ========================================================== --><!-- =========================================================
+       MOBILE DRAWER MENU
+  ========================================================== --><!-- =========================================================
        LATEST NEWS TICKER
   ========================================================== -->
   <div class="bg-skybrand text-white overflow-hidden py-3 font-semibold">
@@ -625,9 +635,9 @@
       document.querySelectorAll('.category-pill').forEach(btn=>btn.addEventListener('click',()=>setFilter(btn.dataset.filter)));
       document.querySelectorAll('.tagBtn').forEach(btn=>btn.addEventListener('click',()=>{state.search=btn.dataset.tag;document.getElementById('blogSearch').value=state.search;state.page=1;renderPosts()}));
       document.getElementById('blogSearch').addEventListener('input',e=>{state.search=e.target.value;state.page=1;renderPosts()});
-      document.getElementById('globalSearch').addEventListener('input',e=>{state.search=e.target.value;document.getElementById('blogSearch').value=e.target.value;state.page=1;renderPosts()});
+      document.getElementById('headerSearch').addEventListener('input',e=>{state.search=e.target.value;document.getElementById('blogSearch').value=e.target.value;state.page=1;renderPosts()});
       document.getElementById('sortSelect').addEventListener('change',e=>{state.sort=e.target.value;renderPosts()});
-      document.getElementById('resetBtn').addEventListener('click',()=>{state.filter='all';state.search='';state.sort='newest';state.page=1;document.getElementById('blogSearch').value='';document.getElementById('globalSearch').value='';document.getElementById('sortSelect').value='newest';document.querySelectorAll('.category-pill').forEach(b=>b.classList.toggle('active', b.dataset.filter==='all'));renderSidebar();renderPosts()});
+      document.getElementById('resetBtn').addEventListener('click',()=>{state.filter='all';state.search='';state.sort='newest';state.page=1;document.getElementById('blogSearch').value='';document.getElementById('headerSearch').value='';document.getElementById('sortSelect').value='newest';document.querySelectorAll('.category-pill').forEach(b=>b.classList.toggle('active', b.dataset.filter==='all'));renderSidebar();renderPosts()});
       document.getElementById('subscribeBtn').addEventListener('click',()=>document.getElementById('subscribeMsg').classList.remove('hidden'));
 
       const observer = new IntersectionObserver((entries)=>entries.forEach(entry=>{if(entry.isIntersecting) entry.target.classList.add('show')}),{threshold:.12});
@@ -692,6 +702,7 @@
       if(!s) return;
       s.addEventListener('keydown', e=>{
         if(e.key==='Enter'){
+          if(document.getElementById('searchInput') || document.getElementById('blogSearch') || document.getElementById('qaSearch') || window.location.pathname.includes('search.html')) return;
           e.preventDefault();
           const q = s.value.trim();
           if(q) window.location.href = 'search.html?s=' + encodeURIComponent(q);

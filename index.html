@@ -136,6 +136,12 @@
   <!-- =========================================================
        HEADER / MEGA MENU NAVIGATION
   ========================================================== -->
+  <!-- =========================================================
+       HEADER / MEGA MENU NAVIGATION
+  ========================================================== -->
+  <!-- =========================================================
+       HEADER / MEGA MENU NAVIGATION
+  ========================================================== -->
   <header id="siteHeader" class="sticky top-0 z-50 bg-white/86 backdrop-blur-xl border-b border-ocean/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="h-20 flex items-center justify-between gap-5">
@@ -294,7 +300,11 @@
     </div>
   </aside>
 
-<main id="home" class="relative hero-glow overflow-hidden bg-ocean text-white">
+<!-- =========================================================
+       MOBILE DRAWER MENU
+  ========================================================== --><!-- =========================================================
+       MOBILE DRAWER MENU
+  ========================================================== --><main id="home" class="relative hero-glow overflow-hidden bg-ocean text-white">
     <div class="islamic-grid"></div>
     <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 lg:pt-24 pb-20 lg:pb-28">
       <div class="grid lg:grid-cols-[1.05fr_.95fr] gap-12 items-center">
@@ -540,7 +550,7 @@
       document.querySelectorAll('.qa-card').forEach(card=>{card.style.display=card.dataset.text.toLowerCase().includes(q)?'block':'none'});
     });
 
-    const globalSearch=document.getElementById('globalSearch');
+    const globalSearch=document.getElementById('headerSearch');
     globalSearch?.addEventListener('keydown',(e)=>{if(e.key==='Enter'){document.getElementById('videos')?.scrollIntoView({behavior:'smooth'});}});
   </script>
 
@@ -599,6 +609,7 @@
       if(!s) return;
       s.addEventListener('keydown', e=>{
         if(e.key==='Enter'){
+          if(document.getElementById('searchInput') || document.getElementById('blogSearch') || document.getElementById('qaSearch') || window.location.pathname.includes('search.html')) return;
           e.preventDefault();
           const q = s.value.trim();
           if(q) window.location.href = 'search.html?s=' + encodeURIComponent(q);

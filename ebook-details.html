@@ -117,6 +117,12 @@
   <!-- =========================================================
        HEADER / MEGA MENU NAVIGATION
   ========================================================== -->
+  <!-- =========================================================
+       HEADER / MEGA MENU NAVIGATION
+  ========================================================== -->
+  <!-- =========================================================
+       HEADER / MEGA MENU NAVIGATION
+  ========================================================== -->
   <header id="siteHeader" class="sticky top-0 z-50 bg-white/86 backdrop-blur-xl border-b border-ocean/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="h-20 flex items-center justify-between gap-5">
@@ -275,7 +281,11 @@
     </div>
   </aside>
 
-<main class="relative hero-glow overflow-hidden bg-ocean text-white">
+<!-- =========================================================
+       MOBILE DRAWER MENU
+  ========================================================== --><!-- =========================================================
+       MOBILE DRAWER MENU
+  ========================================================== --><main class="relative hero-glow overflow-hidden bg-ocean text-white">
     <div class="islamic-grid"></div>
     <section class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-16 lg:pt-14 lg:pb-24">
       <div class="mb-8 reveal">
@@ -512,7 +522,7 @@
     document.addEventListener('DOMContentLoaded',()=>{
       document.getElementById('todayDate').textContent = new Intl.DateTimeFormat('bn-BD',{weekday:'long',year:'numeric',month:'long',day:'numeric'}).format(new Date());
       document.getElementById('menuBtn')?.addEventListener('click',()=>document.getElementById('mobileMenu').classList.toggle('hidden'));
-      document.getElementById('globalSearch')?.addEventListener('keydown', e=>{if(e.key==='Enter') showToast(`“${e.target.value}” সার্চ ডেমো`)});
+      document.getElementById('headerSearch')?.addEventListener('keydown', e=>{if(e.key==='Enter') showToast(`“${e.target.value}” সার্চ ডেমো`)});
 
       document.querySelectorAll('.tab-btn').forEach(btn=>{
         btn.addEventListener('click',()=>{
@@ -583,6 +593,7 @@
       if(!s) return;
       s.addEventListener('keydown', e=>{
         if(e.key==='Enter'){
+          if(document.getElementById('searchInput') || document.getElementById('blogSearch') || document.getElementById('qaSearch') || window.location.pathname.includes('search.html')) return;
           e.preventDefault();
           const q = s.value.trim();
           if(q) window.location.href = 'search.html?s=' + encodeURIComponent(q);

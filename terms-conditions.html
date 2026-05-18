@@ -134,6 +134,12 @@
   <!-- =========================================================
        HEADER / MEGA MENU NAVIGATION
   ========================================================== -->
+  <!-- =========================================================
+       HEADER / MEGA MENU NAVIGATION
+  ========================================================== -->
+  <!-- =========================================================
+       HEADER / MEGA MENU NAVIGATION
+  ========================================================== -->
   <header id="siteHeader" class="sticky top-0 z-50 bg-white/86 backdrop-blur-xl border-b border-ocean/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="h-20 flex items-center justify-between gap-5">
@@ -293,6 +299,10 @@
   </aside>
 
 <!-- =========================================================
+       MOBILE DRAWER MENU
+  ========================================================== --><!-- =========================================================
+       MOBILE DRAWER MENU
+  ========================================================== --><!-- =========================================================
        BREAKING / LEGAL NOTICE TICKER
        ========================================================= -->
   <div class="bg-skybrand text-white overflow-hidden py-3 font-semibold">
@@ -637,7 +647,7 @@
        Search within terms sections
     ------------------------------ */
     document.addEventListener('DOMContentLoaded',()=>{
-      const search = document.getElementById('globalSearch');
+      const search = document.getElementById('headerSearch');
       const cards = [...document.querySelectorAll('.legal-content article')];
       search?.addEventListener('keydown', e=>{
         if(e.key !== 'Enter') return;
@@ -711,6 +721,7 @@
       if(!s) return;
       s.addEventListener('keydown', e=>{
         if(e.key==='Enter'){
+          if(document.getElementById('searchInput') || document.getElementById('blogSearch') || document.getElementById('qaSearch') || window.location.pathname.includes('search.html')) return;
           e.preventDefault();
           const q = s.value.trim();
           if(q) window.location.href = 'search.html?s=' + encodeURIComponent(q);
